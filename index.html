@@ -11,6 +11,25 @@
   <style>
     body { font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif; }
     .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* মাউস নিলে আলতোভাবে উপরে উঠে আসার মসৃণ অ্যানিমেশন */
+    .card-lift {
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease, background-color 0.28s ease;
+      will-change: transform, box-shadow;
+    }
+    .card-lift:hover {
+      transform: translateY(-8px) scale(1.012);
+    }
+
+    .btn-lift {
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+    }
+    .btn-lift:hover {
+      transform: translateY(-2px);
+    }
+    .btn-lift:active {
+      transform: translateY(0) scale(0.97);
+    }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-emerald-500 selection:text-slate-950">
@@ -46,14 +65,14 @@
   <!-- Main Container -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12">
     
-    <!-- Distinct Interactive Toggle Tabs -->
+    <!-- Distinct Interactive Toggle Tabs with accurate counts -->
     <div class="flex justify-center">
       <div class="inline-flex p-1.5 bg-slate-900/90 border border-slate-800 rounded-2xl shadow-xl max-w-xl w-full">
         <button id="tabOtpBtn" class="flex-1 py-3 px-4 rounded-xl text-sm sm:text-base font-extrabold bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 transition-all cursor-pointer">
           📱 WhatsApp / OTP Numbers (২৯)
         </button>
         <button id="tabEsimBtn" class="flex-1 py-3 px-4 rounded-xl text-sm sm:text-base font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer">
-          🌐 Travel eSIM (৬)
+          🌐 Travel eSIM (২৬)
         </button>
       </div>
     </div>
@@ -78,7 +97,7 @@
       </div>
     </section>
 
-    <!-- Section 2: Travel eSIM (2 Months Validity Highlighted) -->
+    <!-- Section 2: Travel eSIM (2 Months Validity Highlighted, 26 Packages) -->
     <section id="esimSection" class="space-y-8 hidden">
       <div class="text-center max-w-2xl mx-auto space-y-3">
         <div class="inline-block px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-bold text-cyan-400">
@@ -86,6 +105,14 @@
         </div>
         <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">International Travel eSIM Packages</h2>
         <p class="text-sm text-slate-400 leading-relaxed">ফিজিক্যাল সিম পরিবর্তন ছাড়াই WhatsApp-এ ইনস্ট্যান্ট QR কোড দিয়ে সক্রিয় করুন। সকল প্যাকেজে পূর্ণ <strong>২ মাসের মেয়াদ (৬০ দিন)</strong> এবং হাইস্পিড ডাটা সুবিধা।</p>
+        <div class="pt-2">
+          <input 
+            id="esimSearchInput" 
+            type="text" 
+            placeholder="Search eSIM country (যেমন: France, Japan, Dubai, Korea, ৳ ১১৫০)..." 
+            class="w-full pl-5 pr-5 py-3.5 bg-slate-900 border border-slate-800 rounded-2xl text-sm sm:text-base text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 font-medium"
+          />
+        </div>
       </div>
 
       <div id="esimGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -108,7 +135,7 @@
     </div>
   </footer>
 
-  <!-- Details Modal (বিস্তারিত দেখুন) -->
+  <!-- Details Modal (পূর্ণ বিবরণ) -->
   <div id="detailsModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-4">
     <div class="w-full max-w-xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-6 space-y-5">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
@@ -175,7 +202,7 @@
         </div>
       </div>
 
-      <!-- 1. Payment Method Selection (bKash & Nagad with Official Logos) -->
+      <!-- 1. Payment Method Selection (bKash & Nagad) -->
       <div class="space-y-2">
         <label class="text-xs font-bold text-slate-300 uppercase tracking-wider block">
           পেমেন্ট মেথড নির্বাচন করুন:
@@ -253,7 +280,6 @@
               01965291171
             </span>
           </div>
-          <!-- One-click functional copy button -->
           <button 
             type="button" 
             id="copyNumberBtn" 
@@ -282,7 +308,6 @@
           />
         </div>
 
-        <!-- Directly Below: Prominent 'অর্ডার করুন' Button -->
         <button 
           id="contactWhatsAppBtn" 
           class="w-full py-4 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 text-slate-950 font-black text-base rounded-2xl transition-all shadow-xl shadow-emerald-500/25 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
@@ -298,48 +323,73 @@
     const WA_NUMBER = '8801605617380';
     let selectedMethod = 'bkash';
 
+    // ২৯টি WhatsApp / OTP ভার্চুয়াল নাম্বার
     const otpData = [
-      { name: 'USA', flag: '🇺🇸', price: 370, priceBn: '৩৭০', desc: 'হোয়াটসঅ্যাপ, টেলিগ্রাম, ইমো ও সোশ্যাল ভেরিফিকেশন' },
-      { name: 'UK', flag: '🇬🇧', price: 390, priceBn: '৩৯০', desc: 'ইউরোপের সেরা ক্লিন রিয়েল সিম, ইনস্ট্যান্ট এসএমএস' },
-      { name: 'Canada', flag: '🇨🇦', price: 380, priceBn: '৩৮০', desc: 'কানাডিয়ান রিয়েল টিয়ার-১ নেটওয়ার্ক' },
-      { name: 'Germany', flag: '🇩🇪', price: 450, priceBn: '৪৫০', desc: 'জার্মান হাই-সিকিউরিটি ক্যারিয়ার, ১০০% ওয়ারেন্টি' },
-      { name: 'France', flag: '🇫🇷', price: 430, priceBn: '৪৩০', desc: 'ফরাসি ন্যাশনাল টেলিকম রুট, ব্যান-রেজিস্ট্যান্ট' },
-      { name: 'Netherlands', flag: '🇳🇱', price: 400, priceBn: '৪০০', desc: 'ডাচ ক্লিন আইপি রেঞ্জ, দ্রুত ডেলিভারি' },
-      { name: 'Italy', flag: '🇮🇹', price: 420, priceBn: '৪২০', desc: 'ইতালিয়ান অথেনটিক মোবাইল নাম্বার' },
-      { name: 'Spain', flag: '🇪🇸', price: 410, priceBn: '৪১০', desc: 'স্প্যানিশ রিয়েল নেটওয়ার্ক, ফ্রি রিপ্লেসমেন্ট' },
-      { name: 'Sweden', flag: '🇸🇪', price: 440, priceBn: '৪৪০', desc: 'স্ক্যান্ডিনেভিয়ান প্রিমিয়াম ক্যারিয়ার' },
-      { name: 'Switzerland', flag: '🇨🇭', price: 480, priceBn: '৪৮০', desc: 'সুইস প্রিমিয়াম প্রাইভেসি লাইন' },
-      { name: 'Poland', flag: '🇵🇱', price: 360, priceBn: '৩৬০', desc: 'সাশ্রয়ী মূল্যে সেরা ইউরোপীয় নাম্বার' },
-      { name: 'Romania', flag: '🇷🇴', price: 360, priceBn: '৩৬০', desc: 'বাজেট ফ্রেন্ডলি ওটিপি সার্ভিস' },
-      { name: 'Portugal', flag: '🇵🇹', price: 380, priceBn: '৩৮০', desc: 'পর্তুগিজ রিয়েল মোবাইল সিম' },
-      { name: 'Austria', flag: '🇦🇹', price: 430, priceBn: '৪৩০', desc: 'অস্ট্রিয়ান সেন্ট্রাল ইউরোপ ক্যারিয়ার' },
-      { name: 'UAE / Dubai', flag: '🇦🇪', price: 480, priceBn: '৪৮০', desc: 'দুবাই অফিশিয়াল মোবাইল রেঞ্জ' },
-      { name: 'Saudi Arabia', flag: '🇸🇦', price: 450, priceBn: '৪৫০', desc: 'সৌদি আরবের প্রিমিয়াম ওটিপি চ্যানেল' },
-      { name: 'Singapore', flag: '🇸🇬', price: 460, priceBn: '৪৬০', desc: 'সিঙ্গাপুর হাই-স্পিড ভেরিফিকেশন' },
-      { name: 'Qatar', flag: '🇶🇦', price: 470, priceBn: '৪৭০', desc: 'কাতার ক্লিন নেটওয়ার্ক চ্যানেল' },
-      { name: 'Kuwait', flag: '🇰🇼', price: 460, priceBn: '৪৬০', desc: 'কুয়েত নির্ভরযোগ্য ওটিপি রুট' },
-      { name: 'Malaysia', flag: '🇲🇾', price: 380, priceBn: '৩৮০', desc: 'মালয়েশিয়ান সেলকম/ডিজি রুট' },
-      { name: 'Thailand', flag: '🇹🇭', price: 370, priceBn: '৩৭০', desc: 'থাইল্যান্ড এআইএস ক্লিন রেঞ্জ' },
-      { name: 'Japan', flag: '🇯🇵', price: 490, priceBn: '৪৯০', desc: 'জাপানি প্রিমিয়াম হাই সিকিউরিটি সিম' },
-      { name: 'South Korea', flag: '🇰🇷', price: 470, priceBn: '৪৭০', desc: 'দক্ষিণ কোরিয়া এসকেটি নেটওয়ার্ক' },
-      { name: 'Turkey', flag: '🇹🇷', price: 390, priceBn: '৩৯০', desc: 'তুর্কি টার্কসেল ভেরিফিকেশন' },
-      { name: 'Indonesia', flag: '🇮🇩', price: 360, priceBn: '৩৬০', desc: 'ইন্দোনেশিয়া তেলকোমসেল রুট' },
-      { name: 'Philippines', flag: '🇵🇭', price: 360, priceBn: '৩৬০', desc: 'ফিলিপাইন স্মার্ট/গ্লোব সিম' },
-      { name: 'Australia', flag: '🇦🇺', price: 420, priceBn: '৪২০', desc: 'অস্ট্রেলিয়ান টেলস্ট্রা রুট' },
-      { name: 'New Zealand', flag: '🇳🇿', price: 440, priceBn: '৪৪০', desc: 'নিউজিল্যান্ড প্রিমিয়াম নেটওয়ার্ক' },
-      { name: 'South Africa', flag: '🇿🇦', price: 390, priceBn: '৩৯০', desc: 'দক্ষিণ আফ্রিকা ভোডাকম চ্যানেল' }
+      { id: 'otp-1', name: 'USA', flag: '🇺🇸', price: 370, priceBn: '৩৭০', desc: 'হোয়াটসঅ্যাপ, টেলিগ্রাম, ইমো ও সোশ্যাল ভেরিফিকেশন' },
+      { id: 'otp-2', name: 'UK', flag: '🇬🇧', price: 390, priceBn: '৩৯০', desc: 'ইউরোপের সেরা ক্লিন রিয়েল সিম, ইনস্ট্যান্ট এসএমএস' },
+      { id: 'otp-3', name: 'Canada', flag: '🇨🇦', price: 380, priceBn: '৩৮০', desc: 'কানাডিয়ান রিয়েল টিয়ার-১ নেটওয়ার্ক' },
+      { id: 'otp-4', name: 'Germany', flag: '🇩🇪', price: 450, priceBn: '৪৫০', desc: 'জার্মান হাই-সিকিউরিটি ক্যারিয়ার, ১০০% ওয়ারেন্টি' },
+      { id: 'otp-5', name: 'France', flag: '🇫🇷', price: 430, priceBn: '৪৩০', desc: 'ফরাসি ন্যাশনাল টেলিকম রুট, ব্যান-রেজিস্ট্যান্ট' },
+      { id: 'otp-6', name: 'Netherlands', flag: '🇳🇱', price: 400, priceBn: '৪০০', desc: 'ডাচ ক্লিন আইপি রেঞ্জ, দ্রুত ডেলিভারি' },
+      { id: 'otp-7', name: 'Italy', flag: '🇮🇹', price: 420, priceBn: '৪২০', desc: 'ইতালিয়ান অথেনটিক মোবাইল নাম্বার' },
+      { id: 'otp-8', name: 'Spain', flag: '🇪🇸', price: 410, priceBn: '৪১০', desc: 'স্প্যানিশ রিয়েল নেটওয়ার্ক, ফ্রি রিপ্লেসমেন্ট' },
+      { id: 'otp-9', name: 'Sweden', flag: '🇸🇪', price: 440, priceBn: '৪৪০', desc: 'স্ক্যান্ডিনেভিয়ান প্রিমিয়াম ক্যারিয়ার' },
+      { id: 'otp-10', name: 'Switzerland', flag: '🇨🇭', price: 480, priceBn: '৪৮০', desc: 'সুইস প্রিমিয়াম প্রাইভেসি লাইন' },
+      { id: 'otp-11', name: 'Poland', flag: '🇵🇱', price: 360, priceBn: '৩৬০', desc: 'সাশ্রয়ী মূল্যে সেরা ইউরোপীয় নাম্বার' },
+      { id: 'otp-12', name: 'Romania', flag: '🇷🇴', price: 360, priceBn: '৩৬০', desc: 'বাজেট ফ্রেন্ডলি ওটিপি সার্ভিস' },
+      { id: 'otp-13', name: 'Portugal', flag: '🇵🇹', price: 380, priceBn: '৩৮০', desc: 'পর্তুগিজ রিয়েল মোবাইল সিম' },
+      { id: 'otp-14', name: 'Austria', flag: '🇦🇹', price: 430, priceBn: '৪৩০', desc: 'অস্ট্রিয়ান সেন্ট্রাল ইউরোপ ক্যারিয়ার' },
+      { id: 'otp-15', name: 'UAE / Dubai', flag: '🇦🇪', price: 480, priceBn: '৪৮০', desc: 'দুবাই অফিশিয়াল মোবাইল রেঞ্জ' },
+      { id: 'otp-16', name: 'Saudi Arabia', flag: '🇸🇦', price: 450, priceBn: '৪৫০', desc: 'সৌদি আরবের প্রিমিয়াম ওটিপি চ্যানেল' },
+      { id: 'otp-17', name: 'Singapore', flag: '🇸🇬', price: 460, priceBn: '৪৬০', desc: 'সিঙ্গাপুর হাই-স্পিড ভেরিফিকেশন' },
+      { id: 'otp-18', name: 'Qatar', flag: '🇶🇦', price: 470, priceBn: '৪৭০', desc: 'কাতার ক্লিন নেটওয়ার্ক চ্যানেল' },
+      { id: 'otp-19', name: 'Kuwait', flag: '🇰🇼', price: 460, priceBn: '৪৬০', desc: 'কুয়েত নির্ভরযোগ্য ওটিপি রুট' },
+      { id: 'otp-20', name: 'Malaysia', flag: '🇲🇾', price: 380, priceBn: '৩৮০', desc: 'মালয়েশিয়ান সেলকম/ডিজি রুট' },
+      { id: 'otp-21', name: 'Thailand', flag: '🇹🇭', price: 370, priceBn: '৩৭০', desc: 'থাইল্যান্ড এআইএস ক্লিন রেঞ্জ' },
+      { id: 'otp-22', name: 'Japan', flag: '🇯🇵', price: 490, priceBn: '৪৯০', desc: 'জাপানি প্রিমিয়াম হাই সিকিউরিটি সিম' },
+      { id: 'otp-23', name: 'South Korea', flag: '🇰🇷', price: 470, priceBn: '৪৭০', desc: 'দক্ষিণ কোরিয়া এসকেটি নেটওয়ার্ক' },
+      { id: 'otp-24', name: 'Turkey', flag: '🇹🇷', price: 390, priceBn: '৩৯০', desc: 'তুর্কি টার্কসেল ভেরিফিকেশন' },
+      { id: 'otp-25', name: 'Indonesia', flag: '🇮🇩', price: 360, priceBn: '৩৬০', desc: 'ইন্দোনেশিয়া তেলকোমসেল রুট' },
+      { id: 'otp-26', name: 'Philippines', flag: '🇵🇭', price: 360, priceBn: '৩৬০', desc: 'ফিলিপাইন স্মার্ট/গ্লোব সিম' },
+      { id: 'otp-27', name: 'Australia', flag: '🇦🇺', price: 420, priceBn: '৪২০', desc: 'অস্ট্রেলিয়ান টেলস্ট্রা রুট' },
+      { id: 'otp-28', name: 'New Zealand', flag: '🇳🇿', price: 440, priceBn: '৪৪০', desc: 'নিউজিল্যান্ড প্রিমিয়াম নেটওয়ার্ক' },
+      { id: 'otp-29', name: 'South Africa', flag: '🇿🇦', price: 390, priceBn: '৩৯০', desc: 'দক্ষিণ আফ্রিকা ভোডাকম চ্যানেল' }
     ];
 
+    // ২৬টি ট্রাভেল ই-সিম (পূর্বের ৬টি + নতুন ২০টি দেশ, প্রতিটির মূল্য ১,০০০ টাকার উপরে)
     const esimData = [
-      { country: 'USA (যুক্তরাষ্ট্র)', flag: '🇺🇸', price: 950, priceBn: '৯৫০', desc: 'বিশ্বব্যাপী বিভিন্ন অ্যাকাউন্ট ভেরিফিকেশন ও ব্যবহারের জন্য উপযোগী।' },
-      { country: 'UK (যুক্তরাজ্য)', flag: '🇬🇧', price: 1050, priceBn: '১,০৫০', desc: 'আন্তর্জাতিক কল, এসএমএস ও রোমিং সুবিধার জন্য সেরা।' },
-      { country: 'Canada (কানাডা)', flag: '🇨🇦', price: 1100, priceBn: '১,১০০', desc: 'নর্থ আমেরিকা ভ্রমণের জন্য নির্ভরযোগ্য নেটওয়ার্ক সাপোর্ট।' },
-      { country: 'Australia (অস্ট্রেলিয়া)', flag: '🇦🇺', price: 1150, priceBn: '১,১৫০', desc: 'ভ্রমণকারী ও শিক্ষার্থীদের জন্য দ্রুত ও সহজ সক্রিয়করণ।' },
-      { country: 'Germany (জার্মানি)', flag: '🇩🇪', price: 1200, priceBn: '১,২০০', desc: 'ইউরোপ ভ্রমণের সময় নিরবচ্ছিন্ন ডাটা ও যোগাযোগের জন্য উপযুক্ত।' },
-      { country: 'Malaysia (মালয়েশিয়া)', flag: '🇲🇾', price: 850, priceBn: '৮৫০', desc: 'সাশ্রয়ী মূল্যে দ্রুত ইন্টারনেট ও পর্যটকদের জন্য আদর্শ।' }
+      { id: 'esim-1', country: 'USA (যুক্তরাষ্ট্র)', flag: '🇺🇸', price: 950, priceBn: '৯৫০', desc: 'বিশ্বব্যাপী বিভিন্ন অ্যাকাউন্ট ভেরিফিকেশন ও ব্যবহারের জন্য উপযোগী।' },
+      { id: 'esim-2', country: 'UK (যুক্তরাজ্য)', flag: '🇬🇧', price: 1050, priceBn: '১,০৫০', desc: 'আন্তর্জাতিক কল, এসএমএস ও রোমিং সুবিধার জন্য সেরা।' },
+      { id: 'esim-3', country: 'Canada (কানাডা)', flag: '🇨🇦', price: 1100, priceBn: '১,১০০', desc: 'নর্থ আমেরিকা ভ্রমণের জন্য নির্ভরযোগ্য নেটওয়ার্ক সাপোর্ট।' },
+      { id: 'esim-4', country: 'Australia (অস্ট্রেলিয়া)', flag: '🇦🇺', price: 1150, priceBn: '১,১৫০', desc: 'ভ্রমণকারী ও শিক্ষার্থীদের জন্য দ্রুত ও সহজ সক্রিয়করণ।' },
+      { id: 'esim-5', country: 'Germany (জার্মানি)', flag: '🇩🇪', price: 1200, priceBn: '১,২০০', desc: 'ইউরোপ ভ্রমণের সময় নিরবচ্ছিন্ন ডাটা ও যোগাযোগের জন্য উপযুক্ত।' },
+      { id: 'esim-6', country: 'Malaysia (মালয়েশিয়া)', flag: '🇲🇾', price: 850, priceBn: '৮৫০', desc: 'সাশ্রয়ী মূল্যে দ্রুত ইন্টারনেট ও পর্যটকদের জন্য আদর্শ।' },
+
+      // নতুন ২০টি দেশ (মূল্য > ১,০০০ টাকা)
+      { id: 'esim-7', country: 'France (ফ্রান্স)', flag: '🇫🇷', price: 1250, priceBn: '১,২৫০', desc: 'ইউরোপ ভ্রমণের জন্য নিরবচ্ছিন্ন হাই-স্পিড ডাটা ও রোমিং সাপোর্ট।' },
+      { id: 'esim-8', country: 'Italy (ইতালি)', flag: '🇮🇹', price: 1200, priceBn: '১,২০০', desc: 'ইতালি ভ্রমণের সময় দ্রুতগতির ফোরজি/ফাইভজি ইন্টারনেট সুবিধা।' },
+      { id: 'esim-9', country: 'Spain (স্পেন)', flag: '🇪🇸', price: 1180, priceBn: '১,১৮০', desc: 'স্পেন ও শেঞ্জেন অঞ্চলে নিরবচ্ছিন্ন ট্রাভেল ডাটা ও কানেক্টিভিটি।' },
+      { id: 'esim-10', country: 'Switzerland (সুইজারল্যান্ড)', flag: '🇨🇭', price: 1450, priceBn: '১,৪৫০', desc: 'সুইস আল্পস ও সমগ্র সুইজারল্যান্ডে প্রিমিয়াম হাই-স্পিড নেটওয়ার্ক।' },
+      { id: 'esim-11', country: 'Netherlands (নেদারল্যান্ডস)', flag: '🇳🇱', price: 1220, priceBn: '১,২২০', desc: 'দ্রুতগতির ট্রাভেল ডাটা ও ইনস্ট্যান্ট কিউআর সক্রিয়করণ।' },
+      { id: 'esim-12', country: 'Japan (জাপান)', flag: '🇯🇵', price: 1350, priceBn: '১,৩৫০', desc: 'জাপানের শীর্ষ স্থানীয় টেলিকম ডোকোমো/সফটব্যাংক কভারেজ।' },
+      { id: 'esim-13', country: 'South Korea (দক্ষিণ কোরিয়া)', flag: '🇰🇷', price: 1300, priceBn: '১,৩০০', desc: 'দক্ষিণ কোরিয়ায় দ্রুতগতির এসকে টেলিকম নেটওয়ার্ক সুবিধা।' },
+      { id: 'esim-14', country: 'Singapore (সিঙ্গাপুর)', flag: '🇸🇬', price: 1150, priceBn: '১,১৫০', desc: 'ব্যবসা ও ভ্রমণের জন্য সিঙ্গাপুরে আল্ট্রা-ফাস্ট কানেক্টিভিটি।' },
+      { id: 'esim-15', country: 'Thailand (থাইল্যান্ড)', flag: '🇹🇭', price: 1050, priceBn: '১,০৫০', desc: 'থাইল্যান্ড পর্যটকদের জন্য সাশ্রয়ী ও দ্রুতগতির ডাটা প্যাক।' },
+      { id: 'esim-16', country: 'United Arab Emirates / Dubai (দুবাই)', flag: '🇦🇪', price: 1400, priceBn: '১,৪০০', desc: 'দুবাই ও সমগ্র ইউএই-তে প্রিমিয়াম ফাইভজি ডাটা সুবিধা।' },
+      { id: 'esim-17', country: 'Saudi Arabia (সৌদি আরব)', flag: '🇸🇦', price: 1350, priceBn: '১,৩৫০', desc: 'ওমরাহ, হজ ও ভ্রমণের জন্য নির্ভরযোগ্য এসটিসি নেটওয়ার্ক।' },
+      { id: 'esim-18', country: 'Turkey (তুর্কিয়ে)', flag: '🇹🇷', price: 1100, priceBn: '১,১০০', desc: 'ইস্তাম্বুল ও তুরস্কে নিরবচ্ছিন্ন ট্রাভেল ডাটা ও সহজ রোমিং।' },
+      { id: 'esim-19', country: 'Indonesia / Bali (ইন্দোনেশিয়া)', flag: '🇮🇩', price: 1080, priceBn: '১,০৮০', desc: 'বালি ও ইন্দোনেশিয়ায় পর্যটকদের জন্য হাই-স্পিড ইন্টারনেট।' },
+      { id: 'esim-20', country: 'New Zealand (নিউজিল্যান্ড)', flag: '🇳🇿', price: 1380, priceBn: '১,৩৮০', desc: 'ভ্রমণকারী ও শিক্ষার্থীদের জন্য দ্রুত ও সহজ সক্রিয়করণ।' },
+      { id: 'esim-21', country: 'Portugal (পর্তুগাল)', flag: '🇵🇹', price: 1150, priceBn: '১,১৫০', desc: 'পর্তুগাল ও সমগ্র ইউরোপ জুড়ে ফোরজি/ফাইভজি রোমিং সাপোর্ট।' },
+      { id: 'esim-22', country: 'Austria (অস্ট্রিয়া)', flag: '🇦🇹', price: 1250, priceBn: '১,২৫০', desc: 'সেন্ট্রাল ইউরোপ ও ভিয়েনায় নিরবচ্ছিন্ন উচ্চগতির নেটওয়ার্ক।' },
+      { id: 'esim-23', country: 'Sweden (সুইডেন)', flag: '🇸🇪', price: 1280, priceBn: '১,২৮০', desc: 'স্ক্যান্ডিনেভিয়ান অঞ্চলের সেরা নেটওয়ার্ক কভারেজ ও ডাটা।' },
+      { id: 'esim-24', country: 'Qatar (কাতার)', flag: '🇶🇦', price: 1380, priceBn: '১,৩৮০', desc: 'দোহা ও সমগ্র কাতারে দ্রুতগতির অরিডু/ভোডাফোন ডাটা।' },
+      { id: 'esim-25', country: 'Kuwait (কুয়েত)', flag: '🇰🇼', price: 1320, priceBn: '১,৩২০', desc: 'কুয়েত ভ্রমণ ও কাজের জন্য নির্ভরযোগ্য হাই-স্পিড সংযোগ।' },
+      { id: 'esim-26', country: 'Vietnam (ভিয়েতনাম)', flag: '🇻🇳', price: 1060, priceBn: '১,০৬০', desc: 'দ্রুতগতির ডাটা ও পর্যটকদের জন্য সহজতম কিউআর অ্যাক্টিভেশন।' }
     ];
 
     let currentItem = null;
+    let expandedCardId = null;
 
     // Tabs toggle
     const tabOtpBtn = document.getElementById('tabOtpBtn');
@@ -361,7 +411,13 @@
       tabOtpBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm sm:text-base font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer';
     };
 
-    // Render OTP Grid
+    function toggleCard(id) {
+      expandedCardId = expandedCardId === id ? null : id;
+      renderOtp(document.getElementById('otpSearchInput').value);
+      renderEsim(document.getElementById('esimSearchInput').value);
+    }
+
+    // Render OTP Grid with Hover Lift & In-Card Dropdown
     const otpGrid = document.getElementById('otpGrid');
     const otpSearchInput = document.getElementById('otpSearchInput');
 
@@ -373,14 +429,21 @@
         d.priceBn.includes(filter)
       );
 
-      filtered.forEach((item, index) => {
+      filtered.forEach((item) => {
+        const isExp = expandedCardId === item.id;
         const card = document.createElement('div');
-        card.className = 'group rounded-3xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl hover:shadow-emerald-500/10 hover:border-emerald-500/40 flex flex-col justify-between cursor-pointer';
+        card.className = `card-lift group rounded-3xl border bg-slate-900/70 p-5 sm:p-6 transition-all flex flex-col justify-between cursor-pointer relative overflow-hidden ${
+          isExp ? 'border-emerald-500 ring-1 ring-emerald-500/50 shadow-2xl shadow-emerald-500/10' : 'border-slate-800 hover:border-emerald-500/60 hover:shadow-2xl hover:shadow-emerald-500/15'
+        }`;
+        
         card.innerHTML = `
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <span class="text-4xl filter drop-shadow select-none group-hover:scale-110 transition-transform duration-300">${item.flag}</span>
-              <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">OTP Clean</span>
+              <div class="flex items-center gap-1.5">
+                <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">OTP Clean</span>
+                <span class="text-xs text-slate-400 transition-transform duration-300 ${isExp ? 'rotate-180 text-emerald-400 font-bold' : ''}">▼</span>
+              </div>
             </div>
             <div>
               <h3 class="font-extrabold text-white text-lg group-hover:text-emerald-400 transition-colors">${item.name}</h3>
@@ -390,45 +453,72 @@
               <span class="text-xs text-slate-400 font-medium">মূল্য:</span>
               <span class="text-2xl font-black text-white font-mono">৳ ${item.price}</span>
             </div>
+
+            <!-- In-Card Accordion Dropdown -->
+            ${isExp ? `
+              <div class="pt-3 mt-1 border-t border-slate-800 space-y-2.5 text-xs text-slate-300">
+                <div class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-1.5">
+                  <span class="text-emerald-400 font-bold block text-xs">সুবিধা ও ওয়ারেন্টি:</span>
+                  <p class="text-slate-400 leading-relaxed text-[11px]">✓ WhatsApp, Telegram, IMO ভেরিফিকেশন ১০০% কার্যকরী।</p>
+                  <p class="text-slate-400 leading-relaxed text-[11px]">✓ কোড না আসলে সাথে সাথে ১০০% ফ্রি রিপ্লেসমেন্ট ওয়ারেন্টি।</p>
+                  <p class="text-slate-400 leading-relaxed text-[11px]">✓ পেমেন্ট কনফার্মেশনের সাথে সাথে ইনস্ট্যান্ট ডেলিভারি।</p>
+                </div>
+              </div>
+            ` : ''}
           </div>
-          <div class="mt-5 pt-1 grid grid-cols-2 gap-2">
-            <button class="view-detail-btn px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold transition-all text-center" data-index="${index}">
-              বিস্তারিত দেখুন
+
+          <div class="mt-5 pt-1 grid grid-cols-2 gap-2" onclick="event.stopPropagation()">
+            <button class="toggle-exp-btn btn-lift px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold transition-all text-center cursor-pointer flex items-center justify-center gap-1.5" data-id="${item.id}">
+              <span>${isExp ? 'সংক্ষেপ করুন' : 'বিস্তারিত ড্রপডাউন'}</span>
+              <span class="text-[10px] transition-transform duration-200 ${isExp ? 'rotate-180' : ''}">▼</span>
             </button>
-            <button class="order-now-btn px-3 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black transition-all shadow-md text-center" data-index="${index}">
+            <button class="order-now-btn btn-lift px-3 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black transition-all shadow-md text-center cursor-pointer active:scale-95" data-id="${item.id}">
               অর্ডার করুন
             </button>
           </div>
         `;
+
+        card.onclick = () => toggleCard(item.id);
         otpGrid.appendChild(card);
       });
 
-      document.querySelectorAll('.view-detail-btn').forEach(btn => {
+      document.querySelectorAll('.toggle-exp-btn').forEach(btn => {
         btn.onclick = (e) => {
           e.stopPropagation();
-          const idx = btn.getAttribute('data-index');
-          openDetails(otpData[idx], 'otp');
+          toggleCard(btn.getAttribute('data-id'));
         };
       });
 
       document.querySelectorAll('.order-now-btn').forEach(btn => {
         btn.onclick = (e) => {
           e.stopPropagation();
-          const idx = btn.getAttribute('data-index');
-          openOrder(otpData[idx], 'otp');
+          const itm = otpData.find(x => x.id === btn.getAttribute('data-id'));
+          openOrder(itm, 'otp');
         };
       });
     }
 
     otpSearchInput.oninput = (e) => renderOtp(e.target.value);
 
-    // Render eSIM Grid (2 Months Validity clearly displayed)
+    // Render eSIM Grid with Hover Lift & In-Card Dropdown
     const esimGrid = document.getElementById('esimGrid');
-    function renderEsim() {
+    const esimSearchInput = document.getElementById('esimSearchInput');
+
+    function renderEsim(filter = '') {
       esimGrid.innerHTML = '';
-      esimData.forEach((item, index) => {
+      const filtered = esimData.filter(d => 
+        d.country.toLowerCase().includes(filter.toLowerCase()) || 
+        d.price.toString().includes(filter) ||
+        d.priceBn.includes(filter)
+      );
+
+      filtered.forEach((item) => {
+        const isExp = expandedCardId === item.id;
         const card = document.createElement('div');
-        card.className = 'group rounded-3xl border border-slate-800 bg-slate-900/60 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.01] hover:shadow-2xl hover:shadow-cyan-500/10 hover:border-cyan-500/40 flex flex-col justify-between cursor-pointer';
+        card.className = `card-lift group rounded-3xl border bg-slate-900/70 p-6 sm:p-7 transition-all flex flex-col justify-between cursor-pointer relative overflow-hidden ${
+          isExp ? 'border-cyan-500 ring-1 ring-cyan-500/50 shadow-2xl shadow-cyan-500/10' : 'border-slate-800 hover:border-cyan-500/60 hover:shadow-2xl hover:shadow-cyan-500/15'
+        }`;
+
         card.innerHTML = `
           <div class="space-y-4">
             <div class="flex items-start justify-between">
@@ -439,43 +529,63 @@
                   <span class="text-xs text-cyan-400 font-bold block mt-0.5">⏰ ২ মাসের মেয়াদ (60 Days)</span>
                 </div>
               </div>
+              <span class="text-xs text-slate-400 transition-transform duration-300 ${isExp ? 'rotate-180 text-cyan-400 font-bold' : ''}">▼</span>
             </div>
+
             <div class="p-3.5 rounded-2xl bg-slate-950/70 border border-slate-800 text-xs text-slate-300 leading-relaxed font-semibold">
               ${item.desc}
             </div>
+
             <div class="pt-2 flex items-baseline justify-between border-t border-slate-800/80">
               <span class="text-xs text-slate-400 font-medium">প্যাকেজ রেট:</span>
               <span class="text-2xl font-black text-white font-mono">৳ ${item.price}</span>
             </div>
+
+            <!-- In-Card Accordion Dropdown -->
+            ${isExp ? `
+              <div class="pt-3 mt-1 border-t border-slate-800 space-y-2.5 text-xs text-slate-300">
+                <div class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-1.5">
+                  <span class="text-cyan-400 font-bold block text-xs">ই-সিম অ্যাক্টিভেশন ও সুবিধা:</span>
+                  <p class="text-slate-400 leading-relaxed text-[11px]">✓ ফিজিক্যাল সিম ছাড়াই ইনস্ট্যান্ট QR কোড দিয়ে সক্রিয়করণ।</p>
+                  <p class="text-slate-400 leading-relaxed text-[11px]">✓ পূর্ণ ২ মাস (৬০ দিন) মেয়াদে হাই-স্পিড ডাটা ও রোমিং।</p>
+                  <p class="text-slate-400 leading-relaxed text-[11px]">✓ যেকোনো সোশ্যাল মিডিয়া ও প্ল্যাটফর্ম ভেরিফিকেশন সাপোর্টেড।</p>
+                </div>
+              </div>
+            ` : ''}
           </div>
-          <div class="mt-5 grid grid-cols-2 gap-2.5">
-            <button class="esim-detail-btn px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold transition-all text-center" data-index="${index}">
-              বিস্তারিত দেখুন
+
+          <div class="mt-5 grid grid-cols-2 gap-2.5" onclick="event.stopPropagation()">
+            <button class="toggle-esim-exp-btn btn-lift px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold transition-all text-center cursor-pointer flex items-center justify-center gap-1.5" data-id="${item.id}">
+              <span>${isExp ? 'সংক্ষেপ করুন' : 'বিস্তারিত ড্রপডাউন'}</span>
+              <span class="text-[10px] transition-transform duration-200 ${isExp ? 'rotate-180' : ''}">▼</span>
             </button>
-            <button class="esim-order-btn px-3 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-black transition-all shadow-md text-center" data-index="${index}">
+            <button class="esim-order-btn btn-lift px-3 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-black transition-all shadow-md text-center cursor-pointer active:scale-95" data-id="${item.id}">
               অর্ডার করুন
             </button>
           </div>
         `;
+
+        card.onclick = () => toggleCard(item.id);
         esimGrid.appendChild(card);
       });
 
-      document.querySelectorAll('.esim-detail-btn').forEach(btn => {
+      document.querySelectorAll('.toggle-esim-exp-btn').forEach(btn => {
         btn.onclick = (e) => {
           e.stopPropagation();
-          const idx = btn.getAttribute('data-index');
-          openDetails(esimData[idx], 'esim');
+          toggleCard(btn.getAttribute('data-id'));
         };
       });
 
       document.querySelectorAll('.esim-order-btn').forEach(btn => {
         btn.onclick = (e) => {
           e.stopPropagation();
-          const idx = btn.getAttribute('data-index');
-          openOrder(esimData[idx], 'esim');
+          const itm = esimData.find(x => x.id === btn.getAttribute('data-id'));
+          openOrder(itm, 'esim');
         };
       });
     }
+
+    esimSearchInput.oninput = (e) => renderEsim(e.target.value);
 
     // Details Modal Logic
     const detailsModal = document.getElementById('detailsModal');
