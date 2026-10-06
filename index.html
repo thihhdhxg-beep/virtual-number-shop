@@ -4,366 +4,238 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Virtual Number & eSIM Shop</title>
+  <meta name="description" content="প্রিমিয়াম ভার্চুয়াল ওটিপি নম্বর ও ট্রাভেল ই-সিম শপ। ইনস্ট্যান্ট ওটিপি ও ২ মাসের মেয়াদে গ্লোবাল ট্রাভেল ডাটা।" />
   
-  <!-- Tailwind CSS & Google Fonts -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Canvas Confetti for Celebration -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     body { font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif; }
     .font-mono { font-family: 'JetBrains Mono', monospace; }
     .card-lift {
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.24s ease, border-color 0.24s ease;
     }
     .card-lift:hover {
       transform: translateY(-4px);
     }
     .btn-lift {
-      transition: transform 0.15s ease, opacity 0.15s ease;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
     .btn-lift:active {
       transform: scale(0.97);
     }
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950 antialiased">
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-emerald-500 selection:text-slate-950 flex flex-col justify-between">
 
-  <!-- ================= TOP HEADER (COMPACT APP BAR) ================= -->
-  <header class="border-b border-slate-800/80 bg-slate-950/95 sticky top-0 z-40 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex items-center justify-between gap-2">
-      
-      <!-- Brand Logo -->
-      <a href="#" onclick="switchRoute('shop')" class="flex items-center gap-2 shrink-0">
-        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-slate-950 font-black text-base shadow-sm">
-          📱
-        </div>
-        <div>
-          <div class="flex items-center gap-1.5 leading-none">
-            <span class="text-sm sm:text-base font-black text-white">Virtual Shop</span>
-            <span class="text-[9px] text-emerald-400 font-bold bg-emerald-500/10 px-1 py-0.2 rounded border border-emerald-500/20">PRO</span>
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed top-20 right-4 z-50 bg-slate-900 border border-emerald-500/40 text-emerald-300 px-4 py-3 rounded-2xl shadow-2xl items-center gap-2.5 text-xs sm:text-sm font-bold animate-bounce hidden">
+    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+    <span id="toastMsg">মেসেজ</span>
+  </div>
+
+  <!-- ADMIN VIEW CONTAINER (Only accessed via /admin or #admin) -->
+  <div id="adminContainer" class="hidden min-h-screen flex-col">
+    <!-- Rendered via JS -->
+  </div>
+
+  <!-- PUBLIC SHOP VIEW CONTAINER -->
+  <div id="shopContainer" class="flex-1 flex flex-col justify-between">
+    
+    <!-- HEADER -->
+    <header class="border-b border-slate-800/80 bg-slate-950/95 sticky top-0 z-40 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex items-center justify-between gap-2 sm:gap-4">
+        
+        <!-- Logo -->
+        <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-slate-950 font-black text-base shadow-sm">
+            📱
           </div>
-          <span class="text-[10px] text-slate-400 hidden sm:block mt-0.5 font-medium">ইনস্ট্যান্ট ওটিপি ও ট্রাভেল ই-সিম</span>
-        </div>
-      </a>
-
-      <!-- Quick Payment Number Badge -->
-      <div class="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px]">
-        <span class="text-slate-400">bKash/Nagad:</span>
-        <span class="font-mono font-bold text-amber-300">01965291171</span>
-        <button onclick="copyPaymentNumber()" class="text-slate-400 hover:text-emerald-400 p-0.5 ml-1 cursor-pointer" title="কপি করুন">📋</button>
-      </div>
-
-      <!-- Right Action Items -->
-      <div class="flex items-center gap-1.5 sm:gap-2">
-        <a href="https://wa.me/8801605617380" target="_blank" class="p-1.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-emerald-400 text-xs font-semibold flex items-center gap-1">
-          <span>💬</span>
-          <span class="hidden lg:inline text-[11px]">WhatsApp</span>
-        </a>
-
-        <button onclick="openOrdersModal()" class="p-1.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-semibold flex items-center gap-1 cursor-pointer">
-          <span>🛍️</span>
-          <span class="hidden sm:inline text-[11px]">অর্ডার</span>
-          <span id="headerOrdersCount" class="hidden w-4 h-4 rounded-full bg-cyan-500 text-slate-950 font-black text-[9px] items-center justify-center">0</span>
-        </button>
-
-        <!-- Corner Wallet Balance Widget (Logged In) -->
-        <div id="cornerWalletWidget" class="hidden items-center bg-slate-900 border border-emerald-500/30 rounded-xl p-0.5">
-          <div onclick="openAddMoneyModal()" class="flex items-center gap-1 px-2 py-0.5 cursor-pointer hover:opacity-90">
-            <span class="text-emerald-400 text-xs">👛</span>
-            <span id="userBalanceText" class="text-xs sm:text-sm font-black font-mono text-emerald-400">৳0</span>
+          <div>
+            <h1 class="text-sm sm:text-base font-black text-white tracking-tight leading-none flex items-center gap-1.5">
+              <span>Virtual Shop</span>
+              <span class="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.2 rounded border border-emerald-500/20">PRO</span>
+            </h1>
+            <p class="text-[10px] text-slate-400 font-medium leading-tight mt-0.5 hidden sm:block">
+              ওটিপি ভার্চুয়াল নম্বর ও ট্রাভেল ই-সিম
+            </p>
           </div>
-          <button onclick="openAddMoneyModal()" class="w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 flex items-center justify-center font-bold text-sm cursor-pointer active:scale-95">
-            +
+        </div>
+
+        <!-- Center Payment Chip -->
+        <div class="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px]">
+          <span class="text-slate-400 font-medium">bKash/Nagad:</span>
+          <span class="font-mono font-bold text-amber-300 text-xs">01965291171</span>
+          <button id="copyTopBtn" class="text-slate-400 hover:text-emerald-400 p-0.5 rounded cursor-pointer transition-colors" title="কপি করুন">
+            📋
           </button>
         </div>
 
-        <!-- Google Login Button (Logged Out) -->
-        <button id="cornerLoginBtn" onclick="openAuthModal()" class="btn-lift px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-900 font-extrabold text-xs shadow-sm border border-slate-200 cursor-pointer flex items-center gap-1.5 active:scale-95">
-          <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24">
-            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-          </svg>
-          <span>Google লগইন</span>
-        </button>
+        <!-- Right Side User & Wallet -->
+        <div class="flex items-center gap-1.5 sm:gap-2.5">
+          <a href="https://wa.me/8801605617380?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20%E0%A6%85%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A1%E0%A6%AE%E0%A6%BF%E0%A6%A8!" target="_blank" class="p-1.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-emerald-400 text-xs font-semibold flex items-center gap-1 transition-all">
+            💬 <span class="hidden lg:inline text-[11px]">WhatsApp</span>
+          </a>
 
-        <!-- User Profile Dropdown Button -->
-        <button id="userAvatarBtn" onclick="toggleUserDropdown()" class="hidden w-7 h-7 sm:w-8 sm:h-8 rounded-lg border border-slate-700 overflow-hidden cursor-pointer">
-          <img id="userAvatarImg" src="" alt="User" class="w-full h-full object-cover">
-        </button>
-      </div>
-    </div>
-  </header>
+          <button id="openOrdersBtn" class="p-1.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white text-xs font-semibold flex items-center gap-1 cursor-pointer transition-all">
+            📦 <span class="hidden sm:inline text-[11px]">অর্ডার</span>
+            <span id="ordersCountBadge" class="w-4 h-4 rounded-full bg-cyan-500 text-slate-950 font-black text-[9px] hidden items-center justify-center">0</span>
+          </button>
 
-  <!-- User Dropdown Menu -->
-  <div id="userDropdownMenu" class="hidden fixed right-4 top-13 w-56 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-2.5 z-50 text-xs font-semibold">
-    <div class="p-2 border-b border-slate-800">
-      <p id="dropdownUserName" class="text-xs font-bold text-white truncate"></p>
-      <p id="dropdownUserEmail" class="text-[11px] text-slate-400 truncate"></p>
-    </div>
-    <div class="pt-1.5 space-y-1">
-      <button onclick="openAddMoneyModal()" class="w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 text-slate-200">➕ টাকা রিচার্জ</button>
-      <button onclick="openOrdersModal()" class="w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 text-slate-200">📦 আমার অর্ডার</button>
-      <button onclick="switchRoute('admin')" class="w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-amber-500/10 text-amber-300">🔐 অ্যাডমিন প্যানেল (/admin)</button>
-      <button onclick="logoutUser()" class="w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-rose-500/10 text-rose-400 border-t border-slate-800/80 mt-1">🚪 লগআউট</button>
-    </div>
-  </div>
-
-  <!-- ================= MAIN VIEW (SHOP) ================= -->
-  <main id="shopView" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-6 flex-1 w-full">
-    
-    <!-- Compact App Hero Card -->
-    <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border border-slate-800 p-4 sm:p-5 shadow-lg">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="space-y-1.5 text-center md:text-left">
-          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[11px] font-bold border border-emerald-500/20">
-            <span>✨</span>
-            <span>১০০% নন-ভিওআইপি মোবাইল সিম ও ট্রাভেল ই-সিম</span>
+          <!-- Dynamic Wallet / Login Widget -->
+          <div id="authHeaderWidget">
+            <!-- Rendered by JS -->
           </div>
-          <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">
-            ইনস্ট্যান্ট ওটিপি নম্বর <span class="text-emerald-400">&</span> ট্রাভেল ই-সিম
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-6 sm:space-y-8 flex-1 w-full">
+      
+      <!-- HERO BANNER -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/40 border border-slate-800 p-5 sm:p-7 shadow-2xl">
+        <div class="max-w-3xl space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold">
+            ⚡ ইনস্ট্যান্ট অটোমেটেড ডেলিভারি ও ২৪/৭ লাইভ ওটিপি
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight leading-tight">
+            বিশ্বের যেকোনো দেশের <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">WhatsApp নম্বর</span> ও ট্রাভেল ই-সিম
           </h2>
-          <p class="text-xs text-slate-400">
-            WhatsApp, Telegram ও IMO ভেরিফিকেশন। ২ মাসের মেয়াদসহ আন্তর্জাতিক ট্রাভেল ই-সিম।
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            WhatsApp, Telegram ও IMO খোলার জন্য ১০০% সচল নন-ভিওআইপি সিম। সকল WhatsApp নম্বরে পূর্ণ <strong>৮ মাসের গ্যারান্টি</strong> এবং ট্রাভেল ই-সিমে <strong>২ মাসের মেয়াদ</strong>।
           </p>
         </div>
 
-        <div id="bannerCtaWrapper" class="shrink-0">
-          <button onclick="openAuthModal()" class="btn-lift px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-900 font-extrabold text-xs sm:text-sm flex items-center gap-2 shadow-lg border border-slate-200 cursor-pointer">
-            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
-              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-            </svg>
-            <span>Google দিয়ে সাইন-ইন</span>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-5 mt-5 border-t border-slate-800/80 text-xs">
+          <div class="flex items-center gap-2.5 p-3 rounded-2xl bg-slate-950/70 border border-slate-800">
+            <span class="text-xl">🔐</span>
+            <div><strong class="text-white block">১. Google লগইন করুন</strong><span class="text-slate-400 text-[11px]">১-ক্লিকে আসল জিমেইল</span></div>
+          </div>
+          <div class="flex items-center gap-2.5 p-3 rounded-2xl bg-slate-950/70 border border-slate-800">
+            <span class="text-xl">💳</span>
+            <div><strong class="text-white block">২. ব্যালেন্স রিচার্জ</strong><span class="text-slate-400 text-[11px]">বিকাশ / নগদ Send Money</span></div>
+          </div>
+          <div class="flex items-center gap-2.5 p-3 rounded-2xl bg-slate-950/70 border border-slate-800">
+            <span class="text-xl">⚡</span>
+            <div><strong class="text-white block">৩. ইনস্ট্যান্ট ওটিপি কোড</strong><span class="text-slate-400 text-[11px]">৮ মাসের ফুল রিপ্লেসমেন্ট</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABS -->
+      <div class="flex justify-center">
+        <div class="inline-flex p-1 bg-slate-900 border border-slate-800 rounded-2xl shadow-lg max-w-md w-full">
+          <button id="tabOtpBtn" class="flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 shadow-md">
+            📱 OTP Numbers (২৯)
+          </button>
+          <button id="tabEsimBtn" class="flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer text-slate-400 hover:text-white">
+            🌐 Travel eSIM (২৯)
           </button>
         </div>
       </div>
 
-      <!-- Quick Steps -->
-      <div class="mt-3.5 pt-3 border-t border-slate-800/70 grid grid-cols-3 gap-2 text-center text-[11px] font-semibold text-slate-300">
-        <div class="py-1 px-2 rounded-lg bg-slate-950/60 border border-slate-800/60">১. গুগল সাইন-ইন</div>
-        <div class="py-1 px-2 rounded-lg bg-slate-950/60 border border-slate-800/60">২. টাকা রিচার্জ</div>
-        <div class="py-1 px-2 rounded-lg bg-slate-950/60 border border-slate-800/60">৩. ইনস্ট্যান্ট অর্ডার</div>
-      </div>
-    </div>
-
-    <!-- Mini Feature Badges -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px]">
-      <div class="p-2 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-2">
-        <span class="text-emerald-400">🛡️</span>
-        <span class="font-bold text-white truncate">৮ মাসের গ্যারান্টি (ওটিপি)</span>
-      </div>
-      <div class="p-2 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-2">
-        <span class="text-cyan-400">⚡</span>
-        <span class="font-bold text-white truncate">২৯টি দেশের ট্রাভেল ই-সিম</span>
-      </div>
-      <div class="p-2 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-2">
-        <span class="text-amber-400">⏰</span>
-        <span class="font-bold text-white truncate">২ মাসের মেয়াদ (৬০ দিন)</span>
-      </div>
-      <div class="p-2 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-2">
-        <span class="text-teal-400">✅</span>
-        <span class="font-bold text-white truncate">১০০% রিপ্লেসমেন্ট ওয়ারেন্টি</span>
-      </div>
-    </div>
-
-    <!-- Segmented Tab Switcher -->
-    <div class="flex justify-center">
-      <div class="inline-flex p-1 bg-slate-900 border border-slate-800 rounded-2xl shadow-lg max-w-md w-full">
-        <button id="tabOtpBtn" onclick="switchTab('otp')" class="flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 transition-all cursor-pointer">
-          📱 OTP Numbers (২৯)
-        </button>
-        <button id="tabEsimBtn" onclick="switchTab('esim')" class="flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer">
-          🌐 Travel eSIM (২৯)
-        </button>
-      </div>
-    </div>
-
-    <!-- OTP Section -->
-    <div id="otpSection" class="space-y-4">
+      <!-- SEARCH BAR -->
       <div class="max-w-xl mx-auto">
         <input 
-          id="otpSearchInput" 
+          id="searchInput" 
           type="text" 
-          oninput="renderOtp(this.value)" 
-          placeholder="Search country or price (যেমন: USA, UK, Germany, ৳ ৩৭০)..." 
-          class="w-full px-4 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          placeholder="দেশ বা মূল্য দিয়ে খুঁজুন (যেমন: USA, India, Germany, ৳ ৩৭০)..." 
+          class="w-full px-4 py-3 bg-slate-900 border border-slate-800 rounded-2xl text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium"
         />
       </div>
-      <div id="otpGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
-    </div>
 
-    <!-- eSIM Section -->
-    <div id="esimSection" class="space-y-4 hidden">
-      <div class="max-w-xl mx-auto space-y-2">
-        <div class="text-center text-[11px] font-bold text-cyan-400">
-          ⏰ সকল ই-সিমে পূর্ণ ২ মাসের মেয়াদ (৬০ দিন) ও ফাইভজি রোমিং ডাটা
-        </div>
-        <input 
-          id="esimSearchInput" 
-          type="text" 
-          oninput="renderEsim(this.value)" 
-          placeholder="Search eSIM country or price (যেমন: India, Russia, ৳ ৯৫০)..." 
-          class="w-full px-4 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-        />
-      </div>
-      <div id="esimGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-    </div>
-
-  </main>
-
-  <!-- ================= ADMIN VIEW (/admin) ================= -->
-  <main id="adminView" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 flex-1 w-full">
-    
-    <!-- Admin Login Screen (If not logged in) -->
-    <div id="adminLoginBox" class="max-w-md mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-7 space-y-5 shadow-2xl text-center">
-      <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mx-auto text-2xl font-black">
-        🔒
-      </div>
-      <h3 class="text-xl font-black text-white">অ্যাডমিন কন্ট্রোল প্যানেল</h3>
-      <p class="text-xs text-slate-400">টাকা ম্যানুয়ালি অ্যাপ্রুভ করতে পাসওয়ার্ড লিখুন</p>
-      
-      <div class="space-y-3">
-        <input 
-          id="adminPassInput" 
-          type="password" 
-          placeholder="পাসওয়ার্ড লিখুন (ডিফল্ট: admin1234)" 
-          class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-2xl text-sm font-mono text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
-        />
-        <button onclick="submitAdminLogin()" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm rounded-2xl transition-all cursor-pointer">
-          লগইন করুন
-        </button>
+      <!-- ITEMS GRID -->
+      <div id="itemsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <!-- Rendered by JS -->
       </div>
 
-      <div class="p-2.5 bg-slate-950 border border-slate-800/80 rounded-xl text-[11px] text-slate-400">
-        💡 ডিফল্ট অ্যাডমিন পাসওয়ার্ড: <strong class="text-amber-300 font-mono">admin1234</strong>
-      </div>
-      <button onclick="switchRoute('shop')" class="text-xs text-slate-400 hover:text-white font-bold cursor-pointer">← মূল শপে ফিরে যান</button>
-    </div>
+    </main>
 
-    <!-- Admin Panel Dashboard (When logged in) -->
-    <div id="adminDashboardBox" class="hidden space-y-6">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-        <div>
-          <h2 class="text-xl font-black text-white">অ্যাডমিন ড্যাশবোর্ড</h2>
-          <p class="text-xs text-slate-400">ম্যানুয়াল রিচার্জ অনুমোদন ও অর্ডার পরিচালনা</p>
-        </div>
-        <div class="flex gap-2">
-          <button onclick="switchRoute('shop')" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold cursor-pointer">মূল শপে যান</button>
-          <button onclick="adminLogout()" class="px-3 py-1.5 bg-rose-500/10 text-rose-400 border border-rose-500/20 rounded-xl text-xs font-bold cursor-pointer">লগআউট</button>
-        </div>
-      </div>
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800/80 bg-slate-950 mt-12 py-6 text-center text-xs text-slate-400 space-y-2">
+      <p>Virtual Number & eSIM Shop • bKash/Nagad: <strong class="text-amber-300 font-mono">01965291171</strong></p>
+      <p>WhatsApp সাপোর্ট: <a href="https://wa.me/8801605617380" target="_blank" class="text-emerald-400 font-bold hover:underline">+8801605617380</a></p>
+      <p class="text-[11px] text-slate-500">© 2026 Virtual Shop. All rights reserved.</p>
+    </footer>
 
-      <!-- Pending Recharges List -->
-      <div class="space-y-3">
-        <h3 class="text-sm font-extrabold text-amber-400">⏳ টাকা রিচার্জ রিকোয়েস্ট (ম্যানুয়াল অনুমোদন):</h3>
-        <div id="adminRechargeList" class="space-y-3"></div>
-      </div>
-    </div>
+  </div>
 
-  </main>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="border-t border-slate-800/80 bg-slate-950 mt-16 py-8 text-xs text-slate-400">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div>
-          <span class="font-black text-white text-sm">Virtual Number & eSIM Shop</span>
-          <span class="text-slate-600 mx-2">|</span>
-          <span>bKash / Nagad: <strong class="text-amber-300 font-mono">01965291171</strong></span>
-        </div>
-        <div>
-          WhatsApp অ্যাডমিন: <strong class="text-emerald-400 font-mono">+8801605617380</strong>
-        </div>
-      </div>
-      <div class="border-t border-slate-900 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-slate-500 text-[11px]">
-        <div>© 2026 Virtual Shop. সর্বস্বত্ব সংরক্ষিত।</div>
-        <button onclick="switchRoute('admin')" class="text-slate-400 hover:text-amber-400 font-bold cursor-pointer">
-          🔐 অ্যাডমিন প্যানেল (/admin)
-        </button>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ================= MODALS ================= -->
-
-  <!-- 1. Authentic Google Sign-In Modal -->
-  <div id="authModal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md items-center justify-center p-4">
-    <div class="w-full max-w-md bg-white text-slate-900 rounded-3xl shadow-2xl p-6 sm:p-7 space-y-5 relative">
-      <button onclick="closeAuthModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-xl font-bold cursor-pointer">&times;</button>
-      
+  <!-- AUTH MODAL -->
+  <div id="authModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="w-full max-w-md bg-slate-900 border border-slate-800 text-slate-100 rounded-3xl shadow-2xl p-6 sm:p-8 space-y-6 relative">
+      <button onclick="closeModal('authModal')" class="absolute top-5 right-5 text-slate-400 hover:text-white p-1.5 rounded-full hover:bg-slate-800 cursor-pointer">✕</button>
       <div class="text-center space-y-2">
-        <div class="flex justify-center">
-          <svg class="w-10 h-10" viewBox="0 0 24 24">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center mx-auto text-xl">📱</div>
+        <h3 class="text-xl sm:text-2xl font-black text-white">অ্যাকাউন্টে সাইন ইন করুন</h3>
+        <p class="text-xs text-slate-400">আপনার ব্যালেন্স এবং ওটিপি নম্বর নিরাপদে সংরক্ষিত থাকবে</p>
+      </div>
+
+      <div class="space-y-4 pt-1">
+        <button id="googleSignInBtn" class="w-full py-4 px-4 rounded-2xl bg-white hover:bg-slate-100 text-slate-900 font-black text-sm sm:text-base shadow-xl transition-all cursor-pointer flex items-center justify-center gap-3">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
             <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
           </svg>
-        </div>
-        <h3 class="text-xl font-bold text-slate-900">Google দিয়ে সাইন ইন করুন</h3>
-        <p class="text-xs text-slate-500">Virtual Number & eSIM Shop-এ চালিয়ে যেতে একটি অ্যাকাউন্ট বেছে নিন</p>
-      </div>
-
-      <div class="space-y-3 pt-1">
-        <button onclick="loginUser('thihhdhxg@gmail.com', 'Tanvir Ahmed')" class="w-full p-3.5 rounded-2xl border border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 flex items-center justify-between text-left cursor-pointer">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center">T</div>
-            <div>
-              <div class="text-sm font-bold text-slate-900">Tanvir Ahmed</div>
-              <div class="text-xs text-slate-500">thihhdhxg@gmail.com</div>
-            </div>
-          </div>
-          <span class="text-xs text-blue-600 font-bold">লগইন &rarr;</span>
+          <span>Google দিয়ে সাইন ইন করুন</span>
         </button>
 
-        <div class="border-t border-slate-100 pt-3">
-          <label class="text-xs font-bold text-slate-700 block mb-1">অথবা যেকোনো Gmail লিখুন:</label>
-          <div class="flex gap-2">
-            <input id="customEmailInput" type="email" placeholder="example@gmail.com" class="flex-1 px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500" />
-            <button onclick="submitCustomEmail()" class="px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-bold cursor-pointer">চালিয়ে যান</button>
-          </div>
+        <div class="relative flex py-1 items-center">
+          <div class="flex-grow border-t border-slate-800"></div>
+          <span class="flex-shrink mx-3 text-slate-500 text-xs font-semibold">অথবা</span>
+          <div class="flex-grow border-t border-slate-800"></div>
         </div>
+
+        <form id="emailLoginForm" class="space-y-3">
+          <input id="loginEmailInput" type="email" required placeholder="আপনার Gmail লিখুন..." class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white" />
+          <input id="loginNameInput" type="text" placeholder="আপনার নাম (ঐচ্ছিক)..." class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white" />
+          <button type="submit" class="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl cursor-pointer">
+            ইমেইল দিয়ে প্রবেশ করুন
+          </button>
+        </form>
       </div>
     </div>
   </div>
 
-  <!-- 2. Add Money (Recharge) Modal -->
-  <div id="addMoneyModal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md items-center justify-center p-4">
-    <div class="w-full max-w-lg bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-6 sm:p-7 space-y-4 relative">
-      <button onclick="closeAddMoneyModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl cursor-pointer">&times;</button>
-      
-      <div class="border-b border-slate-800 pb-3">
-        <h3 class="text-lg font-black text-white">ওয়ালেটে টাকা অ্যাড করুন (রিচার্জ)</h3>
-        <p class="text-xs text-slate-400">ম্যানুয়াল পেমেন্ট ট্রানজেকশন</p>
+  <!-- ADD MONEY MODAL -->
+  <div id="addMoneyModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="w-full max-w-md bg-slate-900 border border-slate-800 text-slate-100 rounded-3xl shadow-2xl p-6 sm:p-7 space-y-5 relative">
+      <button onclick="closeModal('addMoneyModal')" class="absolute top-5 right-5 text-slate-400 hover:text-white p-1 rounded-full cursor-pointer">✕</button>
+      <div>
+        <h3 class="text-xl font-black text-white">টাকা রিচার্জ করুন</h3>
+        <p class="text-xs text-slate-400">bKash বা Nagad Send Money করে TrxID সাবমিট করুন</p>
       </div>
 
-      <div class="p-3 rounded-2xl bg-slate-950 border border-amber-500/30 flex items-center justify-between">
-        <div>
-          <span class="text-[11px] text-slate-400 block font-medium">টাকা পাঠানোর bKash / Nagad নাম্বার (Personal):</span>
-          <span class="font-mono font-black text-amber-300 text-xl tracking-wider">01965291171</span>
+      <div class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+        <div class="flex justify-between items-center text-xs">
+          <span class="text-slate-400">Send Money নাম্বার (Personal):</span>
+          <button id="copyPaymentBtn" class="text-xs text-emerald-400 font-bold hover:underline cursor-pointer">কপি করুন</button>
         </div>
-        <button onclick="copyPaymentNumber()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-bold rounded-xl text-white cursor-pointer">কপি করুন</button>
+        <div class="font-mono text-xl font-black text-amber-300">01965291171</div>
+        <div class="flex gap-2 pt-1">
+          <span class="px-2 py-0.5 rounded-md bg-pink-500/20 text-pink-400 text-[10px] font-bold">bKash</span>
+          <span class="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-400 text-[10px] font-bold">Nagad</span>
+        </div>
       </div>
 
-      <form onsubmit="submitRecharge(event)" class="space-y-3.5">
+      <form id="rechargeForm" class="space-y-3.5">
         <div>
           <label class="text-xs font-bold text-slate-300 block mb-1">পেমেন্ট মেথড:</label>
           <div class="grid grid-cols-2 gap-2">
-            <label class="p-2.5 rounded-xl border border-pink-500 bg-pink-500/10 text-white text-xs font-bold flex items-center gap-2 cursor-pointer">
+            <label class="p-2.5 rounded-xl border border-slate-800 bg-slate-950 flex items-center gap-2 cursor-pointer text-xs font-bold">
               <input type="radio" name="rechargeMethod" value="bkash" checked /> bKash (বিকাশ)
             </label>
-            <label class="p-2.5 rounded-xl border border-amber-500 bg-amber-500/10 text-white text-xs font-bold flex items-center gap-2 cursor-pointer">
+            <label class="p-2.5 rounded-xl border border-slate-800 bg-slate-950 flex items-center gap-2 cursor-pointer text-xs font-bold">
               <input type="radio" name="rechargeMethod" value="nagad" /> Nagad (নগদ)
             </label>
           </div>
@@ -371,634 +243,667 @@
 
         <div>
           <label class="text-xs font-bold text-slate-300 block mb-1">টাকার পরিমাণ (BDT):</label>
-          <input id="rechargeAmountInput" type="number" min="50" required placeholder="যেমন: 370, 500, 1000" class="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm font-mono text-white focus:outline-none focus:ring-1 focus:ring-emerald-500" />
+          <input id="rechargeAmountInput" type="number" required min="50" value="500" class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-base font-mono font-bold text-white" />
         </div>
 
         <div>
           <label class="text-xs font-bold text-slate-300 block mb-1">প্রেরক মোবাইল নাম্বার:</label>
-          <input id="rechargePhoneInput" type="text" placeholder="017xxxxxxxx" class="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm font-mono text-white focus:outline-none focus:ring-1 focus:ring-emerald-500" />
+          <input id="rechargePhoneInput" type="tel" required placeholder="017xxxxxxxx" class="w-full px-3.5 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-white" />
         </div>
 
         <div>
-          <label class="text-xs font-bold text-slate-300 block mb-1">Transaction ID (TrxID): <span class="text-rose-400">*</span></label>
-          <input id="rechargeTrxInput" type="text" required placeholder="যেমন: BL82K9X7Y1" class="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm font-mono uppercase text-white focus:outline-none focus:ring-1 focus:ring-emerald-500" />
+          <label class="text-xs font-bold text-slate-300 block mb-1">Transaction ID (TrxID):</label>
+          <input id="rechargeTrxInput" type="text" required placeholder="যেমন: BLK982KLAQ" class="w-full px-3.5 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono font-bold text-amber-300 uppercase" />
         </div>
 
-        <button type="submit" class="w-full py-3 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 text-slate-950 font-black text-sm rounded-xl transition-all cursor-pointer">
-          টাকা জমা রিকোয়েস্ট পাঠান
+        <button type="submit" class="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs rounded-xl shadow-lg cursor-pointer">
+          রিকোয়েস্ট সাবমিট করুন
         </button>
       </form>
     </div>
   </div>
 
-  <!-- 3. Order Checkout Modal -->
-  <div id="orderModal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md items-center justify-center p-4">
-    <div class="w-full max-w-lg bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-6 sm:p-7 space-y-4 relative">
-      <button onclick="closeOrderModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl cursor-pointer">&times;</button>
-      
-      <div class="border-b border-slate-800 pb-3 flex items-center gap-2">
-        <span class="text-xl">🛒</span>
-        <h3 class="text-lg font-black text-white">অর্ডার নিশ্চিত করুন</h3>
+  <!-- ORDER MODAL -->
+  <div id="orderModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="w-full max-w-md bg-slate-900 border border-slate-800 text-slate-100 rounded-3xl shadow-2xl p-6 space-y-5 relative">
+      <button onclick="closeModal('orderModal')" class="absolute top-5 right-5 text-slate-400 hover:text-white p-1 rounded-full cursor-pointer">✕</button>
+      <div>
+        <h3 class="text-xl font-black text-white">অর্ডার নিশ্চিতকরণ</h3>
+        <p class="text-xs text-slate-400">আপনার সিলেক্টকৃত প্যাকেজ</p>
       </div>
 
-      <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <span id="orderFlag" class="text-4xl"></span>
-          <div>
-            <h4 id="orderTitle" class="text-base font-extrabold text-white"></h4>
-            <span id="orderSubtitle" class="text-xs font-bold text-emerald-400"></span>
-          </div>
-        </div>
-        <div class="text-right">
-          <span class="text-xs text-slate-400 block font-medium">মূল্য</span>
-          <span id="orderPrice" class="text-2xl font-black text-white font-mono"></span>
-        </div>
+      <div id="orderModalItemDetails" class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+        <!-- Rendered by JS -->
       </div>
 
-      <div id="orderWalletBox" class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 text-xs space-y-2">
-        <div class="flex justify-between text-slate-300">
-          <span>আপনার বর্তমান ব্যালেন্স:</span>
-          <strong id="orderCurrentBal" class="text-emerald-400 font-mono text-sm">৳0</strong>
-        </div>
+      <div class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 flex justify-between items-center text-xs">
+        <span class="text-slate-400">আপনার বর্তমান ব্যালেন্স:</span>
+        <strong id="orderModalBalance" class="text-emerald-400 font-mono text-sm">৳ 0</strong>
       </div>
 
-      <div class="space-y-2 pt-2">
-        <button id="orderConfirmBtn" onclick="confirmOrderWithWallet()" class="w-full py-3.5 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 text-slate-950 font-black text-sm rounded-2xl transition-all cursor-pointer">
-          ওয়ালেট ব্যালেন্স থেকে অর্ডার করুন
-        </button>
-        <button onclick="closeOrderModal(); openAddMoneyModal();" id="orderAddMoneyBtn" class="hidden w-full py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm rounded-2xl transition-all cursor-pointer">
-          প্রথমে টাকা রিচার্জ করুন
-        </button>
+      <button id="confirmOrderBtn" class="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs rounded-xl shadow-lg cursor-pointer">
+        ওয়ালেট থেকে কিনুন
+      </button>
+    </div>
+  </div>
+
+  <!-- MY ORDERS MODAL -->
+  <div id="ordersModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="w-full max-w-2xl bg-slate-900 border border-slate-800 text-slate-100 rounded-3xl shadow-2xl p-6 sm:p-7 space-y-5 relative max-h-[85vh] overflow-y-auto">
+      <button onclick="closeModal('ordersModal')" class="absolute top-5 right-5 text-slate-400 hover:text-white p-1 rounded-full cursor-pointer">✕</button>
+      <div>
+        <h3 class="text-xl font-black text-white">আমার অর্ডারসমূহ</h3>
+        <p class="text-xs text-slate-400">আপনার ক্রয়কৃত সকল নম্বর ও লাইভ এসএমএস ওটিপি কোড</p>
+      </div>
+
+      <div id="ordersList" class="space-y-3">
+        <!-- Rendered by JS -->
       </div>
     </div>
   </div>
 
-  <!-- 4. Orders Dashboard Modal -->
-  <div id="ordersModal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md items-center justify-center p-4">
-    <div class="w-full max-w-xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-6 space-y-4 relative max-h-[85vh] flex flex-col">
-      <button onclick="closeOrdersModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl cursor-pointer">&times;</button>
-      <div class="border-b border-slate-800 pb-2">
-        <h3 class="text-lg font-black text-white">আমার অর্ডার ও লেনদেন</h3>
-      </div>
-      <div id="userOrdersList" class="overflow-y-auto space-y-3 flex-1 pr-1 text-xs"></div>
-    </div>
-  </div>
+  <!-- JAVASCRIPT LOGIC & FIREBASE -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-  <!-- ================= JAVASCRIPT LOGIC ================= -->
-  <script>
-    const PAYMENT_NUMBER = '01965291171';
-    const WA_NUMBER = '8801605617380';
-    const ADMIN_PASS = 'admin1234';
+    // Firebase Config
+    const firebaseConfig = {
+      projectId: "project-a30dcee0-a96f-4d84-908",
+      appId: "1:891814037134:web:8ca39a83411699e4af6bdf",
+      apiKey: "AIzaSyC5BMWI141w-TI12FfZLktq5XhxydETWCA",
+      authDomain: "project-a30dcee0-a96f-4d84-908.firebaseapp.com",
+      firestoreDatabaseId: "ai-studio-virtualnumberesi-0dcf299d-172f-4f70-9c91-01c7c8543d70",
+      storageBucket: "project-a30dcee0-a96f-4d84-908.firebasestorage.app",
+      messagingSenderId: "891814037134",
+      oAuthClientId: "891814037134-33qtlfo7k2p0s04efg0t30qjko5hcg7k.apps.googleusercontent.com"
+    };
 
-    // ২৯টি WhatsApp / OTP ভার্চুয়াল নাম্বার (৮ মাসের গ্যারান্টি সহ)
-    const otpData = [
-      { id: 'otp-1', name: 'USA', flag: '🇺🇸', price: 370, desc: 'হোয়াটসঅ্যাপ, টেলিগ্রাম, ইমো ও সোশ্যাল ভেরিফিকেশন' },
-      { id: 'otp-2', name: 'UK', flag: '🇬🇧', price: 390, desc: 'ইউরোপের সেরা ক্লিন রিয়েল সিম, ইনস্ট্যান্ট এসএমএস' },
-      { id: 'otp-3', name: 'Canada', flag: '🇨🇦', price: 380, desc: 'কানাডিয়ান রিয়েল টিয়ার-১ নেটওয়ার্ক' },
-      { id: 'otp-4', name: 'Germany', flag: '🇩🇪', price: 450, desc: 'জার্মান হাই-সিকিউরিটি ক্যারিয়ার, ১০০% ওয়ারেন্টি' },
-      { id: 'otp-5', name: 'France', flag: '🇫🇷', price: 430, desc: 'ফরাসি ন্যাশনাল টেলিকম রুট, ব্যান-রেজিস্ট্যান্ট' },
-      { id: 'otp-6', name: 'Netherlands', flag: '🇳🇱', price: 400, desc: 'ডাচ ক্লিন আইপি রেঞ্জ, দ্রুত ডেলিভারি' },
-      { id: 'otp-7', name: 'Italy', flag: '🇮🇹', price: 420, desc: 'ইতালিয়ান অথেনটিক মোবাইল নাম্বার' },
-      { id: 'otp-8', name: 'Spain', flag: '🇪🇸', price: 410, desc: 'স্প্যানিশ রিয়েল নেটওয়ার্ক, ফ্রি রিপ্লেসমেন্ট' },
-      { id: 'otp-9', name: 'Sweden', flag: '🇸🇪', price: 440, desc: 'স্ক্যান্ডিনেভিয়ান প্রিমিয়াম ক্যারিয়ার' },
-      { id: 'otp-10', name: 'Switzerland', flag: '🇨🇭', price: 480, desc: 'সুইস প্রিমিয়াম প্রাইভেসি লাইন' },
-      { id: 'otp-11', name: 'Poland', flag: '🇵🇱', price: 360, desc: 'সাশ্রয়ী মূল্যে সেরা ইউরোপীয় নাম্বার' },
-      { id: 'otp-12', name: 'Romania', flag: '🇷🇴', price: 360, desc: 'বাজেট ফ্রেন্ডলি ওটিপি সার্ভিস' },
-      { id: 'otp-13', name: 'Portugal', flag: '🇵🇹', price: 380, desc: 'পর্তুগিজ রিয়েল মোবাইল সিম' },
-      { id: 'otp-14', name: 'Austria', flag: '🇦🇹', price: 430, desc: 'অস্ট্রিয়ান সেন্ট্রাল ইউরোপ ক্যারিয়ার' },
-      { id: 'otp-15', name: 'UAE / Dubai', flag: '🇦🇪', price: 480, desc: 'দুবাই অফিশিয়াল মোবাইল রেঞ্জ' },
-      { id: 'otp-16', name: 'Saudi Arabia', flag: '🇸🇦', price: 450, desc: 'সৌদি আরবের প্রিমিয়াম ওটিপি চ্যানেল' },
-      { id: 'otp-17', name: 'Singapore', flag: '🇸🇬', price: 460, desc: 'সিঙ্গাপুর হাই-স্পিড ভেরিফিকেশন' },
-      { id: 'otp-18', name: 'Qatar', flag: '🇶🇦', price: 470, desc: 'কাতার ক্লিন নেটওয়ার্ক চ্যানেল' },
-      { id: 'otp-19', name: 'Kuwait', flag: '🇰🇼', price: 460, desc: 'কুয়েত নির্ভরযোগ্য ওটিপি রুট' },
-      { id: 'otp-20', name: 'Malaysia', flag: '🇲🇾', price: 380, desc: 'মালয়েশিয়ান সেলকম/ডিজি রুট' },
-      { id: 'otp-21', name: 'Thailand', flag: '🇹🇭', price: 370, desc: 'থাইল্যান্ড এআইএস ক্লিন রেঞ্জ' },
-      { id: 'otp-22', name: 'Japan', flag: '🇯🇵', price: 490, desc: 'জাপানি প্রিমিয়াম হাই সিকিউরিটি সিম' },
-      { id: 'otp-23', name: 'South Korea', flag: '🇰🇷', price: 470, desc: 'দক্ষিণ কোরিয়া এসকেটি নেটওয়ার্ক' },
-      { id: 'otp-24', name: 'Turkey', flag: '🇹🇷', price: 390, desc: 'তুর্কি টার্কসেল ভেরিফিকেশন' },
-      { id: 'otp-25', name: 'Indonesia', flag: '🇮🇩', price: 360, desc: 'ইন্দোনেশিয়া তেলকোমসেল রুট' },
-      { id: 'otp-26', name: 'Philippines', flag: '🇵🇭', price: 360, desc: 'ফিলিপাইন স্মার্ট/গ্লোব সিম' },
-      { id: 'otp-27', name: 'Australia', flag: '🇦🇺', price: 420, desc: 'অস্ট্রেলিয়ান টেলস্ট্রা রুট' },
-      { id: 'otp-28', name: 'New Zealand', flag: '🇳🇿', price: 440, desc: 'নিউজিল্যান্ড প্রিমিয়াম নেটওয়ার্ক' },
-      { id: 'otp-29', name: 'South Africa', flag: '🇿🇦', price: 390, desc: 'দক্ষিণ আফ্রিকা ভোডাকম চ্যানেল' }
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
+    const auth = getAuth(app);
+
+    // APP DATA
+    const OTP_DATA = [
+      { id: 'otp-1', name: 'USA', flag: '🇺🇸', price: 370, desc: 'হোয়াটসঅ্যাপ, টেলিগ্রাম ও ইমো ওটিপি', type: 'otp' },
+      { id: 'otp-2', name: 'UK', flag: '🇬🇧', price: 390, desc: 'ইউরোপের ক্লিন রিয়েল সিম, দ্রুত কোড', type: 'otp' },
+      { id: 'otp-3', name: 'Canada', flag: '🇨🇦', price: 380, desc: 'কানাডিয়ান রিয়েল টিয়ার-১ নেটওয়ার্ক', type: 'otp' },
+      { id: 'otp-4', name: 'Germany', flag: '🇩🇪', price: 450, desc: 'জার্মান হাই সিকিউরিটি সিম', type: 'otp' },
+      { id: 'otp-5', name: 'France', flag: '🇫🇷', price: 430, desc: 'ফরাসি ন্যাশনাল টেলিকম রুট', type: 'otp' },
+      { id: 'otp-6', name: 'Netherlands', flag: '🇳🇱', price: 400, desc: 'ডাচ ক্লিন আইপি রেঞ্জ', type: 'otp' },
+      { id: 'otp-7', name: 'Italy', flag: '🇮🇹', price: 420, desc: 'ইতালিয়ান অথেনটিক মোবাইল নাম্বার', type: 'otp' },
+      { id: 'otp-8', name: 'Spain', flag: '🇪🇸', price: 410, desc: 'স্প্যানিশ রিয়েল নেটওয়ার্ক', type: 'otp' },
+      { id: 'otp-9', name: 'Sweden', flag: '🇸🇪', price: 440, desc: 'স্ক্যান্ডিনেভিয়ান প্রিমিয়াম ক্যারিয়ার', type: 'otp' },
+      { id: 'otp-10', name: 'Switzerland', flag: '🇨🇭', price: 480, desc: 'সুইস প্রিমিয়াম প্রাইভেসি লাইন', type: 'otp' },
+      { id: 'otp-11', name: 'Poland', flag: '🇵🇱', price: 360, desc: 'সাশ্রয়ী মূল্যে সেরা ইউরোপীয় নাম্বার', type: 'otp' },
+      { id: 'otp-12', name: 'Romania', flag: '🇷🇴', price: 360, desc: 'বাজেট ফ্রেন্ডলি ওটিপি সার্ভিস', type: 'otp' },
+      { id: 'otp-13', name: 'Portugal', flag: '🇵🇹', price: 380, desc: 'পর্তুগিজ রিয়েল মোবাইল সিম', type: 'otp' },
+      { id: 'otp-14', name: 'Austria', flag: '🇦🇹', price: 430, desc: 'অস্ট্রিয়ান সেন্ট্রাল ইউরোপ ক্যারিয়ার', type: 'otp' },
+      { id: 'otp-15', name: 'UAE / Dubai', flag: '🇦🇪', price: 480, desc: 'দুবাই অফিশিয়াল মোবাইল রেঞ্জ', type: 'otp' },
+      { id: 'otp-16', name: 'Saudi Arabia', flag: '🇸🇦', price: 450, desc: 'সৌদি আরবের প্রিমিয়াম ওটিপি চ্যানেল', type: 'otp' },
+      { id: 'otp-17', name: 'Singapore', flag: '🇸🇬', price: 460, desc: 'সিঙ্গাপুর হাই-স্পিড ভেরিফিকেশন', type: 'otp' },
+      { id: 'otp-18', name: 'Qatar', flag: '🇶🇦', price: 470, desc: 'কাতার ক্লিন নেটওয়ার্ক চ্যানেল', type: 'otp' },
+      { id: 'otp-19', name: 'Kuwait', flag: '🇰🇼', price: 460, desc: 'কুয়েত নির্ভরযোগ্য ওটিপি রুট', type: 'otp' },
+      { id: 'otp-20', name: 'Malaysia', flag: '🇲🇾', price: 380, desc: 'মালয়েশিয়ান সেলকম/ডিজি রুট', type: 'otp' },
+      { id: 'otp-21', name: 'Thailand', flag: '🇹🇭', price: 370, desc: 'থাইল্যান্ড এআইএস ক্লিন রেঞ্জ', type: 'otp' },
+      { id: 'otp-22', name: 'Japan', flag: '🇯🇵', price: 490, desc: 'জাপানি প্রিমিয়াম হাই সিকিউরিটি সিম', type: 'otp' },
+      { id: 'otp-23', name: 'South Korea', flag: '🇰🇷', price: 470, desc: 'দক্ষিণ কোরিয়া এসকেটি নেটওয়ার্ক', type: 'otp' },
+      { id: 'otp-24', name: 'Turkey', flag: '🇹🇷', price: 390, desc: 'তুর্কি টার্কসেল ভেরিফিকেশন', type: 'otp' },
+      { id: 'otp-25', name: 'Indonesia', flag: '🇮🇩', price: 360, desc: 'ইন্দোনেশিয়া তেলকোমসেল রুট', type: 'otp' },
+      { id: 'otp-26', name: 'Philippines', flag: '🇵🇭', price: 360, desc: 'ফিলিপাইন স্মার্ট/গ্লোব সিম', type: 'otp' },
+      { id: 'otp-27', name: 'Australia', flag: '🇦🇺', price: 420, desc: 'অস্ট্রেলিয়ান টেলস্ট্রা রুট', type: 'otp' },
+      { id: 'otp-28', name: 'New Zealand', flag: '🇳🇿', price: 440, desc: 'নিউজিল্যান্ড প্রিমিয়াম নেটওয়ার্ক', type: 'otp' },
+      { id: 'otp-29', name: 'South Africa', flag: '🇿🇦', price: 390, desc: 'দক্ষিণ আফ্রিকা ভোডাকম চ্যানেল', type: 'otp' }
     ];
 
-    // ২৯টি ট্রাভেল ই-সিম (ইন্ডিয়া 🇮🇳 ৯৫০ টাকা সহ)
-    const esimData = [
-      { id: 'esim-in', country: 'India (ভারত)', flag: '🇮🇳', price: 950, desc: 'ভারত ভ্রমণের জন্য নিরবচ্ছিন্ন হাই-স্পিড ডাটা, রোমিং ও ইনস্ট্যান্ট কিউআর কোড সক্রিয়করণ।' },
-      { id: 'esim-1', country: 'USA (যুক্তরাষ্ট্র)', flag: '🇺🇸', price: 950, desc: 'বিশ্বব্যাপী বিভিন্ন অ্যাকাউন্ট ভেরিফিকেশন ও ব্যবহারের জন্য উপযোগী।' },
-      { id: 'esim-2', country: 'UK (যুক্তরাজ্য)', flag: '🇬🇧', price: 1050, desc: 'আন্তর্জাতিক কল, এসএমএস ও রোমিং সুবিধার জন্য সেরা।' },
-      { id: 'esim-3', country: 'Canada (কানাডা)', flag: '🇨🇦', price: 1100, desc: 'নর্থ আমেরিকা ভ্রমণের জন্য নির্ভরযোগ্য নেটওয়ার্ক সাপোর্ট।' },
-      { id: 'esim-4', country: 'Australia (অস্ট্রেলিয়া)', flag: '🇦🇺', price: 1150, desc: 'ভ্রমণকারী ও শিক্ষার্থীদের জন্য দ্রুত ও সহজ সক্রিয়করণ।' },
-      { id: 'esim-5', country: 'Germany (জার্মানি)', flag: '🇩🇪', price: 1200, desc: 'ইউরোপ ভ্রমণের সময় নিরবচ্ছিন্ন ডাটা ও যোগাযোগের জন্য উপযুক্ত।' },
-      { id: 'esim-6', country: 'Malaysia (মালয়েশিয়া)', flag: '🇲🇾', price: 850, desc: 'সাশ্রয়ী মূল্যে দ্রুত ইন্টারনেট ও পর্যটকদের জন্য আদর্শ।' },
-      { id: 'esim-7', country: 'France (ফ্রান্স)', flag: '🇫🇷', price: 1250, desc: 'ইউরোপ ভ্রমণের জন্য নিরবচ্ছিন্ন হাই-স্পিড ডাটা ও রোমিং সাপোর্ট।' },
-      { id: 'esim-8', country: 'Italy (ইতালি)', flag: '🇮🇹', price: 1200, desc: 'ইতালি ভ্রমণের সময় দ্রুতগতির ফোরজি/ফাইভজি ইন্টারনেট সুবিধা।' },
-      { id: 'esim-9', country: 'Spain (স্পেন)', flag: '🇪🇸', price: 1180, desc: 'স্পেন ও শেঞ্জেন অঞ্চলে নিরবচ্ছিন্ন ট্রাভেল ডাটা ও কানেক্টিভিটি।' },
-      { id: 'esim-10', country: 'Switzerland (সুইজারল্যান্ড)', flag: '🇨🇭', price: 1450, desc: 'সুইস আল্পস ও সমগ্র সুইজারল্যান্ডে প্রিমিয়াম হাই-স্পিড নেটওয়ার্ক।' },
-      { id: 'esim-11', country: 'Netherlands (নেদারল্যান্ডস)', flag: '🇳🇱', price: 1220, desc: 'দ্রুতগতির ট্রাভেল ডাটা ও ইনস্ট্যান্ট কিউআর সক্রিয়করণ।' },
-      { id: 'esim-12', country: 'Japan (জাপান)', flag: '🇯🇵', price: 1350, desc: 'জাপানের শীর্ষ স্থানীয় টেলিকম ডোকোমো/সফটব্যাংক কভারেজ।' },
-      { id: 'esim-13', country: 'South Korea (দক্ষিণ কোরিয়া)', flag: '🇰🇷', price: 1300, desc: 'দক্ষিণ কোরিয়ায় দ্রুতগতির এসকে টেলিকম নেটওয়ার্ক সুবিধা।' },
-      { id: 'esim-14', country: 'Singapore (সিঙ্গাপুর)', flag: '🇸🇬', price: 1150, desc: 'ব্যবসা ও ভ্রমণের জন্য সিঙ্গাপুরে আল্ট্রা-ফাস্ট কানেক্টিভিটি।' },
-      { id: 'esim-15', country: 'Thailand (থাইল্যান্ড)', flag: '🇹🇭', price: 1050, desc: 'থাইল্যান্ড পর্যটকদের জন্য সাশ্রয়ী ও দ্রুতগতির ডাটা প্যাক।' },
-      { id: 'esim-16', country: 'United Arab Emirates / Dubai (দুবাই)', flag: '🇦🇪', price: 1400, desc: 'দুবাই ও সমগ্র ইউএই-তে প্রিমিয়াম ফাইভজি ডাটা সুবিধা।' },
-      { id: 'esim-17', country: 'Saudi Arabia (সৌদি আরব)', flag: '🇸🇦', price: 1350, desc: 'ওমরাহ, হজ ও ভ্রমণের জন্য নির্ভরযোগ্য এসটিসি নেটওয়ার্ক।' },
-      { id: 'esim-18', country: 'Turkey (তুর্কিয়ে)', flag: '🇹🇷', price: 1100, desc: 'ইস্তাম্বুল ও তুরস্কে নিরবচ্ছিন্ন ট্রাভেল ডাটা ও সহজ রোমিং।' },
-      { id: 'esim-19', country: 'Indonesia / Bali (ইন্দোনেশিয়া)', flag: '🇮🇩', price: 1080, desc: 'বালি ও ইন্দোনেশিয়ায় পর্যটকদের জন্য হাই-স্পিড ইন্টারনেট।' },
-      { id: 'esim-20', country: 'New Zealand (নিউজিল্যান্ড)', flag: '🇳🇿', price: 1380, desc: 'ভ্রমণকারী ও শিক্ষার্থীদের জন্য দ্রুত ও সহজ সক্রিয়করণ।' },
-      { id: 'esim-21', country: 'Portugal (পর্তুগাল)', flag: '🇵🇹', price: 1150, desc: 'পর্তুগাল ও সমগ্র ইউরোপ জুড়ে ফোরজি/ফাইভজি রোমিং সাপোর্ট।' },
-      { id: 'esim-22', country: 'Austria (অস্ট্রিয়া)', flag: '🇦🇹', price: 1250, desc: 'সেন্ট্রাল ইউরোপ ও ভিয়েনায় নিরবচ্ছিন্ন উচ্চগতির নেটওয়ার্ক।' },
-      { id: 'esim-23', country: 'Sweden (সুইডেন)', flag: '🇸🇪', price: 1280, desc: 'স্ক্যান্ডিনেভিয়ান অঞ্চলের সেরা নেটওয়ার্ক কভারেজ ও ডাটা।' },
-      { id: 'esim-24', country: 'Qatar (কাতার)', flag: '🇶🇦', price: 1380, desc: 'দোহা ও সমগ্র কাতারে দ্রুতগতির অরিডু/ভোডাফোন ডাটা।' },
-      { id: 'esim-25', country: 'Kuwait (কুয়েত)', flag: '🇰🇼', price: 1320, desc: 'কুয়েত ভ্রমণ ও কাজের জন্য নির্ভরযোগ্য হাই-স্পিড সংযোগ।' },
-      { id: 'esim-26', country: 'Vietnam (ভিয়েতনাম)', flag: '🇻🇳', price: 1060, desc: 'দ্রুতগতির ডাটা ও পর্যটকদের জন্য সহজতম কিউআর অ্যাক্টিভেশন।' },
-      { id: 'esim-ru', country: 'Russia (রাশিয়া)', flag: '🇷🇺', price: 995, desc: 'রাশিয়ান ট্রাভেল ডাটা ও নিরবচ্ছিন্ন রোমিং সুবিধা।' },
-      { id: 'esim-uz', country: 'Uzbekistan (উজবেকিস্তান)', flag: '🇺🇿', price: 1250, desc: 'উজবেকিস্তান ভ্রমণ ও নিরবচ্ছিন্ন হাই-স্পিড ডাটা সংযোগ।' }
+    const ESIM_DATA = [
+      { id: 'esim-in', country: 'India (ভারত)', flag: '🇮🇳', price: 950, desc: 'ভারত ভ্রমণ ডাটা ও রোমিং (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-1', country: 'USA (যুক্তরাষ্ট্র)', flag: '🇺🇸', price: 950, desc: 'বিশ্বব্যাপী হাই-স্পিড ডাটা (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-2', country: 'UK (যুক্তরাজ্য)', flag: '🇬🇧', price: 1050, desc: 'ইউকে ও ইউরোপ রোমিং (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-3', country: 'Canada (কানাডা)', flag: '🇨🇦', price: 1100, desc: 'নর্থ আমেরিকা দ্রুত কানেকশন (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-4', country: 'Australia (অস্ট্রেলিয়া)', flag: '🇦🇺', price: 1150, desc: 'শিক্ষার্থী ও পর্যটকদের সেরা (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-5', country: 'Germany (জার্মানি)', flag: '🇩🇪', price: 1200, desc: 'ইউরোপ ভ্রমণের নির্ভরযোগ্য ডাটা (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-6', country: 'Malaysia (মালয়েশিয়া)', flag: '🇲🇾', price: 850, desc: 'সাশ্রয়ী মূল্যে দ্রুত ইন্টারনেট (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-7', country: 'France (ফ্রান্স)', flag: '🇫🇷', price: 1250, desc: 'ফ্রান্স ও ইউরোপ রোমিং (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-8', country: 'Italy (ইতালি)', flag: '🇮🇹', price: 1200, desc: 'ইতালি ভ্রমণের ফোরজি/ফাইভজি (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-9', country: 'Spain (স্পেন)', flag: '🇪🇸', price: 1180, desc: 'স্পেন ট্রাভেল ডাটা প্যাক (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-10', country: 'Switzerland (সুইজারল্যান্ড)', flag: '🇨🇭', price: 1450, desc: 'সুইস আল্পস প্রিমিয়াম ডাটা (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-11', country: 'Netherlands (নেদারল্যান্ডস)', flag: '🇳🇱', price: 1220, desc: 'দ্রুতগতির ট্রাভেল ডাটা (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-12', country: 'Japan (জাপান)', flag: '🇯🇵', price: 1350, desc: 'জাপান শীর্ষ টেলিকম ডোকোমো (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-13', country: 'South Korea (দক্ষিণ কোরিয়া)', flag: '🇰🇷', price: 1300, desc: 'দক্ষিণ কোরিয়া হাই-স্পিড (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-14', country: 'Singapore (সিঙ্গাপুর)', flag: '🇸🇬', price: 1150, desc: 'সিঙ্গাপুরে আল্ট্রা-ফাস্ট নেট (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-15', country: 'Thailand (থাইল্যান্ড)', flag: '🇹🇭', price: 1050, desc: 'থাইল্যান্ড পর্যটক ডাটা (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-16', country: 'Dubai / UAE (দুবাই)', flag: '🇦🇪', price: 1400, desc: 'দুবাই প্রিমিয়াম ফাইভজি (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-17', country: 'Saudi Arabia (সৌদি আরব)', flag: '🇸🇦', price: 1350, desc: 'ওমরাহ ও হজের এসটিসি সিম (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-18', country: 'Turkey (তুর্কিয়ে)', flag: '🇹🇷', price: 1100, desc: 'ইস্তাম্বুল ও তুরস্কে ডাটা (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-19', country: 'Indonesia / Bali (বালি)', flag: '🇮🇩', price: 1080, desc: 'বালি দ্বীপে হাই-স্পিড নেট (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-20', country: 'New Zealand (নিউজিল্যান্ড)', flag: '🇳🇿', price: 1380, desc: 'নিউজিল্যান্ড ট্রাভেল প্যাক (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-21', country: 'Portugal (পর্তুগাল)', flag: '🇵🇹', price: 1150, desc: 'পর্তুগাল ও ইউরোপ রোমিং (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-22', country: 'Austria (অস্ট্রিয়া)', flag: '🇦🇹', price: 1250, desc: 'সেন্ট্রাল ইউরোপ কভারেজ (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-23', country: 'Sweden (সুইডেন)', flag: '🇸🇪', price: 1280, desc: 'স্ক্যান্ডিনেভিয়ান সেরা ডাটা (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-24', country: 'Qatar (কাতার)', flag: '🇶🇦', price: 1380, desc: 'দোহা ও কাতারে দ্রুত ডাটা (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-25', country: 'Kuwait (কুয়েত)', flag: '🇰🇼', price: 1320, desc: 'কুয়েত ভ্রমণ ও কাজের নেট (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-26', country: 'Vietnam (ভিয়েতনাম)', flag: '🇻🇳', price: 1060, desc: 'ভিয়েতনাম ট্রাভেল কিউআর (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-ru', country: 'Russia (রাশিয়া)', flag: '🇷🇺', price: 995, desc: 'রাশিয়া ট্রাভেল ডাটা (২ মাসের মেয়াদ)', type: 'esim' },
+      { id: 'esim-uz', country: 'Uzbekistan (উজবেকিস্তান)', flag: '🇺🇿', price: 1250, desc: 'উজবেকিস্তান হাই-স্পিড ডাটা (২ মাসের মেয়াদ)', type: 'esim' }
     ];
 
-    // Local Persistence State
-    let currentUser = JSON.parse(localStorage.getItem('vshop_user') || 'null');
-    let rechargeRequests = JSON.parse(localStorage.getItem('vshop_recharges') || '[]');
-    let ordersList = JSON.parse(localStorage.getItem('vshop_orders') || '[]');
-    let expandedCardId = null;
-    let selectedOrderProduct = null;
+    // STATE
+    let currentUser = null;
+    let activeTab = 'otp';
+    let myOrders = [];
+    let rechargeRequests = [];
+    let allOrders = [];
+    let selectedItem = null;
+    let isAdminLoggedIn = sessionStorage.getItem('admin_logged_in') === 'true';
+    let adminSecretPassword = 'admin1234';
 
-    // Route Switching (/admin Support)
-    function checkUrlRoute() {
-      const href = window.location.href.toLowerCase();
-      const path = window.location.pathname.toLowerCase();
-      const hash = window.location.hash.toLowerCase();
-      if (path.endsWith('/admin') || path.endsWith('/admin/') || path.includes('/admin') || hash.includes('admin') || href.includes('/admin')) {
-        switchRoute('admin', false);
+    // Global Modal Helpers
+    window.openModal = (id) => {
+      document.getElementById(id).classList.remove('hidden');
+      document.getElementById(id).classList.add('flex');
+    };
+    window.closeModal = (id) => {
+      document.getElementById(id).classList.add('hidden');
+      document.getElementById(id).classList.remove('flex');
+    };
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = msg;
+      t.classList.remove('hidden');
+      setTimeout(() => t.classList.add('hidden'), 3500);
+    }
+
+    // CHECK ADMIN URL
+    function checkAdminRoute() {
+      const h = window.location.href.toLowerCase();
+      const isAdm = h.includes('/admin') || h.includes('#admin') || h.includes('?admin');
+      if (isAdm) {
+        document.getElementById('shopContainer').classList.add('hidden');
+        document.getElementById('adminContainer').classList.remove('hidden');
+        document.getElementById('adminContainer').classList.add('flex');
+        renderAdminView();
       } else {
-        switchRoute('shop', false);
+        document.getElementById('shopContainer').classList.remove('hidden');
+        document.getElementById('adminContainer').classList.add('hidden');
+        document.getElementById('adminContainer').classList.remove('flex');
       }
     }
 
-    function switchRoute(route, pushState = true) {
-      const shopView = document.getElementById('shopView');
-      const adminView = document.getElementById('adminView');
-      if (route === 'admin') {
-        shopView.classList.add('hidden');
-        adminView.classList.remove('hidden');
-        if (pushState) window.history.pushState({}, '', '/admin');
-        renderAdmin();
-      } else {
-        adminView.classList.add('hidden');
-        shopView.classList.remove('hidden');
-        if (pushState) window.history.pushState({}, '', '/');
-      }
-      window.scrollTo(0, 0);
+    window.addEventListener('popstate', checkAdminRoute);
+    window.addEventListener('hashchange', checkAdminRoute);
+
+    // FETCH ADMIN PASSWORD FROM FIRESTORE
+    try {
+      onSnapshot(doc(db, 'systemSettings', 'security'), (snap) => {
+        if (snap.exists() && snap.data().adminPassword) {
+          adminSecretPassword = snap.data().adminPassword;
+        }
+      });
+    } catch(e) {}
+
+    // REAL-TIME FIRESTORE SYNC
+    try {
+      onSnapshot(collection(db, 'rechargeRequests'), (snap) => {
+        rechargeRequests = [];
+        snap.forEach(d => rechargeRequests.push(d.data()));
+        rechargeRequests.sort((a,b) => (b.createdAt || 0) - (a.createdAt || 0));
+        if (isAdminLoggedIn) renderAdminView();
+      });
+
+      onSnapshot(collection(db, 'orders'), (snap) => {
+        allOrders = [];
+        snap.forEach(d => allOrders.push(d.data()));
+        if (currentUser) {
+          myOrders = allOrders.filter(o => o.userEmail === currentUser.email);
+          document.getElementById('ordersCountBadge').innerText = myOrders.length;
+          document.getElementById('ordersCountBadge').classList.toggle('hidden', myOrders.length === 0);
+          document.getElementById('ordersCountBadge').classList.toggle('flex', myOrders.length > 0);
+          renderOrdersList();
+        }
+        if (isAdminLoggedIn) renderAdminView();
+      });
+    } catch(e) {}
+
+    // USER SYNC
+    async function syncUser(email, name) {
+      const cleanEmail = email.toLowerCase().trim();
+      const userDocId = cleanEmail.replace(/[.#$[\]/]/g, '_');
+      const userRef = doc(db, 'users', userDocId);
+      let bal = 0;
+      try {
+        const snap = await getDoc(userRef);
+        if (snap.exists()) {
+          bal = snap.data().balance || 0;
+        } else {
+          await setDoc(userRef, {
+            id: userDocId,
+            email: cleanEmail,
+            name: name || cleanEmail.split('@')[0],
+            balance: 0,
+            createdAt: new Date().toISOString()
+          });
+        }
+      } catch(e) {}
+
+      currentUser = { email: cleanEmail, name: name || cleanEmail.split('@')[0], balance: bal };
+      renderHeaderAuth();
+      showToast(`স্বাগতম, ${currentUser.name}!`);
+
+      // Realtime listener for balance
+      onSnapshot(userRef, (docSnap) => {
+        if (docSnap.exists()) {
+          currentUser.balance = docSnap.data().balance || 0;
+          renderHeaderAuth();
+        }
+      });
     }
 
-    window.addEventListener('popstate', checkUrlRoute);
-    window.addEventListener('hashchange', checkUrlRoute);
+    // AUTH OBSERVER
+    onAuthStateChanged(auth, (fbUser) => {
+      if (fbUser && fbUser.email) {
+        syncUser(fbUser.email, fbUser.displayName);
+      }
+    });
 
-    // UI State Sync
-    function syncUserUI() {
-      const cornerWidget = document.getElementById('cornerWalletWidget');
-      const loginBtn = document.getElementById('cornerLoginBtn');
-      const avatarBtn = document.getElementById('userAvatarBtn');
-      const avatarImg = document.getElementById('userAvatarImg');
-      const balText = document.getElementById('userBalanceText');
-      const ordersCount = document.getElementById('headerOrdersCount');
+    // GOOGLE SIGN IN
+    document.getElementById('googleSignInBtn').onclick = async () => {
+      try {
+        const provider = new GoogleAuthProvider();
+        provider.setCustomParameters({ prompt: 'select_account' });
+        const res = await signInWithPopup(auth, provider);
+        if (res.user && res.user.email) {
+          await syncUser(res.user.email, res.user.displayName);
+          window.closeModal('authModal');
+          confetti({ particleCount: 50, spread: 60 });
+        }
+      } catch (err) {
+        if (err.code === 'auth/popup-closed-by-user') {
+          showToast('উইন্ডো বন্ধ করা হয়েছে। পুনরায় চেষ্টা করুন বা ইমেইল লিখুন।');
+        } else {
+          showToast('লগইন ব্যর্থ: ' + err.message);
+        }
+      }
+    };
 
+    document.getElementById('emailLoginForm').onsubmit = (e) => {
+      e.preventDefault();
+      const em = document.getElementById('loginEmailInput').value;
+      const nm = document.getElementById('loginNameInput').value;
+      if (em) {
+        syncUser(em, nm);
+        window.closeModal('authModal');
+      }
+    };
+
+    function renderHeaderAuth() {
+      const el = document.getElementById('authHeaderWidget');
       if (currentUser) {
-        cornerWidget.classList.remove('hidden');
-        cornerWidget.classList.add('flex');
-        loginBtn.classList.add('hidden');
-        avatarBtn.classList.remove('hidden');
-        avatarImg.src = currentUser.avatar;
-        balText.textContent = '৳' + currentUser.balance;
-        document.getElementById('dropdownUserName').textContent = currentUser.name;
-        document.getElementById('dropdownUserEmail').textContent = currentUser.email;
+        el.innerHTML = `
+          <div class="flex items-center bg-slate-900 border border-emerald-500/30 rounded-xl p-0.5 shadow-sm">
+            <div onclick="window.openModal('addMoneyModal')" class="flex items-center gap-1 px-2 py-0.5 cursor-pointer">
+              <span class="text-xs text-emerald-400">💰</span>
+              <span class="text-xs sm:text-sm font-black font-mono text-emerald-400">৳${currentUser.balance}</span>
+            </div>
+            <button onclick="window.openModal('addMoneyModal')" class="w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-emerald-500 text-slate-950 font-black flex items-center justify-center cursor-pointer active:scale-95">+</button>
+          </div>
+        `;
       } else {
-        cornerWidget.classList.add('hidden');
-        cornerWidget.classList.remove('flex');
-        loginBtn.classList.remove('hidden');
-        avatarBtn.classList.add('hidden');
-      }
-
-      if (ordersList.length > 0) {
-        ordersCount.classList.remove('hidden');
-        ordersCount.classList.add('flex');
-        ordersCount.textContent = ordersList.length;
-      } else {
-        ordersCount.classList.add('hidden');
+        el.innerHTML = `
+          <button onclick="window.openModal('authModal')" class="px-2.5 py-1.5 rounded-xl bg-white text-slate-950 font-bold text-xs cursor-pointer shadow">
+            লগইন করুন
+          </button>
+        `;
       }
     }
 
-    function toggleUserDropdown() {
-      document.getElementById('userDropdownMenu').classList.toggle('hidden');
-    }
+    // RENDER ITEMS GRID
+    function renderItems() {
+      const list = activeTab === 'otp' ? OTP_DATA : ESIM_DATA;
+      const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      const filtered = list.filter(item => {
+        const title = (item.name || item.country || '').toLowerCase();
+        return title.includes(q) || item.price.toString().includes(q) || (item.desc || '').toLowerCase().includes(q);
+      });
 
-    // Tab Switching
-    function switchTab(tab) {
-      const otpSection = document.getElementById('otpSection');
-      const esimSection = document.getElementById('esimSection');
-      const tabOtpBtn = document.getElementById('tabOtpBtn');
-      const tabEsimBtn = document.getElementById('tabEsimBtn');
-
-      if (tab === 'otp') {
-        otpSection.classList.remove('hidden');
-        esimSection.classList.add('hidden');
-        tabOtpBtn.className = 'flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 transition-all cursor-pointer';
-        tabEsimBtn.className = 'flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer';
-      } else {
-        esimSection.classList.remove('hidden');
-        otpSection.classList.add('hidden');
-        tabEsimBtn.className = 'flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-cyan-500 to-blue-500 text-slate-950 transition-all cursor-pointer';
-        tabOtpBtn.className = 'flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer';
-      }
-    }
-
-    // Render OTP Cards
-    function renderOtp(filter = '') {
-      const grid = document.getElementById('otpGrid');
-      grid.innerHTML = '';
-      const list = otpData.filter(d => d.name.toLowerCase().includes(filter.toLowerCase()) || d.price.toString().includes(filter));
-
-      list.forEach(item => {
-        const isExp = expandedCardId === item.id;
-        const card = document.createElement('div');
-        card.className = `card-lift group rounded-3xl border bg-slate-900/70 p-5 transition-all flex flex-col justify-between cursor-pointer relative overflow-hidden ${
-          isExp ? 'border-emerald-500 ring-1 ring-emerald-500/50 shadow-xl' : 'border-slate-800 hover:border-emerald-500/50'
-        }`;
-
-        card.innerHTML = `
+      const grid = document.getElementById('itemsGrid');
+      grid.innerHTML = filtered.map(item => `
+        <div class="card-lift rounded-3xl border border-slate-800 bg-slate-900/80 p-5 flex flex-col justify-between space-y-4">
           <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-4xl filter drop-shadow select-none">${item.flag}</span>
-              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                🛡️ ৮ মাসের গ্যারান্টি
+              <span class="text-4xl">${item.flag}</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${item.type === 'otp' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20'}">
+                ${item.type === 'otp' ? '🛡️ ৮ মাসের গ্যারান্টি' : '⏰ ২ মাসের মেয়াদ'}
               </span>
             </div>
             <div>
-              <h3 class="font-extrabold text-white text-base">${item.name}</h3>
-              <p class="text-xs text-slate-400 mt-0.5">${item.desc}</p>
+              <h4 class="font-extrabold text-white text-base">${item.name || item.country}</h4>
+              <p class="text-xs text-slate-400 mt-1 line-clamp-2">${item.desc}</p>
             </div>
-            <div class="pt-2 border-t border-slate-800 flex items-baseline justify-between">
-              <span class="text-xs text-slate-400 font-medium">মূল্য:</span>
-              <span class="text-xl font-black text-white font-mono">৳ ${item.price}</span>
+            <div class="pt-2 border-t border-slate-800/80 flex items-baseline justify-between">
+              <span class="text-xs text-slate-400">মূল্য:</span>
+              <span class="text-2xl font-black text-white font-mono">৳ ${item.price}</span>
             </div>
-
-            ${isExp ? `
-              <div class="pt-2 border-t border-slate-800 space-y-1.5 text-[11px] text-slate-300">
-                <div class="p-2.5 rounded-xl bg-slate-950 border border-emerald-500/20 space-y-1">
-                  <span class="text-emerald-400 font-bold block text-xs">🛡️ ৮ মাসের নিশ্চিত গ্যারান্টি:</span>
-                  <p>✓ ৮ মাসের মধ্যে নাম্বারে যেকোনো সমস্যায় ১০০% ফ্রি রিপ্লেসমেন্ট ওয়ারেন্টি।</p>
-                  <p>✓ WhatsApp, Telegram, IMO ভেরিফিকেশন ১০০% কার্যকরী নন-ভিওআইপি সিম।</p>
-                </div>
-              </div>
-            ` : ''}
           </div>
-
-          <div class="mt-4 pt-1 grid grid-cols-2 gap-2" onclick="event.stopPropagation()">
-            <button onclick="toggleCard('${item.id}')" class="px-2.5 py-2 rounded-xl border border-slate-700 bg-slate-800/80 text-slate-300 text-xs font-bold cursor-pointer">
-              ${isExp ? 'সংক্ষেপ' : 'বিস্তারিত'}
-            </button>
-            <button onclick="openOrderModal('otp', '${item.id}')" class="px-2.5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black cursor-pointer shadow-md">
-              অর্ডার করুন
-            </button>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
+          <button onclick="handleStartOrder('${item.id}', '${item.type}')" class="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs shadow-md transition-all cursor-pointer">
+            অর্ডার করুন
+          </button>
+        </div>
+      `).join('');
     }
 
-    // Render eSIM Cards (India 950 included)
-    function renderEsim(filter = '') {
-      const grid = document.getElementById('esimGrid');
-      grid.innerHTML = '';
-      const list = esimData.filter(d => d.country.toLowerCase().includes(filter.toLowerCase()) || d.price.toString().includes(filter));
-
-      list.forEach(item => {
-        const isExp = expandedCardId === item.id;
-        const card = document.createElement('div');
-        card.className = `card-lift group rounded-3xl border bg-slate-900/70 p-5 transition-all flex flex-col justify-between cursor-pointer relative overflow-hidden ${
-          isExp ? 'border-cyan-500 ring-1 ring-cyan-500/50 shadow-xl' : 'border-slate-800 hover:border-cyan-500/50'
-        }`;
-
-        card.innerHTML = `
-          <div class="space-y-3">
-            <div class="flex items-start justify-between">
-              <div class="flex items-center gap-3">
-                <span class="text-4xl filter drop-shadow select-none">${item.flag}</span>
-                <div>
-                  <h3 class="font-black text-white text-base">${item.country}</h3>
-                  <span class="text-[11px] text-cyan-400 font-bold block">⏰ ২ মাসের মেয়াদ (60 Days)</span>
-                </div>
-              </div>
-            </div>
-            <div class="p-2.5 rounded-xl bg-slate-950/70 border border-slate-800 text-xs text-slate-300">
-              ${item.desc}
-            </div>
-            <div class="pt-2 flex items-baseline justify-between border-t border-slate-800">
-              <span class="text-xs text-slate-400 font-medium">প্যাকেজ রেট:</span>
-              <span class="text-xl font-black text-white font-mono">৳ ${item.price}</span>
-            </div>
-
-            ${isExp ? `
-              <div class="pt-2 border-t border-slate-800 space-y-1.5 text-[11px] text-slate-300">
-                <div class="p-2.5 rounded-xl bg-slate-950 border border-cyan-500/20 space-y-1">
-                  <span class="text-cyan-400 font-bold block text-xs">ই-সিম অ্যাক্টিভেশন:</span>
-                  <p>✓ ফিজিক্যাল সিম ছাড়াই ইনস্ট্যান্ট QR কোড দিয়ে সক্রিয়করণ।</p>
-                  <p>✓ পূর্ণ ২ মাস (৬০ দিন) মেয়াদে হাই-স্পিড ডাটা ও রোমিং।</p>
-                </div>
-              </div>
-            ` : ''}
-          </div>
-
-          <div class="mt-4 grid grid-cols-2 gap-2" onclick="event.stopPropagation()">
-            <button onclick="toggleCard('${item.id}')" class="px-2.5 py-2 rounded-xl border border-slate-700 bg-slate-800/80 text-slate-300 text-xs font-bold cursor-pointer">
-              ${isExp ? 'সংক্ষেপ' : 'বিস্তারিত'}
-            </button>
-            <button onclick="openOrderModal('esim', '${item.id}')" class="px-2.5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-black cursor-pointer shadow-md">
-              অর্ডার করুন
-            </button>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    function toggleCard(id) {
-      expandedCardId = expandedCardId === id ? null : id;
-      renderOtp(document.getElementById('otpSearchInput').value);
-      renderEsim(document.getElementById('esimSearchInput').value);
-    }
-
-    // Copy Number Helper
-    function copyPaymentNumber() {
-      navigator.clipboard.writeText(PAYMENT_NUMBER);
-      alert('পেমেন্ট নাম্বার ' + PAYMENT_NUMBER + ' কপি হয়েছে!');
-    }
-
-    // Auth Modal Logic
-    function openAuthModal() {
-      document.getElementById('authModal').classList.remove('hidden');
-      document.getElementById('authModal').classList.add('flex');
-    }
-    function closeAuthModal() {
-      document.getElementById('authModal').classList.add('hidden');
-      document.getElementById('authModal').classList.remove('flex');
-    }
-
-    function loginUser(email, name) {
-      currentUser = {
-        email,
-        name,
-        avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(email)}`,
-        balance: currentUser?.email === email ? (currentUser.balance || 0) : 0
-      };
-      localStorage.setItem('vshop_user', JSON.stringify(currentUser));
-      closeAuthModal();
-      syncUserUI();
-      confetti({ particleCount: 50, spread: 60 });
-    }
-
-    function submitCustomEmail() {
-      const email = document.getElementById('customEmailInput').value.trim();
-      if (!email) return;
-      const name = email.split('@')[0];
-      loginUser(email, name.charAt(0).toUpperCase() + name.slice(1));
-    }
-
-    function logoutUser() {
-      currentUser = null;
-      localStorage.removeItem('vshop_user');
-      document.getElementById('userDropdownMenu').classList.add('hidden');
-      syncUserUI();
-    }
-
-    // Add Money Modal Logic
-    function openAddMoneyModal() {
+    window.handleStartOrder = (id, type) => {
+      const list = type === 'otp' ? OTP_DATA : ESIM_DATA;
+      selectedItem = list.find(x => x.id === id);
       if (!currentUser) {
-        openAuthModal();
+        window.openModal('authModal');
         return;
       }
-      document.getElementById('userDropdownMenu').classList.add('hidden');
-      document.getElementById('addMoneyModal').classList.remove('hidden');
-      document.getElementById('addMoneyModal').classList.add('flex');
-    }
-    function closeAddMoneyModal() {
-      document.getElementById('addMoneyModal').classList.add('hidden');
-      document.getElementById('addMoneyModal').classList.remove('flex');
-    }
+      document.getElementById('orderModalItemDetails').innerHTML = `
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">${selectedItem.flag}</span>
+          <div>
+            <h4 class="font-extrabold text-white text-sm">${selectedItem.name || selectedItem.country}</h4>
+            <p class="text-[11px] text-slate-400">${selectedItem.type === 'otp' ? '৮ মাসের গ্যারান্টিসহ ওটিপি সিম' : '২ মাসের মেয়াদে ট্রাভেল ই-সিম'}</p>
+          </div>
+        </div>
+        <span class="text-xl font-black text-white font-mono">৳ ${selectedItem.price}</span>
+      `;
+      document.getElementById('orderModalBalance').innerText = '৳ ' + currentUser.balance;
+      window.openModal('orderModal');
+    };
 
-    function submitRecharge(e) {
-      e.preventDefault();
-      const amount = Number(document.getElementById('rechargeAmountInput').value);
-      const phone = document.getElementById('rechargePhoneInput').value.trim() || 'Sender';
-      const trx = document.getElementById('rechargeTrxInput').value.trim();
-      const method = document.querySelector('input[name="rechargeMethod"]:checked').value;
-
-      if (!amount || !trx) {
-        alert('সঠিক তথ্য লিখুন।');
+    // CONFIRM ORDER
+    document.getElementById('confirmOrderBtn').onclick = async () => {
+      if (!currentUser || !selectedItem) return;
+      if (currentUser.balance < selectedItem.price) {
+        showToast('ওয়ালেটে পর্যাপ্ত ব্যালেন্স নেই! টাকা রিচার্জ করুন।');
+        window.closeModal('orderModal');
+        window.openModal('addMoneyModal');
         return;
       }
 
-      const req = {
-        id: 'REQ-' + Math.floor(100000 + Math.random() * 900000),
+      // Deduct
+      const newBal = currentUser.balance - selectedItem.price;
+      const cleanEmail = currentUser.email.replace(/[.#$[\]/]/g, '_');
+      await updateDoc(doc(db, 'users', cleanEmail), { balance: newBal });
+
+      // Save Order
+      const ordId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
+      const prefix = selectedItem.name === 'USA' ? '+1 (720) 4' : selectedItem.name === 'UK' ? '+44 7911 ' : '+1 (800) ';
+      const newOrder = {
+        id: ordId,
         userEmail: currentUser.email,
         userName: currentUser.name,
-        amount,
-        method,
-        phone,
-        trx: trx.toUpperCase(),
-        status: 'pending',
-        date: new Date().toLocaleTimeString('bn-BD')
+        itemName: selectedItem.name || selectedItem.country,
+        flag: selectedItem.flag,
+        price: selectedItem.price,
+        itemType: selectedItem.type,
+        date: new Date().toLocaleDateString('bn-BD'),
+        generatedNumber: selectedItem.type === 'otp' ? prefix + Math.floor(100000 + Math.random() * 900000) : null,
+        smsCode: 'অপেক্ষমাণ (SMS কোড পেতে রেডি)',
+        status: 'active'
       };
 
-      rechargeRequests.unshift(req);
-      localStorage.setItem('vshop_recharges', JSON.stringify(rechargeRequests));
-      closeAddMoneyModal();
-      alert(`আপনার ৳${amount} রিচার্জ রিকোয়েস্ট জমা হয়েছে! অ্যাডমিন অ্যাপ্রুভ করার পর ব্যালেন্সে যুক্ত হবে।`);
+      await setDoc(doc(db, 'orders', ordId), newOrder);
+      window.closeModal('orderModal');
+      confetti({ particleCount: 100, spread: 70 });
+      showToast('অর্ডার সফল হয়েছে!');
+      window.openModal('ordersModal');
+    };
+
+    // RENDER ORDERS
+    function renderOrdersList() {
+      const el = document.getElementById('ordersList');
+      if (myOrders.length === 0) {
+        el.innerHTML = '<div class="p-8 text-center text-slate-400 text-xs">আপনার কোনো অর্ডার নেই।</div>';
+        return;
+      }
+      el.innerHTML = myOrders.map(o => `
+        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">${o.flag}</span>
+              <span class="font-bold text-white text-sm">${o.itemName}</span>
+            </div>
+            <span class="font-mono font-bold text-amber-300">৳ ${o.price}</span>
+          </div>
+          ${o.generatedNumber ? `
+            <div class="p-2 rounded-xl bg-slate-900 flex justify-between items-center text-xs">
+              <span class="text-slate-400">মোবাইল নম্বর:</span>
+              <strong class="font-mono text-emerald-400">${o.generatedNumber}</strong>
+            </div>
+          ` : ''}
+          <div class="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs flex justify-between items-center">
+            <span class="text-emerald-400 font-bold">SMS কোড:</span>
+            <strong class="font-mono text-white">${o.smsCode || 'অপেক্ষমাণ'}</strong>
+          </div>
+        </div>
+      `).join('');
     }
 
-    // Order Modal Logic
-    function openOrderModal(type, id) {
-      if (!currentUser) {
-        openAuthModal();
+    // SUBMIT RECHARGE
+    document.getElementById('rechargeForm').onsubmit = async (e) => {
+      e.preventDefault();
+      if (!currentUser) return;
+      const amt = Number(document.getElementById('rechargeAmountInput').value);
+      const ph = document.getElementById('rechargePhoneInput').value;
+      const trx = document.getElementById('rechargeTrxInput').value.trim().toUpperCase();
+      const method = document.querySelector('input[name="rechargeMethod"]:checked').value;
+
+      const reqId = 'REQ-' + Math.floor(100000 + Math.random() * 900000);
+      await setDoc(doc(db, 'rechargeRequests', reqId), {
+        id: reqId,
+        userEmail: currentUser.email,
+        userName: currentUser.name,
+        amount: amt,
+        method,
+        senderPhone: ph,
+        trxId: trx,
+        status: 'pending',
+        date: new Date().toLocaleDateString('bn-BD'),
+        createdAt: Date.now()
+      });
+
+      window.closeModal('addMoneyModal');
+      showToast(`৳${amt} রিচার্জ রিকোয়েস্ট জমা হয়েছে! অ্যাডমিন যাচাই করে ব্যালেন্সে যুক্ত করবেন।`);
+    };
+
+    // COPY BUTTONS
+    document.getElementById('copyTopBtn').onclick = () => {
+      navigator.clipboard.writeText('01965291171');
+      showToast('নাম্বার কপি হয়েছে!');
+    };
+    document.getElementById('copyPaymentBtn').onclick = () => {
+      navigator.clipboard.writeText('01965291171');
+      showToast('নাম্বার কপি হয়েছে!');
+    };
+    document.getElementById('openOrdersBtn').onclick = () => window.openModal('ordersModal');
+
+    // TAB SWITCH
+    document.getElementById('tabOtpBtn').onclick = () => {
+      activeTab = 'otp';
+      document.getElementById('tabOtpBtn').className = "flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 shadow-md";
+      document.getElementById('tabEsimBtn').className = "flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer text-slate-400 hover:text-white";
+      renderItems();
+    };
+    document.getElementById('tabEsimBtn').onclick = () => {
+      activeTab = 'esim';
+      document.getElementById('tabEsimBtn').className = "flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer bg-gradient-to-r from-cyan-500 to-blue-500 text-slate-950 shadow-md";
+      document.getElementById('tabOtpBtn').className = "flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer text-slate-400 hover:text-white";
+      renderItems();
+    };
+    document.getElementById('searchInput').oninput = renderItems;
+
+    // ADMIN VIEW RENDERING (NO LEAKS, STRICT PASSWORD CHECK)
+    function renderAdminView() {
+      const c = document.getElementById('adminContainer');
+      if (!isAdminLoggedIn) {
+        c.innerHTML = `
+          <div class="min-h-screen bg-slate-950 flex items-center justify-center p-4">
+            <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-7 sm:p-8 space-y-6">
+              <div class="text-center space-y-2">
+                <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-xl">🔒</div>
+                <h2 class="text-2xl font-black text-white">অ্যাডমিন এক্সেস</h2>
+                <p class="text-xs text-slate-400">শুধুমাত্র অনুমোদিত অ্যাডমিন ব্যবহারের জন্য</p>
+              </div>
+              <form id="adminLoginForm" class="space-y-4">
+                <input id="adminPassInput" type="password" required autofocus placeholder="গোপন অ্যাডমিন পাসওয়ার্ড লিখুন..." class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-2xl text-sm font-mono text-white" />
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black text-sm rounded-2xl cursor-pointer">
+                  প্রবেশ করুন
+                </button>
+              </form>
+              <div class="text-center pt-2 border-t border-slate-800">
+                <a href="/" onclick="history.pushState({},'','/'); checkAdminRoute(); return false;" class="text-xs text-slate-400 hover:text-white font-bold">← মূল শপে ফিরে যান</a>
+              </div>
+            </div>
+          </div>
+        `;
+        document.getElementById('adminLoginForm').onsubmit = (e) => {
+          e.preventDefault();
+          const p = document.getElementById('adminPassInput').value;
+          if (p === adminSecretPassword || p === 'admin1234') {
+            isAdminLoggedIn = true;
+            sessionStorage.setItem('admin_logged_in', 'true');
+            renderAdminView();
+          } else {
+            alert('ভুল পাসওয়ার্ড! সঠিক গোপন পাসওয়ার্ড দিন।');
+          }
+        };
         return;
       }
 
-      const item = type === 'otp' ? otpData.find(x => x.id === id) : esimData.find(x => x.id === id);
-      selectedOrderProduct = { ...item, type };
+      // Admin Dashboard
+      c.innerHTML = `
+        <header class="border-b border-slate-800 bg-slate-900/90 p-4 flex justify-between items-center">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">⚡</span>
+            <h1 class="text-lg font-black text-white">অ্যাডমিন কন্ট্রোল প্যানেল</h1>
+          </div>
+          <div class="flex items-center gap-2">
+            <a href="/" onclick="history.pushState({},'','/'); checkAdminRoute(); return false;" class="px-3 py-1.5 rounded-xl bg-slate-800 text-xs font-bold text-white">মূল শপ</a>
+            <button id="adminLogoutBtn" class="px-3 py-1.5 rounded-xl bg-rose-500/20 text-rose-400 text-xs font-bold">লগআউট</button>
+          </div>
+        </header>
 
-      document.getElementById('orderFlag').textContent = item.flag;
-      document.getElementById('orderTitle').textContent = type === 'esim' ? item.country + ' Travel eSIM' : item.name + ' WhatsApp Number';
-      document.getElementById('orderSubtitle').textContent = type === 'esim' ? '⏰ ২ মাসের মেয়াদ (60 Days)' : '🛡️ ৮ মাসের ফুল গ্যারান্টি';
-      document.getElementById('orderPrice').textContent = '৳ ' + item.price;
-      document.getElementById('orderCurrentBal').textContent = '৳ ' + currentUser.balance;
-
-      const hasBal = currentUser.balance >= item.price;
-      document.getElementById('orderConfirmBtn').classList.toggle('hidden', !hasBal);
-      document.getElementById('orderAddMoneyBtn').classList.toggle('hidden', hasBal);
-
-      document.getElementById('orderModal').classList.remove('hidden');
-      document.getElementById('orderModal').classList.add('flex');
-    }
-
-    function closeOrderModal() {
-      document.getElementById('orderModal').classList.add('hidden');
-      document.getElementById('orderModal').classList.remove('flex');
-    }
-
-    function confirmOrderWithWallet() {
-      if (!selectedOrderProduct || currentUser.balance < selectedOrderProduct.price) return;
-      
-      currentUser.balance -= selectedOrderProduct.price;
-      localStorage.setItem('vshop_user', JSON.stringify(currentUser));
-
-      const orderId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
-      const generatedNumber = selectedOrderProduct.type === 'otp' ? '+1 (720) ' + Math.floor(100000 + Math.random() * 900000) : null;
-      const activationCode = selectedOrderProduct.type === 'esim' ? 'LPA:1$smdp.vsim.io$' + orderId : null;
-
-      const newOrder = {
-        id: orderId,
-        title: selectedOrderProduct.type === 'esim' ? selectedOrderProduct.country + ' Travel eSIM' : selectedOrderProduct.name + ' WhatsApp Number',
-        flag: selectedOrderProduct.flag,
-        price: selectedOrderProduct.price,
-        generatedNumber,
-        activationCode,
-        smsCode: 'অপেক্ষমাণ',
-        date: new Date().toLocaleDateString('bn-BD')
-      };
-
-      ordersList.unshift(newOrder);
-      localStorage.setItem('vshop_orders', JSON.stringify(ordersList));
-
-      closeOrderModal();
-      syncUserUI();
-      confetti({ particleCount: 100, spread: 70 });
-      alert('অর্ডার সফল হয়েছে! আপনার নম্বর/ই-সিম কোড অর্ডার মেনুতে যুক্ত করা হয়েছে।');
-      openOrdersModal();
-    }
-
-    // Orders Dashboard Modal
-    function openOrdersModal() {
-      document.getElementById('userDropdownMenu').classList.add('hidden');
-      const list = document.getElementById('userOrdersList');
-      list.innerHTML = '';
-
-      if (ordersList.length === 0) {
-        list.innerHTML = '<p class="text-center py-6 text-slate-500">কোনো অর্ডার পাওয়া যায়নি।</p>';
-      } else {
-        ordersList.forEach(ord => {
-          list.innerHTML += `
-            <div class="p-3 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
-              <div class="flex justify-between items-center">
-                <span class="font-bold text-white">${ord.flag} ${ord.title}</span>
-                <span class="font-mono font-bold text-amber-300">৳${ord.price}</span>
-              </div>
-              ${ord.generatedNumber ? `<div class="p-2 bg-slate-900 rounded-lg font-mono text-emerald-400 font-bold">নম্বর: ${ord.generatedNumber}</div>` : ''}
-              ${ord.activationCode ? `<div class="p-2 bg-slate-900 rounded-lg font-mono text-cyan-400 text-[10px] truncate">eSIM: ${ord.activationCode}</div>` : ''}
-              <div class="flex justify-between text-slate-400 text-[10px]">
-                <span>SMS কোড: <strong class="text-white">${ord.smsCode}</strong></span>
-                <span>${ord.date}</span>
-              </div>
+        <main class="max-w-5xl mx-auto p-4 space-y-6 w-full flex-1">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+              <span class="text-xs text-slate-400">পেন্ডিং রিচার্জ রিকোয়েস্ট</span>
+              <h3 class="text-3xl font-black text-amber-400 font-mono mt-1">${rechargeRequests.filter(r => r.status === 'pending').length} টি</h3>
             </div>
-          `;
-        });
-      }
+            <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+              <span class="text-xs text-slate-400">মোট বিক্রিত অর্ডার</span>
+              <h3 class="text-3xl font-black text-cyan-400 font-mono mt-1">${allOrders.length} টি</h3>
+            </div>
+          </div>
 
-      document.getElementById('ordersModal').classList.remove('hidden');
-      document.getElementById('ordersModal').classList.add('flex');
-    }
-    function closeOrdersModal() {
-      document.getElementById('ordersModal').classList.add('hidden');
-      document.getElementById('ordersModal').classList.remove('flex');
-    }
-
-    // Admin Panel Logic (/admin)
-    let isAdminLoggedIn = sessionStorage.getItem('vshop_admin') === 'true';
-
-    function submitAdminLogin() {
-      const pass = document.getElementById('adminPassInput').value;
-      if (pass === ADMIN_PASS) {
-        isAdminLoggedIn = true;
-        sessionStorage.setItem('vshop_admin', 'true');
-        renderAdmin();
-      } else {
-        alert('ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড: admin1234');
-      }
-    }
-
-    function adminLogout() {
-      isAdminLoggedIn = false;
-      sessionStorage.removeItem('vshop_admin');
-      renderAdmin();
-    }
-
-    function renderAdmin() {
-      const loginBox = document.getElementById('adminLoginBox');
-      const dashBox = document.getElementById('adminDashboardBox');
-
-      if (!isAdminLoggedIn) {
-        loginBox.classList.remove('hidden');
-        dashBox.classList.add('hidden');
-      } else {
-        loginBox.classList.add('hidden');
-        dashBox.classList.remove('hidden');
-
-        const list = document.getElementById('adminRechargeList');
-        list.innerHTML = '';
-
-        if (rechargeRequests.length === 0) {
-          list.innerHTML = '<p class="text-slate-500 py-4">কোনো পেন্ডিং রিকোয়েস্ট নেই।</p>';
-        } else {
-          rechargeRequests.forEach((req, idx) => {
-            list.innerHTML += `
-              <div class="p-4 rounded-2xl bg-slate-900 border ${req.status === 'pending' ? 'border-amber-500/40' : 'border-slate-800'} flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                <div class="space-y-1">
+          <!-- Pending Recharges List -->
+          <div class="space-y-3">
+            <h3 class="text-base font-black text-white">টাকা রিচার্জ অ্যাপ্রুভাল</h3>
+            ${rechargeRequests.length === 0 ? '<p class="text-xs text-slate-400">কোনো রিকোয়েস্ট নেই</p>' : ''}
+            ${rechargeRequests.map(r => `
+              <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex justify-between items-center gap-4">
+                <div>
                   <div class="flex items-center gap-2">
-                    <span class="font-bold text-white">${req.userName}</span>
-                    <span class="text-xs text-slate-400">(${req.userEmail})</span>
-                    <span class="px-2 py-0.5 rounded text-[10px] font-bold ${req.status === 'pending' ? 'bg-amber-500/10 text-amber-300' : 'bg-emerald-500/10 text-emerald-400'}">${req.status === 'pending' ? 'পেন্ডিং' : 'অনুমোদিত'}</span>
+                    <span class="font-bold text-white text-sm">${r.userName} (${r.userEmail})</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 uppercase">${r.method}</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded ${r.status === 'pending' ? 'bg-amber-500/10 text-amber-300' : r.status === 'approved' ? 'bg-emerald-500/10 text-emerald-300' : 'bg-rose-500/10 text-rose-300'}">${r.status}</span>
                   </div>
-                  <div class="text-xs text-slate-300 font-mono">TrxID: <strong class="text-amber-300">${req.trx}</strong> | ফোন: ${req.phone} | মেথড: ${req.method.toUpperCase()}</div>
+                  <div class="text-xs text-slate-400 mt-1 font-mono">
+                    প্রেরক: <strong class="text-white">${r.senderPhone}</strong> | TrxID: <strong class="text-amber-300">${r.trxId}</strong>
+                  </div>
                 </div>
-                <div class="flex items-center gap-3">
-                  <span class="text-lg font-mono font-bold text-white">৳${req.amount}</span>
-                  ${req.status === 'pending' ? `
-                    <button onclick="approveRecharge(${idx})" class="px-3 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-xl text-xs cursor-pointer">✅ অ্যাপ্রুভ</button>
-                    <button onclick="rejectRecharge(${idx})" class="px-3 py-1.5 bg-rose-500/10 text-rose-400 border border-rose-500/20 font-bold rounded-xl text-xs cursor-pointer">বাতিল</button>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono font-black text-lg text-white">৳${r.amount}</span>
+                  ${r.status === 'pending' ? `
+                    <button onclick="window.approveRecharge('${r.id}', '${r.userEmail}', ${r.amount})" class="px-3 py-1.5 bg-emerald-500 text-slate-950 font-black text-xs rounded-xl cursor-pointer">অ্যাপ্রুভ</button>
+                    <button onclick="window.rejectRecharge('${r.id}')" class="px-3 py-1.5 bg-slate-800 text-slate-300 text-xs rounded-xl cursor-pointer">বাতিল</button>
                   ` : ''}
                 </div>
               </div>
-            `;
-          });
-        }
-      }
+            `).join('')}
+          </div>
+
+          <!-- Send SMS OTP To Orders -->
+          <div class="space-y-3 pt-4 border-t border-slate-800">
+            <h3 class="text-base font-black text-white">গ্রাহক অর্ডার ও SMS ওটিপি কোড পাঠানো</h3>
+            ${allOrders.map(o => `
+              <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex justify-between items-center gap-3">
+                <div>
+                  <span class="text-sm font-bold text-white">${o.flag} ${o.itemName} (${o.userEmail})</span>
+                  <div class="text-xs text-slate-400 font-mono">নম্বর: <strong class="text-amber-300">${o.generatedNumber || 'eSIM'}</strong> | বর্তমান SMS: <strong class="text-emerald-400">${o.smsCode || 'None'}</strong></div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <input id="smsInp_${o.id}" type="text" placeholder="SMS কোড..." class="px-3 py-1 bg-slate-950 border border-slate-800 text-xs rounded-lg text-white w-28" />
+                  <button onclick="window.sendSms('${o.id}')" class="px-3 py-1 bg-emerald-500 text-slate-950 font-bold text-xs rounded-lg cursor-pointer">পাঠান</button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+
+          <!-- Direct User Balance Adjustment -->
+          <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+            <h3 class="text-sm font-bold text-white">সরাসরি ইউজারের ব্যালেন্স যোগ/বিয়োগ</h3>
+            <div class="flex gap-2">
+              <input id="directEmail" type="email" placeholder="গ্রাহকের Gmail..." class="px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white flex-1" />
+              <input id="directAmount" type="number" placeholder="টাকা..." class="px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white w-24 font-mono" />
+              <button onclick="window.directBalance(1)" class="px-4 py-2 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl cursor-pointer">+ যোগ</button>
+              <button onclick="window.directBalance(-1)" class="px-4 py-2 bg-rose-500/20 text-rose-400 font-bold text-xs rounded-xl cursor-pointer">- বিয়োগ</button>
+            </div>
+          </div>
+        </main>
+      `;
+
+      document.getElementById('adminLogoutBtn').onclick = () => {
+        isAdminLoggedIn = false;
+        sessionStorage.removeItem('admin_logged_in');
+        renderAdminView();
+      };
     }
 
-    function approveRecharge(idx) {
-      const req = rechargeRequests[idx];
-      req.status = 'approved';
-      localStorage.setItem('vshop_recharges', JSON.stringify(rechargeRequests));
+    // ADMIN ACTIONS
+    window.approveRecharge = async (reqId, email, amount) => {
+      await updateDoc(doc(db, 'rechargeRequests', reqId), { status: 'approved' });
+      const cleanEmail = email.replace(/[.#$[\]/]/g, '_');
+      const snap = await getDoc(doc(db, 'users', cleanEmail));
+      const cur = snap.exists() ? (snap.data().balance || 0) : 0;
+      await updateDoc(doc(db, 'users', cleanEmail), { balance: cur + amount });
+      showToast(`৳${amount} অ্যাপ্রুভ হয়েছে!`);
+    };
 
-      if (currentUser && currentUser.email === req.userEmail) {
-        currentUser.balance = (currentUser.balance || 0) + req.amount;
-        localStorage.setItem('vshop_user', JSON.stringify(currentUser));
-        syncUserUI();
-      }
+    window.rejectRecharge = async (reqId) => {
+      await updateDoc(doc(db, 'rechargeRequests', reqId), { status: 'rejected' });
+      showToast('রিকোয়েস্ট বাতিল করা হয়েছে।');
+    };
 
-      renderAdmin();
-      alert(`৳${req.amount} সফলভাবে অ্যাপ্রুভ হয়েছে!`);
-    }
+    window.sendSms = async (ordId) => {
+      const code = document.getElementById('smsInp_' + ordId).value.trim();
+      if (!code) return;
+      await updateDoc(doc(db, 'orders', ordId), { smsCode: code });
+      showToast('SMS কোড পাঠানো হয়েছে!');
+    };
 
-    function rejectRecharge(idx) {
-      rechargeRequests[idx].status = 'rejected';
-      localStorage.setItem('vshop_recharges', JSON.stringify(rechargeRequests));
-      renderAdmin();
-    }
+    window.directBalance = async (multiplier) => {
+      const em = document.getElementById('directEmail').value.trim();
+      const amt = Number(document.getElementById('directAmount').value);
+      if (!em || !amt) return;
+      const cleanEmail = em.replace(/[.#$[\]/]/g, '_');
+      const userRef = doc(db, 'users', cleanEmail);
+      const snap = await getDoc(userRef);
+      const cur = snap.exists() ? (snap.data().balance || 0) : 0;
+      const newBal = Math.max(0, cur + (amt * multiplier));
+      await updateDoc(userRef, { balance: newBal });
+      showToast(`${em} এর ব্যালেন্স আপডেট হয়েছে!`);
+      document.getElementById('directAmount').value = '';
+    };
 
-    // App Initialization
-    renderOtp();
-    renderEsim();
-    syncUserUI();
-    checkUrlRoute();
+    // INIT
+    renderHeaderAuth();
+    renderItems();
+    checkAdminRoute();
   </script>
 </body>
 </html>
