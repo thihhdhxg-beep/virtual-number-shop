@@ -4,57 +4,73 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Virtual Number & eSIM Shop</title>
+  <meta name="description" content="ইনস্ট্যান্ট ওটিপি ভার্চুয়াল নাম্বার ও আন্তর্জাতিক ট্রাভেল ই-সিম মার্কেটপ্লেস" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif; }
+    body { font-family: 'Hind Siliguri', 'Plus Jakarta Sans', system-ui, sans-serif; }
     .font-mono { font-family: 'JetBrains Mono', monospace; }
-
     .card-lift {
       transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease, background-color 0.28s ease;
       will-change: transform, box-shadow;
     }
-    .card-lift:hover {
-      transform: translateY(-8px) scale(1.012);
-    }
-
-    .btn-lift {
-      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
-    }
-    .btn-lift:hover {
-      transform: translateY(-2px);
-    }
-    .btn-lift:active {
-      transform: translateY(0) scale(0.97);
-    }
+    .card-lift:hover { transform: translateY(-4px) scale(1.008); }
+    .btn-lift { transition: transform 0.18s ease, box-shadow 0.18s ease; }
+    .btn-lift:hover { transform: translateY(-2px); }
+    .btn-lift:active { transform: translateY(0) scale(0.97); }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #090d16; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-emerald-500 selection:text-slate-950">
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-emerald-500 selection:text-slate-950 relative">
 
-  <!-- Header -->
-  <header class="border-b border-slate-800/80 bg-slate-950/90 sticky top-0 z-30 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-slate-950 font-bold text-lg shadow-md shadow-emerald-500/20">
+  <!-- Header with Round WhatsApp Admin Button in Corner -->
+  <header class="border-b border-slate-800/80 bg-slate-950/90 sticky top-0 z-40 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 flex items-center justify-between gap-3">
+      
+      <!-- Brand Logo & Title -->
+      <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-emerald-500 via-teal-400 to-cyan-400 flex items-center justify-center text-slate-950 font-bold shadow-lg shadow-emerald-500/20 shrink-0">
           📱
         </div>
-        <div>
-          <h1 class="text-xl sm:text-2xl font-black text-white tracking-tight">Virtual Number <span class="text-emerald-400">&</span> eSIM Shop</h1>
-          <p class="text-xs text-slate-400 font-medium">ইনস্ট্যান্ট ওটিপি নাম্বার ও আন্তর্জাতিক ট্রাভেল ই-সিম</p>
+        <div class="min-w-0">
+          <h1 class="text-base sm:text-xl md:text-2xl font-black text-white tracking-tight truncate">
+            Virtual Number <span class="text-emerald-400">&</span> eSIM Shop
+          </h1>
+          <p class="text-[10px] sm:text-xs text-slate-400 font-medium truncate">
+            ইনস্ট্যান্ট ওটিপি নাম্বার ও আন্তর্জাতিক ট্রাভেল ই-সিম
+          </p>
         </div>
       </div>
 
-      <div class="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
-        <div class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs shadow-sm">
-          <span class="text-slate-400 font-medium">bKash / Nagad:</span>
-          <span class="font-mono font-black text-amber-300 text-sm">01965291171</span>
-          <button id="copyPaymentTopBtn" title="নাম্বার কপি করুন" class="text-slate-400 hover:text-emerald-400 cursor-pointer ml-1">📋</button>
+      <!-- Right Controls: Payment Chip & Round WhatsApp Admin Icon -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- Payment Chip -->
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs shadow-inner">
+          <span class="text-slate-400 font-semibold">bKash/Nagad:</span>
+          <span class="font-mono font-bold text-amber-300 text-sm">01965291171</span>
+          <button id="copyTopBtn" title="নাম্বার কপি করুন" class="text-slate-400 hover:text-white p-1 rounded transition-colors cursor-pointer">📋</button>
         </div>
 
-        <a href="https://wa.me/8801605617380" target="_blank" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs sm:text-sm shadow-md transition-all">
-          WhatsApp অ্যাডমিন
+        <!-- Official Round Circular WhatsApp Admin Button in Corner -->
+        <a 
+          href="https://wa.me/8801605617380" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          title="WhatsApp অ্যাডমিন সহায়তা" 
+          class="relative flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-lg shadow-emerald-500/25 transition-all transform hover:scale-110 active:scale-95 cursor-pointer ring-2 ring-emerald-400/40"
+        >
+          <svg viewBox="0 0 24 24" class="w-5 h-5 sm:w-6 sm:h-6 fill-white">
+            <path d="M12.031 2C6.495 2 2 6.495 2 12.031c0 1.908.533 3.692 1.458 5.215L2 22l4.908-1.428a9.988 9.988 0 0 0 5.123 1.459h.004c5.535 0 10.031-4.496 10.031-10.031 0-2.68-1.043-5.199-2.936-7.092C17.23 2.943 14.71 2 12.031 2zm0 18.358c-1.621 0-3.21-.437-4.604-1.264l-.33-.196-3.42.996.996-3.332-.215-.342a8.318 8.318 0 0 1-1.277-4.489c0-4.604 3.746-8.35 8.35-8.35 2.23 0 4.327.869 5.904 2.446a8.293 8.293 0 0 1 2.446 5.904c0 4.604-3.746 8.35-8.35 8.35zm4.577-6.244c-.251-.126-1.487-.734-1.718-.817-.23-.084-.398-.126-.565.126-.168.251-.649.817-.796.985-.146.168-.293.189-.544.063-.251-.126-1.06-.391-2.019-1.246-.746-.666-1.25-1.488-1.396-1.74-.146-.251-.016-.387.11-.512.113-.113.251-.293.377-.44.126-.146.168-.251.251-.419.084-.168.042-.314-.021-.44-.063-.126-.565-1.363-.775-1.867-.204-.492-.411-.425-.565-.433-.146-.008-.314-.01-.482-.01-.168 0-.44.063-.67.314-.23.251-.88.86-.88 2.097 0 1.238.901 2.433 1.026 2.601.126.168 1.772 2.705 4.293 3.794.6.259 1.069.414 1.434.53.603.192 1.152.165 1.586.1.484-.072 1.487-.608 1.697-1.194.21-.586.21-1.089.147-1.194-.063-.105-.23-.168-.482-.293z"/>
+          </svg>
+          <span class="absolute -top-0.5 -right-0.5 flex h-3.5 w-3.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-300 border-2 border-slate-950"></span>
+          </span>
         </a>
       </div>
     </div>
@@ -63,128 +79,159 @@
   <!-- Main Container -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12">
     
-    <!-- Distinct Interactive Toggle Tabs with accurate counts -->
+    <!-- Category Tabs -->
     <div class="flex justify-center">
       <div class="inline-flex p-1.5 bg-slate-900/90 border border-slate-800 rounded-2xl shadow-xl max-w-xl w-full">
-        <button id="tabOtpBtn" class="flex-1 py-3 px-4 rounded-xl text-sm sm:text-base font-extrabold bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 transition-all cursor-pointer">
-          📱 WhatsApp / OTP Numbers (২৯)
+        <button id="tabOtpBtn" class="flex-1 py-3 px-3 sm:px-5 rounded-xl text-xs sm:text-base font-extrabold bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 transition-all cursor-pointer">
+          📱 WhatsApp / OTP (২৯)
         </button>
-        <button id="tabEsimBtn" class="flex-1 py-3 px-4 rounded-xl text-sm sm:text-base font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer">
+        <button id="tabEsimBtn" class="flex-1 py-3 px-3 sm:px-5 rounded-xl text-xs sm:text-base font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer">
           🌐 Travel eSIM (২৮)
         </button>
       </div>
     </div>
 
-    <!-- Section 1: WhatsApp / OTP Numbers (29 Countries) -->
+    <!-- OTP Section -->
     <section id="otpSection" class="space-y-8">
       <div class="text-center max-w-2xl mx-auto space-y-3">
-        <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">WhatsApp & OTP Virtual Numbers</h2>
-        <p class="text-sm text-slate-400 leading-relaxed">২৯টি দেশের রিয়েল নন-ভিওআইপি মোবাইল সিম। WhatsApp, Telegram ও IMO ভেরিফিকেশনে ১০০% কার্যকর।</p>
-        <div class="pt-2">
+        <div class="inline-block px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-bold text-emerald-400">
+          ● ২৯টি দেশের রিয়েল নন-ভিওআইপি মোবাইল সিম
+        </div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight">WhatsApp & OTP Virtual Numbers</h2>
+        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">হোয়াটসঅ্যাপ, টেলিগ্রাম ও ইমো ভেরিফিকেশনে ১০০% কার্যকর। কোড না আসলে সাথে সাথে ফ্রি রিপ্লেসমেন্ট ওয়ারেন্টি।</p>
+        <div class="pt-2 max-w-xl mx-auto">
           <input 
             id="otpSearchInput" 
             type="text" 
-            placeholder="Search country name or price (যেমন: USA, UK, Germany, Dubai, Japan, ৳ ৩৭০)..." 
-            class="w-full pl-5 pr-5 py-3.5 bg-slate-900 border border-slate-800 rounded-2xl text-sm sm:text-base text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium"
+            placeholder="Search country or price (যেমন: USA, UK, Germany, ৳ ৩৭০)..." 
+            class="w-full px-5 py-3.5 bg-slate-900 border border-slate-800 rounded-2xl text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium"
           />
         </div>
       </div>
 
-      <div id="otpGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        <!-- Populated via JavaScript -->
-      </div>
+      <div id="otpGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"></div>
     </section>
 
-    <!-- Section 2: Travel eSIM (28 Countries including Russia & Uzbekistan) -->
+    <!-- eSIM Section -->
     <section id="esimSection" class="space-y-8 hidden">
       <div class="text-center max-w-2xl mx-auto space-y-3">
         <div class="inline-block px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-bold text-cyan-400">
           ⏰ সকল প্যাকেজে ২ মাসের মেয়াদ (2 Months Validity)
         </div>
-        <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">International Travel eSIM Packages</h2>
-        <p class="text-sm text-slate-400 leading-relaxed">ফিজিক্যাল সিম পরিবর্তন ছাড়াই WhatsApp-এ ইনস্ট্যান্ট QR কোড দিয়ে সক্রিয় করুন। সকল প্যাকেজে পূর্ণ <strong>২ মাসের মেয়াদ (৬০ দিন)</strong> এবং হাইস্পিড ডাটা সুবিধা।</p>
-        <div class="pt-2">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight">International Travel eSIM Packages</h2>
+        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">ফিজিক্যাল সিম ছাড়াই WhatsApp-এ ইনস্ট্যান্ট QR কোড দিয়ে সক্রিয় করুন। সকল প্যাকেজে পূর্ণ ৬০ দিন মেয়াদ।</p>
+        <div class="pt-2 max-w-xl mx-auto">
           <input 
             id="esimSearchInput" 
             type="text" 
-            placeholder="Search eSIM country (যেমন: Russia, Uzbekistan, France, Japan, ৳ ৯৯৫, ৳ ১২৫০)..." 
-            class="w-full pl-5 pr-5 py-3.5 bg-slate-900 border border-slate-800 rounded-2xl text-sm sm:text-base text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 font-medium"
+            placeholder="Search eSIM country (যেমন: Russia, Uzbekistan, Japan, ৳ ৯৯৫)..." 
+            class="w-full px-5 py-3.5 bg-slate-900 border border-slate-800 rounded-2xl text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 font-medium"
           />
         </div>
       </div>
 
-      <div id="esimGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Populated via JavaScript -->
+      <div id="esimGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- How to Order Section -->
+    <section class="py-12 border-t border-slate-800/80">
+      <div class="text-center max-w-2xl mx-auto space-y-3 mb-10">
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">কীভাবে অর্ডার করবেন? (How to Order)</h2>
+        <p class="text-xs sm:text-sm text-slate-400">মাত্র ৪টি সহজ ধাপে আপনার কাঙ্ক্ষিত ভার্চুয়াল নাম্বার বা ট্রাভেল ই-সিম সক্রিয় করুন</p>
       </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-xs">
+        <div class="p-6 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-3">
+          <span class="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-400 font-black text-lg flex items-center justify-center font-mono">১</span>
+          <h3 class="font-extrabold text-white text-base">প্যাকেজ নির্বাচন</h3>
+          <p class="text-slate-400 leading-relaxed">পছন্দমতো দেশের ওটিপি নাম্বার বা ই-সিম নির্বাচন করে "অর্ডার করুন" বাটনে ক্লিক করুন।</p>
+        </div>
+        <div class="p-6 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-3">
+          <span class="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-400 font-black text-lg flex items-center justify-center font-mono">২</span>
+          <h3 class="font-extrabold text-white text-base">পেমেন্ট সম্পন্ন করুন</h3>
+          <p class="text-slate-400 leading-relaxed">আমাদের বিকাশ বা নগদ পার্সোনাল নাম্বারে (01965291171) নির্ধারিত টাকা Send Money করুন।</p>
+        </div>
+        <div class="p-6 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-3">
+          <span class="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-400 font-black text-lg flex items-center justify-center font-mono">৩</span>
+          <h3 class="font-extrabold text-white text-base">TrxID প্রদান</h3>
+          <p class="text-slate-400 leading-relaxed">পেমেন্টের পর মেসেজে পাওয়া TrxID অথবা আপনার প্রেরক মোবাইল নম্বর ফর্মে লিখুন।</p>
+        </div>
+        <div class="p-6 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-3">
+          <span class="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-400 font-black text-lg flex items-center justify-center font-mono">৪</span>
+          <h3 class="font-extrabold text-white text-base">ইনস্ট্যান্ট ডেলিভারি</h3>
+          <p class="text-slate-400 leading-relaxed">WhatsApp-এ অর্ডারটি পাঠালেই প্রতিনিধি সাথে সাথে ওটিপি কোড বা ই-সিম QR কোড পাঠিয়ে দেবে।</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support Banner -->
+    <section class="rounded-3xl border border-emerald-500/30 bg-gradient-to-r from-emerald-950/40 via-slate-900 to-teal-950/40 p-6 sm:p-8 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2">
+        <h3 class="text-xl sm:text-2xl font-black text-white">কোনো প্রশ্ন বা কাস্টম চাহিদা আছে?</h3>
+        <p class="text-xs sm:text-sm text-slate-300">সরাসরি WhatsApp অ্যাডমিনের সাথে চ্যাট করুন। আমরা সার্বক্ষণিক সহায়তা দিতে প্রস্তুত।</p>
+      </div>
+      <a href="https://wa.me/8801605617380" target="_blank" rel="noopener noreferrer" class="btn-lift inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-black text-sm shadow-xl shadow-emerald-500/20">
+        WhatsApp অ্যাডমিনের সাথে চ্যাট করুন
+      </a>
     </section>
   </main>
 
-  <!-- Clean Footer -->
-  <footer class="border-t border-slate-800/80 bg-slate-950 mt-20 py-8 text-xs text-slate-400">
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950 py-8 text-xs text-slate-400 mt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2">
         <span class="font-black text-white text-sm">Virtual Number & eSIM Shop</span>
-        <span class="text-slate-600">|</span>
-        <span>bKash / Nagad: <strong class="text-amber-300 font-mono">01965291171</strong></span>
+        <span>|</span>
+        <span>bKash/Nagad: <strong class="text-amber-300 font-mono">01965291171</strong></span>
       </div>
-      <div>
-        WhatsApp অ্যাডমিন: <strong class="text-emerald-400 font-mono">+8801605617380</strong>
-      </div>
+      <div>WhatsApp অ্যাডমিন: <strong class="text-emerald-400 font-mono">+8801605617380</strong></div>
     </div>
   </footer>
 
-  <!-- Details Modal -->
-  <div id="detailsModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-4">
-    <div class="w-full max-w-xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-6 space-y-5">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <div class="flex items-center gap-3">
-          <span id="detailFlag" class="text-4xl"></span>
-          <div>
-            <h3 id="detailTitle" class="text-xl font-black text-white"></h3>
-            <span id="detailType" class="text-xs font-bold text-emerald-400"></span>
+  <!-- Floating Circular WhatsApp Button in Bottom Corner -->
+  <div class="fixed bottom-5 right-5 z-40">
+    <a href="https://wa.me/8801605617380" target="_blank" rel="noopener noreferrer" class="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-2xl shadow-emerald-500/40 transition-all transform hover:scale-110 active:scale-95 cursor-pointer ring-4 ring-[#25D366]/30">
+      <span class="absolute -inset-1 rounded-full bg-[#25D366]/30 animate-ping pointer-events-none"></span>
+      <svg viewBox="0 0 24 24" class="w-8 h-8 fill-white">
+        <path d="M12.031 2C6.495 2 2 6.495 2 12.031c0 1.908.533 3.692 1.458 5.215L2 22l4.908-1.428a9.988 9.988 0 0 0 5.123 1.459h.004c5.535 0 10.031-4.496 10.031-10.031 0-2.68-1.043-5.199-2.936-7.092C17.23 2.943 14.71 2 12.031 2zm0 18.358c-1.621 0-3.21-.437-4.604-1.264l-.33-.196-3.42.996.996-3.332-.215-.342a8.318 8.318 0 0 1-1.277-4.489c0-4.604 3.746-8.35 8.35-8.35 2.23 0 4.327.869 5.904 2.446a8.293 8.293 0 0 1 2.446 5.904c0 4.604-3.746 8.35-8.35 8.35zm4.577-6.244c-.251-.126-1.487-.734-1.718-.817-.23-.084-.398-.126-.565.126-.168.251-.649.817-.796.985-.146.168-.293.189-.544.063-.251-.126-1.06-.391-2.019-1.246-.746-.666-1.25-1.488-1.396-1.74-.146-.251-.016-.387.11-.512.113-.113.251-.293.377-.44.126-.146.168-.251.251-.419.084-.168.042-.314-.021-.44-.063-.126-.565-1.363-.775-1.867-.204-.492-.411-.425-.565-.433-.146-.008-.314-.01-.482-.01-.168 0-.44.063-.67.314-.23.251-.88.86-.88 2.097 0 1.238.901 2.433 1.026 2.601.126.168 1.772 2.705 4.293 3.794.6.259 1.069.414 1.434.53.603.192 1.152.165 1.586.1.484-.072 1.487-.608 1.697-1.194.21-.586.21-1.089.147-1.194-.063-.105-.23-.168-.482-.293z"/>
+      </svg>
+      <span class="absolute -top-1 -right-1 flex items-center justify-center min-w-5 h-5 px-1 rounded-full bg-rose-500 text-white text-[10px] font-black border-2 border-slate-950">1</span>
+    </a>
+  </div>
+
+  <!-- Slide-in Live Order Notification Toast (Clean, No Extra List) -->
+  <div id="liveOrderToast" class="fixed bottom-4 left-4 z-40 max-w-sm w-full transition-all duration-500 transform translate-y-12 opacity-0 pointer-events-none">
+    <div class="bg-slate-900/95 border border-emerald-500/40 rounded-2xl shadow-2xl p-3.5 backdrop-blur-md relative ring-1 ring-emerald-500/20">
+      <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-cyan-400"></div>
+      <div class="flex items-start gap-3">
+        <div id="toastFlag" class="w-10 h-10 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-2xl shrink-0">🇺🇸</div>
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] text-emerald-400 font-extrabold uppercase">✓ সদ্য সম্পন্ন অর্ডার</span>
+            <button id="closeToastBtn" class="text-slate-500 hover:text-white text-xs cursor-pointer">&times;</button>
+          </div>
+          <div id="toastNameLoc" class="font-bold text-white text-xs truncate mt-0.5">তানভীর আহমেদ (মিরপুর, ঢাকা)</div>
+          <div id="toastItem" class="text-[11px] text-slate-300 font-medium truncate">USA WhatsApp Number</div>
+          <div class="flex items-center gap-2 mt-2 pt-1.5 border-t border-slate-800 text-[10px]">
+            <span id="toastMethod" class="px-1.5 py-0.5 rounded font-black bg-pink-500/20 text-pink-300">bKash</span>
+            <span id="toastPrice" class="font-mono font-bold text-white">৳ 370</span>
+            <span id="toastTime" class="text-slate-400">• ১ মিনিট আগে</span>
           </div>
         </div>
-        <button id="closeDetailBtn" class="text-slate-400 hover:text-white text-2xl cursor-pointer">&times;</button>
       </div>
-
-      <div class="space-y-4 text-xs">
-        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex justify-between items-center">
-          <div>
-            <span class="text-slate-400 block font-medium">মূল্য (Price)</span>
-            <span id="detailPrice" class="text-2xl font-black text-white font-mono"></span>
-          </div>
-          <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/20">● In Stock</span>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-1.5">
-          <strong class="text-emerald-400 block font-bold">সুবিধা ও বৈশিষ্ট্য:</strong>
-          <p id="detailDesc" class="text-slate-300 leading-relaxed font-semibold"></p>
-        </div>
-
-        <div class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 text-slate-400 leading-relaxed">
-          ✓ WhatsApp, Telegram, IMO ভেরিফিকেশন ১০০% কার্যকরী।<br />
-          ✓ কোড না আসলে সাথে সাথে ১০০% ফ্রি রিপ্লেসমেন্ট ওয়ারেন্টি।
-        </div>
-      </div>
-
-      <div class="pt-2 flex gap-3">
-        <button id="closeDetailBtn2" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold cursor-pointer">বন্ধ করুন</button>
-        <button id="detailOrderNowBtn" class="flex-1 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 text-slate-950 rounded-xl font-extrabold text-sm shadow-md cursor-pointer transition-all">এখনই অর্ডার করুন</button>
+      <div class="mt-2 pt-2 border-t border-slate-800 flex items-center justify-between text-[10px] text-slate-400">
+        <span>🛡️ ১০০% ভেরিফাইড ডেলিভারি</span>
+        <span class="text-emerald-400 font-semibold text-[10px]">সরাসরি ওটিপি চ্যানেল</span>
       </div>
     </div>
   </div>
 
-  <!-- Order Modal with bKash & Nagad -->
+  <!-- Order Modal with bKash / Nagad and Customer Name Field -->
   <div id="orderModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-4">
-    <div class="w-full max-w-lg bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-6 sm:p-7 space-y-5">
+    <div class="w-full max-w-lg bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-6 space-y-5">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <div class="flex items-center gap-2">
-          <span class="text-xl">🛒</span>
-          <h3 class="text-xl font-black text-white">অর্ডার সম্পন্ন করুন</h3>
-        </div>
+        <h3 class="text-lg font-black text-white">🛒 অর্ডার সম্পন্ন করুন</h3>
         <button id="closeModalBtn" class="text-slate-400 hover:text-white text-2xl cursor-pointer">&times;</button>
       </div>
-
       <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
         <div class="flex items-center gap-3">
           <span id="modalFlag" class="text-3xl"></span>
@@ -198,113 +245,43 @@
           <span id="modalPrice" class="text-2xl font-black text-white font-mono"></span>
         </div>
       </div>
-
       <div class="space-y-2">
-        <label class="text-xs font-bold text-slate-300 uppercase tracking-wider block">
-          পেমেন্ট মেথড নির্বাচন করুন:
-        </label>
+        <label class="text-xs font-bold text-slate-300 uppercase block">পেমেন্ট মেথড:</label>
         <div class="grid grid-cols-2 gap-3">
-          <button 
-            type="button" 
-            id="payMethodBkash" 
-            class="p-3 rounded-2xl border flex items-center gap-3 transition-all cursor-pointer text-left border-pink-500 bg-pink-500/10 shadow-lg shadow-pink-500/20 ring-1 ring-pink-500"
-          >
-            <div class="w-10 h-10 rounded-xl bg-pink-950/40 border border-pink-500/30 flex items-center justify-center shrink-0">
-              <svg viewBox="0 0 100 100" class="w-6 h-6" fill="none">
-                <path d="M49.2 12.5L14.8 45.4H42.7L49.2 12.5Z" fill="#E2136E"/>
-                <path d="M51.5 12.5L44.8 45.4H83.2L51.5 12.5Z" fill="#D11263"/>
-                <path d="M14.8 45.4L37.1 66.8L42.7 45.4H14.8Z" fill="#F03387"/>
-                <path d="M83.2 45.4L58.6 69.1L64.2 45.4H83.2Z" fill="#A80F4F"/>
-                <path d="M37.1 66.8L50.2 87.5L58.6 69.1H37.1Z" fill="#E2136E"/>
-                <path d="M58.6 69.1L85.2 65.4L64.2 45.4L58.6 69.1Z" fill="#C00E58"/>
-              </svg>
-            </div>
-            <div>
-              <div class="flex items-center gap-1">
-                <span class="font-extrabold text-sm sm:text-base text-white">bKash</span>
-                <span class="text-xs text-pink-400 font-bold">(বিকাশ)</span>
-              </div>
-              <span class="text-[11px] text-slate-400 block font-medium">Personal</span>
-            </div>
+          <button type="button" id="payMethodBkash" class="p-3 rounded-2xl border flex items-center gap-3 text-left border-pink-500 bg-pink-500/10 ring-1 ring-pink-500 cursor-pointer">
+            <span class="text-xl">🌸</span>
+            <div><span class="font-extrabold text-white text-sm">bKash</span><span class="text-[11px] text-slate-400 block">Personal</span></div>
           </button>
-
-          <button 
-            type="button" 
-            id="payMethodNagad" 
-            class="p-3 rounded-2xl border flex items-center gap-3 transition-all cursor-pointer text-left border-slate-800 bg-slate-950/70 hover:border-slate-700"
-          >
-            <div class="w-10 h-10 rounded-xl bg-amber-950/40 border border-amber-500/30 flex items-center justify-center shrink-0">
-              <svg viewBox="0 0 100 100" class="w-6 h-6" fill="none">
-                <circle cx="50" cy="50" r="46" fill="#F7941D" fill-opacity="0.12"/>
-                <path d="M50 15C32 15 22 29 22 46C22 66 38 82 56 82C68 82 78 74 78 61C78 48 67 42 56 42C48 42 42 46 39 51C37 42 42 27 57 27C65 27 71 31 73 37L81 31C76 21 66 15 50 15Z" fill="url(#nagadGradModalH)"/>
-                <path d="M56 50C62 50 67 54 67 61C67 68 62 73 55 73C45 73 35 64 33 53C36 49 42 47 47 47C50 47 53 48 56 50Z" fill="#ED1C24"/>
-                <defs>
-                  <linearGradient id="nagadGradModalH" x1="22" y1="15" x2="81" y2="82" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#FBB040"/>
-                    <stop offset="0.5" stop-color="#F7941D"/>
-                    <stop offset="1" stop-color="#ED1C24"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-            <div>
-              <div class="flex items-center gap-1">
-                <span class="font-extrabold text-sm sm:text-base text-white">Nagad</span>
-                <span class="text-xs text-amber-400 font-bold">(নগদ)</span>
-              </div>
-              <span class="text-[11px] text-slate-400 block font-medium">Personal</span>
-            </div>
+          <button type="button" id="payMethodNagad" class="p-3 rounded-2xl border flex items-center gap-3 text-left border-slate-800 bg-slate-950/70 hover:border-slate-700 cursor-pointer">
+            <span class="text-xl">🟠</span>
+            <div><span class="font-extrabold text-white text-sm">Nagad</span><span class="text-[11px] text-slate-400 block">Personal</span></div>
           </button>
         </div>
       </div>
-
-      <div id="paymentBox" class="p-4 rounded-2xl bg-slate-950 border border-pink-500/40 space-y-2.5 transition-all">
-        <div class="flex items-center justify-between">
-          <span id="paymentLabel" class="text-xs font-bold uppercase tracking-wider text-slate-300">
-            টাকা পাঠানোর bKash নাম্বার:
-          </span>
-          <span class="text-[11px] text-slate-400 font-semibold bg-slate-900 px-2 py-0.5 rounded-md border border-slate-800">
-            Send Money
-          </span>
+      <div id="paymentBox" class="p-4 rounded-2xl bg-slate-950 border border-pink-500/40 space-y-2.5">
+        <div class="flex items-center justify-between text-xs">
+          <span id="paymentLabel" class="font-bold text-slate-300">টাকা পাঠানোর bKash নাম্বার:</span>
+          <span class="bg-slate-900 px-2 py-0.5 rounded text-[11px] font-bold text-slate-400 border border-slate-800">Send Money</span>
         </div>
-        <div class="flex items-center justify-between gap-3 bg-slate-900/90 p-3 rounded-xl border border-slate-800">
-          <div>
-            <span class="text-2xl sm:text-3xl font-mono font-black text-amber-300 tracking-wider">
-              01965291171
-            </span>
-          </div>
-          <button 
-            type="button" 
-            id="copyNumberBtn" 
-            class="px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-bold rounded-xl border bg-slate-800 hover:bg-slate-700 text-white border-slate-700 cursor-pointer flex items-center gap-1.5 transition-all active:scale-95"
-          >
-            <span id="copyIcon">📋</span>
-            <span id="copyText">নম্বর কপি করুন</span>
-          </button>
+        <div class="flex items-center justify-between bg-slate-900 p-3 rounded-xl border border-slate-800">
+          <span class="text-2xl font-mono font-black text-amber-300">01965291171</span>
+          <button type="button" id="copyNumberBtn" class="px-3 py-1.5 text-xs font-bold rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 cursor-pointer">নম্বর কপি করুন</button>
         </div>
-        <p id="paymentNote" class="text-[11px] sm:text-xs text-slate-400 leading-relaxed">
-          💡 বিকাশ অ্যাপ বা *247# থেকে <strong class="text-slate-200">Send Money</strong> সম্পন্ন করে প্রাপ্ত TrxID নিচে লিখুন।
-        </p>
+        <p class="text-[11px] text-slate-400">💡 বিকাশ বা নগদ থেকে <strong class="text-slate-200">Send Money</strong> সম্পন্ন করে প্রাপ্ত TrxID নিচে লিখুন।</p>
       </div>
-
-      <div class="space-y-4">
+      <div class="space-y-3.5">
         <div>
-          <label class="text-xs font-bold text-slate-300 uppercase tracking-wider block mb-1.5">
-            Transaction ID (TrxID) বা প্রেরক নাম্বার: <span class="text-rose-400">*</span>
-          </label>
-          <input 
-            id="trxInput" 
-            type="text" 
-            placeholder="যেমন: BL82K9X7Y1 অথবা 017xxxxxxxx" 
-            class="w-full px-4 py-3.5 bg-slate-950 border border-slate-800 rounded-2xl text-sm sm:text-base font-mono text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium"
-          />
+          <label class="text-xs font-bold text-slate-300 uppercase block mb-1">আপনার নাম (Customer Name): *</label>
+          <input id="custNameInput" type="text" placeholder="যেমন: তানভীর আহমেদ" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-2xl text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium" />
+          <p id="nameError" class="text-xs text-rose-400 hidden mt-1">দয়া করে আপনার নাম লিখুন।</p>
         </div>
-
-        <button 
-          id="contactWhatsAppBtn" 
-          class="w-full py-4 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 text-slate-950 font-black text-base rounded-2xl transition-all shadow-xl shadow-emerald-500/25 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
-        >
-          <span>💬 অর্ডার করুন (WhatsApp)</span>
+        <div>
+          <label class="text-xs font-bold text-slate-300 uppercase block mb-1">Transaction ID (TrxID) বা প্রেরক নাম্বার: *</label>
+          <input id="trxInput" type="text" placeholder="যেমন: BL82K9X7Y1 অথবা 017xxxxxxxx" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-2xl text-sm font-mono text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium" />
+          <p id="trxError" class="text-xs text-rose-400 hidden mt-1">দয়া করে Transaction ID বা প্রেরক নম্বর লিখুন।</p>
+        </div>
+        <button id="contactWhatsAppBtn" class="btn-lift w-full py-4 bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-base rounded-2xl shadow-xl flex items-center justify-center gap-2 cursor-pointer">
+          💬 অর্ডার করুন (WhatsApp)
         </button>
       </div>
     </div>
@@ -315,8 +292,9 @@
     const WA_NUMBER = '8801605617380';
     let selectedMethod = 'bkash';
     let expandedCardId = null;
+    let currentItem = null;
 
-    // ২৯টি WhatsApp / OTP ভার্চুয়াল নাম্বার
+    // 29 WhatsApp / OTP Numbers
     const otpData = [
       { id: 'otp-1', name: 'USA', flag: '🇺🇸', price: 370, priceBn: '৩৭০', desc: 'হোয়াটসঅ্যাপ, টেলিগ্রাম, ইমো ও সোশ্যাল ভেরিফিকেশন' },
       { id: 'otp-2', name: 'UK', flag: '🇬🇧', price: 390, priceBn: '৩৯০', desc: 'ইউরোপের সেরা ক্লিন রিয়েল সিম, ইনস্ট্যান্ট এসএমএস' },
@@ -349,7 +327,7 @@
       { id: 'otp-29', name: 'South Africa', flag: '🇿🇦', price: 390, priceBn: '৩৯০', desc: 'দক্ষিণ আফ্রিকা ভোডাকম চ্যানেল' }
     ];
 
-    // ২৮টি ট্রাভেল ই-সিম (Russia ও Uzbekistan সহ)
+    // 28 Travel eSIMs
     const esimData = [
       { id: 'esim-1', country: 'USA (যুক্তরাষ্ট্র)', flag: '🇺🇸', price: 950, priceBn: '৯৫০', desc: 'বিশ্বব্যাপী বিভিন্ন অ্যাকাউন্ট ভেরিফিকেশন ও ব্যবহারের জন্য উপযোগী।' },
       { id: 'esim-2', country: 'UK (যুক্তরাজ্য)', flag: '🇬🇧', price: 1050, priceBn: '১,০৫০', desc: 'আন্তর্জাতিক কল, এসএমএস ও রোমিং সুবিধার জন্য সেরা।' },
@@ -372,7 +350,7 @@
       { id: 'esim-19', country: 'Indonesia / Bali (ইন্দোনেশিয়া)', flag: '🇮🇩', price: 1080, priceBn: '১,০৮০', desc: 'বালি ও ইন্দোনেশিয়ায় পর্যটকদের জন্য হাই-স্পিড ইন্টারনেট।' },
       { id: 'esim-20', country: 'New Zealand (নিউজিল্যান্ড)', flag: '🇳🇿', price: 1380, priceBn: '১,৩৮০', desc: 'ভ্রমণকারী ও শিক্ষার্থীদের জন্য দ্রুত ও সহজ সক্রিয়করণ।' },
       { id: 'esim-21', country: 'Portugal (পর্তুগাল)', flag: '🇵🇹', price: 1150, priceBn: '১,১৫০', desc: 'পর্তুগাল ও সমগ্র ইউরোপ জুড়ে ফোরজি/ফাইভজি রোমিং সাপোর্ট।' },
-      { id: 'esim-22', country: 'Austria (অস্ট্রিয়া)', flag: '🇦🇹', price: 1250, priceBn: '১,২৫০', desc: 'সেন্ট্রাল ইউরোপ ও ভিয়েনায় নিরবচ্ছিন্ন উচ্চগতির নেটওয়ার্ক।' },
+      { id: 'esim-22', country: 'Austria (অস্ট্রিয়া)', flag: '🇦🇹', price: 1250, priceBn: '১,২৫০', desc: 'সেন্টরাল ইউরোপ ও ভিয়েনায় নিরবচ্ছিন্ন উচ্চগতির নেটওয়ার্ক।' },
       { id: 'esim-23', country: 'Sweden (সুইডেন)', flag: '🇸🇪', price: 1280, priceBn: '১,২৮০', desc: 'স্ক্যান্ডিনেভিয়ান অঞ্চলের সেরা নেটওয়ার্ক কভারেজ ও ডাটা।' },
       { id: 'esim-24', country: 'Qatar (কাতার)', flag: '🇶🇦', price: 1380, priceBn: '১,৩৮০', desc: 'দোহা ও সমগ্র কাতারে দ্রুতগতির অরিডু/ভোডাফোন ডাটা।' },
       { id: 'esim-25', country: 'Kuwait (কুয়েত)', flag: '🇰🇼', price: 1320, priceBn: '১,৩২০', desc: 'কুয়েত ভ্রমণ ও কাজের জন্য নির্ভরযোগ্য হাই-স্পিড সংযোগ।' },
@@ -381,8 +359,104 @@
       { id: 'esim-uz', country: 'Uzbekistan (উজবেকিস্তান)', flag: '🇺🇿', price: 1250, priceBn: '১,২৫০', desc: 'উজবেকিস্তান ভ্রমণ ও নিরবচ্ছিন্ন হাই-স্পিড ডাটা সংযোগ।' }
     ];
 
-    let currentItem = null;
+    // 52 Recent Orders for Trust / Social Proof
+    const recentOrders = [
+      { name: 'তানভীর আহমেদ', location: 'মিরপুর, ঢাকা', item: 'USA WhatsApp Number', flag: '🇺🇸', price: 370, method: 'bKash', time: '১ মিনিট আগে' },
+      { name: 'সাকিব হাসান', location: 'ধানমন্ডি, ঢাকা', item: 'UK Travel eSIM', flag: '🇬🇧', price: 1050, method: 'Nagad', time: '২ মিনিট আগে' },
+      { name: 'মেহেদী হাসান', location: 'উত্তরা, ঢাকা', item: 'Canada WhatsApp Number', flag: '🇨🇦', price: 380, method: 'bKash', time: '৩ মিনিট আগে' },
+      { name: 'নাঈম ইসলাম', location: 'সিলেট সদর', item: 'Dubai Travel eSIM', flag: '🇦🇪', price: 1400, method: 'bKash', time: '৪ মিনিট আগে' },
+      { name: 'সাব্বির হোসেন', location: 'জিইসি, চট্টগ্রাম', item: 'Saudi Arabia WhatsApp Number', flag: '🇸🇦', price: 450, method: 'Nagad', time: '৫ মিনিট আগে' },
+      { name: 'ফারহান কবির', location: 'গুলশান, ঢাকা', item: 'Russia Travel eSIM', flag: '🇷🇺', price: 995, method: 'bKash', time: '৭ মিনিট আগে' },
+      { name: 'আরিফুল ইসলাম', location: 'খুলনা সদর', item: 'Germany WhatsApp Number', flag: '🇩🇪', price: 450, method: 'bKash', time: '৮ মিনিট আগে' },
+      { name: 'জাহিদুল হক', location: 'বোয়ালিয়া, রাজশাহী', item: 'Singapore Travel eSIM', flag: '🇸🇬', price: 1150, method: 'Nagad', time: '১০ মিনিট আগে' },
+      { name: 'কামরুল হাসান', location: 'কান্দিরপাড়, কুমিল্লা', item: 'France WhatsApp Number', flag: '🇫🇷', price: 430, method: 'bKash', time: '১১ মিনিট আগে' },
+      { name: 'রিয়াদ মাহমুদ', location: 'বগুড়া সদর', item: 'Japan Travel eSIM', flag: '🇯🇵', price: 1350, method: 'bKash', time: '১২ মিনিট আগে' },
+      { name: 'সৌরভ দাস', location: 'ময়মনসিংহ সদর', item: 'Netherlands WhatsApp Number', flag: '🇳🇱', price: 400, method: 'Nagad', time: '১৪ মিনিট আগে' },
+      { name: 'আশিকুর রহমান', location: 'বরিশাল সদর', item: 'Uzbekistan Travel eSIM', flag: '🇺🇿', price: 1250, method: 'bKash', time: '১৬ মিনিট আগে' },
+      { name: 'তানজিম আহমেদ', location: 'টঙ্গী, গাজীপুর', item: 'Malaysia WhatsApp Number', flag: '🇲🇾', price: 380, method: 'bKash', time: '১৮ মিনিট আগে' },
+      { name: 'শাহরিয়ার নাফিস', location: 'বনানী, ঢাকা', item: 'Thailand Travel eSIM', flag: '🇹🇭', price: 1050, method: 'Nagad', time: '১৯ মিনিট আগে' },
+      { name: 'মাহমুদুল হাসান', location: 'নারায়ণগঞ্জ সদর', item: 'Italy WhatsApp Number', flag: '🇮🇹', price: 420, method: 'bKash', time: '২১ মিনিট আগে' },
+      { name: 'ফাহিম ফয়সাল', location: 'রংপুর সদর', item: 'South Korea Travel eSIM', flag: '🇰🇷', price: 1300, method: 'bKash', time: '২৩ মিনিট আগে' },
+      { name: 'সাইফ উল্লাহ', location: 'কক্সবাজার সদর', item: 'Qatar WhatsApp Number', flag: '🇶🇦', price: 470, method: 'Nagad', time: '২৫ মিনিট আগে' },
+      { name: 'রাশেদুল করিম', location: 'যশোর সদর', item: 'Turkey Travel eSIM', flag: '🇹🇷', price: 1100, method: 'bKash', time: '২৭ মিনিট আগে' },
+      { name: 'নাজমুল হুদা', location: 'পাবনা সদর', item: 'Spain WhatsApp Number', flag: '🇪🇸', price: 410, method: 'bKash', time: '২৯ মিনিট আগে' },
+      { name: 'তৌহিদুল ইসলাম', location: 'ফেনী সদর', item: 'Indonesia / Bali eSIM', flag: '🇮🇩', price: 1080, method: 'Nagad', time: '৩১ মিনিট আগে' },
+      { name: 'ইমরান খান', location: 'শ্রীমঙ্গল, মৌলভীবাজার', item: 'Kuwait WhatsApp Number', flag: '🇰🇼', price: 460, method: 'bKash', time: '৩৪ মিনিট আগে' },
+      { name: 'আসিফ ইকবাল', location: 'টাঙ্গাইল সদর', item: 'Australia Travel eSIM', flag: '🇦🇺', price: 1150, method: 'Nagad', time: '৩৬ মিনিট আগে' },
+      { name: 'বাপ্পি সাহা', location: 'ব্রাহ্মণবাড়িয়া', item: 'Poland WhatsApp Number', flag: '🇵🇱', price: 360, method: 'bKash', time: '৩৮ মিনিট আগে' },
+      { name: 'নোমান সিদ্দিক', location: 'হবিগঞ্জ সদর', item: 'Switzerland Travel eSIM', flag: '🇨🇭', price: 1450, method: 'bKash', time: '৪০ মিনিট আগে' },
+      { name: 'ইশতিয়াক আহমেদ', location: 'মুন্সীগঞ্জ সদর', item: 'Portugal WhatsApp Number', flag: '🇵🇹', price: 380, method: 'Nagad', time: '৪৩ মিনিট আগে' },
+      { name: 'তরিকুল ইসলাম', location: 'দিনাজপুর সদর', item: 'Vietnam Travel eSIM', flag: '🇻🇳', price: 1060, method: 'bKash', time: '৪৬ মিনিট আগে' },
+      { name: 'শরিফুল ইসলাম', location: 'কুষ্টিয়া সদর', item: 'Japan WhatsApp Number', flag: '🇯🇵', price: 490, method: 'bKash', time: '৪৯ মিনিট আগে' },
+      { name: 'আল-আমিন', location: 'মাইজদী, নোয়াখালী', item: 'New Zealand Travel eSIM', flag: '🇳🇿', price: 1380, method: 'Nagad', time: '৫২ মিনিট আগে' },
+      { name: 'তাসনিম ফেরদৌস', location: 'মিরপুর ১০, ঢাকা', item: 'Sweden WhatsApp Number', flag: '🇸🇪', price: 440, method: 'bKash', time: '৫৫ মিনিট আগে' },
+      { name: 'মীর হোসাইন', location: 'চাঁদপুর সদর', item: 'Austria Travel eSIM', flag: '🇦🇹', price: 1250, method: 'bKash', time: '৫৮ মিনিট আগে' },
+      { name: 'মুস্তাকিম বিল্লাহ', location: 'নাটোর সদর', item: 'Turkey WhatsApp Number', flag: '🇹🇷', price: 390, method: 'Nagad', time: '১ ঘন্টা আগে' },
+      { name: 'সাদমান সাকিব', location: 'উত্তরা সেক্টর ৭, ঢাকা', item: 'Spain Travel eSIM', flag: '🇪🇸', price: 1180, method: 'bKash', time: '১ ঘন্টা আগে' },
+      { name: 'রফিকুল আলম', location: 'সিরাজগঞ্জ সদর', item: 'Romania WhatsApp Number', flag: '🇷🇴', price: 360, method: 'bKash', time: '১ ঘন্টা আগে' },
+      { name: 'মিনহাজুল আবেদীন', location: 'কিশোরগঞ্জ সদর', item: 'Germany Travel eSIM', flag: '🇩🇪', price: 1200, method: 'Nagad', time: '১ ঘন্টা আগে' },
+      { name: 'আবরার ফাহাদ', location: 'আগ্রাবাদ, চট্টগ্রাম', item: 'Switzerland WhatsApp Number', flag: '🇨🇭', price: 480, method: 'bKash', time: '১ ঘন্টা আগে' },
+      { name: 'রিফাত চৌধুরী', location: 'আম্বরখানা, সিলেট', item: 'Canada Travel eSIM', flag: '🇨🇦', price: 1100, method: 'bKash', time: '১ ঘন্টা আগে' },
+      { name: 'হাসান মাহমুদ', location: 'সাভার, ঢাকা', item: 'Austria WhatsApp Number', flag: '🇦🇹', price: 430, method: 'Nagad', time: '২ ঘন্টা আগে' },
+      { name: 'দিদারুল আলম', location: 'বাড্ডা, ঢাকা', item: 'USA Travel eSIM', flag: '🇺🇸', price: 950, method: 'bKash', time: '২ ঘন্টা আগে' },
+      { name: 'সোহাগ হোসেন', location: 'ফরিদপুর সদর', item: 'Singapore WhatsApp Number', flag: '🇸🇬', price: 460, method: 'bKash', time: '২ ঘন্টা আগে' },
+      { name: 'অনিক রায়', location: 'সাতক্ষীরা সদর', item: 'France Travel eSIM', flag: '🇫🇷', price: 1250, method: 'Nagad', time: '২ ঘন্টা আগে' },
+      { name: 'শামীম রেজা', location: 'ঝিনাইদহ সদর', item: 'Thailand WhatsApp Number', flag: '🇹🇭', price: 370, method: 'bKash', time: '২ ঘন্টা আগে' },
+      { name: 'তামিম ইকবাল', location: 'মহাখালী, ঢাকা', item: 'Italy Travel eSIM', flag: '🇮🇹', price: 1200, method: 'bKash', time: '২ ঘন্টা আগে' },
+      { name: 'ফয়সাল আহমেদ', location: 'গোপালগঞ্জ সদর', item: 'South Korea WhatsApp Number', flag: '🇰🇷', price: 470, method: 'Nagad', time: '২ ঘন্টা আগে' },
+      { name: 'এনামুল হক', location: 'জামালপুর সদর', item: 'Netherlands Travel eSIM', flag: '🇳🇱', price: 1220, method: 'bKash', time: '৩ ঘন্টা আগে' },
+      { name: 'সাঈদ আনোয়ার', location: 'নরসিংদী সদর', item: 'South Africa WhatsApp Number', flag: '🇿🇦', price: 390, method: 'bKash', time: '৩ ঘন্টা আগে' },
+      { name: 'রুবেল মিয়া', location: 'শরীয়তপুর সদর', item: 'Portugal Travel eSIM', flag: '🇵🇹', price: 1150, method: 'Nagad', time: '৩ ঘন্টা আগে' },
+      { name: 'আদনান সামি', location: 'লালমাটিয়া, ঢাকা', item: 'Philippines WhatsApp Number', flag: '🇵🇭', price: 360, method: 'bKash', time: '৩ ঘন্টা আগে' },
+      { name: 'সাজিদুর রহমান', location: 'নেত্রকোণা সদর', item: 'Sweden Travel eSIM', flag: '🇸🇪', price: 1280, method: 'bKash', time: '৩ ঘন্টা আগে' },
+      { name: 'ইব্রাহিম খলিল', location: 'ভোলা সদর', item: 'Indonesia WhatsApp Number', flag: '🇮🇩', price: 360, method: 'Nagad', time: '৩ ঘন্টা আগে' },
+      { name: 'নাভিদ হাসান', location: 'খিলগাঁও, ঢাকা', item: 'Russia Travel eSIM', flag: '🇷🇺', price: 995, method: 'bKash', time: '৩ ঘন্টা আগে' },
+      { name: 'তানজিলুর রহমান', location: 'বসুন্ধরা আ/এ, ঢাকা', item: 'USA WhatsApp Number', flag: '🇺🇸', price: 370, method: 'bKash', time: '৩ ঘন্টা আগে' },
+      { name: 'মহিউদ্দিন আহমেদ', location: 'পটুয়াখালী সদর', item: 'Malaysia Travel eSIM', flag: '🇲🇾', price: 850, method: 'Nagad', time: '৪ ঘন্টা আগে' }
+    ];
 
+    // Rotating live order toast
+    let currentToastIdx = 0;
+    const liveOrderToast = document.getElementById('liveOrderToast');
+    const toastFlag = document.getElementById('toastFlag');
+    const toastNameLoc = document.getElementById('toastNameLoc');
+    const toastItem = document.getElementById('toastItem');
+    const toastMethod = document.getElementById('toastMethod');
+    const toastPrice = document.getElementById('toastPrice');
+    const toastTime = document.getElementById('toastTime');
+
+    function showNextToast() {
+      const ord = recentOrders[currentToastIdx];
+      toastFlag.textContent = ord.flag;
+      toastNameLoc.textContent = `${ord.name} (${ord.location})`;
+      toastItem.textContent = ord.item;
+      toastMethod.textContent = ord.method;
+      toastMethod.className = `px-1.5 py-0.5 rounded font-black ${ord.method === 'bKash' ? 'bg-pink-500/20 text-pink-300' : 'bg-amber-500/20 text-amber-300'}`;
+      toastPrice.textContent = '৳ ' + ord.price;
+      toastTime.textContent = '• ' + ord.time;
+
+      liveOrderToast.classList.remove('translate-y-12', 'opacity-0', 'pointer-events-none');
+      liveOrderToast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        liveOrderToast.classList.add('translate-y-12', 'opacity-0', 'pointer-events-none');
+        liveOrderToast.classList.remove('translate-y-0', 'opacity-100');
+
+        // Wait 9 seconds before triggering next toast
+        setTimeout(showNextToast, 9000);
+      }, 5500);
+
+      currentToastIdx = (currentToastIdx + 1) % recentOrders.length;
+    }
+
+    // Initial 5 second delay before first appearance
+    setTimeout(showNextToast, 5000);
+
+    document.getElementById('closeToastBtn').onclick = () => {
+      liveOrderToast.classList.add('translate-y-12', 'opacity-0', 'pointer-events-none');
+    };
+
+    // Tabs
     const tabOtpBtn = document.getElementById('tabOtpBtn');
     const tabEsimBtn = document.getElementById('tabEsimBtn');
     const otpSection = document.getElementById('otpSection');
@@ -391,248 +465,133 @@
     tabOtpBtn.onclick = () => {
       otpSection.classList.remove('hidden');
       esimSection.classList.add('hidden');
-      tabOtpBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm sm:text-base font-extrabold bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 transition-all cursor-pointer';
-      tabEsimBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm sm:text-base font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer';
+      tabOtpBtn.className = 'flex-1 py-3 px-3 sm:px-5 rounded-xl text-xs sm:text-base font-extrabold bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 transition-all cursor-pointer';
+      tabEsimBtn.className = 'flex-1 py-3 px-3 sm:px-5 rounded-xl text-xs sm:text-base font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer';
     };
 
     tabEsimBtn.onclick = () => {
       esimSection.classList.remove('hidden');
       otpSection.classList.add('hidden');
-      tabEsimBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm sm:text-base font-extrabold bg-gradient-to-r from-cyan-500 to-blue-500 text-slate-950 transition-all cursor-pointer';
-      tabOtpBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm sm:text-base font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer';
+      tabEsimBtn.className = 'flex-1 py-3 px-3 sm:px-5 rounded-xl text-xs sm:text-base font-extrabold bg-gradient-to-r from-cyan-500 to-blue-500 text-slate-950 transition-all cursor-pointer';
+      tabOtpBtn.className = 'flex-1 py-3 px-3 sm:px-5 rounded-xl text-xs sm:text-base font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer';
     };
-
-    function toggleCard(id) {
-      expandedCardId = expandedCardId === id ? null : id;
-      renderOtp(document.getElementById('otpSearchInput').value);
-      renderEsim(document.getElementById('esimSearchInput').value);
-    }
-
-    // Render OTP Grid
-    const otpGrid = document.getElementById('otpGrid');
-    const otpSearchInput = document.getElementById('otpSearchInput');
 
     function renderOtp(filter = '') {
-      otpGrid.innerHTML = '';
-      const filtered = otpData.filter(d => 
-        d.name.toLowerCase().includes(filter.toLowerCase()) || 
-        d.price.toString().includes(filter) ||
-        d.priceBn.includes(filter)
-      );
-
-      filtered.forEach((item) => {
+      const grid = document.getElementById('otpGrid');
+      grid.innerHTML = '';
+      const filtered = otpData.filter(d => d.name.toLowerCase().includes(filter.toLowerCase()) || d.price.toString().includes(filter) || d.priceBn.includes(filter));
+      filtered.forEach(item => {
         const isExp = expandedCardId === item.id;
         const card = document.createElement('div');
-        card.className = `card-lift group rounded-3xl border bg-slate-900/70 p-5 sm:p-6 transition-all flex flex-col justify-between cursor-pointer relative overflow-hidden ${
-          isExp ? 'border-emerald-500 ring-1 ring-emerald-500/50 shadow-2xl shadow-emerald-500/10' : 'border-slate-800 hover:border-emerald-500/60 hover:shadow-2xl hover:shadow-emerald-500/15'
-        }`;
-        
+        card.className = `card-lift rounded-3xl border bg-slate-900/80 p-5 transition-all flex flex-col justify-between cursor-pointer ${isExp ? 'border-emerald-500 ring-1 ring-emerald-500/50' : 'border-slate-800'}`;
         card.innerHTML = `
-          <div class="space-y-4">
+          <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-4xl filter drop-shadow select-none group-hover:scale-110 transition-transform duration-300">${item.flag}</span>
-              <div class="flex items-center gap-1.5">
-                <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">OTP Clean</span>
-                <span class="text-xs text-slate-400 transition-transform duration-300 ${isExp ? 'rotate-180 text-emerald-400 font-bold' : ''}">▼</span>
-              </div>
+              <span class="text-4xl">${item.flag}</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">OTP Clean</span>
             </div>
             <div>
-              <h3 class="font-extrabold text-white text-lg group-hover:text-emerald-400 transition-colors">${item.name}</h3>
-              <p class="text-xs text-slate-400 mt-1 line-clamp-2 leading-relaxed">${item.desc}</p>
+              <h3 class="font-extrabold text-white text-base">${item.name}</h3>
+              <p class="text-xs text-slate-400 mt-1">${item.desc}</p>
             </div>
-            <div class="pt-3 border-t border-slate-800/80 flex items-baseline justify-between">
-              <span class="text-xs text-slate-400 font-medium">মূল্য:</span>
-              <span class="text-2xl font-black text-white font-mono">৳ ${item.price}</span>
+            <div class="pt-2 border-t border-slate-800 flex items-baseline justify-between">
+              <span class="text-xs text-slate-400">মূল্য:</span>
+              <span class="text-xl font-black text-white font-mono">৳ ${item.price} <span class="text-xs font-normal text-slate-400">(${item.priceBn})</span></span>
             </div>
-
             ${isExp ? `
-              <div class="pt-3 mt-1 border-t border-slate-800 space-y-2.5 text-xs text-slate-300">
-                <div class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-1.5">
-                  <span class="text-emerald-400 font-bold block text-xs">সুবিধা ও ওয়ারেন্টি:</span>
-                  <p class="text-slate-400 leading-relaxed text-[11px]">✓ WhatsApp, Telegram, IMO ভেরিফিকেশন ১০০% কার্যকরী।</p>
-                  <p class="text-slate-400 leading-relaxed text-[11px]">✓ কোড না আসলে সাথে সাথে ১০০% ফ্রি রিপ্লেসমেন্ট ওয়ারেন্টি।</p>
-                  <p class="text-slate-400 leading-relaxed text-[11px]">✓ পেমেন্ট কনফার্মেশনের সাথে সাথে ইনস্ট্যান্ট ডেলিভারি।</p>
-                </div>
+              <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-[11px] text-slate-300 space-y-1">
+                <p>✓ WhatsApp, Telegram, IMO ভেরিফিকেশন ১০০% কার্যকরী।</p>
+                <p>✓ কোড না আসলে সাথে সাথে ১০০% ফ্রি রিপ্লেসমেন্ট।</p>
               </div>
             ` : ''}
           </div>
-
-          <div class="mt-5 pt-1 grid grid-cols-2 gap-2" onclick="event.stopPropagation()">
-            <button class="toggle-exp-btn btn-lift px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold transition-all text-center cursor-pointer flex items-center justify-center gap-1.5" data-id="${item.id}">
-              <span>${isExp ? 'সংক্ষেপ করুন' : 'বিস্তারিত ড্রপডাউন'}</span>
-              <span class="text-[10px] transition-transform duration-200 ${isExp ? 'rotate-180' : ''}">▼</span>
-            </button>
-            <button class="order-now-btn btn-lift px-3 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black transition-all shadow-md text-center cursor-pointer active:scale-95" data-id="${item.id}">
-              অর্ডার করুন
-            </button>
+          <div class="mt-4 grid grid-cols-2 gap-2" onclick="event.stopPropagation()">
+            <button class="toggle-btn px-2.5 py-2 rounded-xl border border-slate-700 bg-slate-800 text-xs font-bold text-slate-300 cursor-pointer">${isExp ? 'সংক্ষেপ' : 'বিস্তারিত'}</button>
+            <button class="order-btn px-2.5 py-2 rounded-xl bg-emerald-500 text-slate-950 text-xs font-black cursor-pointer">অর্ডার করুন</button>
           </div>
         `;
-
-        card.onclick = () => toggleCard(item.id);
-        otpGrid.appendChild(card);
-      });
-
-      document.querySelectorAll('.toggle-exp-btn').forEach(btn => {
-        btn.onclick = (e) => {
-          e.stopPropagation();
-          toggleCard(btn.getAttribute('data-id'));
-        };
-      });
-
-      document.querySelectorAll('.order-now-btn').forEach(btn => {
-        btn.onclick = (e) => {
-          e.stopPropagation();
-          const itm = otpData.find(x => x.id === btn.getAttribute('data-id'));
-          openOrder(itm, 'otp');
-        };
+        card.onclick = () => { expandedCardId = isExp ? null : item.id; renderOtp(filter); };
+        card.querySelector('.toggle-btn').onclick = (e) => { e.stopPropagation(); expandedCardId = isExp ? null : item.id; renderOtp(filter); };
+        card.querySelector('.order-btn').onclick = (e) => { e.stopPropagation(); openOrder(item, 'otp'); };
+        grid.appendChild(card);
       });
     }
-
-    otpSearchInput.oninput = (e) => renderOtp(e.target.value);
-
-    // Render eSIM Grid
-    const esimGrid = document.getElementById('esimGrid');
-    const esimSearchInput = document.getElementById('esimSearchInput');
 
     function renderEsim(filter = '') {
-      esimGrid.innerHTML = '';
-      const filtered = esimData.filter(d => 
-        d.country.toLowerCase().includes(filter.toLowerCase()) || 
-        d.price.toString().includes(filter) ||
-        d.priceBn.includes(filter)
-      );
-
-      filtered.forEach((item) => {
+      const grid = document.getElementById('esimGrid');
+      grid.innerHTML = '';
+      const filtered = esimData.filter(d => d.country.toLowerCase().includes(filter.toLowerCase()) || d.price.toString().includes(filter) || d.priceBn.includes(filter));
+      filtered.forEach(item => {
         const isExp = expandedCardId === item.id;
         const card = document.createElement('div');
-        card.className = `card-lift group rounded-3xl border bg-slate-900/70 p-6 sm:p-7 transition-all flex flex-col justify-between cursor-pointer relative overflow-hidden ${
-          isExp ? 'border-cyan-500 ring-1 ring-cyan-500/50 shadow-2xl shadow-cyan-500/10' : 'border-slate-800 hover:border-cyan-500/60 hover:shadow-2xl hover:shadow-cyan-500/15'
-        }`;
-
+        card.className = `card-lift rounded-3xl border bg-slate-900/80 p-5 transition-all flex flex-col justify-between cursor-pointer ${isExp ? 'border-cyan-500 ring-1 ring-cyan-500/50' : 'border-slate-800'}`;
         card.innerHTML = `
-          <div class="space-y-4">
+          <div class="space-y-3">
             <div class="flex items-start justify-between">
-              <div class="flex items-center gap-3">
-                <span class="text-5xl filter drop-shadow select-none group-hover:scale-110 transition-transform duration-300">${item.flag}</span>
+              <div class="flex items-center gap-2.5">
+                <span class="text-4xl">${item.flag}</span>
                 <div>
-                  <h3 class="font-black text-white text-xl group-hover:text-cyan-400 transition-colors">${item.country}</h3>
-                  <span class="text-xs text-cyan-400 font-bold block mt-0.5">⏰ ২ মাসের মেয়াদ (60 Days)</span>
+                  <h3 class="font-extrabold text-white text-base">${item.country}</h3>
+                  <span class="text-[11px] text-cyan-400 font-bold block">⏰ ২ মাসের মেয়াদ (60 Days)</span>
                 </div>
               </div>
-              <span class="text-xs text-slate-400 transition-transform duration-300 ${isExp ? 'rotate-180 text-cyan-400 font-bold' : ''}">▼</span>
             </div>
-
-            <div class="p-3.5 rounded-2xl bg-slate-950/70 border border-slate-800 text-xs text-slate-300 leading-relaxed font-semibold">
-              ${item.desc}
+            <p class="text-xs text-slate-400">${item.desc}</p>
+            <div class="pt-2 border-t border-slate-800 flex items-baseline justify-between">
+              <span class="text-xs text-slate-400">প্যাকেজ রেট:</span>
+              <span class="text-xl font-black text-white font-mono">৳ ${item.price} <span class="text-xs font-normal text-slate-400">(${item.priceBn})</span></span>
             </div>
-
-            <div class="pt-2 flex items-baseline justify-between border-t border-slate-800/80">
-              <span class="text-xs text-slate-400 font-medium">প্যাকেজ রেট:</span>
-              <span class="text-2xl font-black text-white font-mono">৳ ${item.price}</span>
-            </div>
-
             ${isExp ? `
-              <div class="pt-3 mt-1 border-t border-slate-800 space-y-2.5 text-xs text-slate-300">
-                <div class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-1.5">
-                  <span class="text-cyan-400 font-bold block text-xs">ই-সিম অ্যাক্টিভেশন ও সুবিধা:</span>
-                  <p class="text-slate-400 leading-relaxed text-[11px]">✓ ফিজিক্যাল সিম ছাড়াই ইনস্ট্যান্ট QR কোড দিয়ে সক্রিয়করণ।</p>
-                  <p class="text-slate-400 leading-relaxed text-[11px]">✓ পূর্ণ ২ মাস (৬০ দিন) মেয়াদে হাই-স্পিড ডাটা ও রোমিং।</p>
-                  <p class="text-slate-400 leading-relaxed text-[11px]">✓ যেকোনো সোশ্যাল মিডিয়া ও প্ল্যাটফর্ম ভেরিফিকেশন সাপোর্টেড।</p>
-                </div>
+              <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-[11px] text-slate-300 space-y-1">
+                <p>✓ ইনস্ট্যান্ট QR কোড সক্রিয়করণ।</p>
+                <p>✓ পূর্ণ ৬০ দিন হাই-স্পিড ডাটা রোমিং সুবিধা।</p>
               </div>
             ` : ''}
           </div>
-
-          <div class="mt-5 grid grid-cols-2 gap-2.5" onclick="event.stopPropagation()">
-            <button class="toggle-esim-exp-btn btn-lift px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold transition-all text-center cursor-pointer flex items-center justify-center gap-1.5" data-id="${item.id}">
-              <span>${isExp ? 'সংক্ষেপ করুন' : 'বিস্তারিত ড্রপডাউন'}</span>
-              <span class="text-[10px] transition-transform duration-200 ${isExp ? 'rotate-180' : ''}">▼</span>
-            </button>
-            <button class="esim-order-btn btn-lift px-3 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-black transition-all shadow-md text-center cursor-pointer active:scale-95" data-id="${item.id}">
-              অর্ডার করুন
-            </button>
+          <div class="mt-4 grid grid-cols-2 gap-2" onclick="event.stopPropagation()">
+            <button class="toggle-btn px-2.5 py-2 rounded-xl border border-slate-700 bg-slate-800 text-xs font-bold text-slate-300 cursor-pointer">${isExp ? 'সংক্ষেপ' : 'বিস্তারিত'}</button>
+            <button class="order-btn px-2.5 py-2 rounded-xl bg-cyan-500 text-slate-950 text-xs font-black cursor-pointer">অর্ডার করুন</button>
           </div>
         `;
-
-        card.onclick = () => toggleCard(item.id);
-        esimGrid.appendChild(card);
-      });
-
-      document.querySelectorAll('.toggle-esim-exp-btn').forEach(btn => {
-        btn.onclick = (e) => {
-          e.stopPropagation();
-          toggleCard(btn.getAttribute('data-id'));
-        };
-      });
-
-      document.querySelectorAll('.esim-order-btn').forEach(btn => {
-        btn.onclick = (e) => {
-          e.stopPropagation();
-          const itm = esimData.find(x => x.id === btn.getAttribute('data-id'));
-          openOrder(itm, 'esim');
-        };
+        card.onclick = () => { expandedCardId = isExp ? null : item.id; renderEsim(filter); };
+        card.querySelector('.toggle-btn').onclick = (e) => { e.stopPropagation(); expandedCardId = isExp ? null : item.id; renderEsim(filter); };
+        card.querySelector('.order-btn').onclick = (e) => { e.stopPropagation(); openOrder(item, 'esim'); };
+        grid.appendChild(card);
       });
     }
 
-    esimSearchInput.oninput = (e) => renderEsim(e.target.value);
+    document.getElementById('otpSearchInput').oninput = (e) => renderOtp(e.target.value);
+    document.getElementById('esimSearchInput').oninput = (e) => renderEsim(e.target.value);
 
-    // Details Modal Logic
-    const detailsModal = document.getElementById('detailsModal');
-    function openDetails(item, type) {
-      currentItem = { ...item, type };
-      document.getElementById('detailFlag').textContent = item.flag;
-      document.getElementById('detailTitle').textContent = type === 'esim' ? item.country : item.name;
-      document.getElementById('detailType').textContent = type === 'esim' ? '🌐 Travel eSIM (২ মাসের মেয়াদ)' : '📱 WhatsApp / OTP Number';
-      document.getElementById('detailPrice').textContent = '৳ ' + item.price;
-      document.getElementById('detailDesc').textContent = item.desc;
-
-      detailsModal.classList.remove('hidden');
-      detailsModal.classList.add('flex');
-    }
-
-    const closeDetail = () => {
-      detailsModal.classList.add('hidden');
-      detailsModal.classList.remove('flex');
-    };
-    document.getElementById('closeDetailBtn').onclick = closeDetail;
-    document.getElementById('closeDetailBtn2').onclick = closeDetail;
-    document.getElementById('detailOrderNowBtn').onclick = () => {
-      closeDetail();
-      openOrder(currentItem, currentItem.type);
-    };
-
-    // Order Modal Logic
+    // Order Modal
     const orderModal = document.getElementById('orderModal');
     const trxInput = document.getElementById('trxInput');
-    const contactWhatsAppBtn = document.getElementById('contactWhatsAppBtn');
-    const payMethodBkash = document.getElementById('payMethodBkash');
-    const payMethodNagad = document.getElementById('payMethodNagad');
-    const paymentBox = document.getElementById('paymentBox');
-    const paymentLabel = document.getElementById('paymentLabel');
-    const paymentNote = document.getElementById('paymentNote');
-    const copyNumberBtn = document.getElementById('copyNumberBtn');
-    const copyText = document.getElementById('copyText');
-    const copyIcon = document.getElementById('copyIcon');
+    const trxError = document.getElementById('trxError');
 
-    function selectMethod(method) {
-      selectedMethod = method;
-      if (method === 'bkash') {
-        payMethodBkash.className = 'p-3 rounded-2xl border flex items-center gap-3 transition-all cursor-pointer text-left border-pink-500 bg-pink-500/10 shadow-lg shadow-pink-500/20 ring-1 ring-pink-500';
-        payMethodNagad.className = 'p-3 rounded-2xl border flex items-center gap-3 transition-all cursor-pointer text-left border-slate-800 bg-slate-950/70 hover:border-slate-700';
-        paymentBox.className = 'p-4 rounded-2xl bg-slate-950 border border-pink-500/40 space-y-2.5 transition-all';
+    function selectMethod(m) {
+      selectedMethod = m;
+      const payMethodBkash = document.getElementById('payMethodBkash');
+      const payMethodNagad = document.getElementById('payMethodNagad');
+      const paymentBox = document.getElementById('paymentBox');
+      const paymentLabel = document.getElementById('paymentLabel');
+      if (m === 'bkash') {
+        payMethodBkash.className = 'p-3 rounded-2xl border flex items-center gap-3 text-left border-pink-500 bg-pink-500/10 ring-1 ring-pink-500 cursor-pointer';
+        payMethodNagad.className = 'p-3 rounded-2xl border flex items-center gap-3 text-left border-slate-800 bg-slate-950/70 hover:border-slate-700 cursor-pointer';
+        paymentBox.className = 'p-4 rounded-2xl bg-slate-950 border border-pink-500/40 space-y-2.5';
         paymentLabel.textContent = 'টাকা পাঠানোর bKash নাম্বার:';
-        paymentNote.innerHTML = '💡 বিকাশ অ্যাপ বা *247# থেকে <strong class="text-slate-200">Send Money</strong> সম্পন্ন করে প্রাপ্ত TrxID নিচে লিখুন।';
       } else {
-        payMethodNagad.className = 'p-3 rounded-2xl border flex items-center gap-3 transition-all cursor-pointer text-left border-amber-500 bg-amber-500/10 shadow-lg shadow-amber-500/20 ring-1 ring-amber-500';
-        payMethodBkash.className = 'p-3 rounded-2xl border flex items-center gap-3 transition-all cursor-pointer text-left border-slate-800 bg-slate-950/70 hover:border-slate-700';
-        paymentBox.className = 'p-4 rounded-2xl bg-slate-950 border border-amber-500/40 space-y-2.5 transition-all';
+        payMethodNagad.className = 'p-3 rounded-2xl border flex items-center gap-3 text-left border-amber-500 bg-amber-500/10 ring-1 ring-amber-500 cursor-pointer';
+        payMethodBkash.className = 'p-3 rounded-2xl border flex items-center gap-3 text-left border-slate-800 bg-slate-950/70 hover:border-slate-700 cursor-pointer';
+        paymentBox.className = 'p-4 rounded-2xl bg-slate-950 border border-amber-500/40 space-y-2.5';
         paymentLabel.textContent = 'টাকা পাঠানোর Nagad নাম্বার:';
-        paymentNote.innerHTML = '💡 নগদ অ্যাপ বা *167# থেকে <strong class="text-slate-200">Send Money</strong> সম্পন্ন করে প্রাপ্ত TrxID নিচে লিখুন।';
       }
     }
 
-    payMethodBkash.onclick = () => selectMethod('bkash');
-    payMethodNagad.onclick = () => selectMethod('nagad');
+    document.getElementById('payMethodBkash').onclick = () => selectMethod('bkash');
+    document.getElementById('payMethodNagad').onclick = () => selectMethod('nagad');
+
+    const custNameInput = document.getElementById('custNameInput');
+    const nameError = document.getElementById('nameError');
 
     function openOrder(item, type) {
       currentItem = { ...item, type };
@@ -641,61 +600,66 @@
       document.getElementById('modalTitle').textContent = type === 'esim' ? item.country + ' Travel eSIM' : item.name + ' WhatsApp Number';
       document.getElementById('modalValidityText').textContent = type === 'esim' ? '⏰ ২ মাসের মেয়াদ (2 Months Validity)' : '✓ ইনস্ট্যান্ট ওটিপি ভেরিফিকেশন';
       document.getElementById('modalPrice').textContent = '৳ ' + item.price;
+      custNameInput.value = '';
+      nameError.classList.add('hidden');
       trxInput.value = '';
+      trxError.classList.add('hidden');
       orderModal.classList.remove('hidden');
       orderModal.classList.add('flex');
-      trxInput.focus();
+      custNameInput.focus();
     }
 
-    document.getElementById('closeModalBtn').onclick = () => {
+    const closeOrder = () => {
       orderModal.classList.add('hidden');
       orderModal.classList.remove('flex');
     };
+    document.getElementById('closeModalBtn').onclick = closeOrder;
 
-    function copyNumber() {
+    function copyNum() {
       navigator.clipboard.writeText(PAYMENT_NUMBER);
-      copyText.textContent = 'কপি হয়েছে!';
-      copyIcon.textContent = '✓';
-      copyNumberBtn.classList.remove('bg-slate-800', 'text-white', 'border-slate-700');
-      copyNumberBtn.classList.add('bg-emerald-500', 'text-slate-950', 'border-emerald-400');
-      setTimeout(() => {
-        copyText.textContent = 'নম্বর কপি করুন';
-        copyIcon.textContent = '📋';
-        copyNumberBtn.classList.remove('bg-emerald-500', 'text-slate-950', 'border-emerald-400');
-        copyNumberBtn.classList.add('bg-slate-800', 'text-white', 'border-slate-700');
-      }, 2500);
+      const btn = document.getElementById('copyNumberBtn');
+      btn.textContent = 'কপি হয়েছে! ✓';
+      setTimeout(() => { btn.textContent = 'নম্বর কপি করুন'; }, 2000);
     }
-    copyNumberBtn.onclick = copyNumber;
-
-    document.getElementById('copyPaymentTopBtn').onclick = () => {
+    document.getElementById('copyNumberBtn').onclick = copyNum;
+    document.getElementById('copyTopBtn').onclick = () => {
       navigator.clipboard.writeText(PAYMENT_NUMBER);
       alert('পেমেন্ট নাম্বার ' + PAYMENT_NUMBER + ' কপি হয়েছে!');
     };
 
-    contactWhatsAppBtn.onclick = () => {
+    document.getElementById('contactWhatsAppBtn').onclick = () => {
+      const name = custNameInput.value.trim();
+      if (!name) {
+        nameError.classList.remove('hidden');
+        custNameInput.focus();
+        return;
+      }
+      nameError.classList.add('hidden');
+
       const trx = trxInput.value.trim();
       if (!trx) {
-        alert('দয়া করে আপনার Transaction ID (TrxID) বা প্রেরক নাম্বার লিখুন।');
+        trxError.classList.remove('hidden');
         trxInput.focus();
         return;
       }
+      trxError.classList.add('hidden');
 
       const methodName = selectedMethod === 'bkash' ? 'bKash (বিকাশ)' : 'Nagad (নগদ)';
+      const itemLabel = currentItem.type === 'esim' ? currentItem.country + ' Travel eSIM (২ মাসের মেয়াদ)' : currentItem.name + ' WhatsApp/OTP Number';
       const msg = 
         `🛒 *নতুন অর্ডার (NEW ORDER)*\n` +
         `━━━━━━━━━━━━━━━━━━━━━━\n` +
-        `📦 *আইটেম:* ${currentItem.type === 'esim' ? currentItem.country + ' Travel eSIM (২ মাসের মেয়াদ)' : currentItem.name + ' WhatsApp/OTP Number'}\n` +
+        `👤 *কাস্টমারের নাম:* ${name}\n` +
+        `📦 *আইটেম:* ${itemLabel}\n` +
         `💰 *মূল্য (Price):* ৳ ${currentItem.price} BDT (৳ ${currentItem.priceBn})\n` +
         `💳 *পেমেন্ট মেথড:* ${methodName}\n` +
         `📱 *পেমেন্ট নাম্বার:* ${PAYMENT_NUMBER} (Personal)\n` +
         `🔖 *TrxID / প্রেরক নাম্বার:* ${trx}\n` +
         `━━━━━━━━━━━━━━━━━━━━━━\n` +
-        `হ্যালো অ্যাডমিন! আমি ${methodName}-এ ৳${currentItem.price} টাকা পাঠিয়েছি। দয়া করে আমার অর্ডারটি কনফার্ম করে ডেলিভারি দিন। ধন্যবাদ!`;
+        `হ্যালো অ্যাডমিন! আমি ${name}। ${methodName}-এ ৳${currentItem.price} টাকা পাঠিয়েছি। দয়া করে আমার অর্ডারটি কনফার্ম করে ডেলিভারি দিন। ধন্যবাদ!`;
 
-      const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
-      window.open(url, '_blank');
-      orderModal.classList.add('hidden');
-      orderModal.classList.remove('flex');
+      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+      closeOrder();
     };
 
     renderOtp();
