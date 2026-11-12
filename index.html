@@ -3,178 +3,294 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Virtual Number & eSIM Shop - আট মাসের গ্যারান্টিসহ ওটিপি ও ট্রাভেল ই-সিম</title>
-  <meta name="description" content="৮ মাসের গ্যারান্টিসহ আন্তর্জাতিক হোয়াটসঅ্যাপ ও ওটিপি ভার্চুয়াল নাম্বার এবং প্রিমিয়াম ট্রাভেল ই-সিম শপ। বাইন্যান্স পে UID: 1292487668" />
+  <title>Virtual Number & eSIM Shop - ৮ মাসের গ্যারান্টিসহ ওটিপি ও ট্রাভেল ই-সিম</title>
+  <meta name="description" content="৮ মাসের গ্যারান্টিসহ আন্তর্জাতিক হোয়াটসঅ্যাপ ও ওটিপি ভার্চুয়াল নাম্বার এবং প্রিমিয়াম ট্রাভেল ৫জি ই-সিম শপ। নগদ ও বাইন্যান্স পে সমর্থিত।" />
+  
+  <!-- Tailwind CSS & Google Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
-    body { font-family: 'Hind Siliguri', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; background-color: #050812; }
-    .font-mono { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
-    .card-lift { transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease; }
-    .card-lift:hover { transform: translateY(-3px); }
-    .btn-lift { transition: transform 0.18s ease, box-shadow 0.18s ease; }
-    .btn-lift:hover { transform: translateY(-2px); }
-    .btn-lift:active { transform: translateY(0) scale(0.98); }
-    ::-webkit-scrollbar { width: 7px; height: 7px; }
-    ::-webkit-scrollbar-track { background: #050812; }
-    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-    @keyframes pulseDot { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: 0.6; } }
-    .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 9999px; animation: pulseDot 2s infinite ease-in-out; }
+    body {
+      font-family: 'Hind Siliguri', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: #060913;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-variant-numeric: tabular-nums;
+    }
+    .premium-card {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .premium-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 24px -4px rgba(16, 185, 129, 0.15);
+    }
+    .premium-card-cyan:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 24px -4px rgba(6, 182, 212, 0.18);
+    }
+    .btn-lift {
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .btn-lift:hover {
+      transform: translateY(-2px);
+    }
+    .btn-lift:active {
+      transform: translateY(0) scale(0.98);
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #060913; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
   </style>
 </head>
-<body class="text-slate-100 min-h-screen antialiased selection:bg-emerald-500 selection:text-slate-950 relative">
+<body class="text-slate-100 min-h-screen antialiased selection:bg-emerald-500 selection:text-slate-950 relative overflow-x-hidden">
 
   <!-- Background Ambient Glow -->
-  <div class="fixed inset-0 pointer-events-none z-0">
-    <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[140px]"></div>
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-24 left-1/4 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[140px]"></div>
     <div class="absolute top-1/3 right-10 w-[450px] h-[450px] bg-cyan-500/5 rounded-full blur-[140px]"></div>
+    <div class="absolute bottom-10 left-10 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-[140px]"></div>
   </div>
 
-  <!-- HEADER -->
-  <header class="border-b border-slate-800/80 bg-slate-950/90 sticky top-0 z-40 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3 relative z-10">
-      <div class="flex items-center gap-3 min-w-0">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-400 to-cyan-400 flex items-center justify-center text-slate-950 text-xl font-bold shadow-lg shadow-emerald-500/20 shrink-0">
-          📱
+  <!-- HEADER (Clean 3-Zone Top Bar, Zero Clutter) -->
+  <header class="border-b border-slate-800/80 bg-[#070b16]/95 sticky top-0 z-40 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4 relative z-10">
+      
+      <!-- Zone 1: Brand Wordmark -->
+      <div class="flex items-center gap-3 shrink-0">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-500 flex items-center justify-center text-slate-950 text-lg font-black shadow-lg shadow-emerald-500/20">
+          🛡️
         </div>
-        <div class="min-w-0">
-          <h1 class="text-sm sm:text-base md:text-lg font-black text-white tracking-tight truncate flex items-center gap-1.5">
-            Virtual Number <span class="text-emerald-400">&</span> eSIM Shop
-            <span class="hidden lg:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-              <span class="live-dot bg-emerald-400"></span> <span data-i18n="verified">ভেরিফাইড শপ</span>
-            </span>
-          </h1>
-          <p class="text-[11px] text-slate-400 font-medium truncate hidden sm:block" data-i18n="subTitle">
-            ৮ মাসের গ্যারান্টিসহ ওটিপি নাম্বার ও ট্রাভেল ই-সিম
-          </p>
+        <div class="flex flex-col">
+          <span class="font-black text-white text-base tracking-tight whitespace-nowrap">
+            Numify <span class="text-emerald-400">&</span> eSIM
+          </span>
+          <span class="text-[10px] text-slate-400 font-medium whitespace-nowrap hidden sm:block" id="subBrandText">
+            ৮ মাসের অফিসিয়াল রিপ্লেসমেন্ট গ্যারান্টি
+          </span>
         </div>
       </div>
 
-      <!-- Right Controls -->
-      <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
-        <!-- Binance Pay UID Chip -->
-        <div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs">
-          <span class="text-amber-400 font-black text-xs">🟡 Pay:</span>
-          <span class="font-mono font-black text-amber-300 text-xs sm:text-sm">1292487668</span>
-          <button id="copyTopBinance" title="UID কপি করুন" class="text-amber-400 hover:text-white p-0.5 rounded transition-colors cursor-pointer text-[11px] font-bold">📋</button>
+      <!-- Zone 2: Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold text-slate-300">
+        <button id="navOtpBtn" class="text-emerald-400 font-bold border-b-2 border-emerald-400 pb-0.5 transition-colors cursor-pointer">
+          হোয়াটসঅ্যাপ / ওটিপি (২৯)
+        </button>
+        <button id="navEsimBtn" class="text-slate-400 hover:text-white transition-colors cursor-pointer">
+          ট্রাভেল ৫জি ই-সিম (২৮)
+        </button>
+        <a href="#reviews" class="text-slate-400 hover:text-white transition-colors">গ্রাহক মতামত</a>
+        <a href="#faqs" class="text-slate-400 hover:text-white transition-colors">প্রশ্নোত্তর (FAQ)</a>
+        <button id="openTrackTopBtn" class="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors cursor-pointer">
+          <span>📜 অর্ডার ট্র্যাকিং</span>
+        </button>
+      </nav>
+
+      <!-- Zone 3: Currency, Language & WhatsApp Action -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- Currency Display Switcher -->
+        <div class="flex items-center p-0.5 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-mono">
+          <button id="currBdt" class="px-2 py-1 rounded font-bold bg-emerald-500 text-slate-950 transition-all cursor-pointer">৳ BDT</button>
+          <button id="currUsdt" class="px-2 py-1 rounded font-bold text-slate-400 hover:text-white transition-all cursor-pointer">$ USDT</button>
         </div>
 
-        <!-- bKash Chip -->
-        <div class="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs">
-          <span class="text-slate-400 font-medium text-[11px]">bKash:</span>
-          <span class="font-mono font-bold text-slate-200 text-xs">01965291171</span>
-          <button id="copyTopBkash" title="নম্বর কপি করুন" class="text-slate-400 hover:text-white p-0.5 rounded transition-colors cursor-pointer text-[11px]">📋</button>
+        <!-- Language Switcher -->
+        <div class="flex items-center p-0.5 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-bold">
+          <button id="langBn" class="px-2 py-1 rounded bg-slate-800 text-emerald-400 transition-all cursor-pointer">বাং</button>
+          <button id="langEn" class="px-2 py-1 rounded text-slate-400 hover:text-white transition-all cursor-pointer">EN</button>
         </div>
 
-        <!-- Dual Language Switcher: [ বাং | EN ] -->
-        <div class="inline-flex p-1 rounded-xl bg-slate-900 border border-slate-700/80 shadow-md">
-          <button id="langBn" class="px-2.5 py-1 rounded-lg text-xs font-black transition-all cursor-pointer bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950">বাং</button>
-          <button id="langEn" class="px-2.5 py-1 rounded-lg text-xs font-black transition-all cursor-pointer text-slate-400 hover:text-white">EN</button>
-        </div>
-
-        <!-- Tracking Button -->
-        <button id="openTrackBtn" class="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-bold text-slate-200 transition-all cursor-pointer">
-          <span>📜 <span data-i18n="tracking">ট্র্যাকিং</span></span>
+        <!-- Mobile Tracking Button -->
+        <button id="openTrackMobileBtn" class="lg:hidden p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white cursor-pointer" title="অর্ডার ট্র্যাকিং">
+          📜
         </button>
 
-        <!-- WhatsApp Button -->
-        <a href="https://wa.me/8801605617380" target="_blank" class="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-lg shadow-emerald-500/25 transition-all transform hover:scale-110 active:scale-95 cursor-pointer ring-2 ring-emerald-400/40">
-          <svg viewBox="0 0 24 24" class="w-5 h-5 fill-white"><path d="M12.031 2C6.495 2 2 6.495 2 12.031c0 1.908.533 3.692 1.458 5.215L2 22l4.908-1.428a9.988 9.988 0 0 0 5.123 1.459h.004c5.535 0 10.031-4.496 10.031-10.031 0-2.68-1.043-5.199-2.936-7.092C17.23 2.943 14.71 2 12.031 2zm0 18.358c-1.621 0-3.21-.437-4.604-1.264l-.33-.196-3.42.996.996-3.332-.215-.342a8.318 8.318 0 0 1-1.277-4.489c0-4.604 3.746-8.35 8.35-8.35 2.23 0 4.327.869 5.904 2.446a8.293 8.293 0 0 1 2.446 5.904c0 4.604-3.746 8.35-8.35 8.35zm4.577-6.244c-.251-.126-1.487-.734-1.718-.817-.23-.084-.398-.126-.565.126-.168.251-.649.817-.796.985-.146.168-.293.189-.544.063-.251-.126-1.06-.391-2.019-1.246-.746-.666-1.25-1.488-1.396-1.74-.146-.251-.016-.387.11-.512.113-.113.251-.293.377-.44.126-.146.168-.251.251-.419.084-.168.042-.314-.021-.44-.063-.126-.565-1.363-.775-1.867-.204-.492-.411-.425-.565-.433-.146-.008-.314-.01-.482-.01-.168 0-.44.063-.67.314-.23.251-.88.86-.88 2.097 0 1.238.901 2.433 1.026 2.601.126.168 1.772 2.705 4.293 3.794.6.259 1.069.414 1.434.53.603.192 1.152.165 1.586.1.484-.072 1.487-.608 1.697-1.194.21-.586.21-1.089.147-1.194-.063-.105-.23-.168-.482-.293z"/></svg>
+        <!-- WhatsApp Support Action -->
+        <a href="https://wa.me/8801605617380" target="_blank" rel="noreferrer" class="btn-lift flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 font-black text-xs shadow-md shadow-emerald-500/20 whitespace-nowrap cursor-pointer">
+          <svg viewBox="0 0 24 24" class="w-4 h-4 fill-slate-950"><path d="M12.031 2C6.495 2 2 6.495 2 12.031c0 1.908.533 3.692 1.458 5.215L2 22l4.908-1.428a9.988 9.988 0 0 0 5.123 1.459h.004c5.535 0 10.031-4.496 10.031-10.031 0-2.68-1.043-5.199-2.936-7.092C17.23 2.943 14.71 2 12.031 2zm0 18.358c-1.621 0-3.21-.437-4.604-1.264l-.33-.196-3.42.996.996-3.332-.215-.342a8.318 8.318 0 0 1-1.277-4.489c0-4.604 3.746-8.35 8.35-8.35 2.23 0 4.327.869 5.904 2.446a8.293 8.293 0 0 1 2.446 5.904c0 4.604-3.746 8.35-8.35 8.35zm4.577-6.244c-.251-.126-1.487-.734-1.718-.817-.23-.084-.398-.126-.565.126-.168.251-.649.817-.796.985-.146.168-.293.189-.544.063-.251-.126-1.06-.391-2.019-1.246-.746-.666-1.25-1.488-1.396-1.74-.146-.251-.016-.387.11-.512.113-.113.251-.293.377-.44.126-.146.168-.251.251-.419.084-.168.042-.314-.021-.44-.063-.126-.565-1.363-.775-1.867-.204-.492-.411-.425-.565-.433-.146-.008-.314-.01-.482-.01-.168 0-.44.063-.67.314-.23.251-.88.86-.88 2.097 0 1.238.901 2.433 1.026 2.601.126.168 1.772 2.705 4.293 3.794.6.259 1.069.414 1.434.53.603.192 1.152.165 1.586.1.484-.072 1.487-.608 1.697-1.194.21-.586.21-1.089.147-1.194-.063-.105-.23-.168-.482-.293z"/></svg>
+          <span class="hidden sm:inline">WhatsApp</span>
         </a>
       </div>
+
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="relative z-10 border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-slate-900/60 to-transparent py-8 sm:py-10 text-center">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
-      <div class="inline-flex items-center flex-wrap justify-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-bold text-emerald-400">
-        <span>🛡️ <span data-i18n="badgeWarranty">৮ মাসের ফুল রিপ্লেসমেন্ট গ্যারান্টি</span></span>
-        <span class="text-slate-600">•</span>
-        <span>🟡 <span data-i18n="badgeBinance">Binance Pay (UID: 1292487668) সমর্থিত</span></span>
-        <span class="text-slate-600">•</span>
-        <span>⚡ <span data-i18n="badgeInstant">ইনস্ট্যান্ট ডেলিভারি</span></span>
+  <!-- HERO SECTION -->
+  <section class="relative z-10 border-b border-slate-800/80 bg-gradient-to-b from-[#080d1a] via-[#060a14] to-transparent py-8 sm:py-12 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      
+      <!-- Value Proposition Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-bold text-emerald-400">
+        <span>🛡️</span>
+        <span id="badgeWarranty">৮ মাসের ফুল ফ্রি রিপ্লেসমেন্ট গ্যারান্টিসহ নির্ভরযোগ্য সেবা</span>
       </div>
 
-      <div class="space-y-2 max-w-3xl mx-auto">
-        <h2 class="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
-          <span data-i18n="hero1">আট মাসের গ্যারান্টিসহ</span> <br class="hidden sm:block" />
-          <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent" data-i18n="hero2">
+      <!-- Main Heading & Subtitle -->
+      <div class="space-y-3 max-w-3xl mx-auto">
+        <h1 class="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
+          <span id="hero1">আট মাসের গ্যারান্টিসহ</span> <br class="hidden sm:block" />
+          <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent" id="hero2">
             ভার্চুয়াল নাম্বার ও প্রিমিয়াম ট্রাভেল ই-সিম
           </span>
-        </h2>
-        <p class="text-xs sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed" data-i18n="heroDesc">
-          সবগুলো আট মাসের গ্যারান্টিসহ। আট মাসের ভিতরে কোনো সমস্যা হলে আবার চেঞ্জ করে দেওয়া হবে। বিকাশ, নগদ এবং বাইন্যান্স পে-তে নিরাপদে ইউএসডিটি বা বিডিটি পাঠিয়ে অর্ডার করুন।
+        </h1>
+        <p class="text-xs sm:text-sm md:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed" id="heroDesc">
+          সবগুলো আট মাসের ফুল রিপ্লেসমেন্ট গ্যারান্টিসহ। ৮ মাসের ভিতরে কোনো সমস্যা হলে সাথে সাথে ফ্রি রিপ্লেসমেন্ট। নগদ অথবা বাইন্যান্স পে-তে নিশ্চিন্তে অর্ডার সম্পন্ন করুন।
         </p>
       </div>
 
-      <!-- Payment Channels Box -->
-      <div class="max-w-2xl mx-auto p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-3">
-        <!-- Binance Box -->
-        <div class="w-full sm:w-1/2 p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-left space-y-1">
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-black text-amber-400">🟡 Binance Pay (USDT)</span>
-            <span class="text-[10px] text-amber-300 bg-amber-500/20 px-1.5 py-0.2 rounded font-bold font-mono">1 USDT ≈ 122 BDT</span>
-          </div>
-          <div class="flex items-center justify-between gap-2 pt-0.5">
-            <div>
-              <span class="text-[10px] text-slate-400 block font-medium">Binance Pay UID:</span>
-              <span class="font-mono font-black text-amber-300 text-sm sm:text-base">1292487668</span>
-            </div>
-            <button id="copyHeroBinance" class="btn-lift px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-black text-xs cursor-pointer">
-              📋 <span data-i18n="copy">কপি</span>
-            </button>
-          </div>
+      <!-- OFFICIAL PAYMENT CHANNELS (Nagad & Binance Pay Artwork) -->
+      <div class="w-full max-w-4xl mx-auto space-y-3">
+        <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-xs text-slate-400 font-medium">
+          <span class="text-emerald-400">✓ ৮ মাসের ফুল রিপ্লেসমেন্ট ওয়ারেন্টি</span>
+          <span>·</span>
+          <span class="text-amber-400">⚡ ২ মিনিটে হোয়াটসঅ্যাপে কোড ডেলিভারি</span>
+          <span>·</span>
+          <span>অনুমোদিত ২টি অফিসিয়াল পেমেন্ট মাধ্যম নিচে</span>
         </div>
 
-        <!-- bKash Box -->
-        <div class="w-full sm:w-1/2 p-3 rounded-xl bg-pink-500/10 border border-pink-500/30 text-left space-y-1">
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-black text-pink-400">📱 bKash / Nagad (BDT)</span>
-            <span class="text-[10px] text-pink-300 bg-pink-500/20 px-1.5 py-0.2 rounded font-bold">Personal Send Money</span>
-          </div>
-          <div class="flex items-center justify-between gap-2 pt-0.5">
-            <div>
-              <span class="text-[10px] text-slate-400 block font-medium">Payment Number:</span>
-              <span class="font-mono font-black text-pink-300 text-sm sm:text-base">01965291171</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+          
+          <!-- Channel 1: NAGAD (Authentic Logo Artwork) -->
+          <div class="rounded-2xl bg-gradient-to-b from-[#180e0d] to-[#0f0a09] border border-[#F34F22]/35 p-5 shadow-xl hover:border-[#F34F22]/60 transition-all">
+            <div class="flex items-center justify-between border-b border-[#F34F22]/20 pb-3">
+              <!-- Nagad Vector SVG Logo -->
+              <div class="flex items-center gap-2.5">
+                <svg viewBox="0 0 100 100" width="28" height="28" fill="none" class="shrink-0 drop-shadow-[0_2px_8px_rgba(243,79,34,0.4)]">
+                  <defs>
+                    <linearGradient id="nagadGrad" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stopColor="#FFA100"/>
+                      <stop offset="45%" stopColor="#F34F22"/>
+                      <stop offset="100%" stopColor="#D82312"/>
+                    </linearGradient>
+                    <linearGradient id="nagadYel" x1="40" y1="20" x2="80" y2="70" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stopColor="#FFCC00"/>
+                      <stop offset="100%" stopColor="#FF7700"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M20 52 C 20 28, 42 12, 68 18 C 76 20, 84 25, 87 32 C 90 40, 86 48, 78 52 C 68 57, 56 50, 52 42 C 48 34, 53 26, 60 23 C 44 23, 31 35, 31 51 C 31 68, 45 81, 62 81 C 72 81, 80 76, 85 69 C 83 78, 73 88, 59 88 C 37 88, 20 72, 20 52 Z" fill="url(#nagadGrad)"/>
+                  <circle cx="62" cy="50" r="11" fill="url(#nagadYel)"/>
+                  <circle cx="64" cy="48" r="4.5" fill="#FFFFFF" opacity="0.9"/>
+                </svg>
+                <div>
+                  <span class="text-white font-black text-base tracking-tight"><span class="text-[#F34F22]">ন</span>গদ</span>
+                  <span class="text-[10px] bg-[#F34F22]/20 text-[#FF855E] border border-[#F34F22]/40 px-1.5 py-0.2 rounded uppercase ml-1 font-bold">Personal</span>
+                </div>
+              </div>
+
+              <span class="text-[11px] font-semibold text-[#FF855E] bg-[#F34F22]/15 px-2.5 py-0.5 rounded-full border border-[#F34F22]/30">
+                Send Money (BDT)
+              </span>
             </div>
-            <button id="copyHeroBkash" class="btn-lift px-2.5 py-1 rounded-lg bg-pink-500 text-slate-950 font-black text-xs cursor-pointer">
-              📋 <span data-i18n="copy">কপি</span>
-            </button>
+
+            <div class="mt-3.5 flex items-center justify-between gap-3">
+              <div>
+                <span class="text-[11px] text-slate-400 block font-medium">নগদ পেমেন্ট নম্বর:</span>
+                <span class="font-mono text-lg sm:text-xl font-black text-white tracking-wider">01965291171</span>
+              </div>
+              <button id="copyHeroNagad" class="btn-lift inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#F34F22] hover:bg-[#d83c12] text-white font-bold text-xs cursor-pointer shadow-md shadow-[#F34F22]/25">
+                📋 <span>নম্বর কপি</span>
+              </button>
+            </div>
+
+            <div class="mt-3 pt-2.5 border-t border-[#F34F22]/15 flex items-center justify-between text-[11px] text-slate-400">
+              <span>নগদ অ্যাপে Send Money করুন</span>
+              <span class="text-emerald-400 font-medium">✓ কোনো অতিরিক্ত ফি নেই</span>
+            </div>
           </div>
+
+          <!-- Channel 2: BINANCE PAY (Authentic Logo Artwork) -->
+          <div class="rounded-2xl bg-gradient-to-b from-[#18150c] to-[#0f0e08] border border-[#F0B90B]/35 p-5 shadow-xl hover:border-[#F0B90B]/60 transition-all">
+            <div class="flex items-center justify-between border-b border-[#F0B90B]/20 pb-3">
+              <!-- Binance Vector SVG Logo -->
+              <div class="flex items-center gap-2">
+                <svg viewBox="0 0 124 124" width="26" height="26" fill="none" class="shrink-0 drop-shadow-[0_2px_8px_rgba(240,185,11,0.4)]">
+                  <path d="M62 44.5L74.5 57L87 44.5L74.5 32L62 44.5Z" fill="#F0B90B"/>
+                  <path d="M62 79.5L74.5 92L87 79.5L74.5 67L62 79.5Z" fill="#F0B90B"/>
+                  <path d="M37 62L49.5 74.5L62 62L49.5 49.5L37 62Z" fill="#F0B90B"/>
+                  <path d="M87 62L99.5 74.5L112 62L99.5 49.5L87 62Z" fill="#F0B90B"/>
+                  <path d="M62 9.5L74.5 22L49.5 47L37 34.5L62 9.5Z" fill="#F0B90B"/>
+                  <path d="M62 9.5L87 34.5L74.5 47L49.5 22L62 9.5Z" fill="#F0B90B"/>
+                  <path d="M62 114.5L37 89.5L49.5 77L74.5 102L62 114.5Z" fill="#F0B90B"/>
+                  <path d="M62 114.5L74.5 102L99.5 77L87 89.5L62 114.5Z" fill="#F0B90B"/>
+                  <path d="M12 62L24.5 49.5L37 62L24.5 74.5L12 62Z" fill="#F0B90B"/>
+                </svg>
+                <div class="flex items-center gap-1.5">
+                  <span class="font-black text-[#F0B90B] tracking-wider text-base uppercase">BINANCE</span>
+                  <span class="text-[10px] tracking-wide font-black px-1.5 py-0.2 rounded bg-[#F0B90B] text-slate-950 font-sans">PAY</span>
+                </div>
+              </div>
+
+              <span class="text-[11px] font-mono font-bold text-[#F0B90B] bg-[#F0B90B]/15 px-2.5 py-0.5 rounded-full border border-[#F0B90B]/30">
+                1 USDT ≈ 122 BDT
+              </span>
+            </div>
+
+            <div class="mt-3.5 flex items-center justify-between gap-3">
+              <div>
+                <span class="text-[11px] text-slate-400 block font-medium">বাইনান্স পে UID:</span>
+                <span class="font-mono text-lg sm:text-xl font-black text-[#F0B90B] tracking-wider">1292487668</span>
+              </div>
+              <button id="copyHeroBinance" class="btn-lift inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#F0B90B] hover:bg-[#d8a509] text-slate-950 font-black text-xs cursor-pointer shadow-md shadow-[#F0B90B]/25">
+                📋 <span>UID কপি</span>
+              </button>
+            </div>
+
+            <div class="mt-3 pt-2.5 border-t border-[#F0B90B]/15 flex items-center justify-between text-[11px] text-slate-400">
+              <span>Binance App > Pay > Send UID</span>
+              <span class="text-amber-400 font-mono font-medium">✓ Zero Gas Fee</span>
+            </div>
+          </div>
+
         </div>
       </div>
+
     </div>
   </section>
 
   <!-- MAIN CATALOG -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 relative z-10">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-6 relative z-10">
+    
+    <!-- Controls: Product Tabs, Region Filter & Search -->
     <div class="space-y-4">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        
         <!-- Tabs -->
-        <div class="inline-flex p-1.5 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl w-full sm:w-auto">
-          <button id="tabOtp" class="flex-1 sm:flex-none py-2.5 px-5 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 cursor-pointer">
+        <div class="inline-flex p-1.5 bg-slate-900/90 border border-slate-800 rounded-2xl shadow-xl w-full sm:w-auto">
+          <button id="tabOtp" class="flex-1 sm:flex-none py-2.5 px-6 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 shadow-md cursor-pointer transition-all">
             📱 WhatsApp / OTP (২৯)
           </button>
-          <button id="tabEsim" class="flex-1 sm:flex-none py-2.5 px-5 rounded-xl text-xs sm:text-sm font-extrabold text-slate-400 hover:text-white cursor-pointer">
-            🌐 Travel eSIM (২৮)
+          <button id="tabEsim" class="flex-1 sm:flex-none py-2.5 px-6 rounded-xl text-xs sm:text-sm font-extrabold text-slate-400 hover:text-white cursor-pointer transition-all">
+            🌐 Travel 5G eSIM (২৮)
           </button>
         </div>
 
-        <!-- Currency Display Switcher -->
-        <div class="flex items-center gap-2 p-1.5 rounded-2xl bg-slate-900 border border-slate-800 text-xs">
-          <span class="text-slate-400 text-[11px] pl-2 font-medium" data-i18n="currLabel">মূল্য প্রদর্শন:</span>
-          <button id="currBdt" class="px-3 py-1 rounded-xl font-mono font-bold bg-emerald-500 text-slate-950 cursor-pointer">৳ BDT</button>
-          <button id="currUsdt" class="px-3 py-1 rounded-xl font-mono font-bold text-slate-400 hover:text-white cursor-pointer">$ USDT</button>
+        <div class="flex items-center gap-2 text-xs text-slate-400 font-mono">
+          <span>মূল্য প্রদর্শন:</span>
+          <span class="font-bold text-white bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-lg" id="activeCurrencyDisplay">
+            BDT (৳)
+          </span>
         </div>
       </div>
 
-      <!-- Search -->
-      <div class="relative max-w-xl">
-        <input id="searchBox" type="text" placeholder="দেশ বা প্যাকেজ সার্চ করুন (যেমন: USA, UK, Canada, Dubai)..." class="w-full px-4 py-3 pl-11 bg-slate-900/90 border border-slate-800 rounded-2xl text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 shadow-inner" />
-        <span class="absolute left-4 top-3.5 text-slate-500 text-base">🔍</span>
+      <!-- Search & Filter Bar -->
+      <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+        <div class="relative flex-1 max-w-md">
+          <input id="searchBox" type="text" placeholder="দেশ সার্চ করুন (যেমন: USA, UK, Canada, Dubai)..." class="w-full pl-10 pr-4 py-2.5 bg-slate-900/90 border border-slate-800 rounded-xl text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 shadow-inner" />
+          <span class="absolute left-3.5 top-2.5 text-slate-500 text-sm">🔍</span>
+        </div>
+
+        <!-- Region Pills -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 text-xs" id="regionFiltersContainer">
+          <button onclick="setRegionFilter('all')" class="region-btn px-3 py-1.5 rounded-xl font-medium whitespace-nowrap bg-slate-800 text-white border border-slate-700 cursor-pointer" data-region="all">সকল দেশ</button>
+          <button onclick="setRegionFilter('popular')" class="region-btn px-3 py-1.5 rounded-xl font-medium whitespace-nowrap text-slate-400 hover:text-white bg-slate-900/60 cursor-pointer" data-region="popular">🔥 জনপ্রিয়</button>
+          <button onclick="setRegionFilter('europe')" class="region-btn px-3 py-1.5 rounded-xl font-medium whitespace-nowrap text-slate-400 hover:text-white bg-slate-900/60 cursor-pointer" data-region="europe">ইউরোপ</button>
+          <button onclick="setRegionFilter('americas')" class="region-btn px-3 py-1.5 rounded-xl font-medium whitespace-nowrap text-slate-400 hover:text-white bg-slate-900/60 cursor-pointer" data-region="americas">আমেরিকাস</button>
+          <button onclick="setRegionFilter('asia')" class="region-btn px-3 py-1.5 rounded-xl font-medium whitespace-nowrap text-slate-400 hover:text-white bg-slate-900/60 cursor-pointer" data-region="asia">এশিয়া ও মধ্যপ্রাচ্য</button>
+        </div>
       </div>
     </div>
 
@@ -182,10 +298,12 @@
     <section id="otpSec" class="space-y-4">
       <div class="flex items-center justify-between">
         <div>
-          <h3 class="text-lg sm:text-xl font-black text-white flex items-center gap-2"><span>📱</span> <span data-i18n="otpTitle">WhatsApp & OTP Virtual Numbers</span></h3>
-          <p class="text-xs text-slate-400" data-i18n="otpSub">সবগুলো আট মাসের গ্যারান্টিসহ। ৮ মাসের ভেতরে কোনো সমস্যা হলে ইনস্ট্যান্ট ফ্রি রিপ্লেসমেন্ট।</p>
+          <h2 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+            <span>📱</span> <span>WhatsApp & OTP Virtual Numbers</span>
+          </h2>
+          <p class="text-xs text-slate-400">সবগুলো আট মাসের ফুল রিপ্লেসমেন্ট গ্যারান্টিযুক্ত রিয়েল ফিজিক্যাল সিম।</p>
         </div>
-        <span class="text-xs text-emerald-400 font-mono font-bold bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20">২৯টি দেশ</span>
+        <span class="text-xs text-emerald-400 font-mono font-bold bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20" id="otpCountBadge">২৯টি দেশ</span>
       </div>
       <div id="otpGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </section>
@@ -194,171 +312,219 @@
     <section id="esimSec" class="space-y-4 hidden">
       <div class="flex items-center justify-between">
         <div>
-          <h3 class="text-lg sm:text-xl font-black text-white flex items-center gap-2"><span>🌐</span> <span data-i18n="esimTitle">International Travel eSIM</span></h3>
-          <p class="text-xs text-slate-400" data-i18n="esimSub">পূর্ণ ৬০ দিন (২ মাস) হাই-স্পিড ৫জি রোমিং ডাটা। কিউআর কোড স্ক্যান করে তাত্ক্ষণিক এক্টিভেশন।</p>
+          <h2 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+            <span>🌐</span> <span>International Travel 5G eSIM</span>
+          </h2>
+          <p class="text-xs text-slate-400">পূর্ণ ৬০ দিন (২ মাস) হাই-স্পিড ৫জি রোমিং ডাটা। কিউআর কোড স্ক্যান করে তাত্ক্ষণিক এক্টিভেশন।</p>
         </div>
-        <span class="text-xs text-cyan-400 font-mono font-bold bg-cyan-500/10 px-2.5 py-1 rounded-lg border border-cyan-500/20">২৮টি দেশ</span>
+        <span class="text-xs text-cyan-400 font-mono font-bold bg-cyan-500/10 px-2.5 py-1 rounded-lg border border-cyan-500/20" id="esimCountBadge">২৮টি দেশ</span>
       </div>
       <div id="esimGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </section>
 
-    <!-- TICKER & ROTATING REVIEWS -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-6">
-      <!-- Live Payments -->
-      <div class="p-5 rounded-3xl bg-slate-900/80 border border-slate-800 space-y-4 shadow-xl">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-          <div class="flex items-center gap-2">
-            <span class="live-dot bg-emerald-400"></span>
-            <h4 class="font-black text-white text-sm sm:text-base" data-i18n="liveTitle">সদ্য সম্পন্ন পেমেন্ট ও ডেলিভারি</h4>
+    <!-- REVIEWS SECTION -->
+    <section id="reviews" class="py-8 border-t border-slate-800/80 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+        <div>
+          <div class="flex items-center gap-1.5 text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">
+            <span>⭐</span> <span>গ্রাহক মতামত ও সত্য রিভিউ</span>
           </div>
-          <span class="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">রিয়েল-টাইম</span>
+          <h3 class="text-xl sm:text-2xl font-black text-white">কাস্টমারদের বাস্তব অভিজ্ঞতা ও রিভিউ</h3>
         </div>
-        <div id="paymentsList" class="space-y-2.5 max-h-96 overflow-y-auto pr-1"></div>
+        <p class="text-xs text-slate-400">নগদ ও বাইন্যান্স পে ব্যবহারকারী সন্তুষ্ট গ্রাহকদের মতামত।</p>
       </div>
 
-      <!-- Rotating Customer Comments -->
-      <div class="p-5 rounded-3xl bg-slate-900/80 border border-slate-800 space-y-4 shadow-xl flex flex-col justify-between">
-        <div>
-          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-            <div class="flex items-center gap-2">
-              <span class="text-amber-400 text-lg">⭐</span>
-              <h4 class="font-black text-white text-sm sm:text-base" data-i18n="revTitle">গ্রাহক মতামত ও সত্য রিভিউ</h4>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <span class="live-dot bg-amber-400"></span>
-              <span class="text-[10px] text-amber-300 font-mono" data-i18n="revTag">প্রতি ৭ সেকেন্ডে পরিবর্তিত</span>
-            </div>
-          </div>
-          <p class="text-xs text-slate-400 pt-2" data-i18n="revSub">আমাদের কাস্টমারদের বাস্তব অভিজ্ঞতা। বাইন্যান্স পে (UID: 1292487668) ও ৮ মাসের রিপ্লেসমেন্ট সার্ভিসের রিভিউ।</p>
-          <div id="reviewsList" class="space-y-3 pt-3 max-h-80 overflow-y-auto pr-1"></div>
-        </div>
+      <div id="reviewsList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
 
-        <!-- Add Review -->
-        <form id="commentForm" class="pt-3 border-t border-slate-800 space-y-2.5">
-          <div class="flex items-center justify-between text-xs font-bold text-slate-300">
-            <span data-i18n="leaveRev">আপনার অভিজ্ঞতা জানান:</span>
-            <span class="text-amber-400">★★★★★</span>
+      <!-- Submit Review Form -->
+      <div class="p-5 rounded-2xl bg-[#0b101c] border border-slate-800/90 max-w-2xl mx-auto space-y-3">
+        <span class="text-xs font-bold text-slate-200 block">আপনার অভিজ্ঞতা জানান:</span>
+        <form id="reviewForm" class="space-y-2.5">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <input id="rName" type="text" placeholder="আপনার নাম..." required class="px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500" />
+            <input id="rLoc" type="text" placeholder="শহর (যেমন: ঢাকা)..." class="px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500" />
+            <select id="rMethod" class="px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none focus:border-emerald-500">
+              <option value="Nagad">নগদ (Nagad)</option>
+              <option value="Binance Pay">Binance Pay</option>
+            </select>
           </div>
           <div class="flex gap-2">
-            <input id="revName" type="text" placeholder="আপনার নাম..." required class="w-1/3 px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none" />
-            <input id="revText" type="text" placeholder="সার্ভিস কেমন লেগেছে লিখুন..." required class="w-2/3 px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none" />
+            <input id="rComment" type="text" placeholder="সার্ভিস ও ৮ মাসের গ্যারান্টি নিয়ে আপনার মতামত লিখুন..." required class="flex-1 px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500" />
+            <button type="submit" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-emerald-500/30 text-xs font-bold cursor-pointer whitespace-nowrap">সাবমিট</button>
           </div>
-          <button type="submit" class="btn-lift w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-emerald-500/30 text-xs font-bold cursor-pointer" data-i18n="submitRev">✓ মতামত পোস্ট করুন</button>
         </form>
       </div>
-    </div>
+    </section>
 
-    <!-- FAQ -->
-    <div class="p-5 sm:p-7 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-4">
+    <!-- FAQ SECTION -->
+    <section id="faqs" class="py-8 border-t border-slate-800/80 space-y-6">
       <div class="text-center space-y-1">
-        <h4 class="text-base sm:text-xl font-black text-white" data-i18n="faqTitle">সচরাচর জিজ্ঞাসিত প্রশ্নাবলী (FAQ)</h4>
-        <p class="text-xs text-slate-400" data-i18n="faqSub">৮ মাসের গ্যারান্টি ও বাইন্যান্স পে সম্পর্কিত তথ্যাদি</p>
+        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">❓ প্রশ্ন ও উত্তর</span>
+        <h3 class="text-xl sm:text-2xl font-black text-white">৮ মাসের গ্যারান্টি ও পেমেন্ট বিষয়ক তথ্যাদি</h3>
+        <p class="text-xs text-slate-400">৮ মাসের ফুল রিপ্লেসমেন্ট ওয়ারেন্টি ও নগদ/বাইন্যান্স পে সংক্রান্ত যেকোনো প্রশ্ন।</p>
       </div>
       <div id="faqList" class="space-y-2.5 max-w-3xl mx-auto pt-2"></div>
-    </div>
+    </section>
+
   </main>
 
   <!-- FOOTER -->
-  <footer class="border-t border-slate-800/80 bg-slate-950 py-8 relative z-10 text-xs text-slate-400">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center flex-wrap gap-2 text-center md:text-left">
-        <span class="font-black text-white text-sm">Virtual Number & eSIM Shop</span>
-        <span>•</span>
-        <span>bKash/Nagad: <strong class="text-amber-300 font-mono">01965291171</strong></span>
-        <span>•</span>
-        <span>Binance Pay UID: <strong class="text-amber-400 font-mono">1292487668</strong></span>
+  <footer class="border-t border-slate-800/80 bg-[#070a14] py-8 text-xs text-slate-400 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">📱</div>
+          <div>
+            <span class="font-black text-white text-sm">Numify <span class="text-emerald-400">&</span> eSIM Shop</span>
+            <span class="block text-[11px] text-slate-500">৮ মাসের রিপ্লেসমেন্ট ওয়ারেন্টি সেবা</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-4 font-mono text-xs">
+          <div class="flex items-center gap-1.5 text-slate-300">
+            <span class="text-[#F34F22] font-black">নগদ:</span>
+            <strong class="text-white">01965291171</strong>
+          </div>
+          <span>·</span>
+          <div class="flex items-center gap-1.5 text-amber-400">
+            <span class="font-black">Binance UID:</span>
+            <strong>1292487668</strong>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button id="openTrackFooter" class="text-cyan-400 hover:text-cyan-300 font-bold cursor-pointer">📜 অর্ডার ট্র্যাকিং</button>
+          <span>·</span>
+          <a href="https://wa.me/8801605617380" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-bold">WhatsApp: +8801605617380</a>
+        </div>
+
       </div>
-      <div class="flex items-center gap-3">
-        <span>WhatsApp Support: <strong class="text-emerald-400 font-mono">+8801605617380</strong></span>
-        <span>•</span>
-        <button id="openTrackFooter" class="text-cyan-400 hover:text-cyan-300 font-bold underline cursor-pointer" data-i18n="tracking">অর্ডার ট্র্যাকিং</button>
+
+      <div class="pt-4 border-t border-slate-800/60 text-center text-[11px] text-slate-500">
+        © 2026 Numify & eSIM. সর্বস্বত্ব সংরক্ষিত। ৮ মাসের ফুল রিপ্লেসমেন্ট ওয়ারেন্টিসহ তাৎক্ষণিক ডেলিভারি।
       </div>
     </div>
   </footer>
 
-  <!-- CHECKOUT MODAL -->
-  <div id="orderModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-4">
-    <div class="w-full max-w-lg bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-5 sm:p-6 space-y-5">
+  <!-- CHECKOUT MODAL (ONLY Nagad & Binance Pay - No bKash!) -->
+  <div id="orderModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="w-full max-w-lg my-8 bg-[#0c111e] border border-slate-800 rounded-3xl shadow-2xl p-5 sm:p-6 space-y-5">
+      
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="text-base sm:text-lg font-black text-white flex items-center gap-2"><span>🛒</span> <span data-i18n="orderTitle">অর্ডার সম্পন্ন করুন</span></h3>
-        <button id="closeOrderModal" class="text-slate-400 hover:text-white text-2xl cursor-pointer">&times;</button>
+        <h3 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+          <span>🛍️</span> <span>অর্ডার সম্পন্ন করুন</span>
+        </h3>
+        <button id="closeOrderModal" class="text-slate-400 hover:text-white text-2xl cursor-pointer p-1">&times;</button>
       </div>
 
-      <!-- Item card -->
-      <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+      <!-- Item card summary -->
+      <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between gap-3">
         <div class="flex items-center gap-3">
-          <span id="mFlag" class="text-3xl">🇺🇸</span>
+          <span id="mFlag" class="text-3xl select-none">🇺🇸</span>
           <div>
-            <h4 id="mName" class="text-sm sm:text-base font-extrabold text-white">USA</h4>
-            <span class="inline-block text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 mt-1">৮ মাসের গ্যারান্টিযুক্ত</span>
+            <h4 id="mName" class="text-sm sm:text-base font-extrabold text-white">USA (United States)</h4>
+            <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 mt-1 inline-block" id="mBadge">
+              🛡️ ৮ মাসের রিপ্লেসমেন্ট গ্যারান্টি
+            </span>
           </div>
         </div>
-        <div class="text-right">
+        <div class="text-right shrink-0">
           <div id="mPriceBdt" class="text-base sm:text-lg font-black font-mono text-emerald-400">৳ ৩৯৫</div>
-          <div id="mPriceUsdt" class="text-xs font-mono text-amber-300 font-bold">$3.24 USDT</div>
+          <div id="mPriceUsdt" class="text-xs font-mono text-amber-400 font-bold">$3.24 USDT</div>
         </div>
       </div>
 
-      <!-- Payment selector -->
+      <!-- Payment Method Selector: ONLY NAGAD & BINANCE PAY -->
       <div class="space-y-2">
-        <label class="text-xs font-bold text-slate-300 uppercase block" data-i18n="selectMethod">পেমেন্ট মাধ্যম নির্বাচন করুন:</label>
-        <div class="grid grid-cols-3 gap-2">
-          <button type="button" id="mPayBkash" class="p-2.5 rounded-xl border border-pink-500/50 bg-pink-500/10 text-pink-400 font-bold text-xs flex flex-col items-center gap-1 cursor-pointer"><span>📱</span><span>bKash</span></button>
-          <button type="button" id="mPayNagad" class="p-2.5 rounded-xl border border-slate-800 bg-slate-950 text-slate-400 font-bold text-xs flex flex-col items-center gap-1 cursor-pointer"><span>📱</span><span>Nagad</span></button>
-          <button type="button" id="mPayBinance" class="p-2.5 rounded-xl border border-slate-800 bg-slate-950 text-slate-400 font-bold text-xs flex flex-col items-center gap-1 cursor-pointer"><span>🟡</span><span>Binance Pay</span></button>
+        <label class="text-xs font-bold text-slate-300 uppercase tracking-wider block">পেমেন্ট মাধ্যম নির্বাচন করুন:</label>
+        <div class="grid grid-cols-2 gap-3">
+          
+          <!-- Nagad Tab -->
+          <button type="button" id="mPayNagad" class="p-3 rounded-2xl border border-[#F34F22] bg-[#F34F22]/15 text-[#FF855E] font-bold text-xs flex flex-col justify-between gap-1.5 cursor-pointer shadow-[0_0_15px_rgba(243,79,34,0.15)]">
+            <div class="flex items-center gap-1.5 font-black text-sm">
+              <span class="text-[#F34F22]">ন</span>গদ (Nagad)
+            </div>
+            <span class="text-[10px] text-slate-300 font-mono">Personal Send Money</span>
+          </button>
+
+          <!-- Binance Pay Tab -->
+          <button type="button" id="mPayBinance" class="p-3 rounded-2xl border border-slate-800 bg-slate-950 text-slate-400 font-bold text-xs flex flex-col justify-between gap-1.5 cursor-pointer">
+            <div class="flex items-center gap-1.5 font-black text-sm text-[#F0B90B]">
+              BINANCE PAY
+            </div>
+            <span class="text-[10px] text-slate-400 font-mono">UID Send (USDT)</span>
+          </button>
+
         </div>
       </div>
 
-      <!-- Binance Instruction -->
-      <div id="mBinanceBox" class="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300 space-y-2 hidden">
+      <!-- Nagad Instruction Box -->
+      <div id="mNagadBox" class="p-4 rounded-2xl bg-gradient-to-br from-[#1b0f0e] to-[#120a09] border border-[#F34F22]/40 text-xs space-y-2.5">
         <div class="flex items-center justify-between">
-          <span class="font-extrabold text-amber-400">🟡 Binance Pay Instructions</span>
-          <span class="text-[10px] bg-amber-500/20 px-1.5 py-0.5 rounded font-mono font-bold">1 USDT ≈ 122 BDT</span>
+          <span class="font-bold text-[#FF855E] flex items-center gap-1.5">
+            <span>📱</span> <span>নগদ পার্সোনাল সেন্ড মানি</span>
+          </span>
+          <span class="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20" id="mNagadAmount">৳ ৩৯৫ টাকা</span>
         </div>
-        <p class="text-[11px] text-slate-300" data-i18n="binanceDesc">আপনার বাইন্যান্স অ্যাপের Pay অপশনে গিয়ে নিচের UID-তে সঠিক USDT সেন্ড করুন:</p>
-        <div class="flex items-center justify-between p-2 rounded-xl bg-slate-950/80 border border-amber-500/40">
-          <div><span class="text-[10px] text-slate-400 block">Binance Pay UID:</span><span class="font-mono font-black text-amber-300 text-sm sm:text-base">1292487668</span></div>
-          <button id="copyModalBinance" class="btn-lift px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-black text-xs cursor-pointer">📋 কপি</button>
+        <p class="text-[11px] text-slate-300">আপনার নগদ অ্যাপ থেকে "Send Money" অপশনে গিয়ে নিচের নম্বরে টাকা পাঠান:</p>
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950 border border-[#F34F22]/30">
+          <div>
+            <span class="text-[10px] text-slate-400 block font-medium">নগদ নম্বর:</span>
+            <span class="font-mono font-black text-white text-base">01965291171</span>
+          </div>
+          <button type="button" id="copyModalNagad" class="btn-lift px-3 py-1.5 rounded-lg bg-[#F34F22] hover:bg-[#d83c12] text-white font-bold text-xs cursor-pointer">📋 কপি</button>
         </div>
       </div>
 
-      <!-- bKash Instruction -->
-      <div id="mBkashBox" class="p-3.5 rounded-2xl bg-pink-500/10 border border-pink-500/30 text-xs text-pink-300 space-y-2">
+      <!-- Binance Instruction Box -->
+      <div id="mBinanceBox" class="p-4 rounded-2xl bg-gradient-to-br from-[#1b170c] to-[#121008] border border-[#F0B90B]/40 text-xs space-y-2.5 hidden">
         <div class="flex items-center justify-between">
-          <span class="font-extrabold text-pink-400">📱 bKash / Nagad Personal</span>
-          <span class="text-[10px] bg-pink-500/20 px-1.5 py-0.5 rounded font-bold">Send Money</span>
+          <span class="font-bold text-[#F0B90B] flex items-center gap-1.5">
+            <span>🟡</span> <span>Binance Pay (Zero Gas Fee)</span>
+          </span>
+          <span class="text-[10px] font-mono text-amber-300 font-bold bg-[#F0B90B]/15 px-2 py-0.5 rounded border border-[#F0B90B]/30" id="mBinanceAmount">$3.24 USDT</span>
         </div>
-        <p class="text-[11px] text-slate-300" data-i18n="bkashDesc">নিচের নম্বরে Send Money করুন। কোনো অতিরিক্ত ফি প্রযোজ্য নয়:</p>
-        <div class="flex items-center justify-between p-2 rounded-xl bg-slate-950/80 border border-pink-500/40">
-          <div><span class="text-[10px] text-slate-400 block">Payment Number:</span><span class="font-mono font-black text-pink-300 text-sm sm:text-base">01965291171</span></div>
-          <button id="copyModalBkash" class="btn-lift px-2.5 py-1 rounded-lg bg-pink-500 text-slate-950 font-black text-xs cursor-pointer">📋 কপি</button>
+        <p class="text-[11px] text-slate-300">Binance App > Pay অপশনে গিয়ে Send UID-তে নিচের নম্বরটি লিখুন:</p>
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950 border border-[#F0B90B]/30">
+          <div>
+            <span class="text-[10px] text-slate-400 block font-medium">Binance Pay UID:</span>
+            <span class="font-mono font-black text-[#F0B90B] text-base">1292487668</span>
+          </div>
+          <button type="button" id="copyModalBinance" class="btn-lift px-3 py-1.5 rounded-lg bg-[#F0B90B] hover:bg-[#d8a509] text-slate-950 font-black text-xs cursor-pointer">📋 কপি</button>
         </div>
       </div>
 
-      <div class="space-y-3">
+      <!-- Form Inputs -->
+      <div class="space-y-3.5">
         <div>
-          <label class="text-xs font-bold text-slate-300 uppercase block mb-1" data-i18n="nameLabel">আপনার নাম (Customer Name): *</label>
-          <input id="mCustName" type="text" placeholder="যেমন: তানভীর আহমেদ" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-2xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium" />
+          <label class="text-xs font-bold text-slate-300 uppercase tracking-wider block mb-1">আপনার নাম (Customer Name): *</label>
+          <input id="mCustName" type="text" placeholder="যেমন: তানভীর আহমেদ" class="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-white focus:outline-none focus:border-emerald-500" />
         </div>
         <div>
-          <label id="mTrxLabel" class="text-xs font-bold text-slate-300 uppercase block mb-1" data-i18n="trxLabel">Transaction ID (TrxID) বা প্রেরক নম্বর: *</label>
-          <input id="mTrxId" type="text" placeholder="যেমন: BL82K9X7Y1 অথবা 017xxxxxxxx" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-2xl text-sm font-mono text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium" />
+          <label id="mTrxLabel" class="text-xs font-bold text-slate-300 uppercase tracking-wider block mb-1">Transaction ID (TrxID) *</label>
+          <input id="mTrxId" type="text" placeholder="যেমন: 7K92P0X1 অথবা Sender নম্বর" class="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm font-mono text-white focus:outline-none focus:border-emerald-500" />
         </div>
-        <button id="mSubmitOrder" class="btn-lift w-full py-4 bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-base rounded-2xl shadow-xl flex items-center justify-center cursor-pointer" data-i18n="btnOrder">অর্ডার করুন</button>
+        <button id="mSubmitOrder" class="btn-lift w-full py-3.5 bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-500 text-slate-950 font-black text-sm rounded-xl shadow-xl shadow-emerald-500/20 cursor-pointer flex items-center justify-center gap-2">
+          <span>অর্ডার কনফার্ম করে হোয়াটসঅ্যাপে কোড নিন</span>
+        </button>
       </div>
+
     </div>
   </div>
 
   <!-- TRACKING MODAL -->
   <div id="trackModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-4">
-    <div class="w-full max-w-xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-5 sm:p-6 space-y-4 max-h-[92vh] flex flex-col">
+    <div class="w-full max-w-xl bg-[#0c111e] border border-slate-800 rounded-3xl shadow-2xl p-5 sm:p-6 space-y-4 max-h-[85vh] flex flex-col">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3 shrink-0">
-        <h3 class="text-base sm:text-lg font-black text-white flex items-center gap-2"><span>📜</span> <span data-i18n="trackingTitle">অর্ডার হিস্ট্রি ও ট্র্যাকিং</span></h3>
+        <h3 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+          <span>📜</span> <span>অর্ডার হিস্ট্রি ও ট্র্যাকিং</span>
+        </h3>
         <button id="closeTrackModal" class="text-slate-400 hover:text-white text-2xl cursor-pointer">&times;</button>
       </div>
       <div class="flex gap-2 shrink-0">
-        <input id="trackInput" type="text" placeholder="অর্ডার আইডি (যেমন: ORD-8924) অথবা TrxID..." class="flex-1 px-4 py-3 bg-slate-950 border border-slate-800 rounded-2xl text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 font-mono" />
-        <button id="trackSearchBtn" class="btn-lift px-5 py-3 rounded-2xl bg-emerald-500 text-slate-950 font-black text-xs sm:text-sm cursor-pointer">সার্চ</button>
+        <input id="trackInput" type="text" placeholder="অর্ডার আইডি (যেমন: ORD-892401) বা TrxID..." class="flex-1 px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:border-emerald-500 font-mono" />
+        <button id="trackSearchBtn" class="btn-lift px-5 py-2.5 rounded-xl bg-emerald-500 text-slate-950 font-black text-xs sm:text-sm cursor-pointer">সার্চ</button>
       </div>
       <div id="trackList" class="flex-1 overflow-y-auto space-y-3 pr-1"></div>
     </div>
@@ -367,420 +533,467 @@
   <!-- JAVASCRIPT LOGIC -->
   <script>
     const WA_NUMBER = "8801605617380";
-    const PAYMENT_NUMBER = "01965291171";
+    const NAGAD_NUMBER = "01965291171";
     const BINANCE_PAY_UID = "1292487668";
-    const BDT_TO_USDT = 122;
-    const formatUsdt = bdt => (bdt / BDT_TO_USDT).toFixed(2);
+    const USDT_RATE = 122;
+    const formatUsdt = bdt => (bdt / USDT_RATE).toFixed(2);
 
     const OTP_DATA = [
-      { id: 'otp-usa', name: 'USA (যুক্তরাষ্ট্র)', nameEn: 'USA (United States)', flag: '🇺🇸', price: 395, desc: 'হোয়াটসঅ্যাপ ও টেলিগ্রাম ভেরিফিকেশনের জন্য সেরা রিয়েল সিম।', descEn: 'High-quality physical SIM for WhatsApp & Telegram verification.' },
-      { id: 'otp-uk', name: 'United Kingdom (যুক্তরাজ্য)', nameEn: 'United Kingdom (UK)', flag: '🇬🇧', price: 420, desc: '+44 অফিসিয়াল নম্বর। ইনস্ট্যান্ট ওটিপি ও ৮ মাসের গ্যারান্টি।', descEn: '+44 official UK carrier number with instant OTP delivery.' },
-      { id: 'otp-canada', name: 'Canada (কানাডা)', nameEn: 'Canada', flag: '🇨🇦', price: 410, desc: 'কানাডিয়ান রিয়েল সিম ওটিপি। দ্রুত ডেলিভারি নিশ্চয়তা।', descEn: 'Canadian physical SIM line backed by 8-month warranty.' },
-      { id: 'otp-poland', name: 'Poland (পোল্যান্ড)', nameEn: 'Poland', flag: '🇵🇱', price: 385, desc: 'ইউরোপের সবচেয়ে সাশ্রয়ী নম্বর। ফেসবুক ও হোয়াটসঅ্যাপ সাপোর্ট।', descEn: 'Affordable EU physical SIM for instant account activation.' },
-      { id: 'otp-malaysia', name: 'Malaysia (মালয়েশিয়া)', nameEn: 'Malaysia', flag: '🇲🇾', price: 410, desc: 'মালয়েশিয়ান সেলকম নেটওয়ার্ক রিয়েল সিম ওটিপি।', descEn: 'Malaysian Celcom network SIM for instant verification.' },
-      { id: 'otp-turkey', name: 'Turkey (তুরস্ক)', nameEn: 'Turkey', flag: '🇹🇷', price: 420, desc: 'টার্কিশ অফিসিয়াল সিম। দ্রুত ভেরিফিকেশন কোড সুবিধা।', descEn: 'Turkish official telecom SIM with super-fast code reception.' },
-      { id: 'otp-netherlands', name: 'Netherlands (নেদারল্যান্ডস)', nameEn: 'Netherlands', flag: '🇳🇱', price: 430, desc: 'ডাচ নেটওয়ার্ক ভেরিফিকেশন প্রিমিয়াম নম্বর।', descEn: 'Premium European line on trusted Dutch cellular networks.' },
-      { id: 'otp-france', name: 'France (ফ্রান্স)', nameEn: 'France', flag: '🇫🇷', price: 460, desc: 'ফরাসি অফিসিয়াল ফ্রেন্স টেলিকম নম্বর। বিজনেস হোয়াটসঅ্যাপে সেরা।', descEn: 'Official French telecom number for Business WhatsApp.' },
-      { id: 'otp-germany', name: 'Germany (জার্মানি)', nameEn: 'Germany', flag: '🇩🇪', price: 480, desc: 'জার্মান রিয়েল টেলিকম সিম। আন্তর্জাতিক কাজের জন্য সবচেয়ে বিশ্বস্ত।', descEn: 'German genuine cellular line, highly trusted for international work.' },
-      { id: 'otp-italy', name: 'Italy (ইতালি)', nameEn: 'Italy', flag: '🇮🇹', price: 450, desc: 'ইতালিয়ান রিয়েল নম্বর। ৮ মাসের ভেতরে ফ্রি রিপ্লেসমেন্ট।', descEn: 'Italian real telecom number with 8-month free replacement.' },
-      { id: 'otp-spain', name: 'Spain (স্পেন)', nameEn: 'Spain', flag: '🇪🇸', price: 440, desc: 'স্প্যানিশ মোভিস্টার নেটওয়ার্ক নম্বর। দ্রুত ওটিপি রিসিপশন।', descEn: 'Spanish Movistar network line with prompt verification.' },
-      { id: 'otp-portugal', name: 'Portugal (পর্তুগাল)', nameEn: 'Portugal', flag: '🇵🇹', price: 410, desc: 'ইউরোপীয় নির্ভরযোগ্য সিম। ইনস্ট্যান্ট মেসেজিং অ্যাকাউন্ট।', descEn: 'Reliable EU SIM ideal for instant messaging activation.' },
-      { id: 'otp-sweden', name: 'Sweden (সুইডেন)', nameEn: 'Sweden', flag: '🇸🇪', price: 470, desc: 'সুইডিশ প্রিমিয়াম রিয়েল সিম কার্ড নম্বর।', descEn: 'Swedish premium physical SIM card verification line.' },
-      { id: 'otp-switzerland', name: 'Switzerland (সুইজারল্যান্ড)', nameEn: 'Switzerland', flag: '🇨🇭', price: 515, desc: '+41 সুইস কম সিম। সর্বোচ্চ নিরাপত্তা ও আন্তর্জাতিক মানের।', descEn: '+41 Swisscom SIM, offering top-tier privacy.' },
-      { id: 'otp-austria', name: 'Austria (অস্ট্রিয়া)', nameEn: 'Austria', flag: '🇦🇹', price: 460, desc: 'অস্ট্রিয়ান অফিসিয়াল সিম নাম্বার।', descEn: 'Austrian official cellular line with instant activation.' },
-      { id: 'otp-japan', name: 'Japan (জাপান)', nameEn: 'Japan', flag: '🇯🇵', price: 525, desc: 'জাপানি প্রিমিয়াম সিম। ৮ মাসের ফুল গ্যারান্টিযুক্ত।', descEn: 'Japanese premium cellular line backed by 8-month guarantee.' },
-      { id: 'otp-south-korea', name: 'South Korea (দক্ষিণ কোরিয়া)', nameEn: 'South Korea', flag: '🇰🇷', price: 525, desc: 'কোরিয়ান হাই-স্পিড ওটিপি রিসিপশন সাপোর্ট।', descEn: 'Korean high-speed OTP reception with high reliability.' },
-      { id: 'otp-singapore', name: 'Singapore (সিঙ্গাপুর)', nameEn: 'Singapore', flag: '🇸🇬', price: 475, desc: 'সিঙ্গাপুর রিয়েল টেলিকম নম্বর।', descEn: 'Singapore genuine carrier line for fintech and chat apps.' },
-      { id: 'otp-thailand', name: 'Thailand (থাইল্যান্ড)', nameEn: 'Thailand', flag: '🇹🇭', price: 395, desc: 'সাশ্রয়ী থাই এআইএস নেটওয়ার্ক নম্বর।', descEn: 'Affordable Thai AIS network line for quick registrations.' },
-      { id: 'otp-uae', name: 'UAE / Dubai (দুবাই)', nameEn: 'UAE / Dubai', flag: '🇦🇪', price: 520, desc: 'সংযুক্ত আরব আমিরাত (etisalat/du) ভেরিফিকেশন নম্বর।', descEn: 'UAE (Etisalat/Du) business verified cellular line.' },
-      { id: 'otp-saudi', name: 'Saudi Arabia (সৌদি আরব)', nameEn: 'Saudi Arabia', flag: '🇸🇦', price: 480, desc: 'সৌদি এসটিসি নেটওয়ার্ক অফিসিয়াল নম্বর।', descEn: 'Saudi STC network official line with 8-month warranty.' },
-      { id: 'otp-qatar', name: 'Qatar (কাতার)', nameEn: 'Qatar', flag: '🇶🇦', price: 505, desc: 'কাতারি ওরিডু নম্বর। ইনস্ট্যান্ট এক্টিভেশন সাপোর্ট।', descEn: 'Qatari Ooredoo network line with instant WhatsApp delivery.' },
-      { id: 'otp-kuwait', name: 'Kuwait (কুয়েত)', nameEn: 'Kuwait', flag: '🇰🇼', price: 495, desc: 'কুয়েত জেইন নেটওয়ার্ক ভার্চুয়াল নম্বর।', descEn: 'Kuwait Zain network virtual line for fast verification.' },
-      { id: 'otp-australia', name: 'Australia (অস্ট্রেলিয়া)', nameEn: 'Australia', flag: '🇦🇺', price: 485, desc: 'অস্ট্রেলিয়ান টেলস্ট্রা নেটওয়ার্ক নম্বর।', descEn: 'Australian Telstra cellular line for smooth verification.' },
-      { id: 'otp-new-zealand', name: 'New Zealand (নিউজিল্যান্ড)', nameEn: 'New Zealand', flag: '🇳🇿', price: 490, desc: '+64 কিউই রিয়েল নম্বর। দ্রুত ওটিপি।', descEn: '+64 Kiwi real line with instant code dispatch.' },
-      { id: 'otp-brazil', name: 'Brazil (ব্রাজিল)', nameEn: 'Brazil', flag: '🇧🇷', price: 395, desc: 'ল্যাটিন আমেরিকার সেরা নম্বর।', descEn: 'Top-tier Latin American verification SIM line.' },
-      { id: 'otp-indonesia', name: 'Indonesia (ইন্দোনেশিয়া)', nameEn: 'Indonesia', flag: '🇮🇩', price: 375, desc: 'সাশ্রয়ী ইন্দোনেশিয়ান সিম ভেরিফিকেশন।', descEn: 'Low-cost Indonesian SIM line for fast online activation.' },
-      { id: 'otp-vietnam', name: 'Vietnam (ভিয়েতনাম)', nameEn: 'Vietnam', flag: '🇻🇳', price: 385, desc: 'ভিয়েতনাম দ্রুতগতির ওটিপি সিম।', descEn: 'Vietnamese fast OTP reception physical line.' },
-      { id: 'otp-philippines', name: 'Philippines (ফিলিপাইন)', nameEn: 'Philippines', flag: '🇵🇭', price: 380, desc: 'ফিলিপাইন গ্লোব/স্মার্ট নেটওয়ার্ক সিম।', descEn: 'Philippines Globe/Smart network SIM for secure activation.' }
+      { id: 'otp-usa', name: 'USA (যুক্তরাষ্ট্র)', nameEn: 'USA (United States)', code: 'US', flag: '🇺🇸', price: 395, carrier: 'T-Mobile / AT&T Physical SIM', desc: 'হোয়াটসঅ্যাপ, টেলিগ্রাম ও গুগল ভেরিফিকেশনের জন্য সেরা রিয়েল ফিজিক্যাল সিম।', popular: true, region: 'americas' },
+      { id: 'otp-uk', name: 'United Kingdom (যুক্তরাজ্য)', nameEn: 'United Kingdom (UK)', code: 'GB', flag: '🇬🇧', price: 420, carrier: 'Vodafone / EE Official Line', desc: '+44 অফিসিয়াল নম্বর। ইনস্ট্যান্ট ওটিপি ও ৮ মাসের ফুল রিপ্লেসমেন্ট সুবিধা।', popular: true, region: 'europe' },
+      { id: 'otp-canada', name: 'Canada (কানাডা)', nameEn: 'Canada', code: 'CA', flag: '🇨🇦', price: 410, carrier: 'Rogers / Bell Carrier Line', desc: 'কানাডিয়ান রিয়েল সিম ওটিপি। দ্রুততম ডেলিভারি ও শতভাগ অ্যাকাউন্ট স্থায়িত্ব।', popular: true, region: 'americas' },
+      { id: 'otp-poland', name: 'Poland (পোল্যান্ড)', nameEn: 'Poland', code: 'PL', flag: '🇵🇱', price: 385, carrier: 'Play / Orange Polska', desc: 'ইউরোপের সবচেয়ে সাশ্রয়ী নম্বর। ফেসবুক, টেলিগ্রাম ও হোয়াটসঅ্যাপে দুর্দান্ত কাজ করে।', popular: true, region: 'europe' },
+      { id: 'otp-malaysia', name: 'Malaysia (মালয়েশিয়া)', nameEn: 'Malaysia', code: 'MY', flag: '🇲🇾', price: 410, carrier: 'Celcom / Maxis Telecom', desc: 'মালয়েশিয়ান সেলকম নেটওয়ার্ক রিয়েল সিম ওটিপি। নির্ভরযোগ্য ও দীর্ঘস্থায়ী।', region: 'asia' },
+      { id: 'otp-turkey', name: 'Turkey (তুরস্ক)', nameEn: 'Turkey', code: 'TR', flag: '🇹🇷', price: 420, carrier: 'Turkcell Official Line', desc: 'টার্কিশ অফিসিয়াল সিম। দ্রুত ভেরিফিকেশন কোড সুবিধা ও প্রিমিয়াম কোয়ালিটি।', region: 'asia' },
+      { id: 'otp-netherlands', name: 'Netherlands (নেদারল্যান্ডস)', nameEn: 'Netherlands', code: 'NL', flag: '🇳🇱', price: 430, carrier: 'KPN / Vodafone NL', desc: 'ডাচ নেটওয়ার্ক ভেরিফিকেশন প্রিমিয়াম নম্বর। ব্যবসায়িক কাজের জন্য সেরা।', region: 'europe' },
+      { id: 'otp-france', name: 'France (ফ্রান্স)', nameEn: 'France', code: 'FR', flag: '🇫🇷', price: 460, carrier: 'Orange / SFR France', desc: 'ফরাসি অফিসিয়াল ফ্রেন্স টেলিকম নম্বর। বিজনেস হোয়াটসঅ্যাপে সেরা।', popular: true, region: 'europe' },
+      { id: 'otp-germany', name: 'Germany (জার্মানি)', nameEn: 'Germany', code: 'DE', flag: '🇩🇪', price: 480, carrier: 'Deutsche Telekom / O2', desc: 'জার্মান রিয়েল টেলিকম সিম। আন্তর্জাতিক কাজের জন্য সবচেয়ে বিশ্বস্ত।', popular: true, region: 'europe' },
+      { id: 'otp-italy', name: 'Italy (ইতালি)', nameEn: 'Italy', code: 'IT', flag: '🇮🇹', price: 450, carrier: 'TIM / Vodafone Italia', desc: 'ইতালিয়ান রিয়েল নম্বর। ৮ মাসের ভেতরে কোনো সমস্যা হলে ফ্রি রিপ্লেসমেন্ট।', region: 'europe' },
+      { id: 'otp-spain', name: 'Spain (স্পেন)', nameEn: 'Spain', code: 'ES', flag: '🇪🇸', price: 440, carrier: 'Movistar / Orange España', desc: 'স্প্যানিশ মোভিস্টার নেটওয়ার্ক নম্বর। দ্রুত ওটিপি রিসিপশন নিশ্চয়তা।', region: 'europe' },
+      { id: 'otp-portugal', name: 'Portugal (পর্তুগাল)', nameEn: 'Portugal', code: 'PT', flag: '🇵🇹', price: 410, carrier: 'MEO / NOS Telecom', desc: 'ইউরোপীয় নির্ভরযোগ্য সিম। ইনস্ট্যান্ট মেসেজিং অ্যাকাউন্ট চালুর জন্য সেরা।', region: 'europe' },
+      { id: 'otp-sweden', name: 'Sweden (সুইডেন)', nameEn: 'Sweden', code: 'SE', flag: '🇸🇪', price: 470, carrier: 'Telia / Tele2 Sweden', desc: 'সুইডিশ প্রিমিয়াম রিয়েল সিম কার্ড নম্বর। সর্বোচ্চ প্রাইভেসি ও নিশ্চয়তা।', region: 'europe' },
+      { id: 'otp-switzerland', name: 'Switzerland (সুইজারল্যান্ড)', nameEn: 'Switzerland', code: 'CH', flag: '🇨🇭', price: 515, carrier: 'Swisscom Enterprise Line', desc: '+41 সুইস কম সিম। সর্বোচ্চ নিরাপত্তা ও আন্তর্জাতিক মানের প্রিমিয়াম লাইন।', region: 'europe' },
+      { id: 'otp-austria', name: 'Austria (অস্ট্রিয়া)', nameEn: 'Austria', code: 'AT', flag: '🇦🇹', price: 460, carrier: 'A1 Telekom Austria', desc: 'অস্ট্রিয়ান অফিসিয়াল সিম নাম্বার। যেকোনো মেসেঞ্জারে দ্রুত কোড আসে।', region: 'europe' },
+      { id: 'otp-japan', name: 'Japan (জাপান)', nameEn: 'Japan', code: 'JP', flag: '🇯🇵', price: 525, carrier: 'NTT Docomo / SoftBank', desc: 'জাপানি প্রিমিয়াম সিম। ৮ মাসের ফুল গ্যারান্টি ও সর্বোচ্চ স্থায়িত্ব।', popular: true, region: 'asia' },
+      { id: 'otp-south-korea', name: 'South Korea (দক্ষিণ কোরিয়া)', nameEn: 'South Korea', code: 'KR', flag: '🇰🇷', price: 525, carrier: 'SK Telecom Line', desc: 'কোরিয়ান হাই-স্পিড ওটিপি রিসিপশন সাপোর্ট। কাফকা, লাইন ও হোয়াটসঅ্যাপ।', region: 'asia' },
+      { id: 'otp-singapore', name: 'Singapore (সিঙ্গাপুর)', nameEn: 'Singapore', code: 'SG', flag: '🇸🇬', price: 475, carrier: 'Singtel / StarHub', desc: 'সিঙ্গাপুর রিয়েল টেলিকম নম্বর। বিজনেস চ্যাট ও ফিনটেকের জন্য সেরা।', popular: true, region: 'asia' },
+      { id: 'otp-thailand', name: 'Thailand (থাইল্যান্ড)', nameEn: 'Thailand', code: 'TH', flag: '🇹🇭', price: 395, carrier: 'AIS / TrueMove H', desc: 'সাশ্রয়ী থাই এআইএস নেটওয়ার্ক নম্বর। দ্রুততম সংযোগ নিশ্চয়তা।', region: 'asia' },
+      { id: 'otp-uae', name: 'UAE / Dubai (দুবাই)', nameEn: 'UAE / Dubai', code: 'AE', flag: '🇦🇪', price: 520, carrier: 'Etisalat / du Telecom', desc: 'সংযুক্ত আরব আমিরাত ভেরিফিকেশন নম্বর। বিজনেস হোয়াটসঅ্যাপে অত্যন্ত কার্যকর।', popular: true, region: 'asia' },
+      { id: 'otp-saudi', name: 'Saudi Arabia (সৌদি আরব)', nameEn: 'Saudi Arabia', code: 'SA', flag: '🇸🇦', price: 480, carrier: 'STC / Mobily', desc: 'সৌদি এসটিসি নেটওয়ার্ক অফিসিয়াল নম্বর। ৮ মাসের ফুল রিপ্লেসমেন্ট ওয়ারেন্টি।', popular: true, region: 'asia' },
+      { id: 'otp-qatar', name: 'Qatar (কাতার)', nameEn: 'Qatar', code: 'QA', flag: '🇶🇦', price: 505, carrier: 'Ooredoo Qatar', desc: 'কাতারি ওরিডু নম্বর। ইনস্ট্যান্ট এক্টিভেশন সাপোর্ট ও ৮ মাসের সাপোর্ট।', region: 'asia' },
+      { id: 'otp-kuwait', name: 'Kuwait (কুয়েত)', nameEn: 'Kuwait', code: 'KW', flag: '🇰🇼', price: 495, carrier: 'Zain Kuwait', desc: 'কুয়েত জেইন নেটওয়ার্ক ভার্চুয়াল নম্বর। মধ্যপ্রাচ্য ক্লায়েন্টদের জন্য।', region: 'asia' },
+      { id: 'otp-australia', name: 'Australia (অস্ট্রেলিয়া)', nameEn: 'Australia', code: 'AU', flag: '🇦🇺', price: 485, carrier: 'Telstra / Optus', desc: 'অস্ট্রেলিয়ান টেলস্ট্রা নেটওয়ার্ক নম্বর। ফ্রিল্যান্সার ও ব্যবসায়ীদের প্রথম পছন্দ।', popular: true, region: 'asia' },
+      { id: 'otp-new-zealand', name: 'New Zealand (নিউজিল্যান্ড)', nameEn: 'New Zealand', code: 'NZ', flag: '🇳🇿', price: 490, carrier: 'One NZ / Spark', desc: '+64 কিউই রিয়েল নম্বর। দ্রুত ওটিপি এবং নিরাপদ অ্যাকাউন্ট ম্যানেজমেন্ট।', region: 'asia' },
+      { id: 'otp-brazil', name: 'Brazil (ব্রাজিল)', nameEn: 'Brazil', code: 'BR', flag: '🇧🇷', price: 395, carrier: 'Claro / Vivo Brasil', desc: 'ল্যাটিন আমেরিকার সেরা নম্বর। হোয়াটসঅ্যাপে অত্যন্ত জনপ্রিয় ও নির্ভরযোগ্য।', region: 'americas' },
+      { id: 'otp-indonesia', name: 'Indonesia (ইন্দোনেশিয়া)', nameEn: 'Indonesia', code: 'ID', flag: '🇮🇩', price: 375, carrier: 'Telkomsel Indonesia', desc: 'সাশ্রয়ী ইন্দোনেশিয়ান সিম ভেরিফিকেশন। তাৎক্ষণিক ডেলিভারি সুবিধা।', region: 'asia' },
+      { id: 'otp-vietnam', name: 'Vietnam (ভিয়েতনাম)', nameEn: 'Vietnam', code: 'VN', flag: '🇻🇳', price: 385, carrier: 'Viettel Telecom', desc: 'ভিয়েতনাম দ্রুতগতির ওটিপি সিম। মেসেজিং অ্যাপের জন্য উপযোগী।', region: 'asia' },
+      { id: 'otp-philippines', name: 'Philippines (ফিলিপাইন)', nameEn: 'Philippines', code: 'PH', flag: '🇵🇭', price: 380, carrier: 'Globe / Smart', desc: 'ফিলিপাইন গ্লোব/স্মার্ট নেটওয়ার্ক সিম। ৮ মাসের রিপ্লেসমেন্ট সুবিধা।', region: 'asia' }
     ];
 
     const ESIM_DATA = [
-      { id: 'esim-1', country: 'United States (আমেরিকা)', countryEn: 'United States', flag: '🇺🇸', price: 950, desc: 'T-Mobile ও AT&T আনলিমিটেড হাই-স্পিড ৫জি নেটওয়ার্ক সুবিধা।', descEn: 'T-Mobile & AT&T high-speed 5G network roaming across USA.', delivery: 'Instant' },
-      { id: 'esim-2', country: 'United Kingdom (যুক্তরাজ্য)', countryEn: 'United Kingdom', flag: '🇬🇧', price: 1050, desc: 'সমগ্র ইউকে ও লন্ডনে নিরবচ্ছিন্ন ফোরজি/ফাইভজি মোবাইল ব্রডব্যান্ড।', descEn: 'Uninterrupted 4G/5G mobile data coverage throughout UK.', delivery: 'Instant' },
-      { id: 'esim-3', country: 'Europe 33+ Countries (সমগ্র ইউরোপ)', countryEn: 'Europe (33+ Countries)', flag: '🇪🇺', price: 1350, desc: 'ফ্রান্স, জার্মানি, ইতালি সহ ইউরোপের ৩৩টি দেশে একক সিমে রোমিং।', descEn: 'Single eSIM roaming seamlessly across 33+ European nations.', delivery: 'Instant' },
-      { id: 'esim-4', country: 'Canada (কানাডা)', countryEn: 'Canada', flag: '🇨🇦', price: 1100, desc: 'রজার্স ও বেল নেটওয়ার্কে কানাডা জুড়ে ফাস্ট ট্রাভেল ডাটা কভারেজ।', descEn: 'Fast travel data on Rogers & Bell nationwide Canadian networks.', delivery: 'Instant' },
-      { id: 'esim-5', country: 'Australia (অস্ট্রেলিয়া)', countryEn: 'Australia', flag: '🇦🇺', price: 1150, desc: 'টেলস্ট্রা ও অপটাস নেটওয়ার্কে অস্ট্রেলিয়াব্যাপী উচ্চগতির ডাটা।', descEn: 'High-speed Telstra/Optus data for smooth Australian travel.', delivery: 'Standard' },
-      { id: 'esim-6', country: 'Germany (জার্মানি)', countryEn: 'Germany', flag: '🇩🇪', price: 1180, desc: 'জার্মানির সেরা টেলিকম ডয়চে ও ভোডাফোন ফাইভজি হাই-স্পিড ডাটা।', descEn: 'Top Deutsche Telekom & Vodafone 5G data package.', delivery: 'Instant' },
-      { id: 'esim-7', country: 'France (ফ্রান্স)', countryEn: 'France', flag: '🇫🇷', price: 1150, desc: 'প্যারিস ও সমগ্র ফ্রান্সে দ্রুতগতির অরেঞ্জ/এসএফআর ডাটা প্যাক।', descEn: 'Ultra-fast Orange/SFR 5G travel data in Paris and all France.', delivery: 'Instant' },
-      { id: 'esim-8', country: 'Italy (ইতালি)', countryEn: 'Italy', flag: '🇮🇹', price: 1120, desc: 'রোম, মিলান সহ ইতালিব্যাপী নির্ভরযোগ্য টিআইএম ফোরজি নেটওয়ার্ক।', descEn: 'Reliable TIM 4G/5G connectivity across Rome, Milan & Italy.', delivery: 'Standard' },
-      { id: 'esim-9', country: 'Spain (স্পেন)', countryEn: 'Spain', flag: '🇪🇸', price: 1180, desc: 'মাদ্রিদ ও বার্সেলোনা ভ্রমণে দ্রুততম মোভিস্টার ডাটা কানেকশন।', descEn: 'Fast Movistar data connection for Madrid and Spain.', delivery: 'Standard' },
-      { id: 'esim-10', country: 'Switzerland (সুইজারল্যান্ড)', countryEn: 'Switzerland', flag: '🇨🇭', price: 1450, desc: 'সুইস আল্পস ও শহরগুলোতে প্রিমিয়াম সুইসকম হাই-স্পিড ইন্টারনেট।', descEn: 'Premium Swisscom high-speed data in the Swiss Alps.', delivery: 'Standard' },
-      { id: 'esim-11', country: 'Netherlands (নেদারল্যান্ডস)', countryEn: 'Netherlands', flag: '🇳🇱', price: 1190, desc: 'আমস্টারডাম ও সমগ্র নেদারল্যান্ডসে শীর্ষ কেপিএন ডাটা সুবিধা।', descEn: 'Top KPN 5G coverage throughout Amsterdam and Netherlands.', delivery: 'Standard' },
-      { id: 'esim-12', country: 'Japan (জাপান)', countryEn: 'Japan', flag: '🇯🇵', price: 1350, desc: 'জাপানের শীর্ষ স্থানীয় টেলিকম ডোকোমো/সফটব্যাংক কভারেজ।', descEn: 'Docomo & SoftBank high-speed coverage for Tokyo and Japan.', delivery: 'Instant' },
-      { id: 'esim-13', country: 'South Korea (দক্ষিণ কোরিয়া)', countryEn: 'South Korea', flag: '🇰🇷', price: 1300, desc: 'দক্ষিণ কোরিয়ায় দ্রুতগতির এসকে টেলিকম নেটওয়ার্ক সুবিধা।', descEn: 'Ultra-fast SK Telecom network access in South Korea.', delivery: 'Standard' },
-      { id: 'esim-14', country: 'Singapore (সিঙ্গাপুর)', countryEn: 'Singapore', flag: '🇸🇬', price: 1150, desc: 'ব্যবসা ও ভ্রমণের জন্য সিঙ্গাপুরে আল্ট্রা-ফাস্ট কানেক্টিভিটি।', descEn: 'Ultra-fast Singtel connectivity for Singapore tourists & business.', delivery: 'Instant' },
-      { id: 'esim-15', country: 'Thailand (থাইল্যান্ড)', countryEn: 'Thailand', flag: '🇹🇭', price: 1050, desc: 'থাইল্যান্ড পর্যটকদের জন্য সাশ্রয়ী ও দ্রুতগতির ডাটা প্যাক।', descEn: 'Affordable high-speed AIS data package for Thailand travel.', delivery: 'Instant' },
-      { id: 'esim-16', country: 'United Arab Emirates / Dubai (দুবাই)', countryEn: 'UAE / Dubai', flag: '🇦🇪', price: 1400, desc: 'দুবাই ও সমগ্র ইউএই-তে প্রিমিয়াম ফাইভজি ডাটা সুবিধা।', descEn: 'Premium 5G coverage in Dubai and throughout UAE.', delivery: 'Instant' },
-      { id: 'esim-17', country: 'Saudi Arabia (সৌদি আরব)', countryEn: 'Saudi Arabia', flag: '🇸🇦', price: 1350, desc: 'ওমরাহ, হজ ও ভ্রমণের জন্য নির্ভরযোগ্য এসটিসি নেটওয়ার্ক।', descEn: 'Reliable STC 5G network for Umrah, Hajj & Saudi travel.', delivery: 'Instant' },
-      { id: 'esim-18', country: 'Turkey (তুর্কিয়ে)', countryEn: 'Turkey', flag: '🇹🇷', price: 1100, desc: 'ইস্তাম্বুল ও তুরস্কে নিরবচ্ছিন্ন ট্রাভেল ডাটা ও সহজ রোমিং।', descEn: 'Seamless travel data and easy roaming in Istanbul & Turkey.', delivery: 'Instant' },
-      { id: 'esim-19', country: 'Indonesia / Bali (ইন্দোনেশিয়া)', countryEn: 'Indonesia / Bali', flag: '🇮🇩', price: 1080, desc: 'বালি ও ইন্দোনেশিয়ায় পর্যটকদের জন্য হাই-স্পিড ইন্টারনেট।', descEn: 'High-speed Telkomsel internet for Bali holiday travelers.', delivery: 'Standard' },
-      { id: 'esim-20', country: 'New Zealand (নিউজিল্যান্ড)', countryEn: 'New Zealand', flag: '🇳🇿', price: 1380, desc: 'ভ্রমণকারী ও শিক্ষার্থীদের জন্য দ্রুত ও সহজ সক্রিয়করণ।', descEn: 'Quick official activation for New Zealand travelers.', delivery: 'Standard' },
-      { id: 'esim-21', country: 'Portugal (পর্তুগাল)', countryEn: 'Portugal', flag: '🇵🇹', price: 1150, desc: 'পর্তুগাল ও সমগ্র ইউরোপ জুড়ে ফোরজি/ফাইভজি রোমিং সাপোর্ট।', descEn: '4G/5G roaming support in Portugal and across Europe.', delivery: 'Standard' },
-      { id: 'esim-22', country: 'Austria (অস্ট্রিয়া)', countryEn: 'Austria', flag: '🇦🇹', price: 1250, desc: 'সেন্টরাল ইউরোপ ও ভিয়েনায় নিরবচ্ছিন্ন উচ্চগতির নেটওয়ার্ক।', descEn: 'Uninterrupted high-speed connectivity in Vienna & Austria.', delivery: 'Standard' },
-      { id: 'esim-23', country: 'Sweden (সুইডেন)', countryEn: 'Sweden', flag: '🇸🇪', price: 1280, desc: 'স্ক্যান্ডিনেভিয়ান অঞ্চলের সেরা নেটওয়ার্ক কভারেজ ও ডাটা।', descEn: 'Best Scandinavian network coverage in Sweden.', delivery: 'Standard' },
-      { id: 'esim-24', country: 'Qatar (কাতার)', countryEn: 'Qatar', flag: '🇶🇦', price: 1380, desc: 'দোহা ও সমগ্র কাতারে দ্রুতগতির অরিডু/ভোডাফোন ডাটা।', descEn: 'Fast Ooredoo/Vodafone 5G mobile data in Doha, Qatar.', delivery: 'Standard' },
-      { id: 'esim-25', country: 'Kuwait (কুয়েত)', countryEn: 'Kuwait', flag: '🇰🇼', price: 1320, desc: 'কুয়েত ভ্রমণ ও কাজের জন্য নির্ভরযোগ্য হাই-স্পিড সংযোগ।', descEn: 'Reliable Zain high-speed travel roaming in Kuwait.', delivery: 'Standard' },
-      { id: 'esim-26', country: 'Vietnam (ভিয়েতনাম)', countryEn: 'Vietnam', flag: '🇻🇳', price: 1060, desc: 'দ্রুতগতির ডাটা ও পর্যটকদের জন্য সহজতম কিউআর অ্যাক্টিভেশন।', descEn: 'Fast Viettel data with simple QR scan activation.', delivery: 'Instant' },
-      { id: 'esim-ru', country: 'Russia (রাশিয়া)', countryEn: 'Russia', flag: '🇷🇺', price: 995, desc: 'রাশিয়ান ট্রাভেল ডাটা ও নিরবচ্ছিন্ন রোমিং সুবিধা।', descEn: 'Russian travel data package with nationwide roaming.', delivery: 'Instant' },
-      { id: 'esim-uz', country: 'Uzbekistan (উজবেকিস্তান)', countryEn: 'Uzbekistan', flag: '🇺🇿', price: 1250, desc: 'উজবেকিস্তান ভ্রমণ ও নিরবচ্ছিন্ন হাই-স্পিড ডাটা সংযোগ।', descEn: 'Smooth high-speed data connection for Uzbekistan travel.', delivery: 'Standard' }
+      { id: 'esim-usa', country: 'United States (আমেরিকা)', code: 'US', flag: '🇺🇸', price: 950, carrier: 'T-Mobile & AT&T Premium 5G', desc: 'টি-মোবাইল ও এটি&টি আনলিমিটেড হাই-স্পিড ৫জি নেটওয়ার্ক। ৬০ দিন মেয়াদ।', popular: true, region: 'americas' },
+      { id: 'esim-uk', country: 'United Kingdom (যুক্তরাজ্য)', code: 'GB', flag: '🇬🇧', price: 1050, carrier: 'Vodafone & EE 5G Network', desc: 'সমগ্র ইউকে ও লন্ডনে নিরবচ্ছিন্ন ফোরজি/ফাইভজি মোবাইল ব্রডব্যান্ড।', popular: true, region: 'europe' },
+      { id: 'esim-europe', country: 'Europe 33+ Countries (সমগ্র ইউরোপ)', code: 'EU', flag: '🇪🇺', price: 1350, carrier: 'Orange, Vodafone & Telekom', desc: 'ফ্রান্স, জার্মানি, ইতালি সহ ইউরোপের ৩৩টি দেশে একক সিমে নিরবচ্ছিন্ন রোমিং।', popular: true, region: 'europe' },
+      { id: 'esim-canada', country: 'Canada (কানাডা)', code: 'CA', flag: '🇨🇦', price: 1100, carrier: 'Rogers & Bell Nationwide', desc: 'রজার্স ও বেল নেটওয়ার্কে কানাডা জুড়ে ফাস্ট ট্রাভেল ডাটা কভারেজ।', popular: true, region: 'americas' },
+      { id: 'esim-australia', country: 'Australia (অস্ট্রেলিয়া)', code: 'AU', flag: '🇦🇺', price: 1150, carrier: 'Telstra & Optus 5G', desc: 'টেলস্ট্রা ও অপটাস নেটওয়ার্কে অস্ট্রেলিয়াব্যাপী উচ্চগতির ডাটা।', region: 'asia' },
+      { id: 'esim-germany', country: 'Germany (জার্মানি)', code: 'DE', flag: '🇩🇪', price: 1180, carrier: 'Deutsche Telekom 5G', desc: 'জার্মানির সেরা টেলিকম ডয়চে ও ভোডাফোন ফাইভজি হাই-স্পিড ডাটা।', region: 'europe' },
+      { id: 'esim-france', country: 'France (ফ্রান্স)', code: 'FR', flag: '🇫🇷', price: 1150, carrier: 'Orange & SFR France', desc: 'প্যারিস ও সমগ্র ফ্রান্সে দ্রুতগতির অরেঞ্জ/এসএফআর ডাটা প্যাক।', region: 'europe' },
+      { id: 'esim-italy', country: 'Italy (ইতালি)', code: 'IT', flag: '🇮🇹', price: 1120, carrier: 'TIM & Vodafone Italia', desc: 'রোম, মিলান সহ ইতালিব্যাপী নির্ভরযোগ্য টিআইএম ফোরজি/ফাইভজি নেটওয়ার্ক।', region: 'europe' },
+      { id: 'esim-spain', country: 'Spain (স্পেন)', code: 'ES', flag: '🇪🇸', price: 1180, carrier: 'Movistar Spain 5G', desc: 'মাদ্রিদ ও বার্সেলোনা ভ্রমণে দ্রুততম মোভিস্টার ডাটা কানেকশন।', region: 'europe' },
+      { id: 'esim-switzerland', country: 'Switzerland (সুইজারল্যান্ড)', code: 'CH', flag: '🇨🇭', price: 1450, carrier: 'Swisscom 5G Ultra', desc: 'সুইস আল্পস ও শহরগুলোতে প্রিমিয়াম সুইসকম হাই-স্পিড ইন্টারনেট।', region: 'europe' },
+      { id: 'esim-netherlands', country: 'Netherlands (নেদারল্যান্ডস)', code: 'NL', flag: '🇳🇱', price: 1190, carrier: 'KPN 5G Network', desc: 'আমস্টারডাম ও সমগ্র নেদারল্যান্ডসে শীর্ষ কেপিএন ডাটা সুবিধা।', region: 'europe' },
+      { id: 'esim-japan', country: 'Japan (জাপান)', code: 'JP', flag: '🇯🇵', price: 1350, carrier: 'NTT Docomo & SoftBank', desc: 'জাপানের শীর্ষ স্থানীয় টেলিকম ডোকোমো/সফটব্যাংক কভারেজ।', popular: true, region: 'asia' },
+      { id: 'esim-south-korea', country: 'South Korea (দক্ষিণ কোরিয়া)', code: 'KR', flag: '🇰🇷', price: 1300, carrier: 'SK Telecom 5G', desc: 'দক্ষিণ কোরিয়ায় দ্রুতগতির এসকে টেলিকম নেটওয়ার্ক সুবিধা।', region: 'asia' },
+      { id: 'esim-singapore', country: 'Singapore (সিঙ্গাপুর)', code: 'SG', flag: '🇸🇬', price: 1150, carrier: 'Singtel 5G Ultra', desc: 'ব্যবসা ও ভ্রমণের জন্য সিঙ্গাপুরে আল্ট্রা-ফাস্ট কানেক্টিভিটি।', popular: true, region: 'asia' },
+      { id: 'esim-thailand', country: 'Thailand (থাইল্যান্ড)', code: 'TH', flag: '🇹🇭', price: 1050, carrier: 'AIS 5G Network', desc: 'থাইল্যান্ড পর্যটকদের জন্য সাশ্রয়ী ও দ্রুতগতির ডাটা প্যাক।', popular: true, region: 'asia' },
+      { id: 'esim-uae', country: 'UAE / Dubai (দুবাই)', code: 'AE', flag: '🇦🇪', price: 1400, carrier: 'Etisalat & du 5G', desc: 'দুবাই ও সমগ্র ইউএই-তে প্রিমিয়াম ফাইভজি ডাটা সুবিধা।', popular: true, region: 'asia' },
+      { id: 'esim-saudi', country: 'Saudi Arabia (সৌদি আরব)', code: 'SA', flag: '🇸🇦', price: 1350, carrier: 'STC 5G Network', desc: 'ওমরাহ, হজ ও ভ্রমণের জন্য নির্ভরযোগ্য এসটিসি নেটওয়ার্ক।', popular: true, region: 'asia' },
+      { id: 'esim-turkey', country: 'Turkey (তুর্কিয়ে)', code: 'TR', flag: '🇹🇷', price: 1100, carrier: 'Turkcell 5G Data', desc: 'ইস্তাম্বুল ও তুরস্কে নিরবচ্ছিন্ন ট্রাভেল ডাটা ও সহজ রোমিং।', region: 'asia' },
+      { id: 'esim-indonesia', country: 'Indonesia / Bali (ইন্দোনেশিয়া)', code: 'ID', flag: '🇮🇩', price: 1080, carrier: 'Telkomsel 5G', desc: 'বালি ও ইন্দোনেশিয়ায় পর্যটকদের জন্য হাই-স্পিড ইন্টারনেট।', region: 'asia' },
+      { id: 'esim-new-zealand', country: 'New Zealand (নিউজিল্যান্ড)', code: 'NZ', flag: '🇳🇿', price: 1380, carrier: 'One NZ 5G', desc: 'ভ্রমণকারী ও শিক্ষার্থীদের জন্য দ্রুত ও সহজ সক্রিয়করণ।', region: 'asia' },
+      { id: 'esim-portugal', country: 'Portugal (পর্তুগাল)', code: 'PT', flag: '🇵🇹', price: 1150, carrier: 'MEO Portugal 5G', desc: 'পর্তুগাল ও সমগ্র ইউরোপ জুড়ে ফোরজি/ফাইভজি রোমিং সাপোর্ট।', region: 'europe' },
+      { id: 'esim-austria', country: 'Austria (অস্ট্রিয়া)', code: 'AT', flag: '🇦🇹', price: 1250, carrier: 'A1 Telekom Austria', desc: 'সেন্টরাল ইউরোপ ও ভিয়েনায় নিরবচ্ছিন্ন উচ্চগতির নেটওয়ার্ক।', region: 'europe' },
+      { id: 'esim-sweden', country: 'Sweden (সুইডেন)', code: 'SE', flag: '🇸🇪', price: 1280, carrier: 'Telia Sweden 5G', desc: 'স্ক্যান্ডিনেভিয়ান অঞ্চলের সেরা নেটওয়ার্ক কভারেজ ও ডাটা।', region: 'europe' },
+      { id: 'esim-qatar', country: 'Qatar (কাতার)', code: 'QA', flag: '🇶🇦', price: 1380, carrier: 'Ooredoo Qatar 5G', desc: 'দোহা ও সমগ্র কাতারে দ্রুতগতির অরিডু/ভোডাফোন ডাটা।', region: 'asia' },
+      { id: 'esim-kuwait', country: 'Kuwait (কুয়েত)', code: 'KW', flag: '🇰🇼', price: 1320, carrier: 'Zain Kuwait 5G', desc: 'কুয়েত ভ্রমণ ও কাজের জন্য নির্ভরযোগ্য হাই-স্পিড সংযোগ।', region: 'asia' },
+      { id: 'esim-vietnam', country: 'Vietnam (ভিয়েতনাম)', code: 'VN', flag: '🇻🇳', price: 1060, carrier: 'Viettel 5G High-Speed', desc: 'দ্রুতগতির ডাটা ও পর্যটকদের জন্য সহজতম কিউআর অ্যাক্টিভেশন।', region: 'asia' },
+      { id: 'esim-russia', country: 'Russia (রাশিয়া)', code: 'RU', flag: '🇷🇺', price: 995, carrier: 'MTS & Megafon LTE', desc: 'রাশিয়ান ট্রাভেল ডাটা ও নিরবচ্ছিন্ন রোমিং সুবিধা।', region: 'europe' },
+      { id: 'esim-uzbekistan', country: 'Uzbekistan (উজবেকিস্তান)', code: 'UZ', flag: '🇺🇿', price: 1250, carrier: 'Ucell 4G/5G', desc: 'উজবেকিস্তান ভ্রমণ ও নিরবচ্ছিন্ন হাই-স্পিড ডাটা সংযোগ।', region: 'asia' }
     ];
 
     const REVIEWS = [
-      { name: 'তানভীর আহমেদ', nameEn: 'Tanvir Ahmed', loc: 'মিরপুর, ঢাকা', locEn: 'Mirpur, Dhaka', text: 'বাইন্যান্স পে (UID: 1292487668)-এ ৩.২৪ ডলার পাঠিয়েছিলাম। মাত্র ২ মিনিটের মাথায় সরাসরি হোয়াটসঅ্যাপে ইউএসএ ওটিপি পেয়ে গেছি! সার্ভিস শতভাগ বিশ্বস্ত।', textEn: 'Sent $3.24 USDT to Binance Pay UID: 1292487668. Got my USA OTP code in 2 mins! Super reliable service.', time: '২ মিনিট আগে', timeEn: '2 mins ago' },
-      { name: 'ফারহান কবির', nameEn: 'Farhan Kabir', loc: 'গুলশান, ঢাকা', locEn: 'Gulshan, Dhaka', text: 'ইউকে ট্রাভেল ই-সিম নিয়েছিলাম। কিউআর কোড স্ক্যান করার সাথে সাথেই একটিভ হয়ে গেছে। লন্ডনে খুব সুন্দর নেটওয়ার্ক পেয়েছি। থ্যাঙ্ক ইউ অ্যাডমিন!', textEn: 'Purchased UK Travel eSIM. Activated instantly upon QR scan with 5G across London. Recommended!', time: '৬ মিনিট আগে', timeEn: '6 mins ago' },
-      { name: 'ইসমাইল হোসেন', nameEn: 'Ismail Hossain', loc: 'চট্টগ্রাম', locEn: 'Chattogram', text: '৮ মাসের গ্যারান্টি পেয়ে নিশ্চিন্তে ৩টা কানাডিয়ান ওটিপি নাম্বার কিনেছি। ১টায় সমস্যা হলে অ্যাডমিন সাথে সাথে নতুন নাম্বার দিয়ে রিপ্লেস করে দেন!', textEn: 'Bought 3 Canadian OTP lines with 8-month warranty. Quick replacement when needed!', time: '১১ মিনিট আগে', timeEn: '11 mins ago' },
-      { name: 'মাহমুদুল হাসান', nameEn: 'Mahmudul Hasan', loc: 'উত্তরা, ঢাকা', locEn: 'Uttara, Dhaka', text: 'ফ্রিল্যান্সিং কাজের জন্য জার্মান নাম্বার লাগত। বাইন্যান্স পে UID 1292487668-এ ইউএসডিটি পে করতেই কোড দিয়ে দিল।', textEn: 'Needed German line for freelance work. Sent USDT to Binance Pay UID 1292487668, fast response.', time: '১৭ মিনিট আগে', timeEn: '17 mins ago' },
-      { name: 'জাহিদ হাসান রনি', nameEn: 'Zahid Hasan Rony', loc: 'সিলেট', locEn: 'Sylhet', text: 'দুবাই ই-সিম বিমান থেকে নামার সাথে সাথেই চালু হয়ে গেছে। স্পিড মারাত্মক!', textEn: 'Dubai eSIM connected immediately after landing. Super fast 5G.', time: '২৩ মিনিট আগে', timeEn: '23 mins ago' }
+      { name: 'তানভীর আহমেদ', loc: 'মিরপুর, ঢাকা', comment: 'বাইন্যান্স পে (UID: 1292487668)-এ ৩.২৪ ডলার পাঠিয়েছিলাম। মাত্র ২ মিনিটের মাথায় সরাসরি হোয়াটসঅ্যাপে ইউএসএ ওটিপি পেয়ে গেছি! সার্ভিস শতভাগ বিশ্বস্ত।', method: 'Binance Pay', time: '২ মিনিট আগে' },
+      { name: 'মো. রফিকুল ইসলাম', loc: 'উত্তরা, ঢাকা', comment: 'নগদ থেকে ০১৯৬৫২৯১১৭১ নম্বরে টাকা পাঠিয়ে TrxID দিলাম। সাথে সাথেই অ্যাডমিন ভাই ইউকে নাম্বার হোয়াটসঅ্যাপে ডেলিভারি দিয়েছেন। ৮ মাসের গ্যারান্টির জন্য নিশ্চিন্ত!', method: 'Nagad', time: '৫ মিনিট আগে' },
+      { name: 'ফারহান কবির', loc: 'গুলশান, ঢাকা', comment: 'ইউকে ট্রাভেল ই-সিম নিয়েছিলাম। কিউআর কোড স্ক্যান করার সাথে সাথেই একটিভ হয়ে গেছে। লন্ডনে খুব সুন্দর ফাইভজি নেটওয়ার্ক পেয়েছি। থ্যাঙ্ক ইউ!', method: 'Binance Pay', time: '১১ মিনিট আগে' },
+      { name: 'ইসমাইল হোসেন', loc: 'আগ্রাবাদ, চট্টগ্রাম', comment: '৮ মাসের গ্যারান্টি পেয়ে নিশ্চিন্তে ৩টা কানাডিয়ান ওটিপি নাম্বার কিনেছি। নগদে পে করা অনেক সহজ লেগেছে। দারুণ সাপোর্ট!', method: 'Nagad', time: '১৮ মিনিট আগে' },
+      { name: 'মাহমুদুল হাসান', loc: 'সিলেট সদর', comment: 'ফ্রিল্যান্সিং কাজের জন্য জার্মান নাম্বার লাগত। বাইন্যান্স পে UID 1292487668-এ ইউএসডিটি পে করতেই কোড দিয়ে দিল।', method: 'Binance Pay', time: '২৭ মিনিট আগে' }
     ];
 
     const FAQS = [
-      { qBn: 'আট (৮) মাসের গ্যারান্টির সুবিধা কী এবং কীভাবে কার্যকর হয়?', qEn: 'What does the 8-month replacement guarantee cover?', aBn: 'আমরা প্রতিটি ওটিপি নম্বরে সম্পূর্ণ ৮ মাসের ফুল রিপ্লেসমেন্ট ওয়ারেন্টি দিই। ৮ মাসের মধ্যে কোনো সমস্যা দেখা দিলে হোয়াটসঅ্যাপে জানালেই ফ্রি রিপ্লেসমেন্ট পেয়ে যাবেন।', aEn: 'Every OTP number includes a full 8-month guarantee. Any issue is replaced free via WhatsApp support.' },
-      { qBn: 'বাইন্যান্স পে (Binance Pay UID: 1292487668) দিয়ে কীভাবে ইউএসডিটি পাঠাব?', qEn: 'How do I pay using Binance Pay UID: 1292487668?', aBn: 'আপনার Binance App ওপেন করে Pay অপশনে যান, Send-এ ক্লিক করে Binance UID ১২৯২৪৮৭৬৬৮ লিখুন এবং নির্দিষ্ট USDT পাঠিয়ে ফর্ম পূরণ করুন।', aEn: 'Open Binance App, go to Pay -> Send, input Binance Pay UID 1292487668, submit exact USDT and fill out the order form.' },
-      { qBn: 'ই-সিম (eSIM) কীভাবে এক্টিভেশন হয় এবং মেয়াদ কতদিন?', qEn: 'How is eSIM activated and what is its validity?', aBn: 'পেমেন্টের পর আমরা হোয়াটসঅ্যাপে অফিসিয়াল QR কোড পাঠাই। ফোনের সেটিংস থেকে স্ক্যান করলেই তাৎক্ষণিক এক্টিভ হয়ে যায়। প্রতিটি ই-সিমের মেয়াদ ৬০ দিন।', aEn: 'We deliver an official eSIM QR code via WhatsApp. Simply scan via phone settings for instant 5G roaming. Valid for 60 days.' }
+      { q: 'আট (৮) মাসের গ্যারান্টির সুবিধা কী এবং কীভাবে কার্যকর হয়?', a: 'আমরা প্রতিটি ওটিপি নম্বরে সম্পূর্ণ ৮ মাসের ফুল রিপ্লেসমেন্ট ওয়ারেন্টি প্রদান করি। ৮ মাসের মধ্যে নম্বরে কোনো ধরনের সমস্যা দেখা দিলে সরাসরি হোয়াটসঅ্যাপে জানালেই সম্পূর্ণ ফ্রিতে নতুন নম্বর দিয়ে রিপ্লেস করে দেওয়া হবে।' },
+      { q: 'নগদ (Personal Send Money: 01965291171) দিয়ে পেমেন্ট করার নিয়ম কী?', a: 'আপনার নগদ অ্যাপ থেকে "Send Money" অপশনে গিয়ে ০১৯৬৫২৯১১৭১ নম্বরে নির্দিষ্ট টাকা পাঠিয়ে TrxID দিয়ে ফর্ম পূরণ করুন। সাথে সাথে হোয়াটসঅ্যাপে কোড ডেলিভারি পাবেন।' },
+      { q: 'বাইন্যান্স পে (Binance Pay UID: 1292487668) দিয়ে কীভাবে ইউএসডিটি পাঠাব?', a: 'আপনার Binance App ওপেন করে Pay অপশনে যান, Send-এ ক্লিক করে Binance UID ১২৯২৪৮৭৬৬৮ লিখুন এবং নির্দিষ্ট USDT পাঠিয়ে দিন। কোনো গ্যাস ফি নেই।' },
+      { q: 'ই-সিম (eSIM) কীভাবে ফোনে ইনস্টল করতে হয় এবং মেয়াদ কতদিন?', a: 'পেমেন্টের পর আমরা হোয়াটসঅ্যাপে অফিসিয়াল QR কোড পাঠাই। ফোনের Settings > Cellular > Add eSIM থেকে স্ক্যান করলেই তাৎক্ষণিক চালু হয়ে যাবে। মেয়াদ পূর্ণ ৬০ দিন।' }
     ];
 
-    let currentLang = 'bn';
-    let globalCurr = 'BDT';
-    let cardCurrMap = {};
-    let activeTab = 'otp';
+    let currentCurrency = 'BDT';
+    let currentTab = 'otp';
+    let currentRegion = 'all';
     let selectedItem = null;
-    let selectedPay = 'bkash';
-    let revIndex = Math.floor(Math.random() * REVIEWS.length);
-
-    const I18N = {
-      bn: {
-        verified: 'ভেরিফাইড শপ', subTitle: '৮ মাসের গ্যারান্টিসহ ওটিপি নাম্বার ও ট্রাভেল ই-সিম', tracking: 'ট্র্যাকিং',
-        badgeWarranty: '৮ মাসের ফুল রিপ্লেসমেন্ট গ্যারান্টি', badgeBinance: 'Binance Pay (UID: 1292487668) সমর্থিত', badgeInstant: 'ইনস্ট্যান্ট ডেলিভারি',
-        hero1: 'আট মাসের গ্যারান্টিসহ', hero2: 'ভার্চুয়াল নাম্বার ও প্রিমিয়াম ট্রাভেল ই-সিম',
-        heroDesc: 'সবগুলো আট মাসের গ্যারান্টিসহ। আট মাসের ভিতরে কোনো সমস্যা হলে আবার চেঞ্জ করে দেওয়া হবে। বিকাশ, নগদ এবং বাইন্যান্স পে-তে নিরাপদে ইউএসডিটি বা বিডিটি পাঠিয়ে অর্ডার করুন।',
-        copy: 'কপি', currLabel: 'মূল্য প্রদর্শন:', otpTitle: 'WhatsApp & OTP Virtual Numbers', otpSub: 'সবগুলো আট মাসের গ্যারান্টিসহ। ৮ মাসের ভেতরে কোনো সমস্যা হলে ইনস্ট্যান্ট ফ্রি রিপ্লেসমেন্ট।',
-        esimTitle: 'International Travel eSIM', esimSub: 'পূর্ণ ৬০ দিন (২ মাস) হাই-স্পিড ৫জি রোমিং ডাটা। কিউআর কোড স্ক্যান করে তাত্ক্ষণিক এক্টিভেশন।',
-        liveTitle: 'সদ্য সম্পন্ন পেমেন্ট ও ডেলিভারি', revTitle: 'গ্রাহক মতামত ও সত্য রিভিউ', revTag: 'প্রতি ৭ সেকেন্ডে পরিবর্তিত',
-        revSub: 'আমাদের কাস্টমারদের বাস্তব অভিজ্ঞতা। বাইন্যান্স পে (UID: 1292487668) ও ৮ মাসের রিপ্লেসমেন্ট সার্ভিসের রিভিউ।',
-        leaveRev: 'আপনার অভিজ্ঞতা জানান:', submitRev: '✓ মতামত পোস্ট করুন', faqTitle: 'সচরাচর জিজ্ঞাসিত প্রশ্নাবলী (FAQ)', faqSub: '৮ মাসের গ্যারান্টি ও বাইন্যান্স পে সম্পর্কিত তথ্যাদি',
-        orderTitle: 'অর্ডার সম্পন্ন করুন', selectMethod: 'পেমেন্ট মাধ্যম নির্বাচন করুন:', binanceDesc: 'আপনার বাইন্যান্স অ্যাপের Pay অপশনে গিয়ে নিচের UID-তে সঠিক USDT সেন্ড করুন:',
-        bkashDesc: 'নিচের নম্বরে Send Money করুন। কোনো অতিরিক্ত ফি প্রযোজ্য নয়:', nameLabel: 'আপনার নাম (Customer Name): *', trxLabel: 'Transaction ID (TrxID) বা প্রেরক নম্বর: *',
-        btnOrder: 'অর্ডার করুন', trackingTitle: 'অর্ডার হিস্ট্রি ও ট্র্যাকিং'
-      },
-      en: {
-        verified: 'Verified Store', subTitle: '8-Month Warranty OTP Numbers & Travel eSIMs', tracking: 'Tracking',
-        badgeWarranty: '8-Month Replacement Guarantee', badgeBinance: 'Binance Pay (UID: 1292487668) Supported', badgeInstant: 'Instant 2-Min Delivery',
-        hero1: 'Backed by 8-Month Warranty', hero2: 'Virtual Numbers & Travel eSIM Cards',
-        heroDesc: 'All OTP lines backed by an 8-month warranty. Any issue within 8 months is replaced completely free. Pay securely via bKash, Nagad, or Binance Pay UID: 1292487668.',
-        copy: 'Copy', currLabel: 'Currency Display:', otpTitle: 'WhatsApp & OTP Virtual Numbers', otpSub: 'All backed by an 8-month warranty with instant free replacement.',
-        esimTitle: 'International Travel eSIM', esimSub: 'Full 60 days (2 months) 5G roaming data with instant QR code activation.',
-        liveTitle: 'Recent Orders & Verifications', revTitle: 'Real Customer Reviews', revTag: 'Rotating Every 7s',
-        revSub: 'Authentic buyer feedback regarding Binance Pay UID: 1292487668 and 8-month warranty service.',
-        leaveRev: 'Share your feedback:', submitRev: '✓ Submit Feedback', faqTitle: 'Frequently Asked Questions (FAQ)', faqSub: 'Information regarding warranty and Binance Pay',
-        orderTitle: 'Complete Your Order', selectMethod: 'Select Payment Method:', binanceDesc: 'Open Binance App, go to Pay -> Send, and enter the Binance Pay UID below:',
-        bkashDesc: 'Send Money to the personal number below with zero merchant fees:', nameLabel: 'Your Name (Customer Name): *', trxLabel: 'Transaction ID / Binance Order ID: *',
-        btnOrder: 'Place Order Now', trackingTitle: 'Order History & Tracking'
-      }
-    };
-
-    function applyLang(lang) {
-      currentLang = lang;
-      const d = I18N[lang];
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const k = el.getAttribute('data-i18n');
-        if (d[k]) el.textContent = d[k];
-      });
-      document.getElementById('searchBox').placeholder = lang === 'en' ? 'Search countries or packages (USA, UK, Canada)...' : 'দেশ বা প্যাকেজ সার্চ করুন (যেমন: USA, UK, Canada)...';
-      if (lang === 'bn') {
-        document.getElementById('langBn').className = 'px-2.5 py-1 rounded-lg text-xs font-black transition-all cursor-pointer bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950';
-        document.getElementById('langEn').className = 'px-2.5 py-1 rounded-lg text-xs font-black transition-all cursor-pointer text-slate-400 hover:text-white';
-        setGlobalCurr('BDT');
-      } else {
-        document.getElementById('langEn').className = 'px-2.5 py-1 rounded-lg text-xs font-black transition-all cursor-pointer bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950';
-        document.getElementById('langBn').className = 'px-2.5 py-1 rounded-lg text-xs font-black transition-all cursor-pointer text-slate-400 hover:text-white';
-        setGlobalCurr('USDT');
-      }
-      renderCards();
-      renderReviews();
-      renderFaqs();
-    }
-
-    function setGlobalCurr(c) {
-      globalCurr = c;
-      cardCurrMap = {};
-      if (c === 'BDT') {
-        document.getElementById('currBdt').className = 'px-3 py-1 rounded-xl font-mono font-bold bg-emerald-500 text-slate-950 cursor-pointer';
-        document.getElementById('currUsdt').className = 'px-3 py-1 rounded-xl font-mono font-bold text-slate-400 hover:text-white cursor-pointer';
-      } else {
-        document.getElementById('currUsdt').className = 'px-3 py-1 rounded-xl font-mono font-bold bg-amber-500 text-slate-950 cursor-pointer';
-        document.getElementById('currBdt').className = 'px-3 py-1 rounded-xl font-mono font-bold text-slate-400 hover:text-white cursor-pointer';
-      }
-      renderCards();
-    }
-
-    function toggleCard(id) {
-      const c = cardCurrMap[id] || globalCurr;
-      cardCurrMap[id] = c === 'BDT' ? 'USDT' : 'BDT';
-      renderCards();
-    }
+    let selectedPay = 'nagad';
 
     function renderCards() {
-      const isEn = currentLang === 'en';
       const q = document.getElementById('searchBox').value.trim().toLowerCase();
 
       // OTP Cards
-      document.getElementById('otpGrid').innerHTML = OTP_DATA.filter(p => !q || p.name.toLowerCase().includes(q) || p.nameEn.toLowerCase().includes(q)).map(p => {
-        const c = cardCurrMap[p.id] || globalCurr;
-        const pr = c === 'USDT' ? `$${formatUsdt(p.price)} USDT` : `৳ ${p.price}`;
+      const filteredOtp = OTP_DATA.filter(p => {
+        const matchesQ = !q || p.name.toLowerCase().includes(q) || p.nameEn.toLowerCase().includes(q) || p.carrier.toLowerCase().includes(q);
+        if (!matchesQ) return false;
+        if (currentRegion === 'popular') return p.popular;
+        if (currentRegion === 'europe') return p.region === 'europe';
+        if (currentRegion === 'americas') return p.region === 'americas';
+        if (currentRegion === 'asia') return p.region === 'asia';
+        return true;
+      });
+
+      document.getElementById('otpCountBadge').textContent = `${filteredOtp.length}টি দেশ`;
+      document.getElementById('otpGrid').innerHTML = filteredOtp.map(p => {
+        const usdt = formatUsdt(p.price);
+        const priceMain = currentCurrency === 'BDT' ? `৳ ${p.price}` : `$${usdt} USDT`;
+        const priceSub = currentCurrency === 'BDT' ? `($${usdt} USDT)` : `(৳ ${p.price})`;
         return `
-          <div class="card-lift p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 shadow-lg flex flex-col justify-between space-y-3">
-            <div>
-              <div class="flex items-start justify-between gap-2">
-                <div class="flex items-center gap-2.5">
-                  <span class="text-3xl select-none">${p.flag}</span>
-                  <div>
-                    <h4 class="font-extrabold text-white text-sm sm:text-base leading-snug">${isEn ? p.nameEn : p.name}</h4>
-                    <span class="inline-block text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.2 rounded border border-emerald-500/20 mt-0.5">🛡️ ${isEn ? '8-Month Warranty' : '৮ মাসের গ্যারান্টি'}</span>
+          <div class="premium-card relative overflow-hidden rounded-2xl bg-gradient-to-b from-[#0e1424]/90 via-[#0a0f1b]/80 to-[#070b14]/90 border border-slate-800/80 p-5 flex flex-col justify-between space-y-3.5">
+            <div class="space-y-3">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-700/60 flex items-center justify-center text-3xl shadow-inner select-none shrink-0">
+                    ${p.flag}
+                  </div>
+                  <div class="min-w-0">
+                    <h4 class="text-base font-black text-white truncate">${p.name}</h4>
+                    <p class="text-[11px] text-slate-400 font-mono truncate flex items-center gap-1.5">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
+                      <span>${p.carrier}</span>
+                    </p>
                   </div>
                 </div>
-                <button type="button" onclick="toggleCard('${p.id}')" class="btn-lift px-2 py-1 rounded-lg text-[10px] font-mono font-bold cursor-pointer ${c === 'USDT' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'}">⇄ ${c === 'USDT' ? '$ USDT' : '৳ BDT'}</button>
+                ${p.popular ? '<span class="text-[10px] font-bold text-amber-300 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded uppercase font-mono">Popular</span>' : ''}
               </div>
-              <p class="text-xs text-slate-400 mt-2.5 line-clamp-2">${isEn ? p.descEn : p.desc}</p>
+
+              <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                <span class="text-emerald-400 text-[11px]">🛡️ ৮ মাসের গ্যারান্টি</span>
+                <span class="text-slate-700">·</span>
+                <span class="text-slate-300 text-[11px]">⚡ তাৎক্ষণিক ওটিপি</span>
+              </div>
+
+              <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${p.desc}</p>
             </div>
-            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
-              <div><span class="text-[10px] text-slate-500 uppercase block font-medium">${isEn ? 'Official Price' : 'অফিসিয়াল মূল্য'}</span><span class="text-base sm:text-lg font-black font-mono text-emerald-400">${pr}</span></div>
-              <button type="button" onclick="openOrder('otp', '${p.id}')" class="btn-lift px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-xs cursor-pointer">${isEn ? 'Order Now →' : 'অর্ডার →'}</button>
+
+            <div class="pt-3.5 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <div>
+                <div class="flex items-baseline gap-1.5">
+                  <span class="font-mono text-lg font-black text-emerald-400">${priceMain}</span>
+                  <span class="font-mono text-[10px] text-slate-500">${priceSub}</span>
+                </div>
+                <span class="text-[10px] text-slate-500 uppercase block">নির্দিষ্ট মূল্য · নো এক্সট্রা ফি</span>
+              </div>
+              <button onclick="openOrder('otp', '${p.id}')" class="btn-lift inline-flex items-center gap-1 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-xs cursor-pointer shadow-lg shadow-emerald-500/20">
+                <span>অর্ডার করুন →</span>
+              </button>
             </div>
           </div>
         `;
       }).join('');
 
       // eSIM Cards
-      document.getElementById('esimGrid').innerHTML = ESIM_DATA.filter(p => !q || p.country.toLowerCase().includes(q) || p.countryEn.toLowerCase().includes(q)).map(p => {
-        const c = cardCurrMap[p.id] || globalCurr;
-        const pr = c === 'USDT' ? `$${formatUsdt(p.price)} USDT` : `৳ ${p.price}`;
-        const isFast = p.delivery === 'Instant';
+      const filteredEsim = ESIM_DATA.filter(p => {
+        const matchesQ = !q || p.country.toLowerCase().includes(q) || p.carrier.toLowerCase().includes(q);
+        if (!matchesQ) return false;
+        if (currentRegion === 'popular') return p.popular;
+        if (currentRegion === 'europe') return p.region === 'europe';
+        if (currentRegion === 'americas') return p.region === 'americas';
+        if (currentRegion === 'asia') return p.region === 'asia';
+        return true;
+      });
+
+      document.getElementById('esimCountBadge').textContent = `${filteredEsim.length}টি দেশ`;
+      document.getElementById('esimGrid').innerHTML = filteredEsim.map(p => {
+        const usdt = formatUsdt(p.price);
+        const priceMain = currentCurrency === 'BDT' ? `৳ ${p.price}` : `$${usdt} USDT`;
+        const priceSub = currentCurrency === 'BDT' ? `($${usdt} USDT)` : `(৳ ${p.price})`;
         return `
-          <div class="card-lift p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-cyan-500/50 shadow-lg flex flex-col justify-between space-y-3">
-            <div>
-              <div class="flex items-start justify-between gap-2">
-                <div class="flex items-center gap-2.5">
-                  <span class="text-3xl select-none">${p.flag}</span>
-                  <div>
-                    <h4 class="font-extrabold text-white text-sm sm:text-base leading-snug">${isEn ? p.countryEn : p.country}</h4>
-                    <div class="flex items-center gap-1.5 mt-0.5">
-                      <span class="inline-block text-[10px] font-bold text-cyan-400 bg-cyan-500/10 px-2 py-0.2 rounded border border-cyan-500/20">⏰ ${isEn ? '60 Days 5G' : '৬০ দিন (২ মাস)'}</span>
-                      ${isFast ? '<span class="inline-block text-[10px] font-black text-amber-300 bg-amber-500/20 px-2 py-0.2 rounded border border-amber-500/40">⚡ Super Fast</span>' : ''}
-                    </div>
+          <div class="premium-card-cyan relative overflow-hidden rounded-2xl bg-gradient-to-b from-[#0e1424]/90 via-[#0a0f1b]/80 to-[#070b14]/90 border border-slate-800/80 p-5 flex flex-col justify-between space-y-3.5">
+            <div class="space-y-3">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-700/60 flex items-center justify-center text-3xl shadow-inner select-none shrink-0">
+                    ${p.flag}
+                  </div>
+                  <div class="min-w-0">
+                    <h4 class="text-base font-black text-white truncate">${p.country}</h4>
+                    <p class="text-[11px] text-slate-400 font-mono truncate flex items-center gap-1.5">
+                      <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
+                      <span>${p.carrier}</span>
+                    </p>
                   </div>
                 </div>
-                <button type="button" onclick="toggleCard('${p.id}')" class="btn-lift px-2 py-1 rounded-lg text-[10px] font-mono font-bold cursor-pointer ${c === 'USDT' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'}">⇄ ${c === 'USDT' ? '$ USDT' : '৳ BDT'}</button>
+                ${p.popular ? '<span class="text-[10px] font-bold text-amber-300 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded uppercase font-mono">Popular</span>' : ''}
               </div>
-              <p class="text-xs text-slate-400 mt-2.5 line-clamp-2">${isEn ? p.descEn : p.desc}</p>
+
+              <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                <span class="text-cyan-400 text-[11px]">⏰ ৬০ দিন মেয়াদ (২ মাস)</span>
+                <span class="text-slate-700">·</span>
+                <span class="text-slate-300 text-[11px]">⚡ ইনস্ট্যান্ট কিউআর</span>
+              </div>
+
+              <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${p.desc}</p>
             </div>
-            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
-              <div><span class="text-[10px] text-slate-500 uppercase block font-medium">${isEn ? 'eSIM Package' : 'ই-সিম প্যাক'}</span><span class="text-base sm:text-lg font-black font-mono text-cyan-400">${pr}</span></div>
-              <button type="button" onclick="openOrder('esim', '${p.id}')" class="btn-lift px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-black text-xs cursor-pointer">${isEn ? 'Buy eSIM →' : 'ই-সিম নিন →'}</button>
+
+            <div class="pt-3.5 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <div>
+                <div class="flex items-baseline gap-1.5">
+                  <span class="font-mono text-lg font-black text-cyan-400">${priceMain}</span>
+                  <span class="font-mono text-[10px] text-slate-500">${priceSub}</span>
+                </div>
+                <span class="text-[10px] text-slate-500 uppercase block">৬০ দিন আনলিমিটেড ৫জি রোমিং</span>
+              </div>
+              <button onclick="openOrder('esim', '${p.id}')" class="btn-lift inline-flex items-center gap-1 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-black text-xs cursor-pointer shadow-lg shadow-cyan-500/20">
+                <span>ই-সিম নিন →</span>
+              </button>
             </div>
           </div>
         `;
       }).join('');
     }
 
+    function setRegionFilter(r) {
+      currentRegion = r;
+      document.querySelectorAll('.region-btn').forEach(btn => {
+        if (btn.getAttribute('data-region') === r) {
+          btn.className = 'region-btn px-3 py-1.5 rounded-xl font-medium whitespace-nowrap bg-slate-800 text-white border border-slate-700 cursor-pointer';
+        } else {
+          btn.className = 'region-btn px-3 py-1.5 rounded-xl font-medium whitespace-nowrap text-slate-400 hover:text-white bg-slate-900/60 cursor-pointer';
+        }
+      });
+      renderCards();
+    }
+
     function renderReviews() {
-      const isEn = currentLang === 'en';
-      const items = [];
-      for (let i = 0; i < 3; i++) items.push(REVIEWS[(revIndex + i) % REVIEWS.length]);
-      document.getElementById('reviewsList').innerHTML = items.map(r => `
-        <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-2">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold">${r.name.charAt(0)}</div>
-              <div><h5 class="text-xs font-bold text-white">${isEn ? r.nameEn : r.name}</h5><span class="text-[10px] text-slate-500">${isEn ? r.locEn : r.loc}</span></div>
+      document.getElementById('reviewsList').innerHTML = REVIEWS.map(r => `
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 flex flex-col justify-between space-y-3">
+          <div class="space-y-2">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <h5 class="font-extrabold text-white text-sm">${r.name}</h5>
+                <span class="text-[11px] text-slate-500 font-medium">${r.loc}</span>
+              </div>
+              <div class="text-amber-400 text-xs">★★★★★</div>
             </div>
-            <div class="text-right"><span class="text-amber-400 text-xs">★★★★★</span><span class="text-[10px] text-slate-500 block font-mono">${isEn ? r.timeEn : r.time}</span></div>
+            <p class="text-xs text-slate-300 leading-relaxed">"${r.comment}"</p>
           </div>
-          <p class="text-xs text-slate-300 leading-relaxed">${isEn ? r.textEn : r.text}</p>
+          <div class="pt-2.5 border-t border-slate-800/60 flex items-center justify-between text-[11px]">
+            <span class="text-slate-400 font-medium flex items-center gap-1">
+              ${r.method === 'Nagad' ? '📱 <span class="text-[#FF855E] font-bold">নগদ</span>' : '🟡 <span class="text-[#F0B90B] font-bold">Binance Pay</span>'}
+            </span>
+            <span class="text-slate-500 font-mono">${r.time}</span>
+          </div>
         </div>
       `).join('');
     }
-
-    setInterval(() => {
-      revIndex = (revIndex + 1) % REVIEWS.length;
-      renderReviews();
-    }, 7000);
 
     function renderFaqs() {
-      const isEn = currentLang === 'en';
-      document.getElementById('faqList').innerHTML = FAQS.map(f => `
-        <details class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 group">
-          <summary class="font-bold text-xs sm:text-sm text-white cursor-pointer list-none flex items-center justify-between"><span>❓ ${isEn ? f.qEn : f.qBn}</span><span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span></summary>
-          <p class="text-xs text-slate-400 mt-2.5 pt-2 border-t border-slate-900 leading-relaxed">${isEn ? f.aEn : f.aBn}</p>
+      document.getElementById('faqList').innerHTML = FAQS.map((f, i) => `
+        <details class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800/90 group" ${i === 0 ? 'open' : ''}>
+          <summary class="font-bold text-xs sm:text-sm text-white cursor-pointer list-none flex items-center justify-between">
+            <span class="flex items-center gap-2">
+              <span class="text-slate-500 font-mono text-xs">0${i + 1}.</span>
+              <span>${f.q}</span>
+            </span>
+            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-xs text-slate-400 mt-2.5 pt-2 border-t border-slate-800/60 leading-relaxed">${f.a}</p>
         </details>
-      `).join('');
-    }
-
-    const PAY_FEED = [
-      { m: 'Binance', t: 'USA WhatsApp OTP Number', a: '৳ ৩৯৫ ($3.24 USDT)', f: '🇺🇸', ti: '১ মিনিট আগে' },
-      { m: 'bKash', t: 'UK Travel eSIM (৬০ দিন)', a: '৳ ১,০৫০ ($8.60 USDT)', f: '🇬🇧', ti: '৩ মিনিট আগে' },
-      { m: 'Binance', t: 'Canada WhatsApp OTP Number', a: '৳ ৪১০ ($3.36 USDT)', f: '🇨🇦', ti: '৫ মিনিট আগে' },
-      { m: 'Nagad', t: 'Germany Real Telecom SIM', a: '৳ ৪৮০ ($3.93 USDT)', f: '🇩🇪', ti: '৮ মিনিট আগে' }
-    ];
-
-    function renderFeed() {
-      document.getElementById('paymentsList').innerHTML = PAY_FEED.map(p => `
-        <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/70 border border-slate-800 text-xs">
-          <div class="flex items-center gap-2"><span class="text-xl">${p.f}</span><div><p class="font-bold text-white text-[11px]">${p.t}</p><div class="flex items-center gap-1.5 text-[10px] text-slate-400"><span class="font-black ${p.m === 'Binance' ? 'text-amber-400' : 'text-pink-400'}">${p.m}</span><span>•</span><span>${p.ti}</span></div></div></div>
-          <span class="font-mono font-bold text-emerald-400 text-xs">${p.a}</span>
-        </div>
       `).join('');
     }
 
     function openOrder(type, id) {
       selectedItem = type === 'otp' ? OTP_DATA.find(p => p.id === id) : ESIM_DATA.find(p => p.id === id);
       selectedItem.type = type;
-      const isEn = currentLang === 'en';
       document.getElementById('mFlag').textContent = selectedItem.flag;
-      document.getElementById('mName').textContent = type === 'otp' ? (isEn ? selectedItem.nameEn : selectedItem.name) : (isEn ? selectedItem.countryEn : selectedItem.country);
+      document.getElementById('mName').textContent = type === 'otp' ? selectedItem.name : selectedItem.country;
       document.getElementById('mPriceBdt').textContent = `৳ ${selectedItem.price}`;
       document.getElementById('mPriceUsdt').textContent = `$${formatUsdt(selectedItem.price)} USDT`;
-      setMethod(globalCurr === 'USDT' ? 'binance' : 'bkash');
+      document.getElementById('mNagadAmount').textContent = `৳ ${selectedItem.price} টাকা`;
+      document.getElementById('mBinanceAmount').textContent = `$${formatUsdt(selectedItem.price)} USDT`;
+      document.getElementById('mBadge').textContent = type === 'otp' ? '🛡️ ৮ মাসের রিপ্লেসমেন্ট গ্যারান্টি' : '⏰ ৬০ দিন ৫জি রোমিং ডাটা';
+      setPaymentMethod('nagad');
       document.getElementById('orderModal').classList.remove('hidden');
       document.getElementById('orderModal').classList.add('flex');
     }
 
-    function setMethod(m) {
-      selectedPay = m;
-      const bk = document.getElementById('mPayBkash'), ng = document.getElementById('mPayNagad'), bi = document.getElementById('mPayBinance');
-      const bkBx = document.getElementById('mBkashBox'), biBx = document.getElementById('mBinanceBox');
-      const lbl = document.getElementById('mTrxLabel');
-      bk.className = ng.className = bi.className = 'p-2.5 rounded-xl border border-slate-800 bg-slate-950 text-slate-400 font-bold text-xs flex flex-col items-center gap-1 cursor-pointer';
+    function setPaymentMethod(method) {
+      selectedPay = method;
+      const ngBtn = document.getElementById('mPayNagad');
+      const biBtn = document.getElementById('mPayBinance');
+      const ngBx = document.getElementById('mNagadBox');
+      const biBx = document.getElementById('mBinanceBox');
+      const trxLbl = document.getElementById('mTrxLabel');
 
-      if (m === 'binance') {
-        bi.className = 'p-2.5 rounded-xl border border-amber-500/60 bg-amber-500/10 text-amber-400 font-bold text-xs flex flex-col items-center gap-1 cursor-pointer';
-        biBx.classList.remove('hidden'); bkBx.classList.add('hidden');
-        lbl.textContent = currentLang === 'en' ? 'Binance Order ID / TxID: *' : 'Binance Order ID / TxID / নিকনেম: *';
+      if (method === 'nagad') {
+        ngBtn.className = 'p-3 rounded-2xl border border-[#F34F22] bg-[#F34F22]/15 text-[#FF855E] font-bold text-xs flex flex-col justify-between gap-1.5 cursor-pointer shadow-[0_0_15px_rgba(243,79,34,0.15)]';
+        biBtn.className = 'p-3 rounded-2xl border border-slate-800 bg-slate-950 text-slate-400 font-bold text-xs flex flex-col justify-between gap-1.5 cursor-pointer';
+        ngBx.classList.remove('hidden');
+        biBx.classList.add('hidden');
+        trxLbl.textContent = 'নগদ Transaction ID (TrxID) *';
       } else {
-        (m === 'nagad' ? ng : bk).className = 'p-2.5 rounded-xl border border-pink-500/60 bg-pink-500/10 text-pink-400 font-bold text-xs flex flex-col items-center gap-1 cursor-pointer';
-        bkBx.classList.remove('hidden'); biBx.classList.add('hidden');
-        lbl.textContent = currentLang === 'en' ? 'Transaction ID (TrxID) or Sender: *' : 'Transaction ID (TrxID) বা প্রেরক নম্বর: *';
+        biBtn.className = 'p-3 rounded-2xl border border-[#F0B90B] bg-[#F0B90B]/15 text-[#F0B90B] font-bold text-xs flex flex-col justify-between gap-1.5 cursor-pointer shadow-[0_0_15px_rgba(240,185,11,0.15)]';
+        ngBtn.className = 'p-3 rounded-2xl border border-slate-800 bg-slate-950 text-slate-400 font-bold text-xs flex flex-col justify-between gap-1.5 cursor-pointer';
+        biBx.classList.remove('hidden');
+        ngBx.classList.add('hidden');
+        trxLbl.textContent = 'Binance Order ID / TxID / নিকনেম *';
       }
     }
+
+    function copyVal(val, btnId) {
+      navigator.clipboard.writeText(val).then(() => {
+        const btn = document.getElementById(btnId);
+        if (btn) {
+          const orig = btn.innerHTML;
+          btn.innerHTML = '✓ কপি হয়েছে!';
+          setTimeout(() => btn.innerHTML = orig, 1800);
+        }
+      });
+    }
+
+    document.getElementById('copyHeroNagad').addEventListener('click', () => copyVal(NAGAD_NUMBER, 'copyHeroNagad'));
+    document.getElementById('copyHeroBinance').addEventListener('click', () => copyVal(BINANCE_PAY_UID, 'copyHeroBinance'));
+    document.getElementById('copyModalNagad').addEventListener('click', () => copyVal(NAGAD_NUMBER, 'copyModalNagad'));
+    document.getElementById('copyModalBinance').addEventListener('click', () => copyVal(BINANCE_PAY_UID, 'copyModalBinance'));
+
+    document.getElementById('mPayNagad').addEventListener('click', () => setPaymentMethod('nagad'));
+    document.getElementById('mPayBinance').addEventListener('click', () => setPaymentMethod('binance'));
+
+    // Currency Switcher
+    document.getElementById('currBdt').addEventListener('click', () => {
+      currentCurrency = 'BDT';
+      document.getElementById('currBdt').className = 'px-2 py-1 rounded font-bold bg-emerald-500 text-slate-950 transition-all cursor-pointer';
+      document.getElementById('currUsdt').className = 'px-2 py-1 rounded font-bold text-slate-400 hover:text-white transition-all cursor-pointer';
+      document.getElementById('activeCurrencyDisplay').textContent = 'BDT (৳)';
+      renderCards();
+    });
+
+    document.getElementById('currUsdt').addEventListener('click', () => {
+      currentCurrency = 'USDT';
+      document.getElementById('currUsdt').className = 'px-2 py-1 rounded font-bold bg-amber-500 text-slate-950 transition-all cursor-pointer';
+      document.getElementById('currBdt').className = 'px-2 py-1 rounded font-bold text-slate-400 hover:text-white transition-all cursor-pointer';
+      document.getElementById('activeCurrencyDisplay').textContent = 'USDT ($)';
+      renderCards();
+    });
+
+    // Tab Switching
+    document.getElementById('tabOtp').addEventListener('click', () => {
+      currentTab = 'otp';
+      document.getElementById('tabOtp').className = 'flex-1 sm:flex-none py-2.5 px-6 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 shadow-md cursor-pointer transition-all';
+      document.getElementById('tabEsim').className = 'flex-1 sm:flex-none py-2.5 px-6 rounded-xl text-xs sm:text-sm font-extrabold text-slate-400 hover:text-white cursor-pointer transition-all';
+      document.getElementById('otpSec').classList.remove('hidden');
+      document.getElementById('esimSec').classList.add('hidden');
+    });
+
+    document.getElementById('tabEsim').addEventListener('click', () => {
+      currentTab = 'esim';
+      document.getElementById('tabEsim').className = 'flex-1 sm:flex-none py-2.5 px-6 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-md cursor-pointer transition-all';
+      document.getElementById('tabOtp').className = 'flex-1 sm:flex-none py-2.5 px-6 rounded-xl text-xs sm:text-sm font-extrabold text-slate-400 hover:text-white cursor-pointer transition-all';
+      document.getElementById('esimSec').classList.remove('hidden');
+      document.getElementById('otpSec').classList.add('hidden');
+    });
+
+    document.getElementById('navOtpBtn').addEventListener('click', () => document.getElementById('tabOtp').click());
+    document.getElementById('navEsimBtn').addEventListener('click', () => document.getElementById('tabEsim').click());
+    document.getElementById('searchBox').addEventListener('input', renderCards);
+
+    // Modal Events
+    document.getElementById('closeOrderModal').addEventListener('click', () => {
+      document.getElementById('orderModal').classList.add('hidden');
+      document.getElementById('orderModal').classList.remove('flex');
+    });
 
     document.getElementById('mSubmitOrder').addEventListener('click', () => {
       const name = document.getElementById('mCustName').value.trim();
       const trx = document.getElementById('mTrxId').value.trim();
       if (!name || !trx) {
-        alert(currentLang === 'en' ? 'Please fill in Name and Transaction ID.' : 'দয়া করে নাম এবং Transaction ID লিখুন।');
+        alert('দয়া করে আপনার নাম এবং Transaction ID (TrxID) লিখুন।');
         return;
       }
+
       const ordId = `ORD-${Date.now().toString().slice(-6)}`;
-      const isEn = currentLang === 'en';
-      const itm = selectedItem.type === 'otp' ? (isEn ? selectedItem.nameEn : selectedItem.name) : (isEn ? selectedItem.countryEn : selectedItem.country);
-      const mName = selectedPay === 'binance' ? `Binance Pay (UID: ${BINANCE_PAY_UID})` : (selectedPay === 'nagad' ? 'Nagad' : 'bKash');
+      const itmName = selectedItem.type === 'otp' ? selectedItem.name : selectedItem.country;
+      const mLabel = selectedPay === 'nagad' ? 'নগদ (Nagad - 01965291171)' : `Binance Pay (UID: ${BINANCE_PAY_UID})`;
 
       try {
-        const h = JSON.parse(localStorage.getItem('orders') || '[]');
-        h.unshift({ id: ordId, name, item: itm, price: selectedItem.price, method: mName, trx, date: new Date().toLocaleDateString() });
-        localStorage.setItem('orders', JSON.stringify(h));
+        const list = JSON.parse(localStorage.getItem('user_orders') || '[]');
+        list.unshift({
+          id: ordId,
+          name,
+          itemTitle: itmName,
+          flag: selectedItem.flag,
+          price: selectedItem.price,
+          method: mLabel,
+          trx,
+          date: new Date().toLocaleDateString('bn-BD')
+        });
+        localStorage.setItem('user_orders', JSON.stringify(list));
       } catch (e) {}
 
-      const msg = `🛒 *অর্ডার নোটিফিকেশন*\n🔖 আইডি: ${ordId}\n👤 নাম: ${name}\n📦 আইটেম: ${itm}\n💰 মূল্য: ৳ ${selectedItem.price} ($${formatUsdt(selectedItem.price)} USDT)\n💳 পেমেন্ট: ${mName}\n` + (selectedPay === 'binance' ? `🟡 Binance UID: ${BINANCE_PAY_UID}\n` : `📱 নম্বর: ${PAYMENT_NUMBER}\n`) + `🔖 TrxID: ${trx}\n\nঅ্যাডমিন ভাই, পেমেন্ট সম্পন্ন করেছি। কোড/ই-সিম ডেলিভারি দিন।`;
+      const msg = `🛒 *নতুন অর্ডার সাবমিশন - ${ordId}*\n\n` +
+        `📦 *আইটেম:* ${itmName} (${selectedItem.flag})\n` +
+        `🏷️ *সার্ভিস:* ${selectedItem.type === 'otp' ? 'হোয়াটসঅ্যাপ/ওটিপি নাম্বার (৮ মাসের গ্যারান্টি)' : 'ট্রাভেল ৫জি ই-সিম (৬০ দিন মেয়াদ)'}\n` +
+        `💰 *মূল্য:* ৳${selectedItem.price} টাকা ($${formatUsdt(selectedItem.price)} USDT)\n` +
+        `💳 *পেমেন্ট:* ${mLabel}\n` +
+        `🔖 *TrxID:* ${trx}\n` +
+        `👤 *গ্রাহকের নাম:* ${name}\n\n` +
+        `অ্যাডমিন ভাই, পেমেন্ট সম্পন্ন করেছি। আমার ওটিপি/ই-সিম কোডটি সরবরাহ করুন।`;
+
       window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
       document.getElementById('orderModal').classList.add('hidden');
       document.getElementById('orderModal').classList.remove('flex');
+      document.getElementById('mCustName').value = '';
+      document.getElementById('mTrxId').value = '';
     });
 
-    function setupCopy(id, val) {
-      const el = document.getElementById(id);
-      if (el) el.addEventListener('click', () => {
-        navigator.clipboard.writeText(val).then(() => {
-          const o = el.textContent;
-          el.textContent = '✓ কপিড!';
-          setTimeout(() => el.textContent = o, 1800);
-        });
-      });
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      setupCopy('copyTopBinance', BINANCE_PAY_UID);
-      setupCopy('copyTopBkash', PAYMENT_NUMBER);
-      setupCopy('copyHeroBinance', BINANCE_PAY_UID);
-      setupCopy('copyHeroBkash', PAYMENT_NUMBER);
-      setupCopy('copyModalBinance', BINANCE_PAY_UID);
-      setupCopy('copyModalBkash', PAYMENT_NUMBER);
-
-      document.getElementById('langBn').addEventListener('click', () => applyLang('bn'));
-      document.getElementById('langEn').addEventListener('click', () => applyLang('en'));
-      document.getElementById('currBdt').addEventListener('click', () => setGlobalCurr('BDT'));
-      document.getElementById('currUsdt').addEventListener('click', () => setGlobalCurr('USDT'));
-
-      document.getElementById('tabOtp').addEventListener('click', () => {
-        activeTab = 'otp';
-        document.getElementById('tabOtp').className = 'flex-1 sm:flex-none py-2.5 px-5 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 cursor-pointer';
-        document.getElementById('tabEsim').className = 'flex-1 sm:flex-none py-2.5 px-5 rounded-xl text-xs sm:text-sm font-extrabold text-slate-400 hover:text-white cursor-pointer';
-        document.getElementById('otpSec').classList.remove('hidden');
-        document.getElementById('esimSec').classList.add('hidden');
-      });
-
-      document.getElementById('tabEsim').addEventListener('click', () => {
-        activeTab = 'esim';
-        document.getElementById('tabEsim').className = 'flex-1 sm:flex-none py-2.5 px-5 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 cursor-pointer';
-        document.getElementById('tabOtp').className = 'flex-1 sm:flex-none py-2.5 px-5 rounded-xl text-xs sm:text-sm font-extrabold text-slate-400 hover:text-white cursor-pointer';
-        document.getElementById('esimSec').classList.remove('hidden');
-        document.getElementById('otpSec').classList.add('hidden');
-      });
-
-      document.getElementById('searchBox').addEventListener('input', renderCards);
-      document.getElementById('closeOrderModal').addEventListener('click', () => {
-        document.getElementById('orderModal').classList.add('hidden');
-        document.getElementById('orderModal').classList.remove('flex');
-      });
-
-      document.getElementById('mPayBkash').addEventListener('click', () => setMethod('bkash'));
-      document.getElementById('mPayNagad').addEventListener('click', () => setMethod('nagad'));
-      document.getElementById('mPayBinance').addEventListener('click', () => setMethod('binance'));
-
-      // Tracking
-      const openTr = () => {
-        const h = JSON.parse(localStorage.getItem('orders') || '[]');
-        document.getElementById('trackList').innerHTML = h.length === 0 ? '<p class="text-xs text-slate-400 text-center py-6">কোনো অর্ডার হিস্ট্রি পাওয়া যায়নি</p>' : h.map(o => `
-          <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs">
-            <div class="flex justify-between font-bold text-white"><span>${o.item}</span><span class="text-emerald-400">৳ ${o.price}</span></div>
-            <div class="flex justify-between text-[10px] text-slate-400 mt-1"><span>${o.id} • ${o.date}</span><span class="text-amber-300">${o.method}</span></div>
+    // Tracking
+    const showTracking = () => {
+      const list = JSON.parse(localStorage.getItem('user_orders') || '[]');
+      const container = document.getElementById('trackList');
+      if (list.length === 0) {
+        container.innerHTML = '<p class="text-xs text-slate-400 text-center py-8">এই ব্রাউজারে কোনো পূর্ববর্তী অর্ডার রেকর্ড পাওয়া যায়নি। নতুন অর্ডার করার পর এখানে দেখতে পাবেন।</p>';
+      } else {
+        container.innerHTML = list.map(o => `
+          <div class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 text-xs space-y-1.5">
+            <div class="flex items-center justify-between font-bold text-white">
+              <span>${o.flag} ${o.itemTitle}</span>
+              <span class="text-emerald-400 font-mono">৳ ${o.price}</span>
+            </div>
+            <div class="flex items-center justify-between text-[11px] text-slate-400 font-mono">
+              <span>ID: ${o.id} · Trx: ${o.trx}</span>
+              <span class="text-amber-300 font-sans">${o.method}</span>
+            </div>
           </div>
         `).join('');
-        document.getElementById('trackModal').classList.remove('hidden');
-        document.getElementById('trackModal').classList.add('flex');
-      };
+      }
+      document.getElementById('trackModal').classList.remove('hidden');
+      document.getElementById('trackModal').classList.add('flex');
+    };
 
-      document.getElementById('openTrackBtn').addEventListener('click', openTr);
-      document.getElementById('openTrackFooter').addEventListener('click', openTr);
-      document.getElementById('closeTrackModal').addEventListener('click', () => {
-        document.getElementById('trackModal').classList.add('hidden');
-        document.getElementById('trackModal').classList.remove('flex');
-      });
+    document.getElementById('openTrackTopBtn').addEventListener('click', showTracking);
+    document.getElementById('openTrackMobileBtn').addEventListener('click', showTracking);
+    document.getElementById('openTrackFooter').addEventListener('click', showTracking);
+    document.getElementById('closeTrackModal').addEventListener('click', () => {
+      document.getElementById('trackModal').classList.add('hidden');
+      document.getElementById('trackModal').classList.remove('flex');
+    });
 
-      document.getElementById('commentForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const n = document.getElementById('revName').value.trim();
-        const t = document.getElementById('revText').value.trim();
-        if (n && t) {
-          REVIEWS.unshift({ name: n, nameEn: n, loc: 'কাস্টমার', locEn: 'Customer', text: t, textEn: t, time: 'এইমাত্র', timeEn: 'Just now' });
-          document.getElementById('revName').value = '';
-          document.getElementById('revText').value = '';
-          alert('ধন্যবাদ! আপনার রিভিউ যুক্ত হয়েছে।');
-          renderReviews();
-        }
-      });
+    // Review Form
+    document.getElementById('reviewForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const n = document.getElementById('rName').value.trim();
+      const l = document.getElementById('rLoc').value.trim() || 'বাংলাদেশ';
+      const m = document.getElementById('rMethod').value;
+      const c = document.getElementById('rComment').value.trim();
+      if (n && c) {
+        REVIEWS.unshift({ name: n, loc: l, comment: c, method: m, time: 'এইমাত্র' });
+        document.getElementById('rName').value = '';
+        document.getElementById('rLoc').value = '';
+        document.getElementById('rComment').value = '';
+        alert('ধন্যবাদ! আপনার মূল্যবান রিভিউটি যুক্ত হয়েছে।');
+        renderReviews();
+      }
+    });
 
-      applyLang('bn');
-      renderFeed();
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCards();
+      renderReviews();
+      renderFaqs();
     });
   </script>
 </body>
