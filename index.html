@@ -23,7 +23,7 @@
     @keyframes pulseDot { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: 0.6; } }
     .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 9999px; animation: pulseDot 2s infinite ease-in-out; }
   </style>
-<script src="/_aistudio-iframe.js?v=1f94f900"></script></head>
+</head>
 <body class="text-slate-100 min-h-screen antialiased selection:bg-emerald-500 selection:text-slate-950 relative">
 
   <!-- Background Ambient Glow -->
@@ -77,7 +77,6 @@
         <!-- Tracking Button -->
         <button id="openTrackBtn" class="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-bold text-slate-200 transition-all cursor-pointer">
           <span>📜 <span data-i18n="tracking">ট্র্যাকিং</span></span>
-          <span id="badgeCount" class="hidden px-1.5 py-0.2 rounded-full bg-emerald-500 text-slate-950 font-black text-[10px]">0</span>
         </button>
 
         <!-- WhatsApp Button -->
@@ -179,7 +178,7 @@
       </div>
     </div>
 
-    <!-- OTP Grid -->
+    <!-- OTP Grid (29 Countries) -->
     <section id="otpSec" class="space-y-4">
       <div class="flex items-center justify-between">
         <div>
@@ -191,7 +190,7 @@
       <div id="otpGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </section>
 
-    <!-- eSIM Grid -->
+    <!-- eSIM Grid (28 Countries) -->
     <section id="esimSec" class="space-y-4 hidden">
       <div class="flex items-center justify-between">
         <div>
