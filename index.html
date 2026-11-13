@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bn" class="dark">
+<html lang="bn" class="dark overflow-x-hidden">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,6 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
     body {
       font-family: 'Hind Siliguri', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       background-color: #0a0e17;
@@ -22,41 +26,43 @@
     ::-webkit-scrollbar-thumb:hover { background: #334155; }
   </style>
 </head>
-<body class="bg-[#0a0e17] text-slate-100 min-h-screen antialiased flex flex-col selection:bg-emerald-500 selection:text-slate-950">
+<body class="bg-[#0a0e17] text-slate-100 min-h-screen w-full overflow-x-hidden antialiased flex flex-col selection:bg-emerald-500 selection:text-slate-950">
 
   <!-- ========================================== -->
-  <!-- 1. CLEAN & SIMPLE TOP HEADER               -->
+  <!-- 1. CLEAN & SIMPLE TOP HEADER (MOBILE-SAFE) -->
   <!-- ========================================== -->
-  <header class="border-b border-slate-800 bg-[#0d1322] sticky top-0 z-40 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3">
-      <a href="#" class="flex items-center gap-2.5">
-        <span class="text-2xl">📱</span>
-        <div>
-          <h1 class="text-base sm:text-lg font-black text-white tracking-tight">
+  <header class="w-full border-b border-slate-800 bg-[#0d1322] sticky top-0 z-40 shadow-sm">
+    <div class="max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-2 sm:gap-3">
+      <a href="#" class="flex items-center gap-2 min-w-0 flex-1">
+        <span class="text-xl sm:text-2xl shrink-0">📱</span>
+        <div class="min-w-0">
+          <h1 class="text-xs sm:text-lg font-black text-white tracking-tight truncate">
             Virtual Number <span class="text-emerald-400">&amp;</span> eSIM Shop
           </h1>
-          <p class="text-[11px] text-slate-400 font-medium hidden sm:block">
+          <p class="text-[11px] text-slate-400 font-medium hidden sm:block truncate">
             ৮ মাসের গ্যারান্টিযুক্ত ভার্চুয়াল নাম্বার ও ট্রাভেল ই-সিম
           </p>
         </div>
       </a>
 
-      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+      <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
         <!-- Currency Toggle -->
-        <div class="flex items-center p-1 rounded-xl bg-slate-900 border border-slate-800 text-xs">
-          <button id="currBtnBdt" onclick="setCurrency('BDT')" class="px-2.5 py-1 rounded-lg font-bold bg-emerald-500 text-slate-950 cursor-pointer">৳ BDT</button>
-          <button id="currBtnUsd" onclick="setCurrency('USD')" class="px-2.5 py-1 rounded-lg font-bold text-slate-400 hover:text-white cursor-pointer">$ USDT</button>
+        <div class="flex items-center p-0.5 sm:p-1 rounded-xl bg-slate-900 border border-slate-800 text-[10px] sm:text-xs">
+          <button id="currBtnBdt" onclick="setCurrency('BDT')" class="px-2 sm:px-2.5 py-1 rounded-lg font-bold bg-emerald-500 text-slate-950 cursor-pointer whitespace-nowrap">৳ BDT</button>
+          <button id="currBtnUsd" onclick="setCurrency('USD')" class="px-2 sm:px-2.5 py-1 rounded-lg font-bold text-slate-400 hover:text-white cursor-pointer whitespace-nowrap">$ USDT</button>
         </div>
 
         <!-- History button -->
-        <button onclick="openHistoryModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-bold text-slate-300 transition-colors cursor-pointer">
-          <span>📜 হিস্ট্রি</span>
+        <button onclick="openHistoryModal()" aria-label="অর্ডার হিস্ট্রি" class="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-bold text-slate-300 transition-colors cursor-pointer whitespace-nowrap">
+          <span>📜</span>
+          <span class="hidden sm:inline">হিস্ট্রি</span>
           <span id="orderBadge" class="hidden px-1.5 py-0.2 rounded-full bg-emerald-500 text-slate-950 font-black text-[10px]">0</span>
         </button>
 
         <!-- WhatsApp Support CTA -->
-        <a href="https://wa.me/8801605617380" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 font-extrabold text-xs shadow-md transition-all cursor-pointer shrink-0">
-          <span>WhatsApp সাপোর্ট</span>
+        <a href="https://wa.me/8801605617380" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp সাপোর্ট" class="flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-extrabold text-xs shadow-md shadow-emerald-500/20 transition-all cursor-pointer shrink-0 whitespace-nowrap">
+          <svg viewBox="0 0 32 32" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true"><path d="M16.004 2.667C8.64 2.667 2.667 8.64 2.667 16.004c0 2.353.615 4.65 1.784 6.673L2.55 29.62l7.11-1.864a13.28 13.28 0 0 0 6.344 1.61h.005c7.362 0 13.333-5.973 13.333-13.336 0-3.562-1.387-6.912-3.906-9.43a13.247 13.247 0 0 0-9.432-3.933zm0 24.477h-.004a11.09 11.09 0 0 1-5.654-1.547l-.405-.24-4.22 1.107 1.127-4.115-.264-.42a11.06 11.06 0 0 1-1.7-5.925c0-6.122 4.982-11.103 11.116-11.103 2.967 0 5.756 1.157 7.852 3.255a11.033 11.033 0 0 1 3.252 7.853c0 6.124-4.982 11.135-11.1 11.135zm6.093-8.322c-.334-.168-1.977-.976-2.283-1.088-.306-.11-.53-.167-.752.167-.223.334-.863 1.088-1.058 1.31-.195.224-.39.252-.724.084-.334-.167-1.41-.52-2.685-1.658-.992-.885-1.662-1.978-1.857-2.312-.195-.334-.02-.515.147-.681.15-.15.334-.39.501-.585.167-.195.223-.334.334-.557.112-.223.056-.418-.028-.585-.084-.168-.752-1.812-1.03-2.48-.271-.651-.547-.563-.752-.573l-.641-.011c-.223 0-.585.084-.891.418-.306.334-1.17 1.143-1.17 2.787 0 1.644 1.198 3.233 1.365 3.456.167.223 2.357 3.6 5.71 5.048.798.344 1.421.55 1.906.704.801.255 1.53.219 2.106.133.643-.096 1.977-.808 2.256-1.588.278-.78.278-1.45.195-1.589-.084-.14-.307-.224-.641-.391z"/></svg>
+          <span class="hidden md:inline">WhatsApp সাপোর্ট</span>
         </a>
       </div>
     </div>
@@ -65,17 +71,17 @@
   <!-- ========================================== -->
   <!-- 2. DIRECT PRODUCTS CATALOG AT THE TOP      -->
   <!-- ========================================== -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full space-y-5 flex-1">
+  <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-5 w-full space-y-5 flex-1">
     
     <!-- Clean Tabs & Region Filter -->
     <div class="space-y-3.5">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
         <div class="inline-flex p-1 bg-slate-900/90 border border-slate-800 rounded-2xl w-full sm:w-auto shadow-sm">
-          <button id="tabOtpBtn" onclick="switchTab('otp')" class="flex-1 sm:flex-initial py-2 px-5 rounded-xl text-xs sm:text-sm font-extrabold bg-emerald-500 text-slate-950 transition-all cursor-pointer">
-            📱 WhatsApp / OTP নাম্বার (২৯)
+          <button id="tabOtpBtn" onclick="switchTab('otp')" class="flex-1 sm:flex-initial py-2 px-2.5 sm:px-5 rounded-xl text-[11px] sm:text-sm font-extrabold bg-emerald-500 text-slate-950 transition-all cursor-pointer truncate">
+            📱 WhatsApp / OTP (২৯)
           </button>
-          <button id="tabEsimBtn" onclick="switchTab('esim')" class="flex-1 sm:flex-initial py-2 px-5 rounded-xl text-xs sm:text-sm font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer">
-            🌐 Travel eSIM প্যাকেজ (২৮)
+          <button id="tabEsimBtn" onclick="switchTab('esim')" class="flex-1 sm:flex-initial py-2 px-2.5 sm:px-5 rounded-xl text-[11px] sm:text-sm font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer truncate">
+            🌐 Travel eSIM (২৮)
           </button>
         </div>
 
@@ -102,7 +108,7 @@
 
     <!-- OTP Grid Area -->
     <section id="otpArea" class="space-y-3">
-      <div class="flex items-center justify-between text-xs text-slate-400">
+      <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
         <span class="font-bold text-white">📱 ওটিপি ভার্চুয়াল সিম (২৯টি দেশ)</span>
         <span class="text-emerald-400 font-semibold">● সবগুলো আট মাসের ফুল গ্যারান্টিসহ</span>
       </div>
@@ -111,7 +117,7 @@
 
     <!-- eSIM Grid Area -->
     <section id="esimArea" class="space-y-3 hidden">
-      <div class="flex items-center justify-between text-xs text-slate-400">
+      <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
         <span class="font-bold text-white">🌐 আন্তর্জাতিক ট্রাভেল ই-সিম (২৮টি দেশ)</span>
         <span class="text-cyan-400 font-semibold">● ৬০ দিন মেয়াদ (২ মাসের ফুল ভ্যালিডিটি)</span>
       </div>
@@ -122,8 +128,8 @@
   <!-- ========================================== -->
   <!-- 3. LOWER SECTION (PAYMENT, 7-SEC REVIEWS)  -->
   <!-- ========================================== -->
-  <section class="border-t border-slate-800/80 bg-[#0c111e] py-8 space-y-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+  <section class="w-full border-t border-slate-800/80 bg-[#0c111e] py-8 space-y-8">
+    <div class="max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 space-y-8">
       
       <!-- PAYMENT SECTION: BOTH NAGAD & BINANCE -->
       <div class="p-5 sm:p-6 rounded-3xl bg-[#0d1322] border border-slate-800 space-y-4">
@@ -138,12 +144,14 @@
           </div>
 
           <!-- Nagad / Binance Switcher -->
-          <div class="inline-flex p-1 bg-slate-950 rounded-xl border border-slate-800 text-xs">
-            <button id="payTabNagad" onclick="setPayMethodTab('nagad')" class="px-4 py-1.5 rounded-lg font-extrabold bg-orange-500 text-slate-950 cursor-pointer">
-              🟠 নগদ (Nagad)
+          <div class="inline-flex p-1 bg-slate-950 rounded-xl border border-slate-800 text-xs w-full sm:w-auto">
+            <button id="payTabNagad" onclick="setPayMethodTab('nagad')" class="flex-1 sm:flex-initial px-3 sm:px-4 py-1.5 rounded-lg font-extrabold bg-orange-500 text-slate-950 cursor-pointer flex items-center justify-center gap-1.5">
+              <svg viewBox="0 0 32 32" class="w-4 h-4 shrink-0" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#EE4023"/><path d="M16 0a16 16 0 0 1 16 16c0 4.5-1.85 8.55-4.85 11.45C25.5 21 20.5 14 10 9.5A15.95 15.95 0 0 1 16 0z" fill="#F7941D" opacity="0.92"/><path fill="#FFFFFF" d="M22.2 8.4c-2.7 1.4-5.2 3.6-7 6.5-1.1 1.7-1.9 3.6-2.3 5.5-.8-1.1-1.4-2.4-1.4-3.9 0-3 2.2-5.7 5.2-6.6-4.4.2-8 3.7-8 8.1 0 4.4 3.6 8 8 8 1.9 0 3.7-.7 5.1-1.8-1.5.4-3.1.3-4.4-.5-1.9-1.1-2.8-3-2.5-5.1.4-2.7 2.3-5.4 5.1-7.4 1.1-.8 2.2-1.4 3-1.8l-.8-1z"/><circle cx="20.8" cy="14.4" r="2" fill="#FFFFFF"/></svg>
+              <span>নগদ (Nagad)</span>
             </button>
-            <button id="payTabBinance" onclick="setPayMethodTab('binance')" class="px-4 py-1.5 rounded-lg font-extrabold text-slate-400 hover:text-white cursor-pointer">
-              🟡 বাইন্যান্স (Binance Pay)
+            <button id="payTabBinance" onclick="setPayMethodTab('binance')" class="flex-1 sm:flex-initial px-3 sm:px-4 py-1.5 rounded-lg font-extrabold text-slate-400 hover:text-white cursor-pointer flex items-center justify-center gap-1.5">
+              <svg viewBox="0 0 32 32" class="w-4 h-4 shrink-0" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#F3BA2F"/><path fill="#0B0E11" d="M16 6.2L21.2 11.4L19.1 13.5L16 10.4L12.9 13.5L10.8 11.4ZM16 13.2L18.8 16L16 18.8L13.2 16ZM8.5 13.5L11 16L8.5 18.5L6 16ZM23.5 13.5L26 16L23.5 18.5L21 16ZM16 25.8L21.2 20.6L19.1 18.5L16 21.6L12.9 18.5L10.8 20.6Z"/></svg>
+              <span>বাইন্যান্স (Binance Pay)</span>
             </button>
           </div>
         </div>
@@ -151,8 +159,9 @@
         <!-- Nagad Info View -->
         <div id="nagadDetailView" class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
           <div class="space-y-1">
-            <span class="inline-block px-2.5 py-0.5 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20 text-[11px] font-bold">
-              নগদ পার্সোনাল (Send Money)
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20 text-[11px] font-bold">
+              <svg viewBox="0 0 32 32" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#EE4023"/><path d="M16 0a16 16 0 0 1 16 16c0 4.5-1.85 8.55-4.85 11.45C25.5 21 20.5 14 10 9.5A15.95 15.95 0 0 1 16 0z" fill="#F7941D" opacity="0.92"/><path fill="#FFFFFF" d="M22.2 8.4c-2.7 1.4-5.2 3.6-7 6.5-1.1 1.7-1.9 3.6-2.3 5.5-.8-1.1-1.4-2.4-1.4-3.9 0-3 2.2-5.7 5.2-6.6-4.4.2-8 3.7-8 8.1 0 4.4 3.6 8 8 8 1.9 0 3.7-.7 5.1-1.8-1.5.4-3.1.3-4.4-.5-1.9-1.1-2.8-3-2.5-5.1.4-2.7 2.3-5.4 5.1-7.4 1.1-.8 2.2-1.4 3-1.8l-.8-1z"/><circle cx="20.8" cy="14.4" r="2" fill="#FFFFFF"/></svg>
+              <span>নগদ পার্সোনাল (Send Money)</span>
             </span>
             <h4 class="text-sm sm:text-base font-bold text-white">নগদে সেন্ড মানি করুন</h4>
             <p class="text-xs text-slate-400 leading-relaxed">
@@ -174,8 +183,9 @@
         <!-- Binance Info View -->
         <div id="binanceDetailView" class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center hidden">
           <div class="space-y-1">
-            <span class="inline-block px-2.5 py-0.5 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 text-[11px] font-bold">
-              Binance Pay (Zero Fee USDT)
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 text-[11px] font-bold">
+              <svg viewBox="0 0 32 32" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#F3BA2F"/><path fill="#0B0E11" d="M16 6.2L21.2 11.4L19.1 13.5L16 10.4L12.9 13.5L10.8 11.4ZM16 13.2L18.8 16L16 18.8L13.2 16ZM8.5 13.5L11 16L8.5 18.5L6 16ZM23.5 13.5L26 16L23.5 18.5L21 16ZM16 25.8L21.2 20.6L19.1 18.5L16 21.6L12.9 18.5L10.8 20.6Z"/></svg>
+              <span>Binance Pay (Zero Fee USDT)</span>
             </span>
             <h4 class="text-sm sm:text-base font-bold text-white">বাইন্যান্স পে দিয়ে পে করুন</h4>
             <p class="text-xs text-slate-400 leading-relaxed">
@@ -255,10 +265,10 @@
   <!-- ========================================== -->
   <!-- 4. FOOTER                                  -->
   <!-- ========================================== -->
-  <footer class="border-t border-slate-800 bg-[#090d16] py-5 text-xs text-slate-500">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+  <footer class="w-full border-t border-slate-800 bg-[#090d16] py-5 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
       <div>📱 Virtual Number &amp; eSIM Shop · নগদ ও বাইন্যান্স সাপোর্টেড</div>
-      <div class="flex items-center gap-4 text-[11px]">
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px]">
         <span>নগদ: 01965291171</span>
         <span>·</span>
         <span>Pay ID: 852911718</span>
@@ -297,12 +307,12 @@
       <div class="space-y-1.5">
         <label class="text-xs font-bold text-slate-300 uppercase block">পেমেন্ট মেথড নির্বাচন করুন:</label>
         <div class="grid grid-cols-2 gap-2">
-          <button type="button" id="modalMethodNagad" onclick="selectModalMethod('nagad')" class="p-3 rounded-2xl border flex items-center gap-2 border-orange-500 bg-orange-500/10 cursor-pointer">
-            <span class="text-xl">🟠</span>
+          <button type="button" id="modalMethodNagad" onclick="selectModalMethod('nagad')" class="p-3 rounded-2xl border flex items-center gap-2.5 border-orange-500 bg-orange-500/10 cursor-pointer">
+            <svg viewBox="0 0 32 32" class="w-7 h-7 shrink-0" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#EE4023"/><path d="M16 0a16 16 0 0 1 16 16c0 4.5-1.85 8.55-4.85 11.45C25.5 21 20.5 14 10 9.5A15.95 15.95 0 0 1 16 0z" fill="#F7941D" opacity="0.92"/><path fill="#FFFFFF" d="M22.2 8.4c-2.7 1.4-5.2 3.6-7 6.5-1.1 1.7-1.9 3.6-2.3 5.5-.8-1.1-1.4-2.4-1.4-3.9 0-3 2.2-5.7 5.2-6.6-4.4.2-8 3.7-8 8.1 0 4.4 3.6 8 8 8 1.9 0 3.7-.7 5.1-1.8-1.5.4-3.1.3-4.4-.5-1.9-1.1-2.8-3-2.5-5.1.4-2.7 2.3-5.4 5.1-7.4 1.1-.8 2.2-1.4 3-1.8l-.8-1z"/><circle cx="20.8" cy="14.4" r="2" fill="#FFFFFF"/></svg>
             <div class="text-left"><span class="font-bold text-white text-xs block">নগদ (Nagad)</span><span class="text-[10px] text-slate-400">Send Money</span></div>
           </button>
-          <button type="button" id="modalMethodBinance" onclick="selectModalMethod('binance')" class="p-3 rounded-2xl border flex items-center gap-2 border-slate-800 bg-slate-950 cursor-pointer">
-            <span class="text-xl">🟡</span>
+          <button type="button" id="modalMethodBinance" onclick="selectModalMethod('binance')" class="p-3 rounded-2xl border flex items-center gap-2.5 border-slate-800 bg-slate-950 cursor-pointer">
+            <svg viewBox="0 0 32 32" class="w-7 h-7 shrink-0" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#F3BA2F"/><path fill="#0B0E11" d="M16 6.2L21.2 11.4L19.1 13.5L16 10.4L12.9 13.5L10.8 11.4ZM16 13.2L18.8 16L16 18.8L13.2 16ZM8.5 13.5L11 16L8.5 18.5L6 16ZM23.5 13.5L26 16L23.5 18.5L21 16ZM16 25.8L21.2 20.6L19.1 18.5L16 21.6L12.9 18.5L10.8 20.6Z"/></svg>
             <div class="text-left"><span class="font-bold text-white text-xs block">Binance Pay</span><span class="text-[10px] text-slate-400">Zero Fee USDT</span></div>
           </button>
         </div>
@@ -325,8 +335,9 @@
           <label id="modalTrxLabel" class="text-xs font-bold text-slate-300 uppercase block mb-1">নগদ TrxID বা প্রেরক নম্বর: *</label>
           <input id="modalTrxInput" type="text" placeholder="যেমন: BL82K9X1 অথবা 018xxxxxxxx" class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm font-mono text-white focus:outline-none focus:ring-1 focus:ring-emerald-500" />
         </div>
-        <button onclick="submitOrder()" class="w-full py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm rounded-xl cursor-pointer">
-          WhatsApp-এ অর্ডার পাঠান ও কোড নিন
+        <button onclick="submitOrder()" class="w-full py-3.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-black text-sm rounded-xl shadow-md shadow-emerald-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all">
+          <svg viewBox="0 0 32 32" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true"><path d="M16.004 2.667C8.64 2.667 2.667 8.64 2.667 16.004c0 2.353.615 4.65 1.784 6.673L2.55 29.62l7.11-1.864a13.28 13.28 0 0 0 6.344 1.61h.005c7.362 0 13.333-5.973 13.333-13.336 0-3.562-1.387-6.912-3.906-9.43a13.247 13.247 0 0 0-9.432-3.933zm0 24.477h-.004a11.09 11.09 0 0 1-5.654-1.547l-.405-.24-4.22 1.107 1.127-4.115-.264-.42a11.06 11.06 0 0 1-1.7-5.925c0-6.122 4.982-11.103 11.116-11.103 2.967 0 5.756 1.157 7.852 3.255a11.033 11.033 0 0 1 3.252 7.853c0 6.124-4.982 11.135-11.1 11.135zm6.093-8.322c-.334-.168-1.977-.976-2.283-1.088-.306-.11-.53-.167-.752.167-.223.334-.863 1.088-1.058 1.31-.195.224-.39.252-.724.084-.334-.167-1.41-.52-2.685-1.658-.992-.885-1.662-1.978-1.857-2.312-.195-.334-.02-.515.147-.681.15-.15.334-.39.501-.585.167-.195.223-.334.334-.557.112-.223.056-.418-.028-.585-.084-.168-.752-1.812-1.03-2.48-.271-.651-.547-.563-.752-.573l-.641-.011c-.223 0-.585.084-.891.418-.306.334-1.17 1.143-1.17 2.787 0 1.644 1.198 3.233 1.365 3.456.167.223 2.357 3.6 5.71 5.048.798.344 1.421.55 1.906.704.801.255 1.53.219 2.106.133.643-.096 1.977-.808 2.256-1.588.278-.78.278-1.45.195-1.589-.084-.14-.307-.224-.641-.391z"/></svg>
+          <span>WhatsApp-এ অর্ডার পাঠান ও কোড নিন</span>
         </button>
       </div>
     </div>
@@ -346,9 +357,9 @@
   </div>
 
   <!-- Floating WhatsApp -->
-  <aside class="fixed bottom-6 right-6 z-40">
-    <a href="https://wa.me/8801605617380" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 rounded-full bg-[#25D366] text-slate-950 shadow-xl transition-transform hover:scale-110 active:scale-95 cursor-pointer ring-3 ring-emerald-400/30">
-      💬
+  <aside class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40">
+    <a href="https://wa.me/8801605617380" target="_blank" rel="noopener noreferrer" title="WhatsApp-এ যোগাযোগ করুন" class="flex items-center justify-center w-13 h-13 rounded-full bg-gradient-to-br from-[#25D366] to-[#128C7E] hover:brightness-110 text-white shadow-lg shadow-emerald-500/35 transition-transform hover:scale-110 active:scale-95 cursor-pointer ring-2 ring-white/25">
+      <svg viewBox="0 0 32 32" class="w-7 h-7" fill="currentColor" aria-hidden="true"><path d="M16.004 2.667C8.64 2.667 2.667 8.64 2.667 16.004c0 2.353.615 4.65 1.784 6.673L2.55 29.62l7.11-1.864a13.28 13.28 0 0 0 6.344 1.61h.005c7.362 0 13.333-5.973 13.333-13.336 0-3.562-1.387-6.912-3.906-9.43a13.247 13.247 0 0 0-9.432-3.933zm0 24.477h-.004a11.09 11.09 0 0 1-5.654-1.547l-.405-.24-4.22 1.107 1.127-4.115-.264-.42a11.06 11.06 0 0 1-1.7-5.925c0-6.122 4.982-11.103 11.116-11.103 2.967 0 5.756 1.157 7.852 3.255a11.033 11.033 0 0 1 3.252 7.853c0 6.124-4.982 11.135-11.1 11.135zm6.093-8.322c-.334-.168-1.977-.976-2.283-1.088-.306-.11-.53-.167-.752.167-.223.334-.863 1.088-1.058 1.31-.195.224-.39.252-.724.084-.334-.167-1.41-.52-2.685-1.658-.992-.885-1.662-1.978-1.857-2.312-.195-.334-.02-.515.147-.681.15-.15.334-.39.501-.585.167-.195.223-.334.334-.557.112-.223.056-.418-.028-.585-.084-.168-.752-1.812-1.03-2.48-.271-.651-.547-.563-.752-.573l-.641-.011c-.223 0-.585.084-.891.418-.306.334-1.17 1.143-1.17 2.787 0 1.644 1.198 3.233 1.365 3.456.167.223 2.357 3.6 5.71 5.048.798.344 1.421.55 1.906.704.801.255 1.53.219 2.106.133.643-.096 1.977-.808 2.256-1.588.278-.78.278-1.45.195-1.589-.084-.14-.307-.224-.641-.391z"/></svg>
     </a>
   </aside>
 
@@ -483,7 +494,7 @@
       { name: 'সাদিয়া তাসনিম', loc: 'বাসাবো, ঢাকা', prod: '🇸🇪 Sweden OTP Number', text: 'সুইডিশ ভার্চুয়াল সিমের মাধ্যমে খুব সহজে হোয়াটসঅ্যাপ অ্যাকাউন্ট তৈরি করেছি।' },
       { name: 'মাসুম বিল্লাহ', loc: 'ভোলা সদর', prod: '🇺🇸 USA WhatsApp Virtual Number', text: 'অর্ডার করার পর ট্র্যাকিং কোড দিয়ে লাইভ ডেলিভারি দেখতে পেয়েছি। গ্রেট সার্ভিস!' },
       { name: 'ফারহানা তমা', loc: 'গাজীপুর', prod: '🇦🇪 UAE / Dubai WhatsApp Number', text: 'দুবাই ভার্চুয়াল নাম্বারের কোয়ালিটি সেরা। ৮ মাসের গ্যারান্টি পলিসি আমাকে সুরক্ষা দিয়েছে।' },
-      { name: 'ইসমাইল হোসেন', loc: 'নওগাঁ', prod: '🇻এন Vietnam Travel eSIM', text: 'ভিয়েতনাম ভ্রমণের জন্য ই-সিম নিয়েছিলাম। অত্যন্ত সাশ্রয়ী ও কার্যকর প্যাকেজ।' },
+      { name: 'ইসমাইল হোসেন', loc: 'নওগাঁ', prod: '🇻🇳 Vietnam Travel eSIM', text: 'ভিয়েতনাম ভ্রমণের জন্য ই-সিম নিয়েছিলাম। অত্যন্ত সাশ্রয়ী ও কার্যকর প্যাকেজ।' },
       { name: 'হুমায়ুন কবির', loc: 'কেরানীগঞ্জ, ঢাকা', prod: '🇬🇧 UK Virtual SIM Number', text: 'ইউকে নাম্বার ৮ মাসের ফুল গ্যারান্টিসহ পেয়েছি। এমন সৎ ও দ্রুত সার্ভিস বাংলাদেশে বিরল!' }
     ];
 
@@ -498,9 +509,9 @@
     function setCurrency(cur) {
       currentCurrency = cur;
       localStorage.setItem('preferred_currency', cur);
-      document.getElementById('currBtnBdt').className = cur === 'BDT' ? 'px-2.5 py-1 rounded-lg font-bold bg-emerald-500 text-slate-950 cursor-pointer' : 'px-2.5 py-1 rounded-lg font-bold text-slate-400 hover:text-white cursor-pointer';
-      document.getElementById('currBtnUsd').className = cur === 'USD' ? 'px-2.5 py-1 rounded-lg font-bold bg-amber-400 text-slate-950 cursor-pointer' : 'px-2.5 py-1 rounded-lg font-bold text-slate-400 hover:text-white cursor-pointer';
-      renderProducts();
+      document.getElementById('currBtnBdt').className = cur === 'BDT' ? 'px-2 sm:px-2.5 py-1 rounded-lg font-bold bg-emerald-500 text-slate-950 cursor-pointer whitespace-nowrap' : 'px-2 sm:px-2.5 py-1 rounded-lg font-bold text-slate-400 hover:text-white cursor-pointer whitespace-nowrap';
+      document.getElementById('currBtnUsd').className = cur === 'USD' ? 'px-2 sm:px-2.5 py-1 rounded-lg font-bold bg-amber-400 text-slate-950 cursor-pointer whitespace-nowrap' : 'px-2 sm:px-2.5 py-1 rounded-lg font-bold text-slate-400 hover:text-white cursor-pointer whitespace-nowrap';
+      renderProducts(document.getElementById('searchInput')?.value || '');
     }
 
     function switchTab(t) {
@@ -513,13 +524,13 @@
       if (t === 'otp') {
         otpArea.classList.remove('hidden');
         esimArea.classList.add('hidden');
-        tabOtpBtn.className = 'flex-1 sm:flex-initial py-2 px-5 rounded-xl text-xs sm:text-sm font-extrabold bg-emerald-500 text-slate-950 transition-all cursor-pointer';
-        tabEsimBtn.className = 'flex-1 sm:flex-initial py-2 px-5 rounded-xl text-xs sm:text-sm font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer';
+        tabOtpBtn.className = 'flex-1 sm:flex-initial py-2 px-2.5 sm:px-5 rounded-xl text-[11px] sm:text-sm font-extrabold bg-emerald-500 text-slate-950 transition-all cursor-pointer truncate';
+        tabEsimBtn.className = 'flex-1 sm:flex-initial py-2 px-2.5 sm:px-5 rounded-xl text-[11px] sm:text-sm font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer truncate';
       } else {
         esimArea.classList.remove('hidden');
         otpArea.classList.add('hidden');
-        tabEsimBtn.className = 'flex-1 sm:flex-initial py-2 px-5 rounded-xl text-xs sm:text-sm font-extrabold bg-emerald-500 text-slate-950 transition-all cursor-pointer';
-        tabOtpBtn.className = 'flex-1 sm:flex-initial py-2 px-5 rounded-xl text-xs sm:text-sm font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer';
+        tabEsimBtn.className = 'flex-1 sm:flex-initial py-2 px-2.5 sm:px-5 rounded-xl text-[11px] sm:text-sm font-extrabold bg-emerald-500 text-slate-950 transition-all cursor-pointer truncate';
+        tabOtpBtn.className = 'flex-1 sm:flex-initial py-2 px-2.5 sm:px-5 rounded-xl text-[11px] sm:text-sm font-extrabold text-slate-400 hover:text-white transition-all cursor-pointer truncate';
       }
     }
 
@@ -536,6 +547,13 @@
       renderProducts(q);
     }
 
+    let expandedProductId = null;
+
+    function toggleCardDetails(id) {
+      expandedProductId = expandedProductId === id ? null : id;
+      renderProducts(document.getElementById('searchInput')?.value || '');
+    }
+
     function renderProducts(query = '') {
       const q = query.trim().toLowerCase();
       
@@ -549,9 +567,10 @@
 
       otpGrid.innerHTML = filteredOtp.map(item => {
         const price = formatPriceVal(item.price);
+        const isExp = expandedProductId === item.id;
         return `
-          <div class="rounded-2xl border border-slate-800 bg-[#0d1322] p-3.5 flex flex-col justify-between">
-            <div class="space-y-1.5">
+          <div class="rounded-2xl border ${isExp ? 'border-emerald-500 ring-1 ring-emerald-500/40' : 'border-slate-800'} bg-[#0d1322] p-3.5 flex flex-col justify-between">
+            <div class="space-y-2">
               <div class="flex items-center justify-between">
                 <span class="text-3xl">${item.flag}</span>
                 <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">৮ মাসের গ্যারান্টি</span>
@@ -562,10 +581,22 @@
                 <span class="text-xs text-slate-400">মূল্য:</span>
                 <span class="text-base font-black text-white font-mono">${price.primary} <span class="text-[11px] font-normal text-slate-400 font-mono">${price.secondary}</span></span>
               </div>
+              ${isExp ? `
+                <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-[11px] text-slate-300 space-y-1">
+                  <p class="font-bold text-emerald-400">📱 ৩টি অ্যাপেই ভেরিফিকেশন সুবিধা:</p>
+                  <p>✓ এই নাম্বার দিয়ে টেলিগ্রাম, ইমো ও হোয়াটসঅ্যাপ—তিনটিতেই ভেরিফিকেশন নিতে পারবেন।</p>
+                  <p>✓ আট মাসের মধ্যে যেকোনো সমস্যা হলে ফ্রি নতুন নাম্বার প্রদান।</p>
+                </div>
+              ` : ''}
             </div>
-            <button onclick="openCheckout(${JSON.stringify(item).replace(/"/g, '&quot;')}, 'otp')" class="mt-3 w-full py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black cursor-pointer">
-              অর্ডার করুন
-            </button>
+            <div class="mt-3 grid grid-cols-3 gap-1.5">
+              <button onclick="toggleCardDetails('${item.id}')" class="col-span-1 py-2 rounded-xl border border-slate-800 bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-bold cursor-pointer">
+                ${isExp ? 'সংক্ষেপ' : 'বিস্তারিত'}
+              </button>
+              <button onclick="openCheckout(${JSON.stringify(item).replace(/"/g, '&quot;')}, 'otp')" class="col-span-2 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black cursor-pointer">
+                অর্ডার করুন
+              </button>
+            </div>
           </div>
         `;
       }).join('');
@@ -580,9 +611,10 @@
 
       esimGrid.innerHTML = filteredEsim.map(item => {
         const price = formatPriceVal(item.price);
+        const isExp = expandedProductId === item.id;
         return `
-          <div class="rounded-2xl border border-slate-800 bg-[#0d1322] p-3.5 flex flex-col justify-between">
-            <div class="space-y-1.5">
+          <div class="rounded-2xl border ${isExp ? 'border-cyan-500 ring-1 ring-cyan-500/40' : 'border-slate-800'} bg-[#0d1322] p-3.5 flex flex-col justify-between">
+            <div class="space-y-2">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
                   <span class="text-3xl">${item.flag}</span>
@@ -597,10 +629,23 @@
                 <span class="text-xs text-slate-400">মূল্য:</span>
                 <span class="text-base font-black text-white font-mono">${price.primary} <span class="text-[11px] font-normal text-slate-400 font-mono">${price.secondary}</span></span>
               </div>
+              ${isExp ? `
+                <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-[11px] text-slate-300 space-y-1">
+                  <p class="font-bold text-cyan-400">📱 ব্যবহার ও ডেলিভারি নিয়ম:</p>
+                  <p>✓ WhatsApp-এ অফিশিয়াল কিউআর কোড (QR Code) পাঠানো হবে, স্ক্যান করেই নিতে হবে।</p>
+                  <p>✓ অ্যাক্টিভ করার সাথে সাথেই ফ্রি মিনিট ও হাই-স্পিড ইন্টারনেট চালু হয়ে যাবে।</p>
+                  <p>✓ পূর্ণ ৬০ দিন (২ মাস) রোমিং মেয়াদ পাবেন।</p>
+                </div>
+              ` : ''}
             </div>
-            <button onclick="openCheckout(${JSON.stringify(item).replace(/"/g, '&quot;')}, 'esim')" class="mt-3 w-full py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-black cursor-pointer">
-              অর্ডার করুন
-            </button>
+            <div class="mt-3 grid grid-cols-3 gap-1.5">
+              <button onclick="toggleCardDetails('${item.id}')" class="col-span-1 py-2 rounded-xl border border-slate-800 bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-bold cursor-pointer">
+                ${isExp ? 'সংক্ষেপ' : 'বিস্তারিত'}
+              </button>
+              <button onclick="openCheckout(${JSON.stringify(item).replace(/"/g, '&quot;')}, 'esim')" class="col-span-2 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-black cursor-pointer">
+                অর্ডার করুন
+              </button>
+            </div>
           </div>
         `;
       }).join('');
@@ -616,13 +661,13 @@
       if (m === 'nagad') {
         nagadView.classList.remove('hidden');
         binanceView.classList.add('hidden');
-        btnN.className = 'px-4 py-1.5 rounded-lg font-extrabold bg-orange-500 text-slate-950 cursor-pointer';
-        btnB.className = 'px-4 py-1.5 rounded-lg font-extrabold text-slate-400 hover:text-white cursor-pointer';
+        btnN.className = 'flex-1 sm:flex-initial px-3 sm:px-4 py-1.5 rounded-lg font-extrabold bg-orange-500 text-slate-950 cursor-pointer flex items-center justify-center gap-1.5';
+        btnB.className = 'flex-1 sm:flex-initial px-3 sm:px-4 py-1.5 rounded-lg font-extrabold text-slate-400 hover:text-white cursor-pointer flex items-center justify-center gap-1.5';
       } else {
         binanceView.classList.remove('hidden');
         nagadView.classList.add('hidden');
-        btnB.className = 'px-4 py-1.5 rounded-lg font-extrabold bg-amber-400 text-slate-950 cursor-pointer';
-        btnN.className = 'px-4 py-1.5 rounded-lg font-extrabold text-slate-400 hover:text-white cursor-pointer';
+        btnB.className = 'flex-1 sm:flex-initial px-3 sm:px-4 py-1.5 rounded-lg font-extrabold bg-amber-400 text-slate-950 cursor-pointer flex items-center justify-center gap-1.5';
+        btnN.className = 'flex-1 sm:flex-initial px-3 sm:px-4 py-1.5 rounded-lg font-extrabold text-slate-400 hover:text-white cursor-pointer flex items-center justify-center gap-1.5';
       }
     }
 
@@ -690,7 +735,7 @@
       selectModalMethod('nagad');
       document.getElementById('modalFlag').textContent = item.flag;
       document.getElementById('modalTitle').textContent = type === 'otp' ? `${item.name} WhatsApp Number` : `${item.country} Travel eSIM`;
-      document.getElementById('modalWarranty').textContent = type === 'otp' ? '🛡️ ৮ মাসের ফুল গ্যারান্টি (ফ্রি চেঞ্জ)' : '⏰ ৬০ দিন মেয়াদ';
+      document.getElementById('modalWarranty').textContent = type === 'otp' ? '🛡️ টেলিগ্রাম, ইমো, হোয়াটসঅ্যাপ (৮ মাসের গ্যারান্টি)' : '📱 QR কোডে অ্যাক্টিভেশন · ফ্রি মিনিট ও ইন্টারনেট (৬০ দিন মেয়াদ)';
       document.getElementById('modalPrice').textContent = `৳${item.price} BDT (${(item.price / USD_RATE).toFixed(2)} USDT)`;
       
       const modal = document.getElementById('checkoutModal');
@@ -713,8 +758,8 @@
       const trxInput = document.getElementById('modalTrxInput');
 
       if (m === 'nagad') {
-        btnN.className = 'p-3 rounded-2xl border flex items-center gap-2 border-orange-500 bg-orange-500/10 cursor-pointer';
-        btnB.className = 'p-3 rounded-2xl border flex items-center gap-2 border-slate-800 bg-slate-950 cursor-pointer';
+        btnN.className = 'p-3 rounded-2xl border flex items-center gap-2.5 border-orange-500 bg-orange-500/10 cursor-pointer';
+        btnB.className = 'p-3 rounded-2xl border flex items-center gap-2.5 border-slate-800 bg-slate-950 cursor-pointer';
         trxLabel.textContent = 'নগদ TrxID বা প্রেরক নম্বর: *';
         trxInput.placeholder = 'যেমন: BL82K9X1 অথবা 018xxxxxxxx';
         box.innerHTML = `
@@ -729,8 +774,8 @@
           <p class="text-[11px] text-slate-400">💡 নগদ পার্সোনাল থেকে Send Money সম্পন্ন করে TrxID দিন।</p>
         `;
       } else {
-        btnB.className = 'p-3 rounded-2xl border flex items-center gap-2 border-yellow-400 bg-yellow-400/10 cursor-pointer';
-        btnN.className = 'p-3 rounded-2xl border flex items-center gap-2 border-slate-800 bg-slate-950 cursor-pointer';
+        btnB.className = 'p-3 rounded-2xl border flex items-center gap-2.5 border-yellow-400 bg-yellow-400/10 cursor-pointer';
+        btnN.className = 'p-3 rounded-2xl border flex items-center gap-2.5 border-slate-800 bg-slate-950 cursor-pointer';
         trxLabel.textContent = 'Binance Order ID / TxID: *';
         trxInput.placeholder = 'যেমন: 2984719385 অথবা 0x3f...';
         box.innerHTML = `
