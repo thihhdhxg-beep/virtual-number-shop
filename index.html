@@ -126,7 +126,7 @@
   </main>
 
   <!-- ========================================== -->
-  <!-- 3. LOWER SECTION (PAYMENT, 7-SEC REVIEWS)  -->
+  <!-- 3. LOWER SECTION (PAYMENT, REVIEWS, TRUST) -->
   <!-- ========================================== -->
   <section class="w-full border-t border-slate-800/80 bg-[#0c111e] py-8 space-y-8">
     <div class="max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 space-y-8">
@@ -224,9 +224,12 @@
             </p>
           </div>
 
-          <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs">
+          <div class="flex flex-wrap items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs max-w-full">
             <span class="text-slate-400 text-[11px]">৭ সেকেন্ডে অটো রিফ্রেশ:</span>
             <span id="refreshTimerText" class="font-mono font-bold text-emerald-400 text-xs">০৭s</span>
+            <button type="button" onclick="openReviewModal()" class="ml-1 px-2.5 py-1 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-[11px] cursor-pointer">
+              মন্তব্য দিন
+            </button>
           </div>
         </div>
 
@@ -239,24 +242,91 @@
         </div>
       </div>
 
-      <!-- Trust highlights -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-left">
-        <div class="p-3.5 rounded-2xl bg-[#0d1322] border border-slate-800 space-y-1">
-          <div class="text-xs font-bold text-emerald-400">🛡️ ৮ মাসের গ্যারান্টি</div>
-          <p class="text-[11px] text-slate-400">সমস্যা হলে ফ্রি নতুন রিপ্লেসমেন্ট</p>
+      <!-- 4 Core Trust & Refund Guarantees -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-left">
+        <div class="p-4 rounded-2xl bg-[#0d1322] border border-slate-800 space-y-1.5">
+          <div class="text-xs font-bold text-emerald-400">🛡️ ৮ মাসের রিপ্লেসমেন্ট ও ১০০% রিফান্ড</div>
+          <p class="text-[11px] text-slate-400 leading-relaxed">নাম্বারে সমস্যা হলে ফ্রি রিপ্লেসমেন্ট। আর সার্ভিস দিতে না পারলে ১০০% টাকা ফেরত গ্যারান্টি।</p>
         </div>
-        <div class="p-3.5 rounded-2xl bg-[#0d1322] border border-slate-800 space-y-1">
-          <div class="text-xs font-bold text-cyan-400">⚡ ১-৩ মিনিটে ডেলিভারি</div>
-          <p class="text-[11px] text-slate-400">WhatsApp-এ তাৎক্ষণিক কোড বুঝিয়ে দেওয়া হয়</p>
+        <div class="p-4 rounded-2xl bg-[#0d1322] border border-slate-800 space-y-1.5">
+          <div class="text-xs font-bold text-cyan-400">⚡ ১-৩ মিনিটে দ্রুত ডেলিভারি</div>
+          <p class="text-[11px] text-slate-400 leading-relaxed">পেমেন্টের TrxID দেওয়ার ১–৩ মিনিটের মধ্যেই WhatsApp-এ OTP বা QR কোড বুঝিয়ে দেওয়া হয়।</p>
         </div>
-        <div class="p-3.5 rounded-2xl bg-[#0d1322] border border-slate-800 space-y-1">
-          <div class="text-xs font-bold text-orange-400">💳 নগদ ও বাইন্যান্স</div>
-          <p class="text-[11px] text-slate-400">সহজ ও নিরাপদ পেমেন্ট সুবিধা</p>
+        <div class="p-4 rounded-2xl bg-[#0d1322] border border-slate-800 space-y-1.5">
+          <div class="text-xs font-bold text-violet-400">🔒 ১০০% প্রাইভেট ও সিঙ্গেল-ইউজ</div>
+          <p class="text-[11px] text-slate-400 leading-relaxed">একটি নাম্বার বা eSIM শুধু একজন ক্রেতাকেই দেওয়া হয়। কোনো শেয়ার্ড বা ব্যবহৃত নাম্বার নয়।</p>
         </div>
-        <div class="p-3.5 rounded-2xl bg-[#0d1322] border border-slate-800 space-y-1">
-          <div class="text-xs font-bold text-teal-400">🎧 ২৪/৭ লাইভ সাপোর্ট</div>
-          <p class="text-[11px] text-slate-400">অ্যাডমিন সার্বক্ষণিক সক্রিয়</p>
+        <div class="p-4 rounded-2xl bg-[#0d1322] border border-slate-800 space-y-1.5">
+          <div class="text-xs font-bold text-teal-400">🎧 ভেরিফায়েড WhatsApp সাপোর্ট</div>
+          <p class="text-[11px] text-slate-400 leading-relaxed">প্রতিদিন সকাল ৯:০০ – রাত ১২:৩০ তাৎক্ষণিক লাইভ সাপোর্ট ও ২৪/৭ অর্ডার সুবিধা।</p>
         </div>
+      </div>
+
+      <!-- 3-Step Delivery & eSIM (*#06# + 9eSIM) Compatibility Guide -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <!-- 3-Step Delivery -->
+        <div class="p-5 rounded-3xl bg-[#0d1322] border border-slate-800 space-y-3.5">
+          <h3 class="text-sm sm:text-base font-black text-white">✅ ৩ ধাপে অর্ডার ও ডেলিভারি প্রক্রিয়া</h3>
+          <div class="space-y-2.5 text-xs">
+            <div class="p-3 rounded-2xl bg-slate-950 border border-slate-800/80 flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-400 font-black flex items-center justify-center shrink-0 text-[11px]">১</span>
+              <div>
+                <p class="font-bold text-white">পছন্দের দেশ ও পেমেন্ট নির্বাচন</p>
+                <p class="text-[11px] text-slate-400 mt-0.5">প্রোডাক্ট থেকে &quot;অর্ডার করুন&quot; বাটনে ক্লিক করে নগদ অথবা Binance Pay দিয়ে পেমেন্ট করুন।</p>
+              </div>
+            </div>
+            <div class="p-3 rounded-2xl bg-slate-950 border border-slate-800/80 flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-cyan-500/15 text-cyan-400 font-black flex items-center justify-center shrink-0 text-[11px]">২</span>
+              <div>
+                <p class="font-bold text-white">TrxID দিয়ে অর্ডার কনফার্ম</p>
+                <p class="text-[11px] text-slate-400 mt-0.5">আপনার নাম ও পেমেন্টের TrxID / Order ID লিখে WhatsApp বাটনে ক্লিক করে পাঠিয়ে দিন।</p>
+              </div>
+            </div>
+            <div class="p-3 rounded-2xl bg-slate-950 border border-slate-800/80 flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-amber-500/15 text-amber-400 font-black flex items-center justify-center shrink-0 text-[11px]">৩</span>
+              <div>
+                <p class="font-bold text-white">১-৩ মিনিটে তাৎক্ষণিক ডেলিভারি</p>
+                <p class="text-[11px] text-slate-400 mt-0.5">ভেরিফাই হওয়ার সাথে সাথেই WhatsApp-এ ওটিপি কোড অথবা eSIM QR কোড বুঝিয়ে দেওয়া হবে।</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- eSIM *#06# Check + 9eSIM Solution -->
+        <div class="p-5 rounded-3xl bg-[#0d1322] border border-slate-800 space-y-3.5 flex flex-col justify-between">
+          <div class="space-y-3">
+            <h3 class="text-sm sm:text-base font-black text-white">📱 eSIM সাপোর্ট চেক (*#06#) ও 9eSIM গাইড</h3>
+            <div class="p-3.5 rounded-2xl bg-slate-950 border border-cyan-500/20 space-y-2 text-xs">
+              <p class="text-slate-300 leading-relaxed">
+                আপনার ফোনে সরাসরি eSIM সাপোর্ট করে কিনা জানতে ডায়াল প্যাডে <span class="px-2 py-0.5 rounded bg-cyan-500/15 text-cyan-300 font-mono font-bold">*#06#</span> ডায়াল করুন। স্ক্রিনে <strong class="text-white">EID নম্বর</strong> দেখালে সরাসরি eSIM ব্যবহার করা যাবে।
+              </p>
+              <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-slate-200 leading-relaxed">
+                <span class="font-extrabold text-emerald-400 block mb-0.5">💡 ফোনে বিল্ট-ইন eSIM না থাকলে সমাধান (9eSIM):</span>
+                যদি <span class="font-mono text-cyan-300">*#06#</span> এ EID না দেখায় অর্থাৎ ফোনে সরাসরি eSIM সাপোর্ট না করে, তাহলে <strong class="text-white">9eSIM (নাইন ই সিম)</strong> ব্যবহার করে আমাদের এখান থেকে QR কোড নিয়ে খুব সহজেই কাজ করতে পারবেন!
+              </div>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 flex flex-wrap items-center justify-between gap-3">
+            <div class="space-y-0.5">
+              <span class="text-xs font-extrabold text-white flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>সাপোর্ট সময় ও সরাসরি চ্যাট</span>
+              </span>
+              <p class="text-[11px] text-slate-400">প্রতিদিন সকাল ৯:০০ – রাত ১২:৩০ তাৎক্ষণিক রেসপন্স</p>
+            </div>
+            <a href="https://wa.me/8801605617380" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white text-xs font-black transition-all shrink-0">
+              <svg viewBox="0 0 32 32" class="w-3.5 h-3.5 shrink-0" fill="currentColor" aria-hidden="true"><path d="M16.004 2.667C8.64 2.667 2.667 8.64 2.667 16.004c0 2.353.615 4.65 1.784 6.673L2.55 29.62l7.11-1.864a13.28 13.28 0 0 0 6.344 1.61h.005c7.362 0 13.333-5.973 13.333-13.336 0-3.562-1.387-6.912-3.906-9.43a13.247 13.247 0 0 0-9.432-3.933zm0 24.477h-.004a11.09 11.09 0 0 1-5.654-1.547l-.405-.24-4.22 1.107 1.127-4.115-.264-.42a11.06 11.06 0 0 1-1.7-5.925c0-6.122 4.982-11.103 11.116-11.103 2.967 0 5.756 1.157 7.852 3.255a11.033 11.033 0 0 1 3.252 7.853c0 6.124-4.982 11.135-11.1 11.135zm6.093-8.322c-.334-.168-1.977-.976-2.283-1.088-.306-.11-.53-.167-.752.167-.223.334-.863 1.088-1.058 1.31-.195.224-.39.252-.724.084-.334-.167-1.41-.52-2.685-1.658-.992-.885-1.662-1.978-1.857-2.312-.195-.334-.02-.515.147-.681.15-.15.334-.39.501-.585.167-.195.223-.334.334-.557.112-.223.056-.418-.028-.585-.084-.168-.752-1.812-1.03-2.48-.271-.651-.547-.563-.752-.573l-.641-.011c-.223 0-.585.084-.891.418-.306.334-1.17 1.143-1.17 2.787 0 1.644 1.198 3.233 1.365 3.456.167.223 2.357 3.6 5.71 5.048.798.344 1.421.55 1.906.704.801.255 1.53.219 2.106.133.643-.096 1.977-.808 2.256-1.588.278-.78.278-1.45.195-1.589-.084-.14-.307-.224-.641-.391z"/></svg>
+              <span>অ্যাডমিন WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Accordion -->
+      <div class="p-5 rounded-3xl bg-[#0d1322] border border-slate-800 space-y-3">
+        <h3 class="text-sm sm:text-base font-black text-white">❓ সচরাচর জিজ্ঞাসিত প্রশ্ন (FAQ)</h3>
+        <div id="faqContainer" class="space-y-2"></div>
       </div>
 
     </div>
@@ -335,6 +405,7 @@
           <label id="modalTrxLabel" class="text-xs font-bold text-slate-300 uppercase block mb-1">নগদ TrxID বা প্রেরক নম্বর: *</label>
           <input id="modalTrxInput" type="text" placeholder="যেমন: BL82K9X1 অথবা 018xxxxxxxx" class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm font-mono text-white focus:outline-none focus:ring-1 focus:ring-emerald-500" />
         </div>
+        <p id="modalFormError" class="hidden text-xs text-rose-400 font-semibold"></p>
         <button onclick="submitOrder()" class="w-full py-3.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-black text-sm rounded-xl shadow-md shadow-emerald-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all">
           <svg viewBox="0 0 32 32" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true"><path d="M16.004 2.667C8.64 2.667 2.667 8.64 2.667 16.004c0 2.353.615 4.65 1.784 6.673L2.55 29.62l7.11-1.864a13.28 13.28 0 0 0 6.344 1.61h.005c7.362 0 13.333-5.973 13.333-13.336 0-3.562-1.387-6.912-3.906-9.43a13.247 13.247 0 0 0-9.432-3.933zm0 24.477h-.004a11.09 11.09 0 0 1-5.654-1.547l-.405-.24-4.22 1.107 1.127-4.115-.264-.42a11.06 11.06 0 0 1-1.7-5.925c0-6.122 4.982-11.103 11.116-11.103 2.967 0 5.756 1.157 7.852 3.255a11.033 11.033 0 0 1 3.252 7.853c0 6.124-4.982 11.135-11.1 11.135zm6.093-8.322c-.334-.168-1.977-.976-2.283-1.088-.306-.11-.53-.167-.752.167-.223.334-.863 1.088-1.058 1.31-.195.224-.39.252-.724.084-.334-.167-1.41-.52-2.685-1.658-.992-.885-1.662-1.978-1.857-2.312-.195-.334-.02-.515.147-.681.15-.15.334-.39.501-.585.167-.195.223-.334.334-.557.112-.223.056-.418-.028-.585-.084-.168-.752-1.812-1.03-2.48-.271-.651-.547-.563-.752-.573l-.641-.011c-.223 0-.585.084-.891.418-.306.334-1.17 1.143-1.17 2.787 0 1.644 1.198 3.233 1.365 3.456.167.223 2.357 3.6 5.71 5.048.798.344 1.421.55 1.906.704.801.255 1.53.219 2.106.133.643-.096 1.977-.808 2.256-1.588.278-.78.278-1.45.195-1.589-.084-.14-.307-.224-.641-.391z"/></svg>
           <span>WhatsApp-এ অর্ডার পাঠান ও কোড নিন</span>
@@ -356,6 +427,56 @@
     </div>
   </div>
 
+  <!-- ========================================== -->
+  <!-- 7. WRITE REVIEW MODAL (FEEDBACK ONLY)      -->
+  <!-- ========================================== -->
+  <div id="reviewModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="w-full max-w-md bg-[#0d1322] border border-slate-800 rounded-3xl p-5 space-y-3.5">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
+        <h3 class="text-sm font-bold text-white">⭐ আপনার মূল্যবান অভিজ্ঞতা লিখুন</h3>
+        <button type="button" onclick="closeReviewModal()" class="text-slate-400 hover:text-white text-xl cursor-pointer">&times;</button>
+      </div>
+
+      <div id="reviewSuccessBox" class="hidden p-5 text-center space-y-1.5 bg-emerald-950/40 border border-emerald-500/30 rounded-xl">
+        <div class="text-2xl">✅</div>
+        <h4 class="font-bold text-white text-sm">ধন্যবাদ! আপনার মতামত জমা হয়েছে</h4>
+        <p class="text-xs text-slate-300 leading-relaxed">আপনার মূল্যবান মন্তব্যটি সফলভাবে গ্রহণ করা হয়েছে। রিভিউ যাচাই-বাছাইয়ের পর তালিকাভুক্ত করা হবে।</p>
+      </div>
+
+      <form id="reviewForm" onsubmit="submitReviewForm(event)" class="space-y-3 text-xs">
+        <div>
+          <label class="font-bold text-slate-300 block mb-1">আপনার নাম: *</label>
+          <input id="revName" type="text" required placeholder="যেমন: তানভীর আহমেদ" class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" />
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="font-bold text-slate-300 block mb-1">জেলা / এলাকা:</label>
+            <input id="revLoc" type="text" placeholder="যেমন: ঢাকা / সিলেট" class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" />
+          </div>
+          <div>
+            <label class="font-bold text-slate-300 block mb-1">রেটিং:</label>
+            <select id="revRating" class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:ring-1 focus:ring-emerald-500">
+              <option value="5">⭐⭐⭐⭐⭐ (৫ স্টার)</option>
+              <option value="4">⭐⭐⭐⭐ (৪ স্টার)</option>
+              <option value="3">⭐⭐⭐ (৩ স্টার)</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="font-bold text-slate-300 block mb-1">কোন সার্ভিস নিয়েছেন:</label>
+          <input id="revProd" type="text" value="🇺🇸 USA WhatsApp Virtual Number" placeholder="যেমন: USA Virtual Number / Saudi eSIM" class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" />
+        </div>
+        <div>
+          <label class="font-bold text-slate-300 block mb-1">আপনার মন্তব্য: *</label>
+          <textarea id="revText" rows="3" required placeholder="সার্ভিস কেমন লেগেছে তা লিখুন..." class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"></textarea>
+        </div>
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs cursor-pointer">
+          মন্তব্য সাবমিট করুন
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- Floating WhatsApp -->
   <aside class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40">
     <a href="https://wa.me/8801605617380" target="_blank" rel="noopener noreferrer" title="WhatsApp-এ যোগাযোগ করুন" class="flex items-center justify-center w-13 h-13 rounded-full bg-gradient-to-br from-[#25D366] to-[#128C7E] hover:brightness-110 text-white shadow-lg shadow-emerald-500/35 transition-transform hover:scale-110 active:scale-95 cursor-pointer ring-2 ring-white/25">
@@ -364,7 +485,7 @@
   </aside>
 
   <!-- ========================================== -->
-  <!-- 7. APPLICATION LOGIC & REVIEWS ROTATION    -->
+  <!-- 8. APPLICATION LOGIC & REVIEWS ROTATION    -->
   <!-- ========================================== -->
   <script>
     const NAGAD_NUMBER = '01965291171';
@@ -444,7 +565,7 @@
       { id: 'esim-uz', country: 'Uzbekistan (উজবেকিস্তান)', flag: '🇺🇿', price: 1250, region: 'Asia', desc: 'উজবেকিস্তান ভ্রমণ ও নিরবচ্ছিন্ন হাই-স্পিড ডাটা সংযোগ।' }
     ];
 
-    // EXACT 50 REAL CUSTOMER REVIEWS
+    // EXACT 50 REAL CUSTOMER REVIEWS (ONLY THESE SHOW IN THE GRID)
     const rawReviews = [
       { name: 'তানভীর আহমেদ', loc: 'মিরপুর, ঢাকা', prod: '🇺🇸 USA WhatsApp Virtual Number', text: 'ভাই এক কথায় অসাধারণ! নগদে সেন্ড মানি করে TrxID দেয়ার মাত্র ৩ মিনিটের মধ্যে ভাইয়া আমাকে WhatsApp-এ কোড দিয়ে দিলেন।' },
       { name: 'মেহেদী হাসান রনি', loc: 'জিইসি মোড়, চট্টগ্রাম', prod: '🇬🇧 UK Virtual SIM Number', text: 'ইউকে নাম্বারটা দিয়ে সাথে সাথে বিজনেস হোয়াটসঅ্যাপ ভেরিফাই করে নিলাম। কোনো ধরনের সমস্যা ছাড়া ওটিপি চলে আসছে।' },
@@ -672,7 +793,7 @@
     }
 
     // ==============================================================
-    // 7-SECOND DYNAMIC REVIEWS ENGINE (50 REVIEWS)
+    // 7-SECOND DYNAMIC REVIEWS ENGINE (50 HARDCODED REVIEWS)
     // ==============================================================
     let reviewCycle = 0;
     let secondsLeft = 7;
@@ -733,6 +854,7 @@
     function openCheckout(item, type) {
       currentSelectedProduct = { ...item, type };
       selectModalMethod('nagad');
+      document.getElementById('modalFormError').classList.add('hidden');
       document.getElementById('modalFlag').textContent = item.flag;
       document.getElementById('modalTitle').textContent = type === 'otp' ? `${item.name} WhatsApp Number` : `${item.country} Travel eSIM`;
       document.getElementById('modalWarranty').textContent = type === 'otp' ? '🛡️ টেলিগ্রাম, ইমো, হোয়াটসঅ্যাপ (৮ মাসের গ্যারান্টি)' : '📱 QR কোডে অ্যাক্টিভেশন · ফ্রি মিনিট ও ইন্টারনেট (৬০ দিন মেয়াদ)';
@@ -799,9 +921,19 @@
       const name = document.getElementById('modalCustName').value.trim();
       const loc = document.getElementById('modalCustLoc').value.trim();
       const trx = document.getElementById('modalTrxInput').value.trim();
+      const errEl = document.getElementById('modalFormError');
 
-      if (!name) { alert('অনুগ্রহ করে আপনার নাম লিখুন।'); return; }
-      if (!trx) { alert('অনুগ্রহ করে Transaction ID বা Order ID লিখুন।'); return; }
+      if (!name) {
+        errEl.textContent = 'দয়া করে আপনার নাম লিখুন।';
+        errEl.classList.remove('hidden');
+        return;
+      }
+      if (!trx) {
+        errEl.textContent = 'দয়া করে Transaction ID বা Order ID লিখুন।';
+        errEl.classList.remove('hidden');
+        return;
+      }
+      errEl.classList.add('hidden');
 
       const ordId = `ORD-${Date.now().toString().slice(-6)}`;
       const itemTitle = currentSelectedProduct.type === 'otp' ? `${currentSelectedProduct.name} Virtual Number` : `${currentSelectedProduct.country} Travel eSIM`;
@@ -873,6 +1005,86 @@
       m.classList.remove('flex');
     }
 
+    // Write Review Modal (Feedback confirmation only; NEVER renders user comment into reviewsGrid)
+    function openReviewModal() {
+      document.getElementById('reviewSuccessBox').classList.add('hidden');
+      document.getElementById('reviewForm').classList.remove('hidden');
+      const m = document.getElementById('reviewModal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    function closeReviewModal() {
+      const m = document.getElementById('reviewModal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    function submitReviewForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('revName').value.trim();
+      const text = document.getElementById('revText').value.trim();
+      if (!name || !text) return;
+
+      document.getElementById('reviewForm').classList.add('hidden');
+      document.getElementById('reviewSuccessBox').classList.remove('hidden');
+      document.getElementById('revName').value = '';
+      document.getElementById('revLoc').value = '';
+      document.getElementById('revText').value = '';
+      document.getElementById('revRating').value = '5';
+
+      setTimeout(() => {
+        closeReviewModal();
+      }, 2200);
+    }
+
+    // FAQ Accordion
+    const faqItems = [
+      {
+        q: 'ভার্চুয়াল নাম্বার দিয়ে কোন কোন অ্যাপ ভেরিফিকেশন করা যাবে?',
+        a: 'আমাদের প্রতিটি ভার্চুয়াল নাম্বার দিয়ে আপনি টেলিগ্রাম (Telegram), ইমো (IMO) ও হোয়াটসঅ্যাপ (WhatsApp)—তিনটি অ্যাপেই সফলভাবে ভেরিফিকেশন নিতে পারবেন।'
+      },
+      {
+        q: 'ফোনে বিল্ট-ইন eSIM সাপোর্ট না করলে কি ব্যবহার করা যাবে?',
+        a: 'হ্যাঁ! ডায়াল প্যাডে *#06# চাপলে যদি EID না দেখায় (সরাসরি eSIM সাপোর্ট না থাকে), তাহলে 9eSIM (নাইন ই সিম) দিয়ে আমাদের কাছ থেকে QR কোড নিয়ে অনায়াসেই কাজ করতে পারবেন।'
+      },
+      {
+        q: 'eSIM নিলে কী কী সুবিধা পাব এবং মেয়াদ কতদিন?',
+        a: 'অর্ডার করার পর WhatsApp-এ অফিশিয়াল QR কোড পাঠানো হবে। QR স্ক্যান করে অ্যাক্টিভ করলেই ফ্রি মিনিট ও হাই-স্পিড ইন্টারনেট পাবেন এবং পূর্ণ ৬০ দিন (২ মাস) মেয়াদ থাকবে।'
+      },
+      {
+        q: 'নাম্বার বা কোড ডেলিভারি পেতে কত সময় লাগে?',
+        a: 'নগদ অথবা Binance Pay-তে পেমেন্ট করে TrxID সাবমিট করার মাত্র ১ থেকে ৩ মিনিটের মধ্যেই WhatsApp-এ ডেলিভারি দেওয়া হয়।'
+      },
+      {
+        q: '৮ মাসের গ্যারান্টি ও রিফান্ড পলিসি কীভাবে কাজ করে?',
+        a: 'আট মাসের মধ্যে নাম্বারে কোনো সমস্যা হলে সম্পূর্ণ ফ্রিতে নতুন নাম্বার রিপ্লেসমেন্ট দেওয়া হয়। আর কোনো কারণে আমরা সার্ভিস দিতে ব্যর্থ হলে ১০০% টাকা ফেরত পাবেন।'
+      }
+    ];
+    let openFaqIdx = 0;
+
+    function toggleFaq(idx) {
+      openFaqIdx = openFaqIdx === idx ? -1 : idx;
+      renderFaq();
+    }
+
+    function renderFaq() {
+      const container = document.getElementById('faqContainer');
+      if (!container) return;
+      container.innerHTML = faqItems.map((item, idx) => {
+        const isOpen = openFaqIdx === idx;
+        return `
+          <div class="rounded-2xl bg-slate-950 border border-slate-800 overflow-hidden">
+            <button type="button" onclick="toggleFaq(${idx})" class="w-full px-4 py-3 text-left flex items-center justify-between gap-3 text-xs sm:text-sm font-bold text-white hover:bg-slate-900/60 transition-colors cursor-pointer">
+              <span>${item.q}</span>
+              <span class="text-slate-400 shrink-0 transition-transform ${isOpen ? 'rotate-180 text-emerald-400' : ''}">▾</span>
+            </button>
+            ${isOpen ? `<div class="px-4 pb-3 text-xs text-slate-400 leading-relaxed border-t border-slate-800/60 pt-2.5">${item.a}</div>` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
     function copyText(txt, btn) {
       navigator.clipboard.writeText(txt);
       const original = btn.textContent;
@@ -884,6 +1096,7 @@
     setCurrency(currentCurrency);
     renderProducts();
     renderReviewsBatch();
+    renderFaq();
     updateBadge();
   </script>
 </body>
